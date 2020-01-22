@@ -1,0 +1,186 @@
+﻿.container {
+    background-color: #3a3a3a;
+    box-shadow: 0 0px 25px #fdd247;
+    border-radius: 15px;
+    padding: 15px 0;
+    margin-top: 50px;
+    margin-bottom: 70px;
+    color: white;
+    border: 1px solid black;
+}
+
+.accordion, .card-header {
+    background-color: #F5F5F5;
+    border-radius: 10px;
+    color: black;
+    padding: 10px;
+}
+
+.card-body {
+    background-color: #3a3a3a;
+}
+
+.btn-link {
+    color: black
+}
+
+    .btn-link:hover {
+        color:black;
+    }
+
+.nls {
+    border-bottom: 5px solid black;
+}
+
+.newsletterPreview {
+    padding: 0 50px;
+    border: 5px solid black;
+    margin: 0;
+    background-color: white;
+    max-height: 70vh;
+    overflow-y: auto;
+    color:black;
+}
+
+.col-form-label {
+    text-align: right;
+}
+
+.section {
+    background-color: #606060;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+    margin: 1px 10px;
+}
+
+.cardlist {
+    background-color: white;
+    list-style-type: none;
+    color: black;
+}
+
+    .cardlist li {
+        text-align: center;
+        padding: 5px;
+        margin: 10px;
+        color: black;
+    }
+
+        .cardlist li a {
+            color: black;
+        }
+
+    .cardlist a:visited {
+        text-decoration: none;
+    }
+
+    .cardlist li:hover > a {
+        color: #fdd247;
+    }
+
+.aspl {
+    margin: 0 10px;
+}
+input[type="checkbox"] {
+    margin: 0 0px;
+}
+
+.requiredRed {
+    color: red;
+}
+
+textarea {
+    resize: none;
+}
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+@media screen and (max-width: 1000px) {
+    #jobResourceCollapse thead, #eventResourceCollapse thead, #trainingResourceCollapse thead {
+        display: none;
+    }
+
+    #jobResourceCollapse td, #eventResourceCollapse td, #trainingResourceCollapse td {
+        display: block;
+        position: relative;
+        text-align: right;
+    }
+
+        #jobResourceCollapse td:before, #eventResourceCollapse td:before, #trainingResourceCollapse td:before {
+            padding-left: 5px;
+            display: inline-block;
+            font-weight: bold;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+
+        #jobResourceCollapse td:nth-of-type(1):before {
+            content: "Title";
+        }
+
+        #jobResourceCollapse td:nth-of-type(2):before {
+            content: "Contact";
+        }
+
+        #jobResourceCollapse td:nth-of-type(3):before {
+            content: "Location";
+        }
+
+        #jobResourceCollapse td:nth-of-type(4):before {
+            content: "Date Posted";
+        }
+
+        #jobResourceCollapse td:nth-of-type(5):before {
+            content: "Date Expire";
+        }
+
+        #eventResourceCollapse td:nth-of-type(1):before {
+            content: "Title";
+        }
+
+        #eventResourceCollapse td:nth-of-type(2):before {
+            content: "Contact";
+        }
+
+        #eventResourceCollapse td:nth-of-type(3):before {
+            content: "Location";
+        }
+
+        #eventResourceCollapse td:nth-of-type(4):before {
+            content: "Date";
+        }
+
+        #trainingResourceCollapse td:nth-of-type(1):before {
+            content: "Title";
+        }
+
+        #trainingResourceCollapse td:nth-of-type(2):before {
+            content: "Contact";
+        }
+
+        #trainingResourceCollapse td:nth-of-type(3):before {
+            content: "Location";
+        }
+
+        #trainingResourceCollapse td:nth-of-type(4):before {
+            content: "Date Posted";
+        }
+
+        #trainingResourceCollapse td:nth-of-type(5):before {
+            content: "Date Expire";
+        }
+}
+.table-responsive-lg {
+    overflow: scroll;
+    max-height: 350px;
+}
+
+table {
+    overflow: scroll;
+}

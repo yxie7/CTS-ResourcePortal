@@ -1,0 +1,36 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="CTS_ResourcePortal.admin" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="dashboard.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="navli" runat="server">    
+    <li class="navbar-text">
+        <p>Jeffrey Harley</p>
+    </li>
+    <li class="navbar-text">
+        <p>::</p>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="ResourceList.aspx">Sign Out</a>
+    </li>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
+    <div class='sidebar'>
+        <h4>Administrator Menu</h4>
+        <ul>
+            <li><a href="AdminHomePage.aspx">Dashboard</a></li>
+            <li><a href="AddNewJobOpp.aspx">Add New Job Opening</a></li>
+            <li><a href="AddNewEvent.aspx">Add New Event</a></li>
+            <li><a href="AddNewTraining.aspx">Add New Training Opportunity</a></li>
+            <li><a href="ManageR.aspx">Manage Resources</a></li>
+            <li><a href="ViewFeedback.aspx">View Feedback</a></li>
+            <li><a href="NewsletterCreate.aspx">Create Newsletter</a></li>
+            <li><a href="AdminEmailPage.aspx">Edit Email</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <asp:ContentPlaceHolder ID="Content" runat="server"></asp:ContentPlaceHolder>
+    </div>
+</asp:Content>

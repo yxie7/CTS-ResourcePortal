@@ -1,0 +1,53 @@
+﻿.sidebar {
+    width: 200px;
+    top: 0;
+    padding: 10px;
+    padding-top: 110px;
+    position: fixed;
+    height: calc(100vh);
+    background: #3a3a3a;
+    color: white;
+}
+
+    .sidebar > ul {
+        list-style: none;
+        margin: 0px;
+        padding: 10px;
+    }
+
+        .sidebar > ul > li {
+            padding: 5px;
+            padding: 10px 10px 10px 1em;
+            transition: 0.5s;
+            color: #fdd247;
+            text-indent: -1em;
+        }
+
+            .sidebar > ul > li:hover {
+                background: #afafaf;
+                color: #fdd247;
+            }
+
+                .sidebar > ul > li:hover > a {
+                    color: #fdd247;
+                }
+
+            .sidebar > ul > li > a {
+                display: inline;
+                color: #afafaf;
+                padding: 10px;
+            }
+
+                .sidebar > ul > li > a:hover {
+                    color: #fdd247;
+                    cursor: pointer;
+                    text-decoration: none;
+                }
+
+                .sidebar > ul > li > a:visited {
+                    text-decoration: none;
+                }
+
+.content {
+    padding-left: 200px;
+}

@@ -1,0 +1,50 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Master.master.cs" Inherits="CTS_ResourcePortal.Master" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Called To Serve</title>
+    <script src="https://kit.fontawesome.com/f03b07e8ab.js" crossorigin="anonymous"></script>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="master.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <nav class="navbar navbar-expand-lg navbar-dark ">
+                <a class="navbar-brand" href="ResourceList.aspx">
+                    <img src="Images/CTS_Logo.png" />&nbsp:: Training & Resources
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nbitems" aria-controls="nbitems" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse " id="nbitems">
+                    <ul class="navbar-nav ml-auto">
+                        <asp:ContentPlaceHolder ID="navli" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </ul>
+                </div>
+            </nav>
+            <asp:ContentPlaceHolder ID="Content" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <footer>
+            <a href="AdminHomePage.aspx">
+                <img src="Images/CTS_Logo.png" /></a>&nbsp
+            Called To Serve Resource Portal &nbsp
+            <i class="fas fa-map-marker-alt"></i>&nbsp 3600 N. Broad Street Philadelphia, PA 19140&nbsp
+            <i class="fas fa-phone-alt"></i>&nbsp (215) 588-4940&nbsp
+            <i class="far fa-envelope"></i>&nbsp info@calledtoservecdc.org&nbsp
+            <a href="CitizenSettings.aspx">
+                <img src="Images/CTS_Logo.png" /></a>
+        </footer>
+    </form>
+    <script src="Scripts/jquery-3.0.0.js"></script>
+    <script src="Scripts/popper.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+</body>
+</html>

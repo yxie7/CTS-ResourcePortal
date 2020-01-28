@@ -30,7 +30,7 @@
                             <div class="card-body">
                                 <div class="row d-flex justify-content-center">
                                     <div class="table-responsive-lg  ">
-                                        <table class="table table-striped table-light">
+                                      <%--  <table class="table table-striped table-light">
                                             <thead>
                                                 <tr>
                                                     <th scope="col">Title</th>
@@ -70,7 +70,18 @@
                                                         <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-dark" Enabled="false" /></td>
                                                 </tr>
                                             </tbody>
-                                        </table>
+                                        </table>--%>
+                                        <asp:GridView ID="gvJob" runat="server" AutoGenerateColumns="False">
+                                            <Columns>
+                                                <asp:BoundField HeaderText="Title" />
+                                                <asp:BoundField HeaderText="Contact" />
+                                                <asp:BoundField HeaderText="Location" />
+                                                <asp:BoundField HeaderText="Date Posted" />
+                                                <asp:BoundField HeaderText="Date Expired" />
+                                                <asp:ButtonField HeaderText="Details" Text="Button" />
+                                            </Columns>
+
+                                        </asp:GridView>
                                     </div>
                                 </div>
                             </div>
@@ -80,8 +91,7 @@
                         <div class="card-header" id="eventHeader">
                             <h2 class="mb-0">
                                 <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#eventResourceCollapse" aria-expanded="true" aria-controls="eventResourceCollapse">
-                                    Events
-                                </button>
+                                    Events</button>
                             </h2>
                         </div>
                         <div class="collapse" id="eventResourceCollapse" aria-labelledby="eventHeader" data-parent="#eventHeader">

@@ -25,7 +25,7 @@
                 </div>
                 <div class="col-sm-6">
                     <asp:Label ID="lblHost" runat="server">Hosted By: </asp:Label><br />
-                    <asp:TextBox ID="TextBox1" class="form-control" runat="server">Called To Serve</asp:TextBox>
+                    <asp:TextBox ID="txtHost" class="form-control" runat="server">Called To Serve</asp:TextBox>
                 </div>
             </div>
             <br />
@@ -48,58 +48,59 @@
                 </div>
                 <div class="col-sm-4">
                     <asp:Label ID="lblState" runat="server"><span class="requiredRed">*</span>State: </asp:Label><br />
-                    <select id="sltState" name="state" class="form-control">
-                        <option>Alabama</option>
-                            <option>Alaska</option>
-                            <option>Arizona</option>
-                            <option>Arkansas</option>
-                            <option>California</option>
-                            <option>Colorado</option>
-                            <option>Connecticut</option>
-                            <option>Delaware</option>
-                            <option>Florida</option>
-                            <option>Georgia</option>
-                            <option>Hawaii</option>
-                            <option>Idaho</option>
-                            <option>Illinois</option>
-                            <option>Indiana</option>
-                            <option>Iowa</option>
-                            <option>Kansas</option>
-                            <option>Kentucky</option>
-                            <option>Louisiana</option>
-                            <option>Maine</option>
-                            <option>Maryland</option>
-                            <option>Massachusetts</option>
-                            <option>Michigan</option>
-                            <option>Minnesota</option>
-                            <option>Mississippi</option>
-                            <option>Missouri</option>
-                            <option>Montana</option>
-                            <option>Nebraska</option>
-                            <option>Nevada</option>
-                            <option>New Hampshire</option>
-                            <option>New Jersey</option>
-                            <option>New Mexico</option>
-                            <option>New York</option>
-                            <option>North Carolina</option>
-                            <option>North Dakota</option>
-                            <option>Ohio</option>
-                            <option>Oklahoma</option>
-                            <option>Oregon</option>
-                            <option>Pennsylvania</option>
-                            <option>Rhode Island</option>
-                            <option>South Carolina</option>
-                            <option>South Dakota</option>
-                            <option>Tennessee</option>
-                            <option>Texas</option>
-                            <option>Utah</option>
-                            <option>Vermont</option>
-                            <option>Virginia</option>
-                            <option>Washington</option>
-                            <option>West Virginia</option>
-                            <option>Wisconsin</option>
-                            <option>Wyoming</option>
-                    </select>
+                    <asp:DropDownList ID="ddlState" runat="server">
+	<asp:ListItem Value="AL">Alabama</asp:ListItem>
+	<asp:ListItem Value="AK">Alaska</asp:ListItem>
+	<asp:ListItem Value="AZ">Arizona</asp:ListItem>
+	<asp:ListItem Value="AR">Arkansas</asp:ListItem>
+	<asp:ListItem Value="CA">California</asp:ListItem>
+	<asp:ListItem Value="CO">Colorado</asp:ListItem>
+	<asp:ListItem Value="CT">Connecticut</asp:ListItem>
+	<asp:ListItem Value="DC">District of Columbia</asp:ListItem>
+	<asp:ListItem Value="DE">Delaware</asp:ListItem>
+	<asp:ListItem Value="FL">Florida</asp:ListItem>
+	<asp:ListItem Value="GA">Georgia</asp:ListItem>
+	<asp:ListItem Value="HI">Hawaii</asp:ListItem>
+	<asp:ListItem Value="ID">Idaho</asp:ListItem>
+	<asp:ListItem Value="IL">Illinois</asp:ListItem>
+	<asp:ListItem Value="IN">Indiana</asp:ListItem>
+	<asp:ListItem Value="IA">Iowa</asp:ListItem>
+	<asp:ListItem Value="KS">Kansas</asp:ListItem>
+	<asp:ListItem Value="KY">Kentucky</asp:ListItem>
+	<asp:ListItem Value="LA">Louisiana</asp:ListItem>
+	<asp:ListItem Value="ME">Maine</asp:ListItem>
+	<asp:ListItem Value="MD">Maryland</asp:ListItem>
+	<asp:ListItem Value="MA">Massachusetts</asp:ListItem>
+	<asp:ListItem Value="MI">Michigan</asp:ListItem>
+	<asp:ListItem Value="MN">Minnesota</asp:ListItem>
+	<asp:ListItem Value="MS">Mississippi</asp:ListItem>
+	<asp:ListItem Value="MO">Missouri</asp:ListItem>
+	<asp:ListItem Value="MT">Montana</asp:ListItem>
+	<asp:ListItem Value="NE">Nebraska</asp:ListItem>
+	<asp:ListItem Value="NV">Nevada</asp:ListItem>
+	<asp:ListItem Value="NH">New Hampshire</asp:ListItem>
+	<asp:ListItem Value="NJ">New Jersey</asp:ListItem>
+	<asp:ListItem Value="NM">New Mexico</asp:ListItem>
+	<asp:ListItem Value="NY">New York</asp:ListItem>
+	<asp:ListItem Value="NC">North Carolina</asp:ListItem>
+	<asp:ListItem Value="ND">North Dakota</asp:ListItem>
+	<asp:ListItem Value="OH">Ohio</asp:ListItem>
+	<asp:ListItem Value="OK">Oklahoma</asp:ListItem>
+	<asp:ListItem Value="OR">Oregon</asp:ListItem>
+	<asp:ListItem Value="PA">Pennsylvania</asp:ListItem>
+	<asp:ListItem Value="RI">Rhode Island</asp:ListItem>
+	<asp:ListItem Value="SC">South Carolina</asp:ListItem>
+	<asp:ListItem Value="SD">South Dakota</asp:ListItem>
+	<asp:ListItem Value="TN">Tennessee</asp:ListItem>
+	<asp:ListItem Value="TX">Texas</asp:ListItem>
+	<asp:ListItem Value="UT">Utah</asp:ListItem>
+	<asp:ListItem Value="VT">Vermont</asp:ListItem>
+	<asp:ListItem Value="VA">Virginia</asp:ListItem>
+	<asp:ListItem Value="WA">Washington</asp:ListItem>
+	<asp:ListItem Value="WV">West Virginia</asp:ListItem>
+	<asp:ListItem Value="WI">Wisconsin</asp:ListItem>
+	<asp:ListItem Value="WY">Wyoming</asp:ListItem>
+</asp:DropDownList>
                 </div>
                 <div class="col-sm-4">
                     <asp:Label ID="lblZip" runat="server"><span class="requiredRed">*</span>Zip: </asp:Label><br />
@@ -111,12 +112,41 @@
                 <div class="col-sm-2"></div>
                 <div class="col-sm-3">
                     <asp:Label ID="lblDate" runat="server"><span class="requiredRed">*</span>Event Date: </asp:Label><br />
-                    <input type="date" class="form-control" />
+                    <asp:Calendar ID="CalanderDate" runat="server">
+                         <OtherMonthDayStyle ForeColor="LightGray">
+           </OtherMonthDayStyle>
+
+           <TitleStyle BackColor="Yellow"
+                       ForeColor="Black">
+           </TitleStyle>
+
+           <DayStyle BackColor="gray">
+           </DayStyle>
+
+           <SelectedDayStyle BackColor="LightGray"
+                             Font-Bold="True">
+           </SelectedDayStyle>
+                    </asp:Calendar>
+                    
                 </div>
                 <div class="col-sm-2"></div>
                 <div class="col-sm-3">
                     <asp:Label ID="lblRegDeadline" runat="server"><span class="requiredRed">*</span>Registration Deadline: </asp:Label><br />
-                    <input type="date" class="form-control" />
+                    <asp:Calendar ID="CalendarReg" runat="server">
+                         <OtherMonthDayStyle ForeColor="LightGray">
+           </OtherMonthDayStyle>
+
+           <TitleStyle BackColor="Yellow"
+                       ForeColor="Black">
+           </TitleStyle>
+
+           <DayStyle BackColor="gray">
+           </DayStyle>
+
+           <SelectedDayStyle BackColor="LightGray"
+                             Font-Bold="True">
+           </SelectedDayStyle>
+                    </asp:Calendar>
                 </div>
                 <div class="col-sm-2"></div>
             </div>
@@ -124,11 +154,11 @@
             <div class="row" id="times">
                 <div class="col-sm-6">
                     <asp:Label ID="lblStart" runat="server"><span class="requiredRed">*</span>Start Time: </asp:Label><br />
-                    <asp:TextBox ID="txtStart" class="form-control" runat="server">8:30am</asp:TextBox>
+                    <asp:TextBox ID="txtStartTime" class="form-control" runat="server">8:30am</asp:TextBox>
                 </div>
                 <div class="col-sm-6">
                     <asp:Label ID="lblEnd" runat="server"><span class="requiredRed">*</span>End Time: </asp:Label><br />
-                    <asp:TextBox ID="txtExp" class="form-control" runat="server">5:30pm</asp:TextBox>
+                    <asp:TextBox ID="txtEndTime" class="form-control" runat="server">5:30pm</asp:TextBox>
                 </div>
             </div>
             <br />

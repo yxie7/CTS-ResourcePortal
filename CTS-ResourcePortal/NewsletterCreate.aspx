@@ -93,41 +93,26 @@
                             </h2>
                         </div>
                         <div class="collapse" id="jobCollapse" aria-labelledby="jobHeader" data-parent="#jobHeader">
-                            <div class="card-body">
+
+                            <div class="card-body">                                
                                 <div class="row d-flex justify-content-center">
                                     <div class="table-responsive-lg  ">
-                                        <table class="table table-striped table-dark">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">Select</th>
-                                                    <th scope="col" class="col-1">Title</th>
-                                                    <th scope="col" class="col-md-8">Comments</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <asp:CheckBox runat="server" AutoPostBack="false" /></td>
-                                                    <td>Entry Level Contractor</td>
-                                                    <td>
-                                                        <asp:TextBox runat="server" TextMode="multiline" Columns="50" Rows="3" placeholder="Enter comments, tips, or other information you would like to give to citizens here..."></asp:TextBox></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <asp:CheckBox runat="server" AutoPostBack="false" /></td>
-                                                    <td>Plumber's Apprentice</td>
-                                                    <td>
-                                                        <asp:TextBox runat="server" TextMode="multiline" Columns="50" Rows="3" placeholder="Enter comments, tips, or other information you would like to give to citizens here..."></asp:TextBox></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <asp:CheckBox runat="server" AutoPostBack="false" /></td>
-                                                    <td>Coca-Cola Delivery</td>
-                                                    <td>
-                                                        <asp:TextBox runat="server" TextMode="multiline" Columns="50" Rows="3" placeholder="Enter comments, tips, or other information you would like to give to citizens here..."></asp:TextBox></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                        <asp:GridView ID="gvJob" runat="server" AutoGenerateColumns="false" class="table table-striped table-dark">
+                                            <Columns>
+                                                <asp:BoundField DataField="ResourceID" Visible="false" />
+                                                <asp:TemplateField HeaderText="Select">
+                                                    <ItemTemplate>
+                                                        <asp:CheckBox ID="chkSelect" AutoPostBack="false" runat="server" />
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:BoundField DataField="ResourceTitle" HeaderText="Title"/>
+                                                <asp:TemplateField HeaderText="Comments">
+                                                    <ItemTemplate>
+                                                        <asp:TextBox runat="server" ID="txtComment" TextMode="multiline" Columns="50" Rows="3" placeholder="Enter comments, tips, or other information you would like to give to citizens here..."></asp:TextBox>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                            </Columns>
+                                        </asp:GridView>
                                     </div>
                                 </div>
                             </div>

@@ -1,3 +1,6 @@
+Utilities/obj/Debug/
+Utilities/obj/Release/
+
 *.config
 
 ## Ignore Visual Studio temporary files, build results, and

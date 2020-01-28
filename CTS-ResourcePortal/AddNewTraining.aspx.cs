@@ -19,20 +19,17 @@ namespace CTS_ResourcePortal
         SqlCommand bigCommand = new SqlCommand();
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
 
-        }
-
-        protected void txtContEmail_TextChanged(object sender, EventArgs e)
-        {
-            
+            }
         }
 
         protected void btnCreate_Click(object sender, EventArgs e)
         {
-            //Still need to add individual resource ID********
 
             Training training = new Training();
-            training.resourceTypeID = "TrainingResource";
+            training.resourceTypeID = "Training Opportunity";
             training.resourceTitle = txtTitle.Text;
             training.company = txtHost.Text;
             training.addressLine1 = txtAddLine1.Text;
@@ -41,7 +38,6 @@ namespace CTS_ResourcePortal
             training.state = ddlState.Text;
             training.zipCode = txtZip.Text;
             training.startDate = CalanderStartDate.SelectedDate;
-            //training.endDate = cal.SelectedDate;
             training.expDate = CalendarRegDead.SelectedDate;
             training.weeklyHours = txtHours.Text;
             training.trainingLength = txtLength.Text;
@@ -64,7 +60,6 @@ namespace CTS_ResourcePortal
             SqlParameter param24 = new SqlParameter("@state", training.state);
             SqlParameter param25 = new SqlParameter("@zip", training.zipCode);
             SqlParameter param3 = new SqlParameter("@startDate", training.startDate);
-            //SqlParameter param31 = new SqlParameter("@endDate", training.endDate);
             SqlParameter param4 = new SqlParameter("@expDate", training.expDate);
             SqlParameter param5 = new SqlParameter("@weeklyHrs", training.weeklyHours);
             SqlParameter param6 = new SqlParameter("@trainLength", training.trainingLength);
@@ -86,7 +81,6 @@ namespace CTS_ResourcePortal
             param24.Direction = ParameterDirection.Input;
             param25.Direction = ParameterDirection.Input;
             param3.Direction = ParameterDirection.Input;
-            //param31.Direction = ParameterDirection.Input;
             param4.Direction = ParameterDirection.Input;
             param5.Direction = ParameterDirection.Input;
             param6.Direction = ParameterDirection.Input;
@@ -108,7 +102,6 @@ namespace CTS_ResourcePortal
             bigCommand.Parameters.Add(param24);
             bigCommand.Parameters.Add(param25);
             bigCommand.Parameters.Add(param3);
-            //bigCommand.Parameters.Add(param31);
             bigCommand.Parameters.Add(param4);
             bigCommand.Parameters.Add(param5);
             bigCommand.Parameters.Add(param6);
@@ -120,8 +113,11 @@ namespace CTS_ResourcePortal
             bigCommand.Parameters.Add(param93);
             bigCommand.Parameters.Add(param94);
 
+            dBConnect.DoUpdateUsingCmdObj(bigCommand);
+            bigCommand.Parameters.Clear();
 
-            Response.Redirect("AdminHomePage.aspx");
+
+            //Response.Redirect("AdminHomePage.aspx");
         }
     }
 }

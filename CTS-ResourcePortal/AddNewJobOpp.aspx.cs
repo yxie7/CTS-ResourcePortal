@@ -18,12 +18,14 @@ namespace CTS_ResourcePortal
         SqlCommand bigCommand = new SqlCommand();
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
 
+            }
         }
 
         protected void btnCreate_Click(object sender, EventArgs e)
         {
-            //Still need to add individual resource ID********
 
             Job job = new Job();
             job.resourceTypeID = "Job";
@@ -105,8 +107,10 @@ namespace CTS_ResourcePortal
             bigCommand.Parameters.Add(param92);
             bigCommand.Parameters.Add(param93);
             bigCommand.Parameters.Add(param94);
+            dBConnect.DoUpdateUsingCmdObj(bigCommand);
+            bigCommand.Parameters.Clear();
 
-            Response.Redirect("AdminHomePage.aspx");
+            //Response.Redirect("AdminHomePage.aspx");
         }
     }
 }

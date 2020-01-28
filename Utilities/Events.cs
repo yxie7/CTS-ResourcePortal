@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Utilities
 {
     public class Events
     {
-
+        private string ResourceID;
         private string ResourceTypeID;
         private string ResourceTitle;
         private string Company;
@@ -30,6 +24,12 @@ namespace Utilities
         private string Attire;
         private string Link;
         private string Description;
+
+        public string resourceID
+        {
+            get { return ResourceID; }
+            set { ResourceID = value; }
+        }
 
         public string resourceTypeID
         {
@@ -145,7 +145,6 @@ namespace Utilities
             set { Description = value; }
         }
 
-
         /*
         public string ResourceTypeID { get; set; }
         public string ResourceTitle { get; set; }
@@ -166,11 +165,6 @@ namespace Utilities
         public string Attire { get; set; }
         public string Link { get; set; }
         */
-        
-
-       
-
-
 
         //public bool AddResources()
         //{
@@ -182,7 +176,6 @@ namespace Utilities
         //    objCommand.CommandType = CommandType.StoredProcedure;
 
         //    objCommand.CommandText = "AddResources";
-
 
         //    objCommand.Parameters.AddWithValue("@Email", Email);
         //    objCommand.Parameters.AddWithValue("@Password", Password);
@@ -203,6 +196,5 @@ namespace Utilities
         //        added = false;
         //    return added;
         //}
-
     }
 }

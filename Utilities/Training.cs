@@ -8,6 +8,7 @@ namespace Utilities
 {
     public class Training
     {
+        private string ResourceID;
         private string ResourceTypeID;
         private string ResourceTitle;
         private string Company;
@@ -29,6 +30,11 @@ namespace Utilities
         private string Description;
         private string OtherReqs;
 
+        public string resourceID
+        {
+            get { return ResourceID; }
+            set { ResourceID = value; }
+        }
         public string resourceTypeID
         {
             get { return ResourceTypeID; }

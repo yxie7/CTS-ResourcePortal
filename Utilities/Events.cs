@@ -10,7 +10,7 @@ namespace Utilities
 {
     public class Events
     {
-
+        private string ResourceID;
         private string ResourceTypeID;
         private string ResourceTitle;
         private string Company;
@@ -30,6 +30,12 @@ namespace Utilities
         private string Attire;
         private string Link;
         private string Description;
+
+        public string resourceID
+        {
+            get { return ResourceID; }
+            set { ResourceID = value; }
+        }
 
         public string resourceTypeID
         {

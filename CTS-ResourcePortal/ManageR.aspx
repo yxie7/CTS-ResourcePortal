@@ -109,6 +109,10 @@
                 });
             });
         });*/
+
+        $(document).ready(function () {
+            $('#gvManageR').DataTable();
+        });
     </script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
@@ -116,6 +120,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <link href="css.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+  
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
@@ -135,7 +143,10 @@
                 <h2 class="col-sm-8" style="margin: auto">Manage Resources
                 </h2>
                 <br />
-                <div class="col-lg-auto" style="text-align: center;">
+
+                
+
+                <%--<div class="col-lg-auto" style="text-align: center;">
                     <input id="myInput" type="text" placeholder="Search..." onkeyup="myFunction()" />
                 </div>
 
@@ -361,7 +372,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>--%>
             </div>
         </div>
         <br />
@@ -373,8 +384,17 @@
             </div>
         </div>-->
     </div>
+    <asp:GridView ID="gvManageR" runat="server" AutoGenerateColumns="false">
+                    <Columns>
+                        <asp:BoundField DataField="ResourceName" HeaderText="Resource Title" />
+                        <asp:BoundField DataField="AddressLine" HeaderText ="Address" />
+                        <asp:BoundField DataField="LocationCity" HeaderText="City" />
+                        <asp:BoundField DataField="StartDate" HeaderText="Date Posted" />
+                    </Columns>
+                </asp:GridView>
 
-    <div id="MyPopup" class="modal fade" role="dialog">
+
+    <%--<div id="MyPopup" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content" style="margin-top: 55%; }">
@@ -390,5 +410,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>--%>
 </asp:Content>

@@ -1,9 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Utilities;
+
+
+
+
 
 namespace CTS_ResourcePortal
 {
@@ -11,6 +19,24 @@ namespace CTS_ResourcePortal
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Master master = (Master)Page.Master.Master;
+            string con = master.getConnectionString();
+            DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
+
+            SqlCommand cmd = new SqlCommand();
+
+            if (!IsPostBack)
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "JobSelect";
+
+                DataSet dataSet = db.GetDataSetUsingCmdObj(cmd);
+                gvManageR.DataSource = dataSet;
+                gvManageR.DataBind();
+                gvManageR.UseAccessibleHeader = true;
+                gvManageR.HeaderRow.TableSection = TableRowSection.TableHeader;
+
+            }
 
         }
 

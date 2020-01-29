@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Utilities;
-
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -14,7 +14,7 @@ namespace CTS_ResourcePortal
     public partial class AddNewEvent : System.Web.UI.Page
     {
         
-        DBConnect dBConnect = new DBConnect();
+        DBConnect dBConnect = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
         SqlCommand bigCommand = new SqlCommand();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -29,7 +29,7 @@ namespace CTS_ResourcePortal
         {
 
             Events eventt = new Events();
-            eventt.resourceTypeID = "Event";
+            eventt.resourceTypeID = 2;
             eventt.resourceTitle = txtTitle.Text;
             eventt.company = txtHost.Text;
             eventt.addressLine1 = txtAddLine1.Text;
@@ -51,35 +51,30 @@ namespace CTS_ResourcePortal
 
             bigCommand.CommandType = CommandType.StoredProcedure;
             bigCommand.CommandText = "AddNewEvent";
-            SqlParameter param = new SqlParameter("@resourceID", eventt.resourceTypeID);
-            SqlParameter param1 = new SqlParameter("@title", eventt.resourceTitle);
-            SqlParameter param2 = new SqlParameter("@company", eventt.company);
-            SqlParameter param21 = new SqlParameter("@addLine1", eventt.addressLine1);
-            SqlParameter param22 = new SqlParameter("@addLine2", eventt.addressLine2);
-            SqlParameter param23 = new SqlParameter("@city", eventt.city);
-            SqlParameter param24 = new SqlParameter("@state", eventt.state);
-            SqlParameter param25 = new SqlParameter("@zip", eventt.zipCode);
-            SqlParameter param3 = new SqlParameter("@eventDate", eventt.eventDate);
-            SqlParameter param4 = new SqlParameter("@regDate", eventt.expDate);
-            SqlParameter param5 = new SqlParameter("@startTime", eventt.startTime);
-            SqlParameter param6 = new SqlParameter("@endTime", eventt.endTime);
-            SqlParameter param7 = new SqlParameter("@firstName", eventt.contactFN);
-            SqlParameter param8 = new SqlParameter("@lastName", eventt.contactLN);
-            SqlParameter param9 = new SqlParameter("@phoneNumber", eventt.phoneNumber);
-            SqlParameter param91 = new SqlParameter("@email", eventt.email);
-            SqlParameter param92 = new SqlParameter("@attire", eventt.attire);
-            SqlParameter param93 = new SqlParameter("@link", eventt.link);
-            SqlParameter param94 = new SqlParameter("@description", eventt.description);
+            bigCommand.Parameters.AddWithValue("@resourceID", eventt.resourceTypeID);
+            bigCommand.Parameters.AddWithValue("@title", eventt.resourceTitle);
+            bigCommand.Parameters.AddWithValue("@company", eventt.company);
+            bigCommand.Parameters.AddWithValue("@addLine1", eventt.addressLine1);
+            bigCommand.Parameters.AddWithValue("@addLine2", eventt.addressLine2);
+            bigCommand.Parameters.AddWithValue("@city", eventt.city);
+            bigCommand.Parameters.AddWithValue("@state", eventt.state);
+            bigCommand.Parameters.AddWithValue("@zip", eventt.zipCode);
+            bigCommand.Parameters.AddWithValue("@eventDate", eventt.eventDate);
+            bigCommand.Parameters.AddWithValue("@regDate", eventt.expDate);
+            bigCommand.Parameters.AddWithValue("@startTime", eventt.startTime);
+            bigCommand.Parameters.AddWithValue("@endTime", eventt.endTime);
+            bigCommand.Parameters.AddWithValue("@firstName", eventt.contactFN);
+            bigCommand.Parameters.AddWithValue("@lastName", eventt.contactLN);
+            bigCommand.Parameters.AddWithValue("@phoneNumber", eventt.phoneNumber);
+            bigCommand.Parameters.AddWithValue("@email", eventt.email);
+            bigCommand.Parameters.AddWithValue("@attire", eventt.attire);
+            bigCommand.Parameters.AddWithValue("@link", eventt.link);
+            bigCommand.Parameters.AddWithValue("@description", eventt.description);
 
-
+            /*
             param.Direction = ParameterDirection.Input;
             param1.Direction = ParameterDirection.Input;
             param2.Direction = ParameterDirection.Input;
-            param21.Direction = ParameterDirection.Input;
-            param22.Direction = ParameterDirection.Input;
-            param23.Direction = ParameterDirection.Input;
-            param24.Direction = ParameterDirection.Input;
-            param25.Direction = ParameterDirection.Input;
             param3.Direction = ParameterDirection.Input;
             param4.Direction = ParameterDirection.Input;
             param5.Direction = ParameterDirection.Input;
@@ -87,20 +82,20 @@ namespace CTS_ResourcePortal
             param7.Direction = ParameterDirection.Input;
             param8.Direction = ParameterDirection.Input;
             param9.Direction = ParameterDirection.Input;
-            param91.Direction = ParameterDirection.Input;
-            param92.Direction = ParameterDirection.Input;
-            param93.Direction = ParameterDirection.Input;
-            param94.Direction = ParameterDirection.Input;
+            param10.Direction = ParameterDirection.Input;
+            param11.Direction = ParameterDirection.Input;
+            param12.Direction = ParameterDirection.Input;
+            param13.Direction = ParameterDirection.Input;
+            param14.Direction = ParameterDirection.Input;
+            param15.Direction = ParameterDirection.Input;
+            param16.Direction = ParameterDirection.Input;
+            param17.Direction = ParameterDirection.Input;
+            param18.Direction = ParameterDirection.Input;
             
 
             bigCommand.Parameters.Add(param);
             bigCommand.Parameters.Add(param1);
             bigCommand.Parameters.Add(param2);
-            bigCommand.Parameters.Add(param21);
-            bigCommand.Parameters.Add(param22);
-            bigCommand.Parameters.Add(param23);
-            bigCommand.Parameters.Add(param24);
-            bigCommand.Parameters.Add(param25);
             bigCommand.Parameters.Add(param3);
             bigCommand.Parameters.Add(param4);
             bigCommand.Parameters.Add(param5);
@@ -108,10 +103,15 @@ namespace CTS_ResourcePortal
             bigCommand.Parameters.Add(param7);
             bigCommand.Parameters.Add(param8);
             bigCommand.Parameters.Add(param9);
-            bigCommand.Parameters.Add(param91);
-            bigCommand.Parameters.Add(param92);
-            bigCommand.Parameters.Add(param93);
-            bigCommand.Parameters.Add(param94);
+            bigCommand.Parameters.Add(param10);
+            bigCommand.Parameters.Add(param11);
+            bigCommand.Parameters.Add(param12);
+            bigCommand.Parameters.Add(param13);
+            bigCommand.Parameters.Add(param14);
+            bigCommand.Parameters.Add(param15);
+            bigCommand.Parameters.Add(param16);
+            bigCommand.Parameters.Add(param17);
+            bigCommand.Parameters.Add(param18); */
 
             dBConnect.DoUpdateUsingCmdObj(bigCommand);
             bigCommand.Parameters.Clear();

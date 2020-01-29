@@ -13,10 +13,10 @@ namespace CTS_ResourcePortal
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string strcon = ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString;
-            //create new sqlconnection and connection to database by using connection string from web.config file
-            SqlConnection con = new SqlConnection(strcon);
-            con.Open();
+            //string strcon = ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString;
+            ////create new sqlconnection and connection to database by using connection string from web.config file
+            //SqlConnection con = new SqlConnection(strcon);
+            //con.Open();
         }
     }
 }

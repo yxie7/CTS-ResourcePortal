@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Globalization;
 using Utilities;
 
 namespace CTS_ResourcePortal
@@ -31,6 +32,23 @@ namespace CTS_ResourcePortal
                     Job j = new Job();
                     j.resourceID = db.GetField("ResourcesID", i).ToString();
                     j.resourceTitle = db.GetField("ResourceName", i).ToString();
+                    j.email = db.GetField("ContactEmail", i).ToString();
+
+                    j.addressLine1 = db.GetField("AddressLine", i).ToString();
+                    j.city = db.GetField("LocationCity", i).ToString();
+                    j.zipCode = db.GetField("LocationZip", i).ToString();
+                    j.state = db.GetField("State", i).ToString();
+
+                    //j.datePosted = db.GetField("StartDate", i).ToString();
+                    //j.expDate = db.GetField("EndDate", i).ToString();
+
+                    var dateValue = db.GetField("StartDate", i);
+                    j.datePosted = (Convert.ToDateTime("dateValue"));
+                    
+                    
+                    var dateValue2 = db.GetField("EndDate", i);
+                    j.expDate = (Convert.ToDateTime("dateValue2"));
+
                     jl.Add(j);
                 }
             }
@@ -41,17 +59,17 @@ namespace CTS_ResourcePortal
 
         protected void btnJob_Click(object sender, EventArgs e)
         {
-            Response.Redirect("MobileJob.aspx");
+            Response.Redirect("Job.aspx");
         }
 
         protected void btnEvent_Click(object sender, EventArgs e)
         {
-            Response.Redirect("MobileEvent.aspx");
+            Response.Redirect("Event.aspx");
         }
 
         protected void btnTraining_Click(object sender, EventArgs e)
         {
-            Response.Redirect("MobileTraining.aspx");
+            Response.Redirect("Training.aspx");
         }
     }
 }

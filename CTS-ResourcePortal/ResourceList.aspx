@@ -71,14 +71,19 @@
                                                 </tr>
                                             </tbody>
                                         </table>--%>
-                                        <asp:GridView ID="gvJob" runat="server" AutoGenerateColumns="False">
+                                        <asp:GridView ID="gvJob" runat="server" AutoGenerateColumns="False" class="table table-striped table-light">
                                             <Columns>
-                                                <asp:BoundField HeaderText="Title" />
-                                                <asp:BoundField HeaderText="Contact" />
-                                                <asp:BoundField HeaderText="Location" />
-                                                <asp:BoundField HeaderText="Date Posted" />
-                                                <asp:BoundField HeaderText="Date Expired" />
-                                                <asp:ButtonField HeaderText="Details" Text="Button" />
+                                                <asp:BoundField DataField="ResourceID" HeaderText="ID"  Visible="false" />
+                                                <asp:BoundField DataField="ResourceTitle" HeaderText="Title" />
+                                                <asp:BoundField DataField="email" HeaderText="Contact" />
+                                                <asp:BoundField DataField="AddressLine1" HeaderText="Location" />
+                                                <asp:BoundField DataField="datePosted" HeaderText="Date Posted" />
+                                                <asp:BoundField DataField="expDate" HeaderText="Date Expired" />
+                                                <asp:TemplateField HeaderText="Details">
+                                                    <ItemTemplate>
+                                                        <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-dark" ID="btnJob" OnClick="btnJob_Click" />
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
                                             </Columns>
 
                                         </asp:GridView>

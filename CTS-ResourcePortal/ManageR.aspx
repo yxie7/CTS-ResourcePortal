@@ -384,14 +384,16 @@
             </div>
         </div>-->
     </div>
-    <asp:GridView ID="gvManageR" runat="server" AutoGenerateColumns="false">
+    <asp:GridView ID="gvManageR" runat="server" AutoGenerateColumns="False">
                     <Columns>
                         <asp:BoundField DataField="ResourceName" HeaderText="Resource Title" />
                         <asp:BoundField DataField="AddressLine" HeaderText ="Address" />
                         <asp:BoundField DataField="LocationCity" HeaderText="City" />
                         <asp:BoundField DataField="StartDate" HeaderText="Date Posted" />
+                        <asp:ButtonField Text="Inactivate" />
+                        <asp:ButtonField Text="Edit" />
                     </Columns>
-                </asp:GridView>
+      </asp:GridView>
 
 
     <%--<div id="MyPopup" class="modal fade" role="dialog">

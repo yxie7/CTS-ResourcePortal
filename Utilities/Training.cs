@@ -8,19 +8,18 @@ namespace Utilities
 {
     public class Training
     {
-        private string ResourceTypeID;
+        private int ResourceTypeID;
         private string ResourceTitle;
         private string Company;
-        private string AddressLine1;        //Possibly renamed in DB?
-        private string AddressLine2;        //Possibly renamed in DB?
+        private string AddressLine1;        
+        private string AddressLine2;        
         private string City;
-        private string State;               //Needs to be added to DB  --ALSO--> Update in Stored Procedure
+        private string State;               
         private string ZipCode;
         private DateTime StartDate;
-        //private DateTime EndDate;         //Not included in Page at the moment, possible addition?
         private DateTime ExpDate;
         private string WeeklyHours;
-        private string TrainingLength;       //Needs to be added to DB  --ALSO--> Update in Stored Procedure
+        private string TrainingLength;      
         private string ContactFN;
         private string ContactLN;
         private string Email;
@@ -29,7 +28,7 @@ namespace Utilities
         private string Description;
         private string OtherReqs;
 
-        public string resourceTypeID
+        public int resourceTypeID
         {
             get { return ResourceTypeID; }
             set { ResourceTypeID = value; }

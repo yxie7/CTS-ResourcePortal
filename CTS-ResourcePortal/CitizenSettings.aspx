@@ -63,7 +63,37 @@
             <div class="row ">
                 <div class="col"></div>
                 <div class="col-6 d-flex justify-content-center">
-                    <asp:Button runat="server" CssClass="btn btn-light" ID="btnChange" Text="Update Password" />
+                    <asp:Button runat="server" CssClass="btn btn-light" ID="Button1" Text="Update Password" />
+                </div>
+                <div class="col"></div>
+            </div>
+            <br />
+            <div class="row justify-content-center align-items-center" >
+            <div class="col-lg-4 d-flex justify-content-center">
+                    <asp:label runat="server" ID="lblResume">Would you like to load/reupload resume?</asp:label>
+                </div>
+                </div>
+            <br />
+            <div class="row ">
+                <div class="col"></div>
+                <div class="col-6 d-flex justify-content-center">
+                    <asp:FileUpload ID="ResumeUploadSettings" runat="server" />
+                </div>
+                <div class="col"></div>
+            </div>
+            <br />
+            <div class="row ">
+                <div class="col"></div>
+                <div class="col-6 d-flex justify-content-center">
+                    <asp:Button runat="server" Text="Upload Resume" ID="ResumeUpload" class="btn btn-light" OnClick="ResumeUpload_Click" />
+                </div>
+                <div class="col"></div>
+            </div>
+            <br />
+            <div class="row ">
+                <div class="col"></div>
+                <div class="col-6 d-flex justify-content-center">
+                    <asp:Label runat="server" ID="lblStatus" Visible="false"></asp:Label>
                 </div>
                 <div class="col"></div>
             </div>

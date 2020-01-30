@@ -11,7 +11,7 @@
         <div id="MyPopup" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <!-- Modal content-->
-            <div class="modal-content container"   }">
+            <div class="modal-content container" ">
 
                 
                 <div class="modal-body " style="color: black">

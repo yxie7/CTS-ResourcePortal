@@ -187,3 +187,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 table {
     overflow: scroll;
 }
+MyPopup{
+    width:80%;
+}

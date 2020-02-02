@@ -48,7 +48,7 @@ namespace CTS_ResourcePortal
 
 
             bigCommand.CommandType = CommandType.StoredProcedure;
-            bigCommand.CommandText = "EditEvent";
+            bigCommand.CommandText = "EditNUpdateEvent";
             bigCommand.Parameters.AddWithValue("@resourceID", eventt.resourceTypeID);
             bigCommand.Parameters.AddWithValue("@title", eventt.resourceTitle);
             bigCommand.Parameters.AddWithValue("@company", eventt.company);

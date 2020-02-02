@@ -51,7 +51,7 @@
                 </div>
                 <div class="col-sm-4">
                     <asp:Label ID="lblState" runat="server"><span class="requiredRed">*</span>State: </asp:Label><br />
-                    <asp:DropDownList ID="ddlState" runat="server">
+                    <asp:DropDownList ID="ddlState" class="form-control" runat="server">
 	<asp:ListItem Value="AL">Alabama</asp:ListItem>
 	<asp:ListItem Value="AK">Alaska</asp:ListItem>
 	<asp:ListItem Value="AZ">Arizona</asp:ListItem>

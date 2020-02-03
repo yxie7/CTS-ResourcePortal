@@ -21,11 +21,11 @@
             <div class="row" id="titleRow">
                 <div class="col-sm-6">
                     <asp:Label ID="lblTitle" runat="server">Event Title: </asp:Label><br />
-                    <asp:TextBox ID="txtTitle" class="form-control" runat="server">North Philadelphia Job Fair</asp:TextBox>
+                    <asp:TextBox ID="txtTitle" class="form-control" runat="server"></asp:TextBox>
                 </div>
                 <div class="col-sm-6">
                     <asp:Label ID="lblHost" runat="server">Hosted By: </asp:Label><br />
-                    <asp:TextBox ID="txtHost" class="form-control" runat="server">Called To Serve</asp:TextBox>
+                    <asp:TextBox ID="txtHost" class="form-control" runat="server"></asp:TextBox>
                 </div>
             </div>
             <br />
@@ -34,7 +34,7 @@
                 <div class="col-sm-6">
 
                     <asp:Label ID="lblAddLine1" runat="server"><span class="requiredRed">*</span>Address Line 1: </asp:Label><br />
-                    <asp:TextBox ID="txtAddLine1" class="form-control" runat="server">123 N Main St.  19140</asp:TextBox>
+                    <asp:TextBox ID="txtAddLine1" class="form-control" runat="server"></asp:TextBox>
                 </div>
                 <div class="col-sm-6">
                     <asp:Label ID="lblAddLine2" runat="server">Address Line 2: </asp:Label><br />
@@ -44,11 +44,11 @@
             <div class="row" id="addy2Row">
                 <div class="col-sm-4">
                     <asp:Label ID="lblCity" runat="server"><span class="requiredRed">*</span>City: </asp:Label><br />
-                    <asp:TextBox ID="txtCity" class="form-control" runat="server">Philadelphia</asp:TextBox>
+                    <asp:TextBox ID="txtCity" class="form-control" runat="server"></asp:TextBox>
                 </div>
                 <div class="col-sm-4">
                     <asp:Label ID="lblState" runat="server"><span class="requiredRed">*</span>State: </asp:Label><br />
-                    <asp:DropDownList ID="ddlState" runat="server">
+                    <asp:DropDownList ID="ddlState" class="form-control" runat="server">
 	<asp:ListItem Value="AL">Alabama</asp:ListItem>
 	<asp:ListItem Value="AK">Alaska</asp:ListItem>
 	<asp:ListItem Value="AZ">Arizona</asp:ListItem>
@@ -104,7 +104,7 @@
                 </div>
                 <div class="col-sm-4">
                     <asp:Label ID="lblZip" runat="server"><span class="requiredRed">*</span>Zip: </asp:Label><br />
-                    <asp:TextBox ID="txtZip" class="form-control" runat="server">19140</asp:TextBox>
+                    <asp:TextBox ID="txtZip" class="form-control" runat="server"></asp:TextBox>
                 </div>
             </div>
             <br />
@@ -154,50 +154,50 @@
             <div class="row" id="times">
                 <div class="col-sm-6">
                     <asp:Label ID="lblStart" runat="server"><span class="requiredRed">*</span>Start Time: </asp:Label><br />
-                    <asp:TextBox ID="txtStartTime" class="form-control" runat="server">8:30am</asp:TextBox>
+                    <asp:TextBox ID="txtStartTime" class="form-control" runat="server"></asp:TextBox>
                 </div>
                 <div class="col-sm-6">
                     <asp:Label ID="lblEnd" runat="server"><span class="requiredRed">*</span>End Time: </asp:Label><br />
-                    <asp:TextBox ID="txtEndTime" class="form-control" runat="server">5:30pm</asp:TextBox>
+                    <asp:TextBox ID="txtEndTime" class="form-control" runat="server"></asp:TextBox>
                 </div>
             </div>
             <br />
             <div class="row" id="cont1">
                 <div class="col-sm-6">
                     <asp:Label ID="lblFn" runat="server"><span class="requiredRed">*</span>Primary Contact First Name: </asp:Label><br />
-                    <asp:TextBox ID="txtFn" class="form-control" runat="server">ASAP</asp:TextBox>
+                    <asp:TextBox ID="txtFn" class="form-control" runat="server"></asp:TextBox>
                 </div>
                 <div class="col-sm-6">
                     <asp:Label ID="lblLn" runat="server"><span class="requiredRed">*</span>Primary Contact Last Name: </asp:Label><br />
-                    <asp:TextBox ID="txtLn" class="form-control" runat="server">Rocky</asp:TextBox>
+                    <asp:TextBox ID="txtLn" class="form-control" runat="server"></asp:TextBox>
                 </div>
             </div>
             <div class="row" id="cont2">
                 <div class="col-sm-6">
                     <asp:Label ID="lblContEmail" runat="server"><span class="requiredRed">*</span>*Primary Contact Email: </asp:Label><br />
-                    <asp:TextBox ID="txtContEmail" class="form-control" runat="server">Flaco@asapmob.com</asp:TextBox>
+                    <asp:TextBox ID="txtContEmail" class="form-control" runat="server"></asp:TextBox>
                 </div>
                 <div class="col-sm-6">
                     <asp:Label ID="lblContPhone" runat="server"><span class="requiredRed">*</span>Primary Contact Phone #: </asp:Label><br />
-                    <asp:TextBox ID="txtContPhone" class="form-control" runat="server">7760984200</asp:TextBox>
+                    <asp:TextBox ID="txtContPhone" class="form-control" runat="server"></asp:TextBox>
                 </div>
             </div>
             <br />
             <div class="row" id="linkdiv">
                 <div class="col-sm-6">
                     <asp:Label ID="lblAtire" runat="server">Attire: </asp:Label><br />
-                    <asp:TextBox ID="txtAtire" class="form-control" runat="server">Formal</asp:TextBox>
+                    <asp:TextBox ID="txtAtire" class="form-control" runat="server"></asp:TextBox>
                 </div>
                 <div class="col-sm-6">
                     <asp:Label ID="lblLink" runat="server"><span class="requiredRed">*</span>Link to Apply: </asp:Label><br />
-                    <asp:TextBox ID="txtLink" class="form-control" runat="server">www.NorthPhillyJobFair.com</asp:TextBox>
+                    <asp:TextBox ID="txtLink" class="form-control" runat="server"></asp:TextBox>
                 </div>
             </div>
             <br />
             <div class="row" id="descDiv">
                 <div class="col-sm-12">
                     <asp:Label ID="lblDesc" runat="server"><span class="requiredRed">*</span>Event Description: </asp:Label><br />
-                    <asp:TextBox ID="txtDesc"  class="form-control" runat="server"  TextMode="multiline" Rows="4" CssClass="col-md-8 form-control">Job Fairs provide opportunities for students/alumni to learn about potential careers in industry sectors, network with perspective employers, and often submit resumes to prospective employers (Note: Some employers may require online submission of resumes and/or employment applications).</asp:TextBox>
+                    <asp:TextBox ID="txtDesc"  class="form-control" runat="server"  TextMode="multiline" Rows="4" CssClass="col-md-8 form-control"></asp:TextBox>
                 </div>
             </div>
             <br />

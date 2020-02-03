@@ -74,50 +74,24 @@ namespace CTS_ResourcePortal
             bigCommand.Parameters.AddWithValue("@link", training.link);
             bigCommand.Parameters.AddWithValue("@description", training.description);
 
-            /*
-            param.Direction = ParameterDirection.Input;
-            param1.Direction = ParameterDirection.Input;
-            param2.Direction = ParameterDirection.Input;
-            param3.Direction = ParameterDirection.Input;
-            param4.Direction = ParameterDirection.Input;
-            param5.Direction = ParameterDirection.Input;
-            param6.Direction = ParameterDirection.Input;
-            param7.Direction = ParameterDirection.Input;
-            param8.Direction = ParameterDirection.Input;
-            param9.Direction = ParameterDirection.Input;
-            param10.Direction = ParameterDirection.Input;
-            param11.Direction = ParameterDirection.Input;
-            param12.Direction = ParameterDirection.Input;
-            param13.Direction = ParameterDirection.Input;
-            param14.Direction = ParameterDirection.Input;
-            param15.Direction = ParameterDirection.Input;
-            param16.Direction = ParameterDirection.Input;
-            param17.Direction = ParameterDirection.Input;
-            param18.Direction = ParameterDirection.Input;
-
-
-            bigCommand.Parameters.Add(param);
-            bigCommand.Parameters.Add(param1);
-            bigCommand.Parameters.Add(param2);
-            bigCommand.Parameters.Add(param3);
-            bigCommand.Parameters.Add(param4);
-            bigCommand.Parameters.Add(param5);
-            bigCommand.Parameters.Add(param6);
-            bigCommand.Parameters.Add(param7);
-            bigCommand.Parameters.Add(param8);
-            bigCommand.Parameters.Add(param9);
-            bigCommand.Parameters.Add(param10);
-            bigCommand.Parameters.Add(param11);
-            bigCommand.Parameters.Add(param12);
-            bigCommand.Parameters.Add(param13);
-            bigCommand.Parameters.Add(param14);
-            bigCommand.Parameters.Add(param15);
-            bigCommand.Parameters.Add(param16);
-            bigCommand.Parameters.Add(param17);
-            bigCommand.Parameters.Add(param18); */
-
             dBConnect.DoUpdateUsingCmdObj(bigCommand);
             bigCommand.Parameters.Clear();
+
+            txtTitle.Text = string.Empty;
+            txtHost.Text = string.Empty;
+            txtAddLine1.Text = string.Empty;
+            txtAddLine2.Text = string.Empty;
+            txtCity.Text = string.Empty;
+            txtZip.Text = string.Empty;
+            txtHours.Text = string.Empty;
+            txtLength.Text = string.Empty;
+            txtFn.Text = string.Empty;
+            txtLn.Text = string.Empty;
+            txtContEmail.Text = string.Empty;
+            txtContPhone.Text = string.Empty;
+            txtDesc.Text = string.Empty;
+            txtSignUp.Text = string.Empty;
+            txtSkills.Text = string.Empty;
 
 
             //Response.Redirect("AdminHomePage.aspx");

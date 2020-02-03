@@ -130,13 +130,13 @@ namespace CTS_ResourcePortal {
         protected global::System.Web.UI.WebControls.Label lblState;
         
         /// <summary>
-        /// txtState control.
+        /// ddlState control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtState;
+        protected global::System.Web.UI.WebControls.DropDownList ddlState;
         
         /// <summary>
         /// lblZip control.
@@ -166,13 +166,13 @@ namespace CTS_ResourcePortal {
         protected global::System.Web.UI.WebControls.Label lblRegDeadline;
         
         /// <summary>
-        /// txtRegDead control.
+        /// CalendarRegDead control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRegDead;
+        protected global::System.Web.UI.WebControls.Calendar CalendarRegDead;
         
         /// <summary>
         /// lblStart control.
@@ -184,13 +184,13 @@ namespace CTS_ResourcePortal {
         protected global::System.Web.UI.WebControls.Label lblStart;
         
         /// <summary>
-        /// txtStart control.
+        /// CalanderStartDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtStart;
+        protected global::System.Web.UI.WebControls.Calendar CalanderStartDate;
         
         /// <summary>
         /// lblHours control.

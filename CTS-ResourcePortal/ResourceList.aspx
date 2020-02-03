@@ -2,6 +2,181 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
     <link href="css.css" rel="stylesheet" />
+
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+        <div id="MyPopup" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content container" ">
+
+                
+                <div class="modal-body " style="color: black">
+                   
+                   
+                        <div class="row" id="h2">
+                            <div class="col"></div>
+                            <div class="col-md-auto">
+                                <h2>Entry Level Contractor</h2>
+                            </div>
+                            <div class="col"></div>
+                        </div>
+                        <div class="section">
+                            <div class="row" id="job">
+                                <div class="col-md-3">
+                                    <b>Company Name:</b>
+                                </div>
+                                <div class="col-1"></div>
+
+                                <div class="col-md-8">
+                                    <p>
+                                        Philadelphia Construction
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="section">
+                            <div class="row" id="title62">
+                                <div class="col-md-3">
+                                    <b>Primary Responsibilities:
+                                    </b>
+                                </div>
+                                <div class="col-1"></div>
+
+                                <div class="col-md-8">
+                                    <p>
+                                        The role of the Contractor is to own the project from development through construction, 
+                and up until the close out of the home. This includes working with the sales team,
+                the Construction Managers, working with architects and engineers, and zoning attorneys 
+                for all entitlement and zoning needs.
+                                    </p>
+                                    <p>
+                                        Hours: 40/week
+                                    </p>
+                                    <p>
+                                        Length of Time: Three Months
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="section">
+                            <div class="row" id="title4">
+                                <div class="col-md-3 ">
+                                    <b>Location:
+                                    </b>
+                                </div>
+                                <div class="col-1"></div>
+
+                                <div class="col-md-8">
+                                    <p>
+                                        123 N Main St. Philadelphia, PA 19140
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="section">
+                            <div class="row" id="title3">
+                                <div class="col-md-3 ">
+                                    <b>Primary Contact:
+                                    </b>
+                                </div>
+                                <div class="col-1"></div>
+
+                                <div class="col-md-8">
+                                    <b>Flaco@asapmob.com
+                                    </b>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="section">
+                            <div class="row" id="title1">
+                                <div class="col-md-3 ">
+                                    <b>Date Posted:
+                                    </b>
+                                </div>
+                                <div class="col-1"></div>
+
+                                <div class="col-md-8">
+                                    <p>
+                                        10/27/2019
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="section">
+                            <div class="row" id="title2">
+                                <div class="col-md-3 ">
+                                    <b>Expiration Date:
+                                    </b>
+                                </div>
+                                <div class="col-1"></div>
+
+                                <div class="col-md-8">
+                                    <p>
+                                        10/31/2019
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="section">
+                            <div class="row" id="">
+                                <div class="col-md-3">
+                                    <b>Knowledge, Skills and Other Requirements:
+                                    </b>
+                                </div>
+                                <div class="col-1"></div>
+
+                                <div class="col-md-8">
+                                    <p>
+                                        General knowledge of building maintenance, general carpentry, plumbing, electrical, and custodial skills required.
+                                    </p>
+                                    <p>
+                                        Must have the ability to work safely, efficiently and effectively both independently and in team situations.
+                                    </p>
+                                    <p>
+                                        Must be able to maintain professional boundaries with all other employees and volunteers.
+                                    </p>
+                                    <p>
+                                        Must have the ability to communicate and establish effective working relationships with all types of people.
+                                    </p>
+                                    <p>
+                                        Must be able to climb a ladder and lift up to 50 lbs.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <br />
+
+                        <div class="row justify-content-center align-items-center  text-center">
+                            <div class="col-md-4">
+                                <a class="btn btn-large btn-info" href="templates/home.html">Apply Here</a>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row  justify-content-center align-items-center text-center">
+                            <div class="col"></div>
+                            <div class="col-md-4">
+                                <a class="btn btn-large btn-info" href="MobileFeedback.aspx">Leave Feedback</a>
+                            </div>
+                            <div class="col"></div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        </div>
+    
+
+
     <div class="container">
         <div class="row">
             <div class="col"></div>
@@ -30,47 +205,22 @@
                             <div class="card-body">
                                 <div class="row d-flex justify-content-center">
                                     <div class="table-responsive-lg  ">
-                                        <table class="table table-striped table-light">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">Title</th>
-                                                    <th scope="col">Contact</th>
-                                                    <th scope="col">Location</th>
-                                                    <th scope="col">Date Posted</th>
-                                                    <th scope="col">Date Expired</th>
-                                                    <th scope="col">Details</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Entry Level Contractor</td>
-                                                    <td>flacko@asapmob.com</td>
-                                                    <td>123 N Main ST, New York City, NY, 12345</td>
-                                                    <td>9/23/19</td>
-                                                    <td>12/23/19</td>
-                                                    <td>
-                                                        <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-dark" ID="btnJob" OnClick="btnJob_Click" /></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Plumber's Apprentice</td>
-                                                    <td>plummin@yahoo.com</td>
-                                                    <td>717 N 15th St, Philadelphia, PA 19121</td>
-                                                    <td>10/20/19</td>
-                                                    <td>1/1/20</td>
-                                                    <td>
-                                                        <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-dark" Enabled="false" /></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Coca-Cola Delivery</td>
-                                                    <td>sugardrinkin@soda.com</td>
-                                                    <td>420 N Main St, Philadelphia, PA 19221</td>
-                                                    <td>9/6/19</td>
-                                                    <td>11/15/19</td>
-                                                    <td>
-                                                        <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-dark" Enabled="false" /></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                        <asp:GridView ID="gvJob" runat="server" AutoGenerateColumns="False" class="table table-striped table-light">
+                                            <Columns>
+                                                <asp:BoundField DataField="ResourceID" HeaderText="ID"  Visible="false" />
+                                                <asp:BoundField DataField="ResourceTitle" HeaderText="Title" />
+                                                <asp:BoundField DataField="email" HeaderText="Contact" />
+                                                <asp:BoundField DataField="AddressLine2" HeaderText="Location" />
+                                                <asp:BoundField DataField="datePosted" HeaderText="Date Posted" />
+                                                <asp:BoundField DataField="expDate" HeaderText="Date Expired" />
+                                                <asp:TemplateField HeaderText="Details">
+                                                    <ItemTemplate>
+                                                        <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-dark" ID="btnJob" OnClick="btnJob_Click" />
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                            </Columns>
+
+                                        </asp:GridView>
                                     </div>
                                 </div>
                             </div>
@@ -80,51 +230,29 @@
                         <div class="card-header" id="eventHeader">
                             <h2 class="mb-0">
                                 <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#eventResourceCollapse" aria-expanded="true" aria-controls="eventResourceCollapse">
-                                    Events
-                                </button>
+                                    Events</button>
                             </h2>
                         </div>
                         <div class="collapse" id="eventResourceCollapse" aria-labelledby="eventHeader" data-parent="#eventHeader">
                             <div class="card-body">
                                 <div class="row d-flex justify-content-center">
                                     <div class="table-responsive-lg  ">
-                                        <table class="table table-striped table-light">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">Title</th>
-                                                    <th scope="col">Contact</th>
-                                                    <th scope="col">Location</th>
-                                                    <th scope="col">Date</th>
-                                                    <th scope="col">Details</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Newtown Job Fair</td>
-                                                    <td>Meek.Mill@dreams.com</td>
-                                                    <td>12th Main St Newtown, PA 19221</td>
-                                                    <td>7/6/19</td>
-                                                    <td>
-                                                        <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-dark" Enabled="false" /></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Resume Critique</td>
-                                                    <td>Resumer@critiquer.com</td>
-                                                    <td>678 Liacouras Wlk Philadelphia, PA 19231</td>
-                                                    <td>10/27/19</td>
-                                                    <td>
-                                                        <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-dark" Enabled="false" /></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>North Philly Job Fair</td>
-                                                    <td>Newtown@press.com</td>
-                                                    <td>456 North Broad St Philadelphia, PA 19140</td>
-                                                    <td>12/21/19</td>
-                                                    <td>
-                                                        <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-dark" ID="btnEvent" OnClick="btnEvent_Click" /></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                        <asp:GridView ID="gvEvent" runat="server" AutoGenerateColumns="False" class="table table-striped table-light">
+                                            <Columns>
+                                                <asp:BoundField DataField="ResourceID" HeaderText="ID" Visible="false" />
+                                                <asp:BoundField DataField="ResourceTitle" HeaderText="Title" />
+                                                <asp:BoundField DataField="email" HeaderText="Contact" />
+                                                <asp:BoundField DataField="AddressLine2" HeaderText="Location" />
+                                                <asp:BoundField DataField="EventDate" HeaderText="Event Date" />
+                                                <asp:BoundField DataField="expDate" HeaderText="Date Expired" />
+                                                <asp:TemplateField HeaderText="Details">
+                                                    <ItemTemplate>
+                                                        <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-dark" ID="btnEvent" OnClick="btnEvent_Click" />
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                            </Columns>
+
+                                        </asp:GridView>
                                     </div>
                                 </div>
                             </div>
@@ -141,49 +269,22 @@
                             <div class="card-body">
                                 <div class="row d-flex justify-content-center">
                                     <div class="table-responsive-lg  ">
-                                        <table class="table table-striped table-light">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">Title</th>
-                                                    <th scope="col">Contact</th>
-                                                    <th scope="col">Location</th>
-                                                    <th scope="col">Date Posted</th>
-                                                    <th scope="col">Date Expired</th>
-                                                    <th scope="col">Details</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
+                                        <asp:GridView ID="gvTraining" runat="server" AutoGenerateColumns="False" class="table table-striped table-light">
+                                            <Columns>
+                                                <asp:BoundField DataField="ResourceID" HeaderText="ID" Visible="false" />
+                                                <asp:BoundField DataField="ResourceTitle" HeaderText="Title" />
+                                                <asp:BoundField DataField="email" HeaderText="Contact" />
+                                                <asp:BoundField DataField="AddressLine2" HeaderText="Location" />
+                                                <asp:BoundField DataField="StartDate" HeaderText="Start Date" />
+                                                <asp:BoundField DataField="expDate" HeaderText="Date Expired" />
+                                                <asp:TemplateField HeaderText="Details">
+                                                    <ItemTemplate>
+                                                        <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-dark" ID="btnTraining" OnClick="btnTraining_Click" />
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                            </Columns>
 
-                                                <tr>
-                                                    <td>Electrician Classes </td>
-                                                    <td>King@gmail.com</td>
-                                                    <td>717 N 15th St, Philadelphia, PA 19121</td>
-                                                    <td>9/23/19</td>
-                                                    <td>12/23/19</td>
-                                                    <td>
-                                                        <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-dark" Enabled="false" /></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>CDL Classes
-                                                    </td>
-                                                    <td>kingis@aol.com</td>
-                                                    <td>420 N Main St, Philadelphia, PA 19221</td>
-                                                    <td>10/20/19</td>
-                                                    <td>1/1/20</td>
-                                                    <td>
-                                                        <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-dark" ID="btnTraining" OnClick="btnTraining_Click" /></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Forklift Training</td>
-                                                    <td>longlivetheking@aim.com</td>
-                                                    <td>123 N Main ST, New York City, NY, 12345</td>
-                                                    <td>9/6/19</td>
-                                                    <td>11/15/19</td>
-                                                    <td>
-                                                        <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-dark" Enabled="false" /></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                        </asp:GridView>
                                     </div>
                                 </div>
                             </div>
@@ -194,4 +295,13 @@
         </div>
         <br />
     </div>
+
+    <script type="text/javascript">
+        function ShowPopup(title, body) {
+            $("#MyPopup .modal-title").html(title);
+            $("#MyPopup .modal-body").html(body);
+            $("#MyPopup").modal("show");
+        }
+    </script>
+
 </asp:Content>

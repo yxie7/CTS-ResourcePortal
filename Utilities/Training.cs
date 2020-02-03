@@ -5,7 +5,7 @@ namespace Utilities
     public class Training
     {
         private string ResourceID;
-        private int ResourceTypeID;
+        private string ResourceTypeID;
         private string ResourceTitle;
         private string Company;
         private string AddressLine1;        //Possibly renamed in DB?
@@ -34,7 +34,8 @@ namespace Utilities
             set { ResourceID = value; }
         }
 
-        public int resourceTypeID
+        public string resourceTypeID
+
         {
             get { return ResourceTypeID; }
             set { ResourceTypeID = value; }

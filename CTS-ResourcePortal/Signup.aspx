@@ -144,15 +144,16 @@
 
                                             </div>
                                             <div class="col-sm-6">
-                                                <input type="file" name="myFile" />
-
+                                                <%--<input type="file" name="myFile" />--%>
+                                                <asp:FileUpload ID="FileUpload1" runat="server" />
                                             </div>
                                         </div>
                                         <br>
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-success ">Submit</button>
+                                        <asp:Button runat="server" ID="finishSignUp" class="btn btn-success" Text="Submit" OnClick="finishSignUp_Click"></asp:Button>
                                     </div>
+                                    <asp:Label runat="server" ID="lblStatus"></asp:Label>
                                     <div class="col-sm-12" style="text-align:center;">
                                         <p>Already Have an Account? </p><a href="MobileLogin.aspx">Login</a>
                                     </div>

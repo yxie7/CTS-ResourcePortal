@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 
 namespace Utilities
 {
@@ -36,8 +30,8 @@ namespace Utilities
             get { return ResourceID; }
             set { ResourceID = value; }
         }
-
         public string resourceTypeID
+
         {
             get { return ResourceTypeID; }
             set { ResourceTypeID = value; }
@@ -151,7 +145,6 @@ namespace Utilities
             set { Description = value; }
         }
 
-
         /*
         public string ResourceTypeID { get; set; }
         public string ResourceTitle { get; set; }
@@ -172,11 +165,6 @@ namespace Utilities
         public string Attire { get; set; }
         public string Link { get; set; }
         */
-        
-
-       
-
-
 
         //public bool AddResources()
         //{
@@ -188,7 +176,6 @@ namespace Utilities
         //    objCommand.CommandType = CommandType.StoredProcedure;
 
         //    objCommand.CommandText = "AddResources";
-
 
         //    objCommand.Parameters.AddWithValue("@Email", Email);
         //    objCommand.Parameters.AddWithValue("@Password", Password);
@@ -209,6 +196,5 @@ namespace Utilities
         //        added = false;
         //    return added;
         //}
-
     }
 }

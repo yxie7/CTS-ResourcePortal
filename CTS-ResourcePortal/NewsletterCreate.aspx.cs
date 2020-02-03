@@ -16,16 +16,18 @@ namespace CTS_ResourcePortal
         protected void Page_Load(object sender, EventArgs e)
         {
             List<Job> jl = new List<Job>();
-            Master master = (Master)Page.Master.Master;
-            string con = master.getConnectionString();
+            List<Events> el = new List<Events>();
+            List<Training> tl = new List<Training>();
+            
             DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
 
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "JobSelect";
+            //Job
+            SqlCommand jcmd = new SqlCommand();
+            jcmd.CommandType = CommandType.StoredProcedure;
+            jcmd.CommandText = "JobSelect";
  
-            DataSet ds = db.GetDataSetUsingCmdObj(cmd);
-            int count = ds.Tables[0].Rows.Count;
+            DataSet jds = db.GetDataSetUsingCmdObj(jcmd);
+            int count = jds.Tables[0].Rows.Count;
             if (count > 0)
             {
                 for (int i = 0; i < count; i++)
@@ -38,6 +40,46 @@ namespace CTS_ResourcePortal
             }
             gvJob.DataSource = jl;
             gvJob.DataBind();
+
+            //Event
+            SqlCommand ecmd = new SqlCommand();
+            ecmd.CommandType = CommandType.StoredProcedure;
+            ecmd.CommandText = "EventSelect";
+
+            DataSet eds = db.GetDataSetUsingCmdObj(ecmd);
+            count = eds.Tables[0].Rows.Count;
+            if (count > 0)
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    Events ev = new Events();
+                    ev.resourceID = db.GetField("ResourcesID", i).ToString();
+                    ev.resourceTitle = db.GetField("ResourceName", i).ToString();
+                    el.Add(ev);
+                }
+            }
+            gvEvent.DataSource = el;
+            gvEvent.DataBind();
+
+            //Training
+            SqlCommand tcmd = new SqlCommand();
+            tcmd.CommandType = CommandType.StoredProcedure;
+            tcmd.CommandText = "TrainingSelect";
+
+            DataSet tds = db.GetDataSetUsingCmdObj(tcmd);
+            count = tds.Tables[0].Rows.Count;
+            if (count > 0)
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    Training t = new Training();
+                    t.resourceID = db.GetField("ResourcesID", i).ToString();
+                    t.resourceTitle = db.GetField("ResourceName", i).ToString();
+                    tl.Add(t);
+                }
+            }
+            gvTraining.DataSource = tl;
+            gvTraining.DataBind();
         }
 
         protected void btnPreview_Click(object sender, EventArgs e)

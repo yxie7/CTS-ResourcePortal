@@ -9,13 +9,13 @@ namespace Utilities
     public class Job
     {
         private string ResourceID;
-        private string ResourceTypeID;
+        private int ResourceTypeID;
         private string ResourceTitle;
         private string Company;
-        private string AddressLine1;        //Possibly renamed in DB?
-        private string AddressLine2;        //Possibly renamed in DB?
+        private string AddressLine1;        
+        private string AddressLine2;        
         private string City;
-        private string State;              //Needs to be added to DB --ALSO-->  Update in Store Procedure****
+        private string State;             
         private string ZipCode;
         private DateTime DatePosted;
         private DateTime ExpDate;
@@ -34,7 +34,7 @@ namespace Utilities
             set { ResourceID = value; }
         }
 
-        public string resourceTypeID
+        public int resourceTypeID
         {
             get { return ResourceTypeID; }
             set { ResourceTypeID = value; }

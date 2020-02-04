@@ -43,6 +43,17 @@
                 cursor: pointer;
             }
     </style>--%>
+    </style>
+    <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css" />
+    <script type="text/javascript" src="DataTables/jQuery-3.2.1/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="DataTables/datatables.min.js"></script>
+    <script type="text/javascript" src="DataTables/DataTables-1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="DataTables/Buttons-1.5.1/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="DataTables/JSZip-2.5.0/jszip.min.js"></script>
+    <script type="text/javascript" src="DataTables/pdfmake-0.1.32/pdfmake.min.js"></script>
+    <script type="text/javascript" src="DataTables/Buttons-1.5.1/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="custom.js"></script>
+
     <%--<script type="text/javascript">
         function ShowPopup(title, body) {
             $("#MyPopup .modal-title").html(title);
@@ -98,11 +109,9 @@
                 }
             }
         }
-    </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>--%>
-<%--    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>--%>
-
-    <script>
+    </script>--%>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
+    <script type="text/javascript">
         /*$(document).ready(function () {
             $("#myInput").on("keyup", function () {
                 var value = $(this).val().toLowerCase();
@@ -113,7 +122,7 @@
         });*/
 
         $(document).ready(function () {
-            $('#gvManageR').DataTable();
+            $('#<%= gvManageR.ClientID %>').DataTable();
         });
     </script>
     <%--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -126,7 +135,7 @@
         <script type="text/javascript" src="DataTables/pdfmake-0.1.32/pdfmake.min.js"></script>
         <script type="text/javascript" src="DataTables/Buttons-1.5.1/js/buttons.html5.min.js"></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <link href="css.css" rel="stylesheet" />
@@ -220,7 +229,6 @@
                     </Columns>
                 </asp:GridView>--%>
 
-                
 
                 <%--<div class="col-lg-auto" style="text-align: center;">
                     <input id="myInput" type="text" placeholder="Search..." onkeyup="myFunction()" />
@@ -460,7 +468,6 @@
             </div>
         </div>-->
     </div>
-    
 
 
     <%--<div id="MyPopup" class="modal fade" role="dialog">

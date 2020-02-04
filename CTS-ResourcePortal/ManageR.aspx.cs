@@ -68,5 +68,13 @@ namespace CTS_ResourcePortal
         {
             Response.Redirect("EditTraining.aspx");
         }
+
+        protected void gvManageR_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if(e.Row.RowType == DataControlRowType.Header)
+            {
+                e.Row.TableSection = TableRowSection.TableHeader;
+            }
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Utilities
 {
@@ -35,6 +35,7 @@ namespace Utilities
         }
 
         public string resourceTypeID
+
         {
             get { return ResourceTypeID; }
             set { ResourceTypeID = value; }

@@ -101,6 +101,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 @media screen and (max-width: 1000px) {
+    th{
+        display:none;
+    }
     #jobResourceCollapse thead, #eventResourceCollapse thead, #trainingResourceCollapse thead {
         display: none;
     }
@@ -183,4 +186,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 table {
     overflow: scroll;
+}
+MyPopup{
+    width:80%;
 }

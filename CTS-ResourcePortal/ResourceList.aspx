@@ -9,7 +9,7 @@
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
         <div id="MyPopup" class="modal" role="dialog">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-xl">
             <!-- Modal content-->
             <div class="modal-content container" ">
 
@@ -27,11 +27,12 @@
                         <div class="section">
                             <div class="row" id="job">
                                 <div class="col-md-3">
-                                    <b>Company Name:</b>
+                                    <asp:Label runat="server" Text="Hosted By:" ID="lblHostedBy" Font-Bold="True"></asp:Label>
+                                    <asp:Label runat="server" Text="Company Name:" ID="lblCompaniesName" Font-Bold="True"></asp:Label>
                                 </div>
                                 <div class="col-1"></div>
                                 <div class="col-md-8">
-                                    <asp:Label runat="server" Text="Company Name" ID="lblCompanyName"></asp:Label>
+                                    <asp:Label runat="server" Text="Company Name" ID="lblCompanyName" ></asp:Label>
                                 </div>
                             </div>
                         </div>
@@ -39,13 +40,14 @@
                         <div class="section">
                             <div class="row" id="title62">
                                 <div class="col-md-3">
-                                    <b>Primary Responsibilities:
+                                    <b>Description:
                                     </b>
                                 </div>
                                 <div class="col-1"></div>
 
                                 <div class="col-md-8">
                               <asp:Label runat="server" Text="Primary Responsibilities" ID="lblResponsibilities"></asp:Label>
+                                   &nbsp;
                                     <p>
                                         Hours: <asp:Label runat="server" Text="Hours" ID="lblHours"></asp:Label>
                                     </p>
@@ -89,8 +91,9 @@
                         <div class="section">
                             <div class="row" id="title1">
                                 <div class="col-md-3 ">
-                                    <b>Date Posted:
-                                    </b>
+                                <asp:Label runat="server" Text="Date Posted:" ID="lblDtPosted" Font-Bold="True"></asp:Label>
+                                <asp:Label runat="server" Text="Start Date:" ID="lblStartDt" Font-Bold="True"></asp:Label>
+                                
                                 </div>
                                 <div class="col-1"></div>
 
@@ -101,15 +104,29 @@
                         </div>
 
                         <div class="section">
-                            <div class="row" id="title2">
+                            <div class="row" id="title2" >
                                 <div class="col-md-3 ">
-                                    <b>Expiration Date:
-                                    </b>
+                                <asp:Label runat="server" Text="Date Expired:" ID="lblExpiration" Font-Bold="True"></asp:Label>
+
                                 </div>
                                 <div class="col-1"></div>
 
                                 <div class="col-md-8">
                                     <asp:Label runat="server" Text="Date Expired" ID="lblExpired"></asp:Label>
+
+                                </div>
+                            </div>
+                        </div>
+
+                           <div class="section" id="StartEndTime" runat="server" visible="false" >
+                            <div class="row">
+                                <div class="col-md-3 ">
+                            <asp:Label runat="server" Text="From - To:" ID="lblStartEndTime" Font-Bold="True"></asp:Label>
+                                </div>
+                                <div class="col-1"></div>
+
+                                <div class="col-md-8">
+                                    <asp:Label runat="server" Text="From - To:" ID="lblStartEnd"></asp:Label>
                                 </div>
                             </div>
                         </div>
@@ -117,13 +134,14 @@
                         <div class="section">
                             <div class="row" id="">
                                 <div class="col-md-3">
-                                    <b>Knowledge, Skills and Other Requirements:
-                                    </b>
+                                <asp:Label runat="server" Text="Knowledge, Skills and Other Requirements." ID="lblOtherReqs" Font-Bold="True"></asp:Label>
+                                <asp:Label runat="server" Text="Attire" ID="lblAttire" Font-Bold="True"></asp:Label>
                                 </div>
                                 <div class="col-1"></div>
 
                                 <div class="col-md-8">
                                     <asp:Label runat="server" Text="Other Requirements" ID="lblOtherRequirements"></asp:Label>
+                                    <asp:Label runat="server" Text="Attire" ID="lblAttire1"></asp:Label>
                                 </div>
                             </div>
                         </div>

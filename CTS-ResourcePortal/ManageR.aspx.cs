@@ -21,6 +21,7 @@ namespace CTS_ResourcePortal
         {
             Master master = (Master)Page.Master.Master;
             string con = master.getConnectionString();
+
             DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
 
             SqlCommand cmd = new SqlCommand();
@@ -28,13 +29,15 @@ namespace CTS_ResourcePortal
             if (!IsPostBack)
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "JobSelect";
+                cmd.CommandText = "SelectResources";
 
                 DataSet dataSet = db.GetDataSetUsingCmdObj(cmd);
-                gvManageR.DataSource = dataSet;
-                gvManageR.DataBind();
-                gvManageR.UseAccessibleHeader = true;
-                gvManageR.HeaderRow.TableSection = TableRowSection.TableHeader;
+                rptManageR.DataSource = dataSet;
+                rptManageR.DataBind();
+                //gvManageR.DataSource = dataSet;
+                //gvManageR.DataBind();
+                //gvManageR.UseAccessibleHeader = true;
+                //gvManageR.HeaderRow.TableSection = TableRowSection.TableHeader;
 
             }
 

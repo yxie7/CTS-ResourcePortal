@@ -53,7 +53,7 @@
                             <label class="col-form-label">Location</label>
                         </div>
                         <div class="col-lg-8">
-                            <asp:TextBox runat="server" ID="txtLocation" required="true" class="form-control"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="txtLocation" class="form-control"></asp:TextBox>
                         </div>
                     </div>
                     <div class="col"></div>
@@ -96,12 +96,12 @@
                             <div class="card-body">
                                 <div class="row d-flex justify-content-center">
                                     <div class="table-responsive-lg  ">
-                                        <asp:GridView ID="gvJob" runat="server" AutoGenerateColumns="false" class="table table-striped table-dark">
+                                        <asp:GridView ID="gvJob" runat="server" AutoGenerateColumns="false" class="table table-striped table-dark" DataKeyNames="ResourceID">
                                             <Columns>
                                                 <asp:BoundField DataField="ResourceID" Visible="false" />
                                                 <asp:TemplateField HeaderText="Select">
                                                     <ItemTemplate>
-                                                        <asp:CheckBox ID="chkSelect" AutoPostBack="false" runat="server" />
+                                                        <asp:CheckBox ID="chkSelect" runat="server" />
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:BoundField DataField="ResourceTitle" HeaderText="Title" ItemStyle-CssClass="col-1" />
@@ -129,7 +129,7 @@
                             <div class="card-body">
                                 <div class="row d-flex justify-content-center">
                                     <div class="table-responsive-lg  ">
-                                        <asp:GridView ID="gvEvent" runat="server" AutoGenerateColumns="false" class="table table-striped table-dark">
+                                        <asp:GridView ID="gvEvent" runat="server" AutoGenerateColumns="false" class="table table-striped table-dark" DataKeyNames="ResourceID">
                                             <Columns>
                                                 <asp:BoundField DataField="ResourceID" Visible="false" />
                                                 <asp:TemplateField HeaderText="Select">
@@ -162,7 +162,7 @@
                             <div class="card-body">
                                 <div class="row d-flex justify-content-center">
                                     <div class="table-responsive-lg  ">
-                                        <asp:GridView ID="gvTraining" runat="server" AutoGenerateColumns="false" class="table table-striped table-dark">
+                                        <asp:GridView ID="gvTraining" runat="server" AutoGenerateColumns="false" class="table table-striped table-dark" DataKeyNames="ResourceID">
                                             <Columns>
                                                 <asp:BoundField DataField="ResourceID" Visible="false" />
                                                 <asp:TemplateField HeaderText="Select">

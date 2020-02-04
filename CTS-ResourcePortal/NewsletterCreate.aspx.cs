@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
+using System.Web.Script.Serialization;
 using System.Web.UI.WebControls;
 using Utilities;
 
@@ -15,17 +13,25 @@ namespace CTS_ResourcePortal
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                generateTables();
+            }
+        }
+
+        private void generateTables()
+        {
             List<Job> jl = new List<Job>();
             List<Events> el = new List<Events>();
             List<Training> tl = new List<Training>();
-            
+
             DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
 
             //Job
             SqlCommand jcmd = new SqlCommand();
             jcmd.CommandType = CommandType.StoredProcedure;
             jcmd.CommandText = "JobSelect";
- 
+
             DataSet jds = db.GetDataSetUsingCmdObj(jcmd);
             int count = jds.Tables[0].Rows.Count;
             if (count > 0)
@@ -84,7 +90,47 @@ namespace CTS_ResourcePortal
 
         protected void btnPreview_Click(object sender, EventArgs e)
         {
-            Response.Redirect("NewsletterPreview.aspx");
+            Dictionary<string, string> selections = new Dictionary<string, string>();
+
+            //Job
+            foreach (GridViewRow gvr in gvJob.Rows)
+            {
+                CheckBox chk = (CheckBox)gvr.FindControl("chkSelect");
+                if (chk.Checked == true)
+                {   
+                    string id = gvJob.DataKeys[gvr.RowIndex].Value.ToString();
+                    string comment = ((TextBox)gvr.FindControl("txtComment")).Text;
+                    selections.Add(id, comment);
+                }
+            }
+            //Event
+            foreach (GridViewRow gvr in gvEvent.Rows)
+            {
+                CheckBox chk = (CheckBox)gvr.FindControl("chkSelect");
+                if (chk.Checked == true)
+                {
+                    string id = gvEvent.DataKeys[gvr.RowIndex].Value.ToString();
+                    string comment = ((TextBox)gvr.FindControl("txtComment")).Text;
+                    selections.Add(id, comment);
+                }
+            }
+            //Training
+            foreach (GridViewRow gvr in gvTraining.Rows)
+            {
+                CheckBox chk = (CheckBox)gvr.FindControl("chkSelect");
+                if (chk.Checked == true)
+                {
+                    string id = gvTraining.DataKeys[gvr.RowIndex].Value.ToString();
+                    string comment = ((TextBox)gvr.FindControl("txtComment")).Text;
+                    selections.Add(id, comment);
+                }
+            }
+
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            var query = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(js.Serialize(selections)));
+            Response.Redirect("NewsletterPreview.aspx?nl=" + query);
+
+//            Response.Redirect("NewsletterPreview.aspx?nl=" + Server.UrlEncode(query));
         }
     }
 }

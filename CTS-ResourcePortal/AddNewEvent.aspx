@@ -20,12 +20,12 @@
             <br />
             <div class="row" id="titleRow">
                 <div class="col-sm-6">
-                    <asp:Label ID="lblTitle" runat="server">Event Title: </asp:Label><br />
+                    <asp:Label ID="lblTitle" runat="server"><span class="requiredRed">*</span>Event Title: </asp:Label><br />
                     <asp:TextBox ID="txtTitle" class="form-control" runat="server"></asp:TextBox>
                 </div>
                 <div class="col-sm-6">
-                    <asp:Label ID="lblHost" runat="server">Hosted By: </asp:Label><br />
-                    <asp:TextBox ID="txtHost" class="form-control" runat="server"></asp:TextBox>
+                    <asp:Label ID="lblHost" runat="server"><span class="requiredRed">*</span>Hosted By: </asp:Label><br />
+                    <asp:TextBox ID="txtHost" class="form-control" runat="server" ></asp:TextBox>
                 </div>
             </div>
             <br />

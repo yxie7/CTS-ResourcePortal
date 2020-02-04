@@ -54,15 +54,13 @@ namespace CTS_ResourcePortal
 
                     fileExtension = resumeName.Substring(resumeName.LastIndexOf(".")).ToLower();
 
-                    //fileExtension = fileExtension.ToLower();
-
-
 
                     if (fileExtension == ".docx" || fileExtension == ".pdf" || fileExtension == ".doc")
 
                     {
-
-                        // INSERT an image (BLOB) into the database using a stored procedure 'storeProductImage'
+                        //this stored procedure will eventually become part of the citizen creation proceudre
+                        //with an if statement on whether the citizen uploaded a resume file or not
+                        
 
                         strSQL = "StoreResume";
 

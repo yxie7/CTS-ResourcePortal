@@ -29,11 +29,11 @@
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <label>First Name</label>
-                                                <input type="text" class="form-control">
+                                                 <asp:TextBox ID="txtFirstName" CssClass="form-control" runat="server"></asp:TextBox>
                                             </div>
                                             <div class="col-sm-6">
                                                 <label>Last Name</label>
-                                                <input type="text" class="form-control">
+                                               <asp:TextBox ID="txtLastName" CssClass="form-control" runat="server"></asp:TextBox>
                                             </div>
                                         </div>
                                         <br>
@@ -44,7 +44,7 @@
                                             </div>
                                             <div class="col-sm-6">
 
-                                                <input type="text" class="form-control">
+                                               <asp:TextBox ID="txtEmail" CssClass="form-control" runat="server"></asp:TextBox>
                                             </div>
                                         </div>
                                         <br>
@@ -110,7 +110,7 @@
                                             </div>
                                             <div class="col-sm-6">
 
-                                                <input type="text" class="form-control">
+                                                <asp:TextBox ID="txtPassword" CssClass="form-control" runat="server"></asp:TextBox>
                                             </div>
                                         </div>
                                         <br>
@@ -121,7 +121,7 @@
                                             </div>
                                             <div class="col-sm-6">
 
-                                                <input type="text" class="form-control">
+                                                <asp:TextBox ID="txtCPassword" CssClass="form-control" runat="server"></asp:TextBox>
                                             </div>
                                         </div>
                                         <br>

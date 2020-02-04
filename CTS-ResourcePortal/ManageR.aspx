@@ -43,17 +43,6 @@
                 cursor: pointer;
             }
     </style>--%>
-    </style>
-    <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css" />
-    <script type="text/javascript" src="DataTables/jQuery-3.2.1/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="DataTables/datatables.min.js"></script>
-    <script type="text/javascript" src="DataTables/DataTables-1.10.16/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="DataTables/Buttons-1.5.1/js/dataTables.buttons.min.js"></script>
-    <script type="text/javascript" src="DataTables/JSZip-2.5.0/jszip.min.js"></script>
-    <script type="text/javascript" src="DataTables/pdfmake-0.1.32/pdfmake.min.js"></script>
-    <script type="text/javascript" src="DataTables/Buttons-1.5.1/js/buttons.html5.min.js"></script>
-    <script type="text/javascript" src="custom.js"></script>
-
     <%--<script type="text/javascript">
         function ShowPopup(title, body) {
             $("#MyPopup .modal-title").html(title);
@@ -109,9 +98,11 @@
                 }
             }
         }
-    </script>--%>
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
-    <script type="text/javascript">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>--%>
+    <%--    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>--%>
+
+    <%--<script>
         /*$(document).ready(function () {
             $("#myInput").on("keyup", function () {
                 var value = $(this).val().toLowerCase();
@@ -122,9 +113,9 @@
         });*/
 
         $(document).ready(function () {
-            $('#<%= gvManageR.ClientID %>').DataTable();
+            $('#gvManageR').DataTable();
         });
-    </script>
+    </script>--%>
     <%--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css" />
         <script type="text/javascript" src="DataTables/jQuery-3.2.1/jquery-3.2.1.min.js"></script>
@@ -135,22 +126,35 @@
         <script type="text/javascript" src="DataTables/pdfmake-0.1.32/pdfmake.min.js"></script>
         <script type="text/javascript" src="DataTables/Buttons-1.5.1/js/buttons.html5.min.js"></script>
 
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <link href="css.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
   
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>--%>
-    <script src="Scripts/jquery-3.0.0.js"></script>
-    <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>
+    <%--<script src="Scripts/jquery-3.0.0.js"></script>
+    <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css" />
     <link href="DataTables/datatables.css" rel="stylesheet" />
     <script src="DataTables/datatables.js"></script>
-    <script type="text/javascript" src="DataTables/datatables.min.js"></script>
+    <script src="DataTables/Buttons-1.6.1/js/dataTables.buttons.min.js"></script>
+    <script src="Scripts/jquery-3.0.0.min.js"></script>
+    <script type="text/javascript" src="DataTables/datatables.min.js"></script>--%>
+    <%--<link href="DataTables/datatables.min.css" rel="stylesheet" />
+    <script src="Scripts/jquery-3.0.0.min.js"></script>
+    <script src="DataTables/datatables.min.js"></script>
+    <script src="DataTables/DataTables-1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="DataTables/Buttons-1.6.1/js/dataTables.buttons.min.js"></script>
+    <script src="DataTables/Buttons-1.6.1/js/buttons.html5.min.js"></script>--%>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $('[id*=datatable]').DataTable();
-        })
+        });
     </script>
 </asp:Content>
 
@@ -174,40 +178,52 @@
                 <asp:Repeater ID="rptManageR" runat="server">
                     <HeaderTemplate>
                         <table id="datatable" class="table table-striped table-bordered" border="0" cellpadding="0"
-                                cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>
-                                    Resource Title
-                                </th>
-                                <th>
-                                    Address
-                                </th>
-                                <th>
-                                    City
-                                </th>
-                                <th>
-                                    Date Posted
-                                </th>
-                                
-                            </tr>
-                        </thead>
+                            cellspacing="0">
+                            <thead>
+                                <tr>
+                                 
+                                    <th>Resource Title
+                                    </th>
+                                    <th>Address
+                                    </th>
+                                    <th>City
+                                    </th>
+                                    <th>Date Posted
+                                    </th>
+                                    <th>
+                                        Action
+                                    </th>
+                                    <th>
+                                        Action
+                                    </th>
+                                </tr>
+                            </thead>
                             <tbody>
                     </HeaderTemplate>
 
                     <ItemTemplate>
                         <tr>
-                           <td>
-                               <%# DataBinder.Eval(Container.DataItem, ("ResourceName")) %>
+                            <td>
+                                <%# DataBinder.Eval(Container.DataItem, ("ResourceName")) %>
                             </td>
                             <td>
-                               <%# DataBinder.Eval(Container.DataItem, ("AddressLine")) %>
+                                <%# DataBinder.Eval(Container.DataItem, ("AddressLine")) %>
                             </td>
                             <td>
-                               <%# DataBinder.Eval(Container.DataItem, ("LocationCity")) %>
+                                <%# DataBinder.Eval(Container.DataItem, ("LocationCity")) %>
                             </td>
                             <td>
-                               <%# DataBinder.Eval(Container.DataItem, ("StartDate")) %>
+                                <%# DataBinder.Eval(Container.DataItem, ("StartDate")) %>
+                            </td>
+                            <td>
+
+                                <asp:Button ID="btnSelect" Text="Inactivate Resource" runat="server" />
+
+                            </td>
+                            <td>
+
+                                <asp:Button ID="btnEdit" Text="Edit" runat="server" />
+
                             </td>
                         </tr>
 
@@ -228,6 +244,7 @@
                         <asp:ButtonField Text="Edit" />
                     </Columns>
                 </asp:GridView>--%>
+
 
 
                 <%--<div class="col-lg-auto" style="text-align: center;">
@@ -468,6 +485,7 @@
             </div>
         </div>-->
     </div>
+
 
 
     <%--<div id="MyPopup" class="modal fade" role="dialog">

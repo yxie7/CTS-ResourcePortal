@@ -32,12 +32,18 @@ namespace CTS_ResourcePortal
                 cmd.CommandText = "SelectResources";
 
                 DataSet dataSet = db.GetDataSetUsingCmdObj(cmd);
+                DataTable dt = new DataTable();
+                dt.Columns.AddRange(new DataColumn[3] {
+                new DataColumn("EmpNumber", typeof(int)),
+                new DataColumn("Name", typeof(string)),
+                new DataColumn("Designation",typeof(string)) });
+                dt.Rows.Add(1, "John Hammond", "Developer");
+                dt.Rows.Add(2, "Mudassar Khan", "CEO");
+                dt.Rows.Add(3, "Suzanne Mathews", "Tester");
+                dt.Rows.Add(4, "Robert Schidner", "Manager");
                 rptManageR.DataSource = dataSet;
                 rptManageR.DataBind();
-                //gvManageR.DataSource = dataSet;
-                //gvManageR.DataBind();
-                //gvManageR.UseAccessibleHeader = true;
-                //gvManageR.HeaderRow.TableSection = TableRowSection.TableHeader;
+
 
             }
 

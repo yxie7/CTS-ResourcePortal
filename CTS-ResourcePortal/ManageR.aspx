@@ -43,7 +43,17 @@
                 cursor: pointer;
             }
     </style>
-    <script type="text/javascript">
+    <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css" />
+    <script type="text/javascript" src="DataTables/jQuery-3.2.1/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="DataTables/datatables.min.js"></script>
+    <script type="text/javascript" src="DataTables/DataTables-1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="DataTables/Buttons-1.5.1/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="DataTables/JSZip-2.5.0/jszip.min.js"></script>
+    <script type="text/javascript" src="DataTables/pdfmake-0.1.32/pdfmake.min.js"></script>
+    <script type="text/javascript" src="DataTables/Buttons-1.5.1/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="custom.js"></script>
+
+    <%--<script type="text/javascript">
         function ShowPopup(title, body) {
             $("#MyPopup .modal-title").html(title);
             $("#MyPopup .modal-body").html(body);
@@ -98,9 +108,9 @@
                 }
             }
         }
-    </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script>
+    </script>--%>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
+    <script type="text/javascript">
         /*$(document).ready(function () {
             $("#myInput").on("keyup", function () {
                 var value = $(this).val().toLowerCase();
@@ -111,18 +121,16 @@
         });*/
 
         $(document).ready(function () {
-            $('#gvManageR').DataTable();
+            $('#<%= gvManageR.ClientID %>').DataTable();
         });
     </script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <link href="css.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
-  
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+
 
 </asp:Content>
 
@@ -143,8 +151,21 @@
                 <h2 class="col-sm-8" style="margin: auto">Manage Resources
                 </h2>
                 <br />
+                <div class="col-lg-auto">
+                    <asp:GridView ID="gvManageR" runat="server" AutoGenerateColumns="False" OnRowDataBound="gvManageR_RowDataBound">
+                        <Columns>
+                            <asp:BoundField DataField="ResourceName" HeaderText="Resource Title" />
+                            <asp:BoundField DataField="AddressLine" HeaderText="Address" />
+                            <asp:BoundField DataField="LocationCity" HeaderText="City" />
+                            <asp:BoundField DataField="StartDate" HeaderText="Date Posted" />
+                            <asp:ButtonField Text="Inactivate" />
+                            <asp:ButtonField Text="Edit" />
+                        </Columns>
+                    </asp:GridView>
 
-                
+                </div>
+
+
 
                 <%--<div class="col-lg-auto" style="text-align: center;">
                     <input id="myInput" type="text" placeholder="Search..." onkeyup="myFunction()" />
@@ -384,16 +405,7 @@
             </div>
         </div>-->
     </div>
-    <asp:GridView ID="gvManageR" runat="server" AutoGenerateColumns="False">
-                    <Columns>
-                        <asp:BoundField DataField="ResourceName" HeaderText="Resource Title" />
-                        <asp:BoundField DataField="AddressLine" HeaderText ="Address" />
-                        <asp:BoundField DataField="LocationCity" HeaderText="City" />
-                        <asp:BoundField DataField="StartDate" HeaderText="Date Posted" />
-                        <asp:ButtonField Text="Inactivate" />
-                        <asp:ButtonField Text="Edit" />
-                    </Columns>
-      </asp:GridView>
+
 
 
     <%--<div id="MyPopup" class="modal fade" role="dialog">

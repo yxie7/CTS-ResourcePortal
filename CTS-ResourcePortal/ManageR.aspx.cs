@@ -28,7 +28,7 @@ namespace CTS_ResourcePortal
             if (!IsPostBack)
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "JobSelect";
+                cmd.CommandText = "SelectResources";
 
                 DataSet dataSet = db.GetDataSetUsingCmdObj(cmd);
                 gvManageR.DataSource = dataSet;
@@ -64,6 +64,14 @@ namespace CTS_ResourcePortal
         protected void EditTraining(object sender, EventArgs e)
         {
             Response.Redirect("EditTraining.aspx");
+        }
+
+        protected void gvManageR_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if(e.Row.RowType == DataControlRowType.Header)
+            {
+                e.Row.TableSection = TableRowSection.TableHeader;
+            }
         }
     }
 }

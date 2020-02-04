@@ -5,7 +5,7 @@ namespace Utilities
     public class Events
     {
         private string ResourceID;
-        private string ResourceTypeID;
+        private int ResourceTypeID;
         private string ResourceTitle;
         private string Company;
         private string AddressLine1;        //Possibly renamed in DB?
@@ -30,7 +30,7 @@ namespace Utilities
             get { return ResourceID; }
             set { ResourceID = value; }
         }
-        public string resourceTypeID
+        public int resourceTypeID
 
         {
             get { return ResourceTypeID; }

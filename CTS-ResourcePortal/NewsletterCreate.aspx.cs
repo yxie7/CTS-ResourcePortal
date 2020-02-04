@@ -104,7 +104,27 @@ namespace CTS_ResourcePortal
                 }
             }
             //Event
+            foreach (GridViewRow gvr in gvEvent.Rows)
+            {
+                CheckBox chk = (CheckBox)gvr.FindControl("chkSelect");
+                if (chk.Checked == true)
+                {
+                    string id = gvEvent.DataKeys[gvr.RowIndex].Value.ToString();
+                    string comment = ((TextBox)gvr.FindControl("txtComment")).Text;
+                    selections.Add(id, comment);
+                }
+            }
             //Training
+            foreach (GridViewRow gvr in gvTraining.Rows)
+            {
+                CheckBox chk = (CheckBox)gvr.FindControl("chkSelect");
+                if (chk.Checked == true)
+                {
+                    string id = gvTraining.DataKeys[gvr.RowIndex].Value.ToString();
+                    string comment = ((TextBox)gvr.FindControl("txtComment")).Text;
+                    selections.Add(id, comment);
+                }
+            }
 
             JavaScriptSerializer js = new JavaScriptSerializer();
             var query = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(js.Serialize(selections)));

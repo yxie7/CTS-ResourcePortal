@@ -14,12 +14,13 @@ namespace CTS_ResourcePortal
 {
     public partial class ResourceList : System.Web.UI.Page
     {
+        DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
+        SqlCommand cmd = new SqlCommand();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!this.IsPostBack)
             {
-                DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
-                SqlCommand cmd = new SqlCommand();
+
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 List<Job> jl = new List<Job>();
@@ -148,70 +149,233 @@ namespace CTS_ResourcePortal
 
         protected void btnJob_Click(object sender, EventArgs e)
         {
-            //Response.Redirect("Job.aspx");
+            
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            Button btn = (Button)sender;
+
+
+            //Get the row that contains this button
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+
+            //Fetch value of ResourceID
+            string id = gvr.Cells[0].Text;
+
+
+            cmd.Parameters.Clear();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "SelectResourceByID";
+            cmd.Parameters.AddWithValue("@id", id);
+
+            DataSet JobDs = db.GetDataSetUsingCmdObj(cmd);
+
+
+            myHeader.InnerHtml = (string)db.GetField("ResourceName", 0);
+            lblCompanyName.Text = (string)db.GetField("Company", 0);
+            lblResponsibilities.Text = (string)db.GetField("Description", 0);
+            lblHours.Text = (string)db.GetField("WeeklyHours", 0);
+            lblLength.Text = (string)db.GetField("Length", 0);
+
+            string addressLine1 = (string)db.GetField("AddressLine", 0);
+            string city = (string)db.GetField("LocationCity", 0);
+            string zipCode = (string)db.GetField("LocationZip", 0);
+            string state = (string)db.GetField("State", 0);
+
+            lblLocation.Text = addressLine1 + ", " + city + ", " + zipCode + ", " + state;
+
+            lblContact.Text = (string)db.GetField("ContactEmail", 0);
+
+
+            var dateValue = db.GetField("StartDate", 0);
+            lblPosted.Text = Convert.ToDateTime(dateValue).ToString("MM-dd-yyyy");
+
+
+            var dateValue2 = db.GetField("EndDate", 0);
+            lblExpired.Text = Convert.ToDateTime(dateValue2).ToString("MM-dd-yyyy");
+
+            lblAttire.Text = (string)db.GetField("Attire", 0);
+
+            lblOtherRequirements.Text = (string)db.GetField("Requirements", 0);
+
+            JobVisibilityControls();
+
             ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+
+            cmd.Parameters.Clear();
         }
 
         protected void btnEvent_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Event.aspx");
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            Button btn = (Button)sender;
+
+
+            //Get the row that contains this button
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+
+            //Fetch value of ResourceID
+            string id = gvr.Cells[0].Text;
+
+
+            cmd.Parameters.Clear();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "SelectResourceByID";
+            cmd.Parameters.AddWithValue("@id", id);
+
+            DataSet EventDs = db.GetDataSetUsingCmdObj(cmd);
+
+
+            myHeader.InnerHtml = (string)db.GetField("ResourceName", 0);
+            lblCompanyName.Text = (string)db.GetField("Company", 0);
+            lblResponsibilities.Text = (string)db.GetField("Description", 0);
+            
+            lblLength.Text = (string)db.GetField("Length", 0);
+
+            string addressLine1 = (string)db.GetField("AddressLine", 0);
+            string city = (string)db.GetField("LocationCity", 0);
+            string zipCode = (string)db.GetField("LocationZip", 0);
+            string state = (string)db.GetField("State", 0);
+
+            lblLocation.Text = addressLine1 + ", " + city + ", " + zipCode + ", " + state;
+
+            lblContact.Text = (string)db.GetField("ContactEmail", 0);
+
+
+            var dateValue = db.GetField("StartDate", 0);
+            lblPosted.Text = Convert.ToDateTime(dateValue).ToString("MM-dd-yyyy");
+
+
+            var dateValue2 = db.GetField("StartTime", 0);
+            string starttime = dateValue2.ToString();
+
+            var dateValue3 = db.GetField("EndTime", 0);
+            string endtime = dateValue3.ToString();
+
+            lblStartEnd.Text = "From: " + starttime + " To: " + endtime;
+
+            lblAttire1.Text = (string)db.GetField("Attire", 0);
+
+            lblOtherRequirements.Text = (string)db.GetField("Requirements", 0);
+
+            EventVisibilityControls();
+
+            ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+
+            cmd.Parameters.Clear();
         }
 
         protected void btnTraining_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Training.aspx");
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            Button btn = (Button)sender;
+
+
+            //Get the row that contains this button
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+
+            //Fetch value of ResourceID
+            string id = gvr.Cells[0].Text;
+
+
+            cmd.Parameters.Clear();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "SelectResourceByID";
+            cmd.Parameters.AddWithValue("@id", id);
+
+            DataSet TrainingDs = db.GetDataSetUsingCmdObj(cmd);
+
+
+            myHeader.InnerHtml = (string)db.GetField("ResourceName", 0);
+            lblCompanyName.Text = (string)db.GetField("Company", 0);
+            lblResponsibilities.Text = (string)db.GetField("Description", 0);
+            lblHours.Text = (string)db.GetField("WeeklyHours", 0);
+            lblLength.Text = (string)db.GetField("Length", 0);
+
+            string addressLine1 = (string)db.GetField("AddressLine", 0);
+            string city = (string)db.GetField("LocationCity", 0);
+            string zipCode = (string)db.GetField("LocationZip", 0);
+            string state = (string)db.GetField("State", 0);
+
+            lblLocation.Text = addressLine1 + ", " + city + ", " + zipCode + ", " + state;
+
+            lblContact.Text = (string)db.GetField("ContactEmail", 0);
+
+
+            var dateValue = db.GetField("StartDate", 0);
+            lblPosted.Text = Convert.ToDateTime(dateValue).ToString("MM-dd-yyyy");
+
+
+            var dateValue2 = db.GetField("EndDate", 0);
+            lblExpired.Text = Convert.ToDateTime(dateValue2).ToString("MM-dd-yyyy");
+
+            var dateValue3 = db.GetField("StartTime", 0);
+            string starttime = dateValue3.ToString();
+
+            var dateValue4 = db.GetField("EndTime", 0);
+            string endtime = dateValue4.ToString();
+
+            lblStartEnd.Text = "From: " + starttime + " To: " + endtime;
+
+
+            lblOtherRequirements.Text = (string)db.GetField("Requirements", 0);
+
+            TrainingVisibilityControls();
+
+            ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+
+            cmd.Parameters.Clear();
         }
 
-
-
-        protected void gvJob_RowCommand(object sender, GridViewCommandEventArgs e)
+        public void JobVisibilityControls()
         {
-            if (e.CommandName == "Select")
-            {
-                //Determine the RowIndex of the Row whose Button was clicked.
-                int rowIndex = Convert.ToInt32(e.CommandArgument);
-
-                //Reference the GridView Row.
-                GridViewRow row = gvJob.Rows[rowIndex];
-
-                //Fetch value of ResourceID
-                string id = row.Cells[1].Text;
-
-                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('ID: " + id + "');", true);
-            }
+            lblExpired.Visible = true;
+            lblExpiration.Visible = true;
+            lblCompaniesName.Visible = true;
+            lblOtherReqs.Visible = true;
+            lblOtherRequirements.Visible = true;
+            lblHostedBy.Visible = false;
+            lblStartEndTime.Visible = false;
+            lblStartEnd.Visible = false;
+            lblAttire.Visible = false;
+            lblAttire1.Visible = false;
         }
-        protected void gvEvent_RowCommand(object sender, GridViewCommandEventArgs e)
+        public void EventVisibilityControls()
         {
-            if (e.CommandName == "Select")
-            {
-                //Determine the RowIndex of the Row whose Button was clicked.
-                int rowIndex = Convert.ToInt32(e.CommandArgument);
-
-                //Reference the GridView Row.
-                GridViewRow row = gvEvent.Rows[rowIndex];
-
-                //Fetch value of ResourceID
-                string id = row.Cells[1].Text;
-
-                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('ID: " + id + "');", true);
-            }
+            StartEndTime.Visible = true;
+            lblDtPosted.Visible = false;
+            lblExpired.Visible = false;
+            lblExpiration.Visible = false;
+            lblCompaniesName.Visible = false;
+            lblHostedBy.Visible = true;
+            lblStartEndTime.Visible = true;
+            lblStartEnd.Visible = true;
+            lblOtherReqs.Visible = false;
+            lblOtherRequirements.Visible = false;
+            lblAttire.Visible = true;
+            lblAttire1.Visible = true;
         }
-        protected void gvTraining_RowCommand(object sender, GridViewCommandEventArgs e)
+        public void TrainingVisibilityControls()
         {
-            if (e.CommandName == "Select")
-            {
-                //Determine the RowIndex of the Row whose Button was clicked.
-                int rowIndex = Convert.ToInt32(e.CommandArgument);
+            StartEndTime.Visible = true;
 
-                //Reference the GridView Row.
-                GridViewRow row = gvTraining.Rows[rowIndex];
+            lblDtPosted.Visible = false;
+            lblStartDt.Visible = true;
+            lblExpired.Visible = true;
+            lblExpiration.Visible = true;
+            lblCompaniesName.Visible = false;
+            lblHostedBy.Visible = true;
+            lblStartEndTime.Visible = true;
+            lblStartEnd.Visible = true;
+            lblOtherReqs.Visible = true;
+            lblOtherRequirements.Visible = true;
+            lblAttire.Visible = false;
+            lblAttire1.Visible = false;
 
-                //Fetch value of ResourceID
-                string id = row.Cells[1].Text;
-
-                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('ID: " + id + "');", true);
-            }
         }
-
     }
 }

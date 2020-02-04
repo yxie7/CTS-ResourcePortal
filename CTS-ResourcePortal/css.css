@@ -178,15 +178,21 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         #trainingResourceCollapse td:nth-of-type(5):before {
             content: "Date Expire";
         }
+
 }
 .table-responsive-lg {
     overflow: scroll;
     max-height: 350px;
 }
+@media screen and (min-width: 992px) {
+    modal-dialog modal-lg {
+        width: 950px; /* New width for large modal */
+    }
+}
 
 table {
     overflow: scroll;
 }
-MyPopup{
+/*MyPopup{
     width:80%;
-}
+}*/

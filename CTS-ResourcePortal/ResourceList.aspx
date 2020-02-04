@@ -8,8 +8,8 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-        <div id="MyPopup" class="modal fade" role="dialog">
-        <div class="modal-dialog">
+        <div id="MyPopup" class="modal" role="dialog">
+        <div class="modal-dialog modal-xl">
             <!-- Modal content-->
             <div class="modal-content container" ">
 
@@ -20,21 +20,19 @@
                         <div class="row" id="h2">
                             <div class="col"></div>
                             <div class="col-md-auto">
-                                <h2>Entry Level Contractor</h2>
+                                <h2 id="myHeader" runat="server"></h2>
                             </div>
                             <div class="col"></div>
                         </div>
                         <div class="section">
                             <div class="row" id="job">
                                 <div class="col-md-3">
-                                    <b>Company Name:</b>
+                                    <asp:Label runat="server" Text="Hosted By:" ID="lblHostedBy" Font-Bold="True"></asp:Label>
+                                    <asp:Label runat="server" Text="Company Name:" ID="lblCompaniesName" Font-Bold="True"></asp:Label>
                                 </div>
                                 <div class="col-1"></div>
-
                                 <div class="col-md-8">
-                                    <p>
-                                        Philadelphia Construction
-                                    </p>
+                                    <asp:Label runat="server" Text="Company Name" ID="lblCompanyName" ></asp:Label>
                                 </div>
                             </div>
                         </div>
@@ -42,24 +40,22 @@
                         <div class="section">
                             <div class="row" id="title62">
                                 <div class="col-md-3">
-                                    <b>Primary Responsibilities:
+                                    <b>Description:
                                     </b>
                                 </div>
                                 <div class="col-1"></div>
 
                                 <div class="col-md-8">
+                              <asp:Label runat="server" Text="Primary Responsibilities" ID="lblResponsibilities"></asp:Label>
+                                   &nbsp;
                                     <p>
-                                        The role of the Contractor is to own the project from development through construction, 
-                and up until the close out of the home. This includes working with the sales team,
-                the Construction Managers, working with architects and engineers, and zoning attorneys 
-                for all entitlement and zoning needs.
+                                        Hours: <asp:Label runat="server" Text="Hours" ID="lblHours"></asp:Label>
                                     </p>
+                                    
                                     <p>
-                                        Hours: 40/week
+                                        Length of Time: <asp:Label runat="server" Text="Length of Time" ID="lblLength"></asp:Label>
                                     </p>
-                                    <p>
-                                        Length of Time: Three Months
-                                    </p>
+                                     
                                 </div>
                             </div>
                         </div>
@@ -68,13 +64,12 @@
                                 <div class="col-md-3 ">
                                     <b>Location:
                                     </b>
+
                                 </div>
                                 <div class="col-1"></div>
 
                                 <div class="col-md-8">
-                                    <p>
-                                        123 N Main St. Philadelphia, PA 19140
-                                    </p>
+                               <asp:Label runat="server" Text="Location" ID="lblLocation"></asp:Label>
                                 </div>
                             </div>
                         </div>
@@ -88,8 +83,7 @@
                                 <div class="col-1"></div>
 
                                 <div class="col-md-8">
-                                    <b>Flaco@asapmob.com
-                                    </b>
+                                    <asp:Label runat="server" Text="Contact" ID="lblContact"></asp:Label>
                                 </div>
                             </div>
                         </div>
@@ -97,31 +91,42 @@
                         <div class="section">
                             <div class="row" id="title1">
                                 <div class="col-md-3 ">
-                                    <b>Date Posted:
-                                    </b>
+                                <asp:Label runat="server" Text="Date Posted:" ID="lblDtPosted" Font-Bold="True"></asp:Label>
+                                <asp:Label runat="server" Text="Start Date:" ID="lblStartDt" Font-Bold="True"></asp:Label>
+                                
                                 </div>
                                 <div class="col-1"></div>
 
                                 <div class="col-md-8">
-                                    <p>
-                                        10/27/2019
-                                    </p>
+                                      <asp:Label runat="server" Text="Date Posted" ID="lblPosted"></asp:Label>
                                 </div>
                             </div>
                         </div>
 
                         <div class="section">
-                            <div class="row" id="title2">
+                            <div class="row" id="title2" >
                                 <div class="col-md-3 ">
-                                    <b>Expiration Date:
-                                    </b>
+                                <asp:Label runat="server" Text="Date Expired:" ID="lblExpiration" Font-Bold="True"></asp:Label>
+
                                 </div>
                                 <div class="col-1"></div>
 
                                 <div class="col-md-8">
-                                    <p>
-                                        10/31/2019
-                                    </p>
+                                    <asp:Label runat="server" Text="Date Expired" ID="lblExpired"></asp:Label>
+
+                                </div>
+                            </div>
+                        </div>
+
+                           <div class="section" id="StartEndTime" runat="server" visible="false" >
+                            <div class="row">
+                                <div class="col-md-3 ">
+                            <asp:Label runat="server" Text="From - To:" ID="lblStartEndTime" Font-Bold="True"></asp:Label>
+                                </div>
+                                <div class="col-1"></div>
+
+                                <div class="col-md-8">
+                                    <asp:Label runat="server" Text="From - To:" ID="lblStartEnd"></asp:Label>
                                 </div>
                             </div>
                         </div>
@@ -129,27 +134,14 @@
                         <div class="section">
                             <div class="row" id="">
                                 <div class="col-md-3">
-                                    <b>Knowledge, Skills and Other Requirements:
-                                    </b>
+                                <asp:Label runat="server" Text="Knowledge, Skills and Other Requirements." ID="lblOtherReqs" Font-Bold="True"></asp:Label>
+                                <asp:Label runat="server" Text="Attire" ID="lblAttire" Font-Bold="True"></asp:Label>
                                 </div>
                                 <div class="col-1"></div>
 
                                 <div class="col-md-8">
-                                    <p>
-                                        General knowledge of building maintenance, general carpentry, plumbing, electrical, and custodial skills required.
-                                    </p>
-                                    <p>
-                                        Must have the ability to work safely, efficiently and effectively both independently and in team situations.
-                                    </p>
-                                    <p>
-                                        Must be able to maintain professional boundaries with all other employees and volunteers.
-                                    </p>
-                                    <p>
-                                        Must have the ability to communicate and establish effective working relationships with all types of people.
-                                    </p>
-                                    <p>
-                                        Must be able to climb a ladder and lift up to 50 lbs.
-                                    </p>
+                                    <asp:Label runat="server" Text="Other Requirements" ID="lblOtherRequirements"></asp:Label>
+                                    <asp:Label runat="server" Text="Attire" ID="lblAttire1"></asp:Label>
                                 </div>
                             </div>
                         </div>
@@ -207,7 +199,7 @@
                                     <div class="table-responsive-lg  ">
                                         <asp:GridView ID="gvJob" runat="server" AutoGenerateColumns="False" class="table table-striped table-light">
                                             <Columns>
-                                                <asp:BoundField DataField="ResourceID" HeaderText="ID"  Visible="false" />
+                                                <asp:BoundField DataField="ResourceID" HeaderText="ID"  Visible="true" />
                                                 <asp:BoundField DataField="ResourceTitle" HeaderText="Title" />
                                                 <asp:BoundField DataField="email" HeaderText="Contact" />
                                                 <asp:BoundField DataField="AddressLine2" HeaderText="Location" />
@@ -215,7 +207,7 @@
                                                 <asp:BoundField DataField="expDate" HeaderText="Date Expired" />
                                                 <asp:TemplateField HeaderText="Details">
                                                     <ItemTemplate>
-                                                        <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-dark" ID="btnJob" OnClick="btnJob_Click" />
+                                                        <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-dark" ID="btnJob" CommandName="Select" OnClick="btnJob_Click" />
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                             </Columns>
@@ -239,7 +231,7 @@
                                     <div class="table-responsive-lg  ">
                                         <asp:GridView ID="gvEvent" runat="server" AutoGenerateColumns="False" class="table table-striped table-light">
                                             <Columns>
-                                                <asp:BoundField DataField="ResourceID" HeaderText="ID" Visible="false" />
+                                                <asp:BoundField DataField="ResourceID" HeaderText="ID" Visible="true" />
                                                 <asp:BoundField DataField="ResourceTitle" HeaderText="Title" />
                                                 <asp:BoundField DataField="email" HeaderText="Contact" />
                                                 <asp:BoundField DataField="AddressLine2" HeaderText="Location" />
@@ -271,7 +263,7 @@
                                     <div class="table-responsive-lg  ">
                                         <asp:GridView ID="gvTraining" runat="server" AutoGenerateColumns="False" class="table table-striped table-light">
                                             <Columns>
-                                                <asp:BoundField DataField="ResourceID" HeaderText="ID" Visible="false" />
+                                                <asp:BoundField DataField="ResourceID" HeaderText="ID" Visible="true" />
                                                 <asp:BoundField DataField="ResourceTitle" HeaderText="Title" />
                                                 <asp:BoundField DataField="email" HeaderText="Contact" />
                                                 <asp:BoundField DataField="AddressLine2" HeaderText="Location" />

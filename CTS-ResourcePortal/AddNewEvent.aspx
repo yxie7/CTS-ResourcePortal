@@ -205,6 +205,10 @@
                 <div class="col-md-2">
                     <asp:Button ID="btnCreate" runat="server" Text="Add Event" class="btn btn-dark" OnClick="btnCreate_Click" />
                 </div>
+                <div class="'col-md-2"></div>
+                <div class="'col-md-2">
+                    <asp:Label runat="server" ID="lblError" Text="Please fill out all of the required fields!" Visible="false"></asp:Label>
+                </div>
             </div>
             <br />
         </div>

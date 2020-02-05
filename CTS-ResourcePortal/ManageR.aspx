@@ -130,6 +130,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
     <%--//https://datatables.net/examples/plug-ins/range_filtering.html--%>
+<%--    https://datatables.net/extensions/fixedheader/examples/integration/buttons.html--%>
 
     <%-- /*************************************************Stuff to make Data tables work*******************************/--%>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

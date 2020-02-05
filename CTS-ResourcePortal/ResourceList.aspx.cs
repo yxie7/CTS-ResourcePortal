@@ -258,8 +258,6 @@ namespace CTS_ResourcePortal
 
             lblAttire1.Text = (string)db.GetField("Attire", 0);
 
-            lblOtherRequirements.Text = (string)db.GetField("Requirements", 0);
-
             EventVisibilityControls();
 
             ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);

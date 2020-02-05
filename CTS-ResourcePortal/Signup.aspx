@@ -55,7 +55,7 @@
                                             </div>
                                             <div class="col-sm-6">
 
-                                                <input type="text" class="form-control">
+                                                <asp:TextBox ID="txtAddress" CssClass="form-control" runat="server"></asp:TextBox>
                                             </div>
                                         </div>
                                         <br>
@@ -66,18 +66,18 @@
                                             </div>
                                             <div class="col-sm-6">
 
-                                                <input type="text" class="form-control">
+                                                <asp:TextBox ID="txtCity" CssClass="form-control" runat="server"></asp:TextBox>
                                             </div>
                                         </div>
                                         <br>
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <label>State</label>
-                                                <input type="text" class="form-control">
+                                                <asp:TextBox ID="txtState" CssClass="form-control" runat="server"></asp:TextBox>
                                             </div>
                                             <div class="col-sm-6">
                                                 <label>Zip Code</label>
-                                                <input type="text" class="form-control">
+                                                 <asp:TextBox ID="txtZip" CssClass="form-control" runat="server"></asp:TextBox>
                                             </div>
                                         </div>
                                         <br>
@@ -88,18 +88,7 @@
                                             </div>
                                             <div class="col-sm-6">
 
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <label>Username:</label>
-
-                                            </div>
-                                            <div class="col-sm-6">
-
-                                                <input type="text" class="form-control">
+                                                <asp:TextBox ID="txtCellPhone" CssClass="form-control" runat="server"></asp:TextBox>
                                             </div>
                                         </div>
                                         <br>
@@ -110,7 +99,7 @@
                                             </div>
                                             <div class="col-sm-6">
 
-                                                <asp:TextBox ID="txtPassword" CssClass="form-control" runat="server"></asp:TextBox>
+                                                <asp:TextBox ID="txtPassword" type="password" CssClass="form-control" runat="server"></asp:TextBox>
                                             </div>
                                         </div>
                                         <br>
@@ -121,7 +110,7 @@
                                             </div>
                                             <div class="col-sm-6">
 
-                                                <asp:TextBox ID="txtCPassword" CssClass="form-control" runat="server"></asp:TextBox>
+                                                <asp:TextBox ID="txtCPassword" type="password" CssClass="form-control" runat="server"></asp:TextBox>
                                             </div>
                                         </div>
                                         <br>
@@ -131,10 +120,10 @@
 
                                             </div>
                                             <div class="col-sm-6">
-                                                <input type="checkbox" value="yes">
-                                                Yes
-                                        <input type="checkbox" value="no">
-                                                No
+                                                <asp:RadioButtonList ID="rdoSubscribe" runat="server" RepeatLayout="Flow">
+                                                    <asp:ListItem Value="Yes">Yes</asp:ListItem>
+                                                    <asp:ListItem Value="No">No</asp:ListItem>
+                                                </asp:RadioButtonList>
                                             </div>
                                         </div>
                                         <br>
@@ -155,7 +144,7 @@
                                     </div>
                                     <asp:Label runat="server" ID="lblStatus"></asp:Label>
                                     <div class="col-sm-12" style="text-align:center;">
-                                        <p>Already Have an Account? </p><a href="MobileLogin.aspx">Login</a>
+                                        <p>Already Have an Account? </p><a href="Login.aspx">Login</a>
                                     </div>
 
 

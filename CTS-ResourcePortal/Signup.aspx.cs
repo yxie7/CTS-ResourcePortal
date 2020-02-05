@@ -18,6 +18,7 @@ namespace CTS_ResourcePortal
 {
     public partial class Signup : System.Web.UI.Page
     {
+        DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
 
         ArrayList UserRegistrationError = new ArrayList();
         private Byte[] key = { 250, 101, 18, 76, 45, 135, 207, 118, 4, 171, 3, 168, 202, 241, 37, 199 };
@@ -30,7 +31,6 @@ namespace CTS_ResourcePortal
 
         protected void finishSignUp_Click(object sender, EventArgs e)
         {
-            DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
 
             SqlCommand cmd = new SqlCommand();
 
@@ -47,54 +47,15 @@ namespace CTS_ResourcePortal
             string firstName = txtFirstName.Text;
             string lastName = txtLastName.Text;
             string email = txtEmail.Text;
-            string password = txtPassword.Text;
+            //string password = txtPassword.Text;
+            string address = txtAddress.Text;
+            string city = txtCity.Text;
+            string state = txtState.Text;
+            string zip = txtZip.Text;
+            string cellphone = txtCellPhone.Text;
+            string subscribe = rdoSubscribe.SelectedValue.ToString(); 
 
 
-            if (UserRegistrationError.Count == 0)
-            {
-                //Check if email already exist
-                String UserEmail = txtEmail.Text;
-                Boolean flag = CheckIfEmailExist(UserEmail);
-                if (flag == true)
-                {
-                    Response.Write("Email already exists");
-                }
-                else
-                {
-                    //Register 
-
-                    Utilities.Citizen newCitizen = new Utilities.Citizen
-                    {
-
-                        FirstName = firstName,
-                        LastName = lastName,
-                        Email = email,
-                        Password = password
-                    };
-
-                    //var Result = newMerchant.AddNewMerchant();
-                    var ResponseReceived = newCitizen.AddNewCitizen();
-                    if (ResponseReceived == true)
-                    {
-                        //User Registered 
-                        //Save UserEmail in Session Called UserEmail
-                        Session.Add("userEmail", txtEmail.Text.ToString());
-
-                    }
-                    else
-                    {
-                        Response.Write("Error Occured on the DATABASE");
-                    }
-
-                }
-            }
-            else
-            {
-                for (int i = 0; i < UserRegistrationError.Count; i++)
-                {
-                    Response.Write(UserRegistrationError[i] + "<br/>");
-                }
-            }
 
             String plainTextEmail = txtEmail.Text;
             String plainTextPassword = txtPassword.Text;
@@ -146,6 +107,57 @@ namespace CTS_ResourcePortal
             encryptedEmail = Convert.ToBase64String(encryptedEmailBytes);
             encryptedPassword = Convert.ToBase64String(encryptedPasswordBytes);
 
+            if (UserRegistrationError.Count == 0)
+            {
+                //Check if email already exist
+                String UserEmail = txtEmail.Text;
+                Boolean flag = CheckIfEmailExist(UserEmail);
+                if (flag == true)
+                {
+                    Response.Write("Email already exists");
+                }
+                else
+                {
+                    //Register 
+
+                    Utilities.Citizen newCitizen = new Utilities.Citizen
+                    {
+
+                        FirstName = firstName,
+                        LastName = lastName,
+                        Email = email,
+                        Password = encryptedPassword,
+                        Address = address,
+                        City = city,
+                        State = state,
+                        Zip = zip,
+                        Cellphone = cellphone,
+                        Subscribe = subscribe
+                    };
+
+
+                    var ResponseReceived = newCitizen.AddNewCitizen();
+                    if (ResponseReceived == true)
+                    {
+                        //User Registered 
+                        //Save UserEmail in Session Called UserEmail
+                        Session.Add("userEmail", txtEmail.Text.ToString());
+
+                    }
+                    else
+                    {
+                        Response.Write("Error Occured on the DATABASE");
+                    }
+
+                }
+            }
+            else
+            {
+                for (int i = 0; i < UserRegistrationError.Count; i++)
+                {
+                    Response.Write(UserRegistrationError[i] + "<br/>");
+                }
+            }
 
             try
 
@@ -228,16 +240,16 @@ namespace CTS_ResourcePortal
         }
         public Boolean CheckIfEmailExist(String Email)
         {
-            DBConnect dbConnection = new DBConnect();
+            
             SqlCommand objCommand = new SqlCommand();
             objCommand.CommandType = CommandType.StoredProcedure;
-            objCommand.CommandText = "TPCheckIfCitizenExists";
+            objCommand.CommandText = "CheckIfCitizenExists";
             SqlParameter inputParameter = new SqlParameter("@Email", Email);
             inputParameter.Direction = ParameterDirection.Input;
             inputParameter.SqlDbType = SqlDbType.NVarChar;
             objCommand.Parameters.Add(inputParameter);
 
-            DataSet EmailDataSet = dbConnection.GetDataSetUsingCmdObj(objCommand);
+            DataSet EmailDataSet = db.GetDataSetUsingCmdObj(objCommand);
             if (EmailDataSet.Tables[0].Rows.Count == 0)
             {
                 return false;

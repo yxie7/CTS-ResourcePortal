@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -15,8 +16,12 @@ namespace Utilities
         private string username;
         private string password;
         private string address;
+        private string city;
+        private string state;
+        private string zip; 
         private string email;        //Possibly renamed in DB?
-        private string phone;        //Possibly renamed in DB?                    
+        private string cellphone;        //Possibly renamed in DB?     
+        private string subscribe;
 
         public string FirstName
         {
@@ -43,15 +48,35 @@ namespace Utilities
             get { return address; }
             set { address = value; }
         }
+        public string City
+        {
+            get { return city; }
+            set { city = value; }
+        }
+        public string State
+        {
+            get { return state; }
+            set { state = value; }
+        }
+        public string Zip
+        {
+            get { return zip; }
+            set { zip = value; }
+        }
         public string Email
         {
             get { return email; }
             set { email = value; }
         }
-        public string Phone
+        public string Cellphone
         {
-            get { return phone; }
-            set { phone = value; }
+            get { return cellphone; }
+            set { cellphone = value; }
+        }
+        public string Subscribe
+        {
+            get { return subscribe; }
+            set { subscribe = value; }
         }
 
         public bool AddNewCitizen()
@@ -59,22 +84,29 @@ namespace Utilities
 
             bool added = true;
 
-            DBConnect objDB = new DBConnect();
+            DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
+
 
             SqlCommand objCommand = new SqlCommand();
             objCommand.CommandType = CommandType.StoredProcedure;
 
-            objCommand.CommandText = "TPAddCitizens";
+            objCommand.CommandText = "AddCitizens";
 
 
             objCommand.Parameters.AddWithValue("@FirstName", FirstName);
             objCommand.Parameters.AddWithValue("@LastName", LastName);
             objCommand.Parameters.AddWithValue("@Email", Email);
             objCommand.Parameters.AddWithValue("@Password", Password);
+            objCommand.Parameters.AddWithValue("@Address", Address);
+            objCommand.Parameters.AddWithValue("@City", City);
+            objCommand.Parameters.AddWithValue("@State", State);
+            objCommand.Parameters.AddWithValue("@Zipcode", Zip);
+            objCommand.Parameters.AddWithValue("@PhoneNumber", Cellphone);
+            objCommand.Parameters.AddWithValue("@Subscribed", subscribe);
 
 
 
-            var result = objDB.DoUpdateUsingCmdObj(objCommand);
+            var result = db.DoUpdateUsingCmdObj(objCommand);
 
             if (result == -1)
                 added = false;

@@ -97,7 +97,7 @@
         </div>
         <div class="section">
 
-              <asp:GridView ID="grdAllAccounts" runat="server" AutoGenerateColumns="False" DataKeyNames="countryid"
+             <asp:GridView ID="grdAllAccounts" runat="server" AutoGenerateColumns="False"
              Width="623px" class="table table-striped">
             <Columns>
                 <asp:TemplateField>
@@ -105,57 +105,23 @@
                 <asp:CheckBox ID="chkRow" runat="server" />
             </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="First Name" SortExpression="firstname">                  
-                    <EditItemTemplate>
-                        <asp:Label ID="Label1" runat="server" Text='<%# Eval("firstname") %>'></asp:Label>
-                    </EditItemTemplate>  
-                    <ItemTemplate>
-                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("firstname") %>'></asp:Label>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="Last Name" SortExpression="lastname">
-                    <EditItemTemplate>
-                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("lastname") %>'></asp:TextBox>
-                    </EditItemTemplate>
-                    <ItemTemplate>
-                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("lastname") %>'></asp:Label>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="User Name" SortExpression="username">
-                    <EditItemTemplate>
-                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("username") %>'></asp:TextBox>
-                    </EditItemTemplate>
-                    <ItemTemplate>
-                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("username") %>'></asp:Label>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                 <asp:TemplateField HeaderText="Address" SortExpression="address">
-                    <EditItemTemplate>
-                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("address") %>'></asp:TextBox>
-                    </EditItemTemplate>
-                    <ItemTemplate>
-                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("address") %>'></asp:Label>
-                    </ItemTemplate>
-                </asp:TemplateField>                
-                 <asp:TemplateField HeaderText="Email" SortExpression="email">
-                    <EditItemTemplate>
-                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("email") %>'></asp:TextBox>
-                    </EditItemTemplate>
-                    <ItemTemplate>
-                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("email") %>'></asp:Label>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="Phone" SortExpression="phone">
-                    <EditItemTemplate>
-                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("phone") %>'></asp:TextBox>
-                    </EditItemTemplate>
-                    <ItemTemplate>
-                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("phone") %>'></asp:Label>
-                    </ItemTemplate>
-                </asp:TemplateField>
+                
+                <asp:BoundField DataField="Firstname" HeaderText="First Name" />
+
+                <asp:BoundField DataField="Lastname" HeaderText="Last Name" />
+
+                <asp:BoundField DataField="Username" HeaderText="Username" />
+
+                <asp:BoundField DataField="Address" HeaderText="Address" />
+
+                <asp:BoundField DataField="Email" HeaderText="Email" />
+
+                <asp:BoundField DataField="Phone" HeaderText="Phone" />
+
                 <asp:TemplateField HeaderText="Resume">
+
                     <ItemTemplate>
-                        <asp:LinkButton ID="lnkType" runat="server" Text="View" ></asp:LinkButton >
+                        <asp:LinkButton ID="lnkType" runat="server" Text="View" OnClick="lnkView_Click"></asp:LinkButton >
                     </ItemTemplate>                   
                 </asp:TemplateField>
             </Columns>

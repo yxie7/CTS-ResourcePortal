@@ -13,13 +13,31 @@ namespace CTS_ResourcePortal {
     public partial class ManageR {
         
         /// <summary>
-        /// DropDownList1 control.
+        /// lblDDLResources control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.Label lblDDLResources;
+        
+        /// <summary>
+        /// ddlResources control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlResources;
+        
+        /// <summary>
+        /// btnAllResources control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAllResources;
         
         /// <summary>
         /// rptManageR control.

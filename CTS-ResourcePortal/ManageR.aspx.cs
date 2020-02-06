@@ -17,14 +17,15 @@ namespace CTS_ResourcePortal
 {
     public partial class ManageR : System.Web.UI.Page
     {
+        //Master master = (Master)Page.Master.Master;
+        //string con = master.getConnectionString();
+
+        DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
+
+        SqlCommand cmd = new SqlCommand();
         protected void Page_Load(object sender, EventArgs e)
         {
-            Master master = (Master)Page.Master.Master;
-            string con = master.getConnectionString();
-
-            DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
-
-            SqlCommand cmd = new SqlCommand();
+            
 
             if (!IsPostBack)
             {
@@ -45,9 +46,19 @@ namespace CTS_ResourcePortal
                 rptManageR.DataBind();
                 //gvManageR.DataSource = dataSet;
                 //gvManageR.DataBind();
+                cmd.Parameters.Clear();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "SelectResourceTypes";
+
+                ddlResources.DataSource = db.GetDataSetUsingCmdObj(cmd);
+                ddlResources.DataTextField = "ResourceTypeDescription";
+                ddlResources.DataValueField = "ResourceTypeDescription";
+                ListItem listItem = new ListItem(lblDDLResources.Text);
+                ddlResources.Items.Add(new ListItem (lblDDLResources.Text));
+                ddlResources.DataBind();
 
 
-                
+
 
             }
 
@@ -89,7 +100,63 @@ namespace CTS_ResourcePortal
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            int resourcenum = 0;
+            if(ddlResources.Text== "Job")
+            {
+                resourcenum = 1;
+                Bind(resourcenum);
+            }
+            else if(ddlResources.Text == "Event")
+            {
+                resourcenum = 2;
+                Bind(resourcenum);
+            }
+            else if(ddlResources.Text == "Training Opportunity")
+            {
+                resourcenum = 3;
+                Bind(resourcenum);
+            }
+            else if(ddlResources.Text == "All Resources")
+            {
+                BindAll();
+            }
+            
+        }
 
+        public void Bind(int resourcenum)
+        {
+            cmd.Parameters.Clear();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "SelectResourceByTypeID";
+
+            SqlParameter id = new SqlParameter("@id", resourcenum);
+            id.Direction = ParameterDirection.Input;
+            id.SqlDbType = SqlDbType.Int;
+            id.Size = 4;
+            cmd.Parameters.Add(id);
+
+            DataSet dataSet = db.GetDataSetUsingCmdObj(cmd);
+
+            rptManageR.DataSource = dataSet;
+            rptManageR.DataBind();
+
+        }
+        public void BindAll()
+        {
+            cmd.Parameters.Clear();
+        
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "SelectResources";
+
+            DataSet dataSet = db.GetDataSetUsingCmdObj(cmd);
+
+            rptManageR.DataSource = dataSet;
+            rptManageR.DataBind();
+        }
+
+        protected void btnAllResources_Click(object sender, EventArgs e)
+        {
+            BindAll();
         }
     }
 }

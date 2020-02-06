@@ -193,8 +193,12 @@
                 </h2>
                 <br />
                 <br />
-                    <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged"></asp:DropDownList>
-                
+                    <asp:Label ID="lblDDLResources" runat="server" Text="Select Resources to View: "></asp:Label>
+                    <asp:DropDownList ID="ddlResources" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+                        <asp:ListItem Text="All Resources"></asp:ListItem>
+                    </asp:DropDownList> &nbsp <asp:Button ID="btnAllResources" runat="server" OnClick="btnAllResources_Click"  Text="View All Resources"/>
+
+                <br />
                 <br />
                 <asp:Repeater ID="rptManageR" runat="server">
                     <HeaderTemplate>

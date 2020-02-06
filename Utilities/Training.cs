@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 
 namespace Utilities
 {
     public class Training
     {
-        private string ResourceTypeID;
+        private string ResourceID;
+        private int ResourceTypeID;
         private string ResourceTitle;
         private string Company;
         private string AddressLine1;        //Possibly renamed in DB?
@@ -17,8 +14,10 @@ namespace Utilities
         private string State;               //Needs to be added to DB  --ALSO--> Update in Stored Procedure
         private string ZipCode;
         private DateTime StartDate;
+
         //private DateTime EndDate;         //Not included in Page at the moment, possible addition?
         private DateTime ExpDate;
+
         private string WeeklyHours;
         private string TrainingLength;       //Needs to be added to DB  --ALSO--> Update in Stored Procedure
         private string ContactFN;
@@ -29,7 +28,14 @@ namespace Utilities
         private string Description;
         private string OtherReqs;
 
-        public string resourceTypeID
+        public string resourceID
+        {
+            get { return ResourceID; }
+            set { ResourceID = value; }
+        }
+
+        public int resourceTypeID
+
         {
             get { return ResourceTypeID; }
             set { ResourceTypeID = value; }
@@ -148,6 +154,5 @@ namespace Utilities
             get { return OtherReqs; }
             set { OtherReqs = value; }
         }
-
     }
 }

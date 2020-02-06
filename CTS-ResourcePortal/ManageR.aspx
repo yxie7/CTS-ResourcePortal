@@ -43,7 +43,7 @@
                 cursor: pointer;
             }
     </style>
-    <script type="text/javascript">
+    <%--<script type="text/javascript">
         function ShowPopup(title, body) {
             $("#MyPopup .modal-title").html(title);
             $("#MyPopup .modal-body").html(body);
@@ -99,8 +99,10 @@
             }
         }
     </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>--%>
+
+
+    <%--<script>
         /*$(document).ready(function () {
             $("#myInput").on("keyup", function () {
                 var value = $(this).val().toLowerCase();
@@ -109,13 +111,68 @@
                 });
             });
         });*/
-    </script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
+        $(document).ready(function () {
+            $('#gvManageR').DataTable();
+        });
+    </script>--%>
+    <%--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+
+
+
+    <%--    /*************************************************************Style Sheets************************************************/--%>
+    <link href="css.css" rel="stylesheet" />
+
+<%--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">--%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <link href="css.css" rel="stylesheet" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <%--//https://datatables.net/examples/plug-ins/range_filtering.html--%>
+<%--    https://datatables.net/extensions/fixedheader/examples/integration/buttons.html--%>
+
+    <%-- /*************************************************Stuff to make Data tables work*******************************/--%>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+ <%--   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />--%>
+    <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
+    <%--    <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css" />--%>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('[id*=datatable]').DataTable({
+                columnDefs: [{
+                    orderable: false,
+                    className: 'select-checkbox',
+                    targets: 0
+                }],
+                select: {
+                    style: 'os',
+                    selector: 'td:first-child'
+                },
+                order: [[1, 'asc']]
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $("#datatable [id*=chkHeader]").click(function () {
+                if ($(this).is(":checked")) {
+                    $("#datatable [id*=chkRow]").attr("checked", "checked");
+                } else {
+                    $("#datatable [id*=chkRow]").removeAttr("checked");
+                }
+            });
+            $("#datatable [id*=chkRow]").click(function () {
+                if ($("#datatable [id*=chkRow]").length == $("#datatable [id*=chkRow]:checked").length) {
+                    $("#datatable [id*=chkHeader]").attr("checked", "checked");
+                } else {
+                    $("#datatable [id*=chkHeader]").removeAttr("checked");
+                }
+            });
+        });
+    </script>
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
@@ -132,236 +189,91 @@
         <div class="row d-flex justify-content-center">
             <div class="accordion col-10" id="resources">
                 <br />
-                <h2 class="col-sm-8" style="margin: auto">Manage Resources
+                <h2 class="col-sm-8" style="margin: auto;">Manage Resources
                 </h2>
                 <br />
-                <div class="col-lg-auto" style="text-align: center;">
-                    <input id="myInput" type="text" placeholder="Search..." onkeyup="myFunction()" />
-                </div>
+                <br />
+                    <asp:Label ID="lblDDLResources" runat="server" Text="Select Resources to View: "></asp:Label>
+                    <asp:DropDownList ID="ddlResources" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+                        <asp:ListItem Text="All Resources"></asp:ListItem>
+                    </asp:DropDownList> &nbsp <asp:Button ID="btnViewR" runat="server" OnClick="btnViewR_Click" Text="View" />  &nbsp <asp:Button ID="btnAllResources" runat="server" OnClick="btnAllResources_Click"  Text="View All Resources"/>
 
                 <br />
-                <div class="card">
-                    <div class="card-header" id="jobHeader">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#jobCollapse" aria-expanded="true" aria-controls="jobCollapse">
-                                Job Openings</button>
-                        </h2>
-                    </div>
-                    <div class="collapse" id="jobCollapse" aria-labelledby="jobHeader" data-parent="#jobHeader">
-                        <div class="card-body">
-                            <div class="row d-flex justify-content-center">
-                                <div class="table-responsive-lg">
-                                    <table class="table table-striped table-light" id="myTable1">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col" class="col-1">Title</th>
-                                                <th scope="col" class="col-md-8">Location</th>
-                                                <th scope="col" class="col-1">Date Posted</th>
-                                                <th scope="col" class="col-md-2">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="table-body">
-                                            <tr>
-                                                <td>Entry Level Contractor</td>
-                                                <td>
-                                                    <p>123 N Main ST,  Philadelphia, PA 19121</p>
-                                                </td>
-                                                <td>
-                                                    <p>10/25/19</p>
-                                                </td>
-                                                <td>
-                                                    <asp:Button ID="Button1" class="btn btn-dark" runat="server" Text="Inactivate" OnClientClick="showModal()" OnClick="myBtn_Click1"></asp:Button>
-                                                    <br />
-                                                    <br />
-                                                    <asp:Button ID="btnEdit1" runat="server" class="btn btn-dark" OnClick="EditJob" Text="Edit"></asp:Button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Plumber's Apprentice</td>
-                                                <td>
-                                                    <p>717 Nth 13th St, Philadelohia, PA 19121</p>
-                                                </td>
-                                                <td>
-                                                    <p>11/27/19</p>
-                                                </td>
-                                                <td>
-                                                    <asp:Button ID="Button2" class="btn btn-dark" runat="server" Text="Inactivate" OnClientClick="showModal()" OnClick="myBtn_Click1" Enabled="false"></asp:Button>
-                                                    <br />
-                                                    <br />
-                                                    <asp:Button ID="btnEdit2" runat="server" class="btn btn-dark" OnClick="EditJob" Text="Edit" Enabled="false"></asp:Button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Coca-Cola Delivery</td>
-                                                <td>
-                                                    <p>12th Mongomery St Trenton, NJ 07840</p>
-                                                </td>
-                                                <td>02/05/19
-                                                </td>
-                                                <td>
-                                                    <asp:Button ID="Button3" class="btn btn-dark" runat="server" Text="Inactivate" OnClientClick="showModal()" OnClick="myBtn_Click1" Enabled="false"></asp:Button>
-                                                    <br />
-                                                    <br />
-                                                    <asp:Button ID="btnEdit3" runat="server" class="btn btn-dark" OnClick="EditJob" Text="Edit" Enabled="false"></asp:Button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Security Guard</td>
-                                                <td>
-                                                    <p>1541 N Broad St Philadelphia, PA 19134</p>
-                                                </td>
-                                                <td>02/27/19
-                                                </td>
-                                                <td>
-                                                    <asp:Button ID="Button10" class="btn btn-dark" runat="server" Text="Inactivate" OnClientClick="showModal()" OnClick="myBtn_Click1" Enabled="false"></asp:Button>
-                                                    <br />
-                                                    <br />
-                                                    <asp:Button ID="Button11" runat="server" class="btn btn-dark" OnClick="EditJob" Text="Edit" Enabled="false"></asp:Button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="eventHeader">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#eventCollapse" aria-expanded="true" aria-controls="eventCollapse">
-                                Events
-                            </button>
-                        </h2>
-                    </div>
-                    <div class="collapse" id="eventCollapse" aria-labelledby="eventHeader" data-parent="#eventHeader">
-                        <div class="card-body">
-                            <div class="row d-flex justify-content-center">
-                                <div class="table-responsive-lg" >
-                                    <table class="table table-striped table-light" id="myTable2">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col" class="col-1">Title</th>
-                                                <th scope="col" class="col-md-8">Location</th>
-                                                <th scope="col" class="col-1">Date Posted</th>
-                                                <th scope="col" class="col-md-2">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Newtown Job Fair</td>
-                                                <td>123 Newton St Newtown, PA 18234
-                                                </td>
-                                                <td>12/26/19
-                                                </td>
-                                                <td>
-                                                    <asp:Button ID="Button4" class="btn btn-dark" runat="server" Text="Inactivate" OnClientClick="showModal()" OnClick="myBtn_Click1" Enabled="false"></asp:Button>
-                                                    <br />
-                                                    <br />
-                                                    <asp:Button ID="btnEdit4" runat="server" class="btn btn-dark" OnClick="EditEvent" Text="Edit" Enabled="false"></asp:Button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Resume Critique</td>
-                                                <td>44 Winsor Court Allentown, PA 18104
-                                                </td>
-                                                <td>09/27/19
-                                                </td>
-                                                <td>
-                                                    <asp:Button ID="Button5" class="btn btn-dark" runat="server" Text="Inactivate" OnClientClick="showModal()" OnClick="myBtn_Click1" Enabled="false"></asp:Button>
-                                                    <br />
-                                                    <br />
-                                                    <asp:Button ID="btnEdit5" runat="server" class="btn btn-dark" OnClick="EditEvent" Text="Edit" Enabled="false"></asp:Button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>North Philly Job Fair</td>
-                                                <td>1617 Cecil B Moore Ave Philadelphia, PA 19121
-                                                </td>
-                                                <td>10/31/19
-                                                </td>
-                                                <td>
-                                                    <asp:Button ID="Button6" class="btn btn-dark" runat="server" Text="Inactivate" OnClientClick="showModal()" OnClick="myBtn_Click1"></asp:Button>
-                                                    <br />
-                                                    <br />
-                                                    <asp:Button ID="btnEdit6" runat="server" class="btn btn-dark" OnClick="EditEvent" Text="Edit"></asp:Button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="trainingHeader">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#trainingCollapse" aria-expanded="true" aria-controls="trainingCollapse">
-                                Training Opportunities
-                            </button>
-                        </h2>
-                    </div>
-                    <div class="collapse" id="trainingCollapse" aria-labelledby="trainingHeader" data-parent="#trainingHeader">
-                        <div class="card-body">
-                            <div class="row d-flex justify-content-center">
-                                <div class="table-responsive-lg">
-                                    <table class="table table-striped table-light" id="myTable3">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col" class="col-1">Title</th>
-                                                <th scope="col" class="col-md-8">Location</th>
-                                                <th scope="col" class="col-1">Date Posted</th>
-                                                <th scope="col" class="col-md-2">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Electrician Classes</td>
-                                                <td>420 Green St Ohio, PA 4321
-                                                </td>
-                                                <td>04/20/19
-                                                </td>
-                                                <td>
-                                                    <asp:Button ID="Button7" class="btn btn-dark" runat="server" Text="Inactivate" OnClientClick="showModal()" OnClick="myBtn_Click1" Enabled="false"></asp:Button>
-                                                    <br />
-                                                    <br />
-                                                    <asp:Button ID="btnEdit7" runat="server" class="btn btn-dark" OnClick="EditTraining" Text="Edit" Enabled="false"></asp:Button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>CDL Classes</td>
-                                                <td>679 Master St Philadelphia, PA 19121
-                                                </td>
-                                                <td>11/01/19
-                                                </td>
-                                                <td>
-                                                    <asp:Button ID="Button8" class="btn btn-dark" runat="server" Text="Inactivate" OnClientClick="showModal()" OnClick="myBtn_Click1"></asp:Button>
-                                                    <br />
-                                                    <br />
-                                                    <asp:Button ID="btnEdit8" runat="server" class="btn btn-dark" OnClick="EditTraining" Text="Edit"></asp:Button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Fork Lift Training</td>
-                                                <td>234 Vine Ave  Trenton, NJ 07840
-                                                </td>
-                                                <td>12/05/19
-                                                </td>
-                                                <td>
-                                                    <asp:Button ID="Button9" class="btn btn-dark" runat="server" Text="Inactivate" OnClientClick="showModal()" OnClick="myBtn_Click1" Enabled="false"></asp:Button>
-                                                    <br />
-                                                    <br />
-                                                    <asp:Button ID="btnEdit9" runat="server" class="btn btn-dark" OnClick="EditTraining" Text="Edit" Enabled="false"></asp:Button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <br />
+                <asp:Repeater ID="rptManageR" runat="server">
+                    <HeaderTemplate>
+                        <table id="datatable" class="table table-striped table-bordered" border="0" cellpadding="0"
+                            cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <asp:CheckBox ID="chkHeader" runat="server" /></th>
+                                    <th>Resource Title
+                                    </th>
+                                    <th>Address
+                                    </th>
+                                    <th>City
+                                    </th>
+                                    <th>Date Posted
+                                    </th>
+                                    <th>Inactivate Resource
+                                    </th>
+                                    <th>Edit Resource
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                    </HeaderTemplate>
+
+                    <ItemTemplate>
+                        <tr>
+                            <td>
+                                <asp:CheckBox ID="chkRow" runat="server" /></td>
+                            <td>
+                                <%# DataBinder.Eval(Container.DataItem, ("ResourceName")) %>
+                            </td>
+                            <td>
+                                <%# DataBinder.Eval(Container.DataItem, ("AddressLine")) %>
+                            </td>
+                            <td>
+                                <%# DataBinder.Eval(Container.DataItem, ("LocationCity")) %>
+                            </td>
+                            <td>
+                                <%# DataBinder.Eval(Container.DataItem, ("StartDate")) %>
+                            </td>
+                            <td>
+
+                                <asp:Button ID="btnSelect" Text="Inactivate Resource" runat="server" />
+
+                            </td>
+                            <td>
+
+                                <asp:Button ID="btnEdit" Text="Edit" runat="server" />
+
+                            </td>
+                        </tr>
+
+                    </ItemTemplate>
+
+                    <FooterTemplate>
+                        </tbody></table>
+                    </FooterTemplate>
+                </asp:Repeater>
+
+                <%--<asp:GridView ID="gvManageR" runat="server" AutoGenerateColumns="False">
+                    <Columns>
+                        <asp:BoundField DataField="ResourceName" HeaderText="Resource Title" />
+                        <asp:BoundField DataField="AddressLine" HeaderText ="Address" />
+                        <asp:BoundField DataField="LocationCity" HeaderText="City" />
+                        <asp:BoundField DataField="StartDate" HeaderText="Date Posted" />
+                        <asp:ButtonField Text="Inactivate" />
+                        <asp:ButtonField Text="Edit" />
+                    </Columns>
+                </asp:GridView>--%>
+
+
+
+                
             </div>
         </div>
         <br />
@@ -374,7 +286,9 @@
         </div>-->
     </div>
 
-    <div id="MyPopup" class="modal fade" role="dialog">
+
+
+    <%--<div id="MyPopup" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content" style="margin-top: 55%; }">
@@ -390,5 +304,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>--%>
 </asp:Content>

@@ -47,6 +47,8 @@ namespace CTS_ResourcePortal
                 //gvManageR.DataBind();
 
 
+                
+
             }
 
         }
@@ -83,6 +85,11 @@ namespace CTS_ResourcePortal
             {
                 e.Row.TableSection = TableRowSection.TableHeader;
             }
+        }
+
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

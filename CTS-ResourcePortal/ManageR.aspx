@@ -193,6 +193,9 @@
                 </h2>
                 <br />
                 <br />
+                    <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged"></asp:DropDownList>
+                
+                <br />
                 <asp:Repeater ID="rptManageR" runat="server">
                     <HeaderTemplate>
                         <table id="datatable" class="table table-striped table-bordered" border="0" cellpadding="0"

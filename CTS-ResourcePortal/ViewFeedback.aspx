@@ -1,68 +1,58 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin.master" AutoEventWireup="true" CodeBehind="ViewFeedback.aspx.cs" Inherits="CTS_ResourcePortal.ViewFeedback" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script type="text/javascript">
-        function ShowPopup(title, body) {
-            $("#MyPopup .modal-title").html(title);
-            $("#MyPopup .modal-body").html(body);
-            $("#MyPopup").modal("show");
-        }
-        function myFunction() {
-            // Declare variables
-            var input, filter,table, table2, table3, tr, tr2, tr3, td, i, txtValue;
-            input = document.getElementById("myInput");
-            filter = input.value.toUpperCase();
-            table = document.getElementById("myTable1");
-            tr = table.getElementsByTagName("tr");
-            table2 = document.getElementById("myTable2");
-            tr2 = table2.getElementsByTagName("tr");
-            table3 = document.getElementById("myTable3");
-            tr3 = table3.getElementsByTagName("tr");
-
-            // Loop through all table rows, and hide those who don't match the search query
-            for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[1];
-                if (td) {
-                    txtValue = td.textContent || td.innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        tr[i].style.display = "";
-                    } else {
-                        tr[i].style.display = "none";
-                    }
-                }
-            }
-            // Loop through all table rows, and hide those who don't match the search query
-            for (i = 0; i < tr2.length; i++) {
-                td = tr2[i].getElementsByTagName("td")[1];
-                if (td) {
-                    txtValue = td.textContent || td.innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        tr2[i].style.display = "";
-                    } else {
-                        tr2[i].style.display = "none";
-                    }
-                }
-            }
-            // Loop through all table rows, and hide those who don't match the search query
-            for (i = 0; i < tr3.length; i++) {
-                td = tr3[i].getElementsByTagName("td")[1];
-                if (td) {
-                    txtValue = td.textContent || td.innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        tr3[i].style.display = "";
-                    } else {
-                        tr3[i].style.display = "none";
-                    }
-                }
-            }
-        }
-    </script>
+    <%--    /*************************************************************Style Sheets************************************************/--%>
     <link href="css.css" rel="stylesheet" />
 
-
+<%--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">--%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <%--//https://datatables.net/examples/plug-ins/range_filtering.html--%>
+<%--    https://datatables.net/extensions/fixedheader/examples/integration/buttons.html--%>
+
+    <%-- /*************************************************Stuff to make Data tables work*******************************/--%>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+ <%--   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />--%>
+    <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
+    <%--    <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css" />--%>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('[id*=datatable]').DataTable({
+                columnDefs: [{
+                    orderable: false,
+                    className: 'select-checkbox',
+                    targets: 0
+                }],
+                select: {
+                    style: 'os',
+                    selector: 'td:first-child'
+                },
+                order: [[1, 'asc']]
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $("#datatable [id*=chkHeader]").click(function () {
+                if ($(this).is(":checked")) {
+                    $("#datatable [id*=chkRow]").attr("checked", "checked");
+                } else {
+                    $("#datatable [id*=chkRow]").removeAttr("checked");
+                }
+            });
+            $("#datatable [id*=chkRow]").click(function () {
+                if ($("#datatable [id*=chkRow]").length == $("#datatable [id*=chkRow]:checked").length) {
+                    $("#datatable [id*=chkHeader]").attr("checked", "checked");
+                } else {
+                    $("#datatable [id*=chkHeader]").removeAttr("checked");
+                }
+            });
+        });
+    </script>
 
 
 </asp:Content>
@@ -91,7 +81,7 @@
                 <h2 class="col-sm-8" style="margin: auto">View Feedback
                 </h2>
                 <br />
-                <div class="col-lg-auto" style="text-align: center;">
+                <%--<div class="col-lg-auto" style="text-align: center;">
                     <input type="text" placeholder="Search..." id="myInput" onkeyup="myFunction()"/>
                 </div>
 
@@ -111,7 +101,6 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">Select</th>
-                                                <th scope="col" class="col-1">Title</th>
                                                 <th scope="col" class="col-md-8">Feedback</th>
                                                 <th scope="col" class="col-1">Date Posted</th>
                                             </tr>
@@ -271,18 +260,76 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>--%>
+                <br />
+                    <asp:Label ID="lblDDLResources" runat="server" Text="Select Resources to View: "></asp:Label>
+                    <asp:DropDownList ID="ddlResources" runat="server" AutoPostBack="true">
+                        <asp:ListItem Text="All Resources"></asp:ListItem>
+                    </asp:DropDownList> &nbsp <asp:Button ID="btnViewR" runat="server"  Text="View" OnClick="btnViewR_Click" />  &nbsp <asp:Button ID="btnAllResources" runat="server"  Text="View All Resources" OnClick="btnAllResources_Click"/>
+
+                <br />
+                <br />
+                <asp:Repeater ID="rptViewR" runat="server">
+                    <HeaderTemplate>
+                        <table id="datatable" class="table table-striped table-bordered" border="0" cellpadding="0"
+                            cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <asp:CheckBox ID="chkHeader" runat="server" /></th>
+                                    <th>Resource Title
+                                    </th>
+                                    <th>Feedback
+                                    </th>
+                                    <th>Date Posted
+                                    </th>
+                                    <th>Remove
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                    </HeaderTemplate>
+
+                    <ItemTemplate>
+                        <tr>
+                            <td>
+                                <asp:CheckBox ID="chkRow" runat="server" /></td>
+                            <td>
+                                <%# DataBinder.Eval(Container.DataItem, ("ResourceName")) %>
+                            </td>
+                            <td>
+                                <%# DataBinder.Eval(Container.DataItem, ("FeedbackText")) %>
+                            </td>
+                            <td>
+                                <%# DataBinder.Eval(Container.DataItem, ("Date")) %>
+                            </td>
+                          
+                            <td>
+
+                                <asp:Button ID="btnSelect" Text="Remove Feedback" runat="server" />
+
+                            </td>
+                        </tr>
+
+                    </ItemTemplate>
+
+                    <FooterTemplate>
+                        </tbody></table>
+                    </FooterTemplate>
+                </asp:Repeater>
+
+
 
         </div>
         <br />
-        <div class="row justify-content-center align-items-center text-center">
+        <%--<div class="row justify-content-center align-items-center text-center">
             <div class="col-md-2">
                 <asp:Button ID="btnRemove" runat="server" class="btn btn-dark" Text="Remove" OnClick="btnRemove_Click" /></asp:Button>
                 
             </div>
-        </div>
+        </div>--%>
     </div>
-    <div id="MyPopup" class="modal fade" role="dialog">
+    <%--<div id="MyPopup" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content" style="margin-top: 55%; }">
@@ -295,6 +342,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>--%>
 </asp:Content>
 

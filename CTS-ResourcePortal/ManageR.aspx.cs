@@ -100,26 +100,7 @@ namespace CTS_ResourcePortal
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int resourcenum = 0;
-            if(ddlResources.Text== "Job")
-            {
-                resourcenum = 1;
-                Bind(resourcenum);
-            }
-            else if(ddlResources.Text == "Event")
-            {
-                resourcenum = 2;
-                Bind(resourcenum);
-            }
-            else if(ddlResources.Text == "Training Opportunity")
-            {
-                resourcenum = 3;
-                Bind(resourcenum);
-            }
-            else if(ddlResources.Text == "All Resources")
-            {
-                BindAll();
-            }
+            //Do Nothing
             
         }
 
@@ -157,6 +138,30 @@ namespace CTS_ResourcePortal
         protected void btnAllResources_Click(object sender, EventArgs e)
         {
             BindAll();
+        }
+
+        protected void btnViewR_Click(object sender, EventArgs e)
+        {
+            int resourcenum = 0;
+            if (ddlResources.Text == "Job")
+            {
+                resourcenum = 1;
+                Bind(resourcenum);
+            }
+            else if (ddlResources.Text == "Event")
+            {
+                resourcenum = 2;
+                Bind(resourcenum);
+            }
+            else if (ddlResources.Text == "Training Opportunity")
+            {
+                resourcenum = 3;
+                Bind(resourcenum);
+            }
+            else if (ddlResources.Text == "All Resources")
+            {
+                BindAll();
+            }
         }
     }
 }

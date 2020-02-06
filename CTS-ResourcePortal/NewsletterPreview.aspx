@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin.master" AutoEventWireup="true" CodeBehind="NewsletterPreview.aspx.cs" Inherits="CTS_ResourcePortal.NewsletterPreview" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
+
     <link href="css.css" rel="stylesheet" />
     <div class="container">
         <h2>Preview Newsletter</h2>
@@ -10,7 +11,7 @@
                 <div class="col-1"></div>
                 <div class="row d-flex justify-content-center col-md-auto">
 
-                    <div class="newsletterPreview">
+                    <div id="newsletterPreview" class="newsletterPreview" runat="server">
                         <br />
                         <h2>October 21st, 2019 Newsletter</h2>
 
@@ -35,14 +36,14 @@
                                     <h4 class="resourceTitle"><%# Eval("ResourceName") %></h4>
                                 </div>
                                 <!-- Resource Details -->
-                                <asp:HiddenField runat="server" ID="id" Value='<%# Eval("ResourceTypeID") %>' />
+                                <%--                                    <asp:HiddenField runat="server" ID="id" Value='<%# Eval("ResourceTypeID") %>' />--%>
                                 <div class="row col-10 desc">
-                                    <asp:Label Text="" runat="server" ID="preStartDate" />
+                                    <asp:Label Text='<%# Eval("ResourceTypeID").ToString() == "1" ? "Date Posted": (Eval("ResourceTypeID").ToString() == "2" ? "Event Posted":"Start Date")  %>' runat="server" ID="preStartDate" />
                                     &nbsp
                                     <asp:Label runat="server" ID="lblStartDate" Text='<%# Eval("StartDate")==null ? String.Empty:Eval("StartDate") %>' Visible='<%# Eval("StartDate") == null ? false: true %>' />
                                 </div>
                                 <div class="row col-10 desc " visible='<%# Eval("EndDate") == null ? false: true %>'>
-                                    <asp:Label Text="" runat="server" ID="preEndDate" />
+                                    <asp:Label Text='<%# Eval("ResourceTypeID").ToString() == "1" ? "Expiration Date: ": (Eval("ResourceTypeID").ToString() == "2" ? "Registration Deadline: ":"Registration Deadline: ")  %>' runat="server" ID="preEndDate" />
                                     &nbsp
                                     <asp:Label runat="server" ID="lblEndDate" Text='<%# Eval("EndDate")==null ? String.Empty:Eval("EndDate") %>' Visible='<%# Eval("EndDate") == null ? false: true %>' />
                                 </div>
@@ -81,7 +82,7 @@
                                     <asp:Label runat="server" ID="lblLocation" Text='<%# String.Concat(Eval("AddressLine")==null ? String.Empty:Eval("AddressLine")," ",Eval("LocationCity")==null ? String.Empty:Eval("LocationCity")," ", Eval("State")==null ? String.Empty:Eval("State")," ", Eval("LocationZip")==null ? String.Empty:Eval("LocationZip")) %>' />
                                 </div>
                                 <br />
-                                <asp:Label Text="" runat="server" ID="preDescription" />
+                                <asp:Label Text='<%# Eval("ResourceTypeID").ToString() == "1" ? "Primary Responsibilites: ": (Eval("ResourceTypeID").ToString() == "2" ? "Event Description: ":"Training Description: ")  %>' runat="server" ID="preDescription" />
                                 <br />
                                 <div class="row col-10 desc " visible='<%# Eval("Description") == null ? false: true %>'>
 
@@ -117,9 +118,9 @@
                                 </div>
                                 <br />
                                 <asp:Label Text="Comments:" runat="server" ID="preComments" Visible='<%# Eval("Comments") == null ? false: true %>' />
-                                    <br />
+                                <br />
                                 <div class="row col-10 desc " visible='<%# Eval("Comments") == null ? false: true %>'>
-                                    
+
                                     <asp:Label runat="server" ID="lblComments" Text='<%# Eval("Comments")==null ? String.Empty:Eval("Comments") %>' Visible='<%# Eval("Comments") == null ? false: true %>' />
                                     <br />
                                 </div>
@@ -223,7 +224,7 @@
             <br />
             <div class="row justify-content-center align-items-center text-center">
                 <div class="col-md-4">
-                    <asp:Button runat="server" class="btn btn-dark" Text="Send Newsletter to Subscribers" ID="btnSend" OnClick="btnSend_Click"></asp:Button>
+                    <asp:Button runat="server" class="btn btn-dark" Text="Send Newsletter to Subscribers" ID="btnSend" OnClick="btnSend_Click" AutoPostBack="False"></asp:Button>
                 </div>
             </div>
             <br />

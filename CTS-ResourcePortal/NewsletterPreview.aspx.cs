@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
+using System.Net.Mail;
+using System.Text;
 using System.Web.Script.Serialization;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 using Utilities;
 
@@ -48,8 +52,20 @@ namespace CTS_ResourcePortal
 
         protected void btnSend_Click(object sender, EventArgs e)
         {
-        }
+            var sb = new StringBuilder();
+            newsletterPreview.RenderControl(new HtmlTextWriter(new StringWriter(sb)));
 
+            string hnl = sb.ToString();
+            
+            MailMessage m = new MailMessage();
+            m.From = new MailAddress("tug69722@temple.edu"); ;
+            m.To.Add(new MailAddress("ying.xie@temple.edu"));
+            m.Subject = "xx/xx/xx Newsletter";
+            m.IsBodyHtml = true;
+
+            m.Body = hnl;
+        }
+        
         protected void rptNL_ItemDataBound(object sender, System.Web.UI.WebControls.RepeaterItemEventArgs e)
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
@@ -57,6 +73,7 @@ namespace CTS_ResourcePortal
                 (e.Item.FindControl("preDescription") as Label).Font.Bold = true;
                 (e.Item.FindControl("preRequirements") as Label).Font.Bold = true;
                 (e.Item.FindControl("preComments") as Label).Font.Bold = true;
+                /*
                 switch (int.Parse(((HiddenField)e.Item.FindControl("id")).Value))
                 {
                     case 1:
@@ -72,11 +89,11 @@ namespace CTS_ResourcePortal
                         break;
 
                     case 3:
-                        (e.Item.FindControl("preStartDate") as Label).Text = "Event Date: ";
+                        (e.Item.FindControl("preStartDate") as Label).Text = "Start Date: ";
                         (e.Item.FindControl("preEndDate") as Label).Text = "Registration Deadline: ";
                         (e.Item.FindControl("preDescription") as Label).Text = "Training Description: ";
                         break;
-                }
+                }*/
             }
         }
     }

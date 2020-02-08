@@ -18,7 +18,9 @@
             <div class="row" id="titleRow">
                 <div class="col-sm-6">
                     <asp:Label ID="lblTitle" runat="server"><span class="requiredRed">*</span>Job Opportunity Title: </asp:Label><br />
-                    <asp:TextBox ID="txtTitle" class="form-control" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtTitle" class="form-control" runat="server" ></asp:TextBox>
+
+
                 </div>
                 <div class="col-sm-6">
                     <asp:Label ID="lblCompany" runat="server"><span class="requiredRed">*</span>Company Name: </asp:Label><br />

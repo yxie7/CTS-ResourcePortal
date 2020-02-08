@@ -20,12 +20,12 @@
             <br />
             <div class="row" id="titleRow">
                 <div class="col-sm-6">
-                    <asp:Label ID="lblTitle" runat="server">Event Title: </asp:Label><br />
+                    <asp:Label ID="lblTitle" runat="server"><span class="requiredRed">*</span>Event Title: </asp:Label><br />
                     <asp:TextBox ID="txtTitle" class="form-control" runat="server"></asp:TextBox>
                 </div>
                 <div class="col-sm-6">
-                    <asp:Label ID="lblHost" runat="server">Hosted By: </asp:Label><br />
-                    <asp:TextBox ID="txtHost" class="form-control" runat="server"></asp:TextBox>
+                    <asp:Label ID="lblHost" runat="server"><span class="requiredRed">*</span>Hosted By: </asp:Label><br />
+                    <asp:TextBox ID="txtHost" class="form-control" runat="server" ></asp:TextBox>
                 </div>
             </div>
             <br />
@@ -204,6 +204,10 @@
             <div class="row justify-content-center align-items-center">
                 <div class="col-md-2">
                     <asp:Button ID="btnCreate" runat="server" Text="Add Event" class="btn btn-dark" OnClick="btnCreate_Click" />
+                </div>
+                <div class="'col-md-2"></div>
+                <div class="'col-md-2">
+                    <asp:Label runat="server" ID="lblError" Text="Please fill out all of the required fields!" Visible="false"></asp:Label>
                 </div>
             </div>
             <br />

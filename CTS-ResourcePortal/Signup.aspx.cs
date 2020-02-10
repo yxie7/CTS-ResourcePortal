@@ -120,7 +120,7 @@ namespace CTS_ResourcePortal
                 {
                     //Register 
 
-                    Utilities.Citizen newCitizen = new Utilities.Citizen
+                    Utilities.Citizens newCitizen = new Utilities.Citizens
                     {
 
                         FirstName = firstName,
@@ -247,7 +247,7 @@ namespace CTS_ResourcePortal
             SqlParameter inputParameter = new SqlParameter("@Email", Email);
             inputParameter.Direction = ParameterDirection.Input;
             inputParameter.SqlDbType = SqlDbType.NVarChar;
-            objCommand.Parameters.Add(inputParameter);
+            objCommand.Parameters.Add(inputParameter); 
 
             DataSet EmailDataSet = db.GetDataSetUsingCmdObj(objCommand);
             if (EmailDataSet.Tables[0].Rows.Count == 0)

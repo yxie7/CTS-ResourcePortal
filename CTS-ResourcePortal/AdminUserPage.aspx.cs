@@ -48,9 +48,9 @@ namespace CTS_ResourcePortal
 
             objProduct = new Citizens();
 
-            objProduct.Firstname = "Isabella";
+            objProduct.FirstName = "Isabella";
 
-            objProduct.Lastname = "Chrsitensen";
+            objProduct.LastName = "Chrsitensen";
 
             objProduct.Username = "IsabellaC";
 
@@ -58,7 +58,7 @@ namespace CTS_ResourcePortal
 
             objProduct.Email = "isabella@gmail.com";
 
-            objProduct.Phone = "(171) 555 - 2222";
+            objProduct.Cellphone = "(171) 555 - 2222";
 
             arrProducts.Add(objProduct);
 

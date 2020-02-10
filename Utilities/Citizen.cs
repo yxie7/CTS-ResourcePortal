@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Utilities
 {
-    public class Citizen
+    public class Citizens
     {
         private string firstname;
         private string lastname;

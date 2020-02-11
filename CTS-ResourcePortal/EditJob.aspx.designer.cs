@@ -130,13 +130,13 @@ namespace CTS_ResourcePortal {
         protected global::System.Web.UI.WebControls.Label lblState;
         
         /// <summary>
-        /// txtState control.
+        /// ddlState control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtState;
+        protected global::System.Web.UI.WebControls.DropDownList ddlState;
         
         /// <summary>
         /// lblZip control.
@@ -166,13 +166,13 @@ namespace CTS_ResourcePortal {
         protected global::System.Web.UI.WebControls.Label lblStart;
         
         /// <summary>
-        /// txtDatePosted control.
+        /// CalendarPostedDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDatePosted;
+        protected global::System.Web.UI.WebControls.Calendar CalendarPostedDate;
         
         /// <summary>
         /// lblExp control.
@@ -184,13 +184,13 @@ namespace CTS_ResourcePortal {
         protected global::System.Web.UI.WebControls.Label lblExp;
         
         /// <summary>
-        /// txtExpirationDate control.
+        /// CalendarExpDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtExpirationDate;
+        protected global::System.Web.UI.WebControls.Calendar CalendarExpDate;
         
         /// <summary>
         /// lblFn control.
@@ -265,6 +265,24 @@ namespace CTS_ResourcePortal {
         protected global::System.Web.UI.WebControls.TextBox txtContPhone;
         
         /// <summary>
+        /// lblHours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblHours;
+        
+        /// <summary>
+        /// txtHours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtHours;
+        
+        /// <summary>
         /// lblLink control.
         /// </summary>
         /// <remarks>
@@ -283,22 +301,22 @@ namespace CTS_ResourcePortal {
         protected global::System.Web.UI.WebControls.TextBox txtLink;
         
         /// <summary>
-        /// lblDesc control.
+        /// lblPrimResp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDesc;
+        protected global::System.Web.UI.WebControls.Label lblPrimResp;
         
         /// <summary>
-        /// txtDesc control.
+        /// txtPrimResp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDesc;
+        protected global::System.Web.UI.WebControls.TextBox txtPrimResp;
         
         /// <summary>
         /// lblSkills control.

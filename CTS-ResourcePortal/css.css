@@ -32,14 +32,14 @@
     border-bottom: 5px solid black;
 }
 
-.newsletterPreview {
+#newsletterPreview, .newsletterPreview {
     padding: 0 50px;
     border: 5px solid black;
     margin: 0;
     background-color: white;
     max-height: 70vh;
     overflow-y: auto;
-    color:black;
+    color: black;
 }
 
 .col-form-label {
@@ -101,6 +101,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 @media screen and (max-width: 1000px) {
+    th{
+        display:none;
+    }
     #jobResourceCollapse thead, #eventResourceCollapse thead, #trainingResourceCollapse thead {
         display: none;
     }
@@ -175,12 +178,21 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         #trainingResourceCollapse td:nth-of-type(5):before {
             content: "Date Expire";
         }
+
 }
 .table-responsive-lg {
     overflow: scroll;
     max-height: 350px;
 }
+@media screen and (min-width: 992px) {
+    modal-dialog modal-lg {
+        width: 950px; /* New width for large modal */
+    }
+}
 
 table {
     overflow: scroll;
 }
+/*MyPopup{
+    width:80%;
+}*/

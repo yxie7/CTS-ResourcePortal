@@ -163,5 +163,43 @@ namespace CTS_ResourcePortal
                 BindAll();
             }
         }
+
+        protected void rptManageR_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            Resource resource = new Resource();
+            //resource.resourceID = ;           Salman will help
+            //resource.active = ;
+
+            //Currently Active
+            if (resource.active == 1)
+            {
+                resource.active = 0;
+
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "InactivateOrActivateResource";
+
+                cmd.Parameters.AddWithValue("@resourceID", resource.resourceID);
+                cmd.Parameters.AddWithValue("@active", resource.active);
+                
+
+                db.DoUpdateUsingCmdObj(cmd);
+                cmd.Parameters.Clear();
+
+            }
+            //Currently Inactive
+            else if (resource.active == 0)
+            {
+                resource.active = 1;
+
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "InactivateOrActivateResource";
+
+                cmd.Parameters.AddWithValue("@resourceID", resource.resourceID);
+                cmd.Parameters.AddWithValue("@active", resource.active);
+
+                db.DoUpdateUsingCmdObj(cmd);
+                cmd.Parameters.Clear();
+            }
+        }
     }
 }

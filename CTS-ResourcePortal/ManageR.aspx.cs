@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using Utilities;
 
@@ -161,6 +162,30 @@ namespace CTS_ResourcePortal
             else if (ddlResources.Text == "All Resources")
             {
                 BindAll();
+            }
+        }
+
+        protected void btnSelect_Click(object sender, EventArgs e)
+        {
+            foreach (RepeaterItem item in rptManageR.Items)
+            {
+                HtmlInputCheckBox chkRow = (HtmlInputCheckBox)item.FindControl("chkRow");
+                if (chkRow.Checked)
+                {
+                    //Do Something
+                }
+            }
+        }
+
+        protected void btnEdit_Click(object sender, EventArgs e)
+        {
+            foreach (RepeaterItem item in rptManageR.Items)
+            {
+                HtmlInputCheckBox chkRow = (HtmlInputCheckBox)item.FindControl("chkRow");
+                if (chkRow.Checked)
+                {
+                    //Do Something
+                }
             }
         }
     }

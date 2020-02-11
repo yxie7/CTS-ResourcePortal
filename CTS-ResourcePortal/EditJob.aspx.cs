@@ -70,7 +70,7 @@ namespace CTS_ResourcePortal
             dBConnect.DoUpdateUsingCmdObj(bigCommand);
             bigCommand.Parameters.Clear();
 
-            //Response.Redirect("ManageR.aspx");
+            Response.Redirect("ManageR.aspx");
         }
 
     }

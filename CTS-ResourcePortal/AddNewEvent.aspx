@@ -17,6 +17,10 @@
         <div id="" class="section">
             <br />
             <p><span class="requiredRed">*</span>Required</p>
+            <div class="'col-md-2"></div>
+                <div class="'col-md-2">
+                    <asp:Label runat="server" ID="lblError" class="requiredRed" Text="Please fill out all of the required fields!" Visible="false"></asp:Label>
+                </div>
             <br />
             <div class="row" id="titleRow">
                 <div class="col-sm-6">
@@ -204,10 +208,6 @@
             <div class="row justify-content-center align-items-center">
                 <div class="col-md-2">
                     <asp:Button ID="btnCreate" runat="server" Text="Add Event" class="btn btn-dark" OnClick="btnCreate_Click" />
-                </div>
-                <div class="'col-md-2"></div>
-                <div class="'col-md-2">
-                    <asp:Label runat="server" ID="lblError" Text="Please fill out all of the required fields!" Visible="false"></asp:Label>
                 </div>
             </div>
             <br />

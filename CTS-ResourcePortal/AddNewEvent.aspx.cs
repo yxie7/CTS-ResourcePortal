@@ -28,8 +28,9 @@ namespace CTS_ResourcePortal
         protected void btnCreate_Click(object sender, EventArgs e)
         {
             if (txtTitle.Text == string.Empty || txtHost.Text == string.Empty || txtAddLine1.Text == string.Empty || txtCity.Text == string.Empty ||
-                txtZip.Text == string.Empty || txtStartTime.Text == string.Empty || txtEndTime.Text == string.Empty || txtFn.Text == string.Empty ||
-                 txtLn.Text == string.Empty || txtContEmail.Text == string.Empty || txtContPhone.Text == string.Empty || txtLink.Text == string.Empty || txtDesc.Text == string.Empty)
+                txtZip.Text == string.Empty || txtStartTime.Text == string.Empty || txtEndTime.Text == string.Empty || txtFn.Text == string.Empty || 
+                txtLn.Text == string.Empty || txtContEmail.Text == string.Empty || txtContPhone.Text == string.Empty || txtLink.Text == string.Empty 
+                || txtDesc.Text == string.Empty)
             {
                 lblError.Visible = true;
             }
@@ -96,9 +97,9 @@ namespace CTS_ResourcePortal
                 txtAtire.Text = string.Empty;
                 txtLink.Text = string.Empty;
                 txtDesc.Text = string.Empty;
-            }
 
-           
+                lblError.Visible = false;
+            }
         }
     }
 }

@@ -15,7 +15,6 @@
                     <div id="newsletterPreview" class="newsletterPreview" runat="server">
                         <br />
                         <h2>October 21st, 2019 Newsletter</h2>
-
                         <h2 runat="server" id="H1"></h2>
                         <div class="row nls"></div>
                         <div class="row col-10">
@@ -37,7 +36,6 @@
                                     <h4 class="resourceTitle"><%# Eval("ResourceName") %></h4>
                                 </div>
                                 <!-- Resource Details -->
-                                <%--                                    <asp:HiddenField runat="server" ID="id" Value='<%# Eval("ResourceTypeID") %>' />--%>
                                 <div class="row col-10 desc">
                                     <asp:Label Text='<%# Eval("ResourceTypeID").ToString() == "1" ? "Date Posted": (Eval("ResourceTypeID").ToString() == "2" ? "Event Posted":"Start Date")  %>' runat="server" ID="preStartDate" />
 
@@ -47,6 +45,11 @@
                                     <asp:Label Text='<%# Eval("ResourceTypeID").ToString() == "1" ? "Expiration Date: ": (Eval("ResourceTypeID").ToString() == "2" ? "Registration Deadline: ":"Registration Deadline: ")  %>' runat="server" ID="preEndDate" />
 
                                     <asp:Label runat="server" ID="lblEndDate" Text='<%# Eval("EndDate")==null ? String.Empty:Eval("EndDate") %>' Visible='<%# Eval("EndDate") == null ? false: true %>' />
+                                </div>
+                                <div class="row col-10 desc " visible='<%# Eval("EndDate") == null ? false: true %>'>
+                                    <asp:Label Text='<%# Eval("ResourceTypeID").ToString() == "1" ? "Expiration Date: ": (Eval("ResourceTypeID").ToString() == "2" ? "Registration Deadline: ":"Registration Deadline: ")  %>' runat="server" ID="Label1" />
+
+                                    <asp:Label runat="server" ID="Label2" Text='<%# Eval("EndDate")==null ? String.Empty:Eval("EndDate") %>' Visible='<%# Eval("EndDate") == null ? false: true %>' />
                                 </div>
                                 <div class="row col-10 desc " visible='<%# Eval("StartTime") == null ? false: true %>'>
                                     <asp:Label Text="Start Time:" runat="server" ID="preStartTime" />

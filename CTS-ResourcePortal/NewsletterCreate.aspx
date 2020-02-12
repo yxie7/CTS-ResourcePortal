@@ -3,7 +3,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
     <link href="css.css" rel="stylesheet" />
 
-    
     <script src="Scripts/jquery-3.0.0.js"></script>
     <script src="Scripts/popper.js"></script>
     <script src="Scripts/bootstrap.js"></script>

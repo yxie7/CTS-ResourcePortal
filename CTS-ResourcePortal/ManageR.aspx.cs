@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using Utilities;
 
@@ -164,41 +165,28 @@ namespace CTS_ResourcePortal
             }
         }
 
-        protected void rptManageR_ItemCommand(object source, RepeaterCommandEventArgs e)
+
+        protected void btnSelect_Click(object sender, EventArgs e)
         {
-            Resource resource = new Resource();
-            //resource.resourceID = ;           Salman will help
-            //resource.active = ;
-
-            //Currently Active
-            if (resource.active == 1)
+            foreach (RepeaterItem item in rptManageR.Items)
             {
-                resource.active = 0;
-
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "InactivateOrActivateResource";
-
-                cmd.Parameters.AddWithValue("@resourceID", resource.resourceID);
-                cmd.Parameters.AddWithValue("@active", resource.active);
-                
-
-                db.DoUpdateUsingCmdObj(cmd);
-                cmd.Parameters.Clear();
-
+                HtmlInputCheckBox chkRow = (HtmlInputCheckBox)item.FindControl("chkRow");
+                if (chkRow.Checked)
+                {
+                    //Do Something
+                }
             }
-            //Currently Inactive
-            else if (resource.active == 0)
+        }
+
+        protected void btnEdit_Click(object sender, EventArgs e)
+        {
+            foreach (RepeaterItem item in rptManageR.Items)
             {
-                resource.active = 1;
-
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "InactivateOrActivateResource";
-
-                cmd.Parameters.AddWithValue("@resourceID", resource.resourceID);
-                cmd.Parameters.AddWithValue("@active", resource.active);
-
-                db.DoUpdateUsingCmdObj(cmd);
-                cmd.Parameters.Clear();
+                HtmlInputCheckBox chkRow = (HtmlInputCheckBox)item.FindControl("chkRow");
+                if (chkRow.Checked)
+                {
+                    //Do Something
+                }
             }
         }
     }

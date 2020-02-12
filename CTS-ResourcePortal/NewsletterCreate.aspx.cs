@@ -97,7 +97,7 @@ namespace CTS_ResourcePortal
             {
                 CheckBox chk = (CheckBox)gvr.FindControl("chkSelect");
                 if (chk.Checked == true)
-                {   
+                {
                     string id = gvJob.DataKeys[gvr.RowIndex].Value.ToString();
                     string comment = ((TextBox)gvr.FindControl("txtComment")).Text;
                     selections.Add(id, comment);
@@ -130,7 +130,7 @@ namespace CTS_ResourcePortal
             var query = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(js.Serialize(selections)));
             Response.Redirect("NewsletterPreview.aspx?nl=" + query);
 
-//            Response.Redirect("NewsletterPreview.aspx?nl=" + Server.UrlEncode(query));
+            //            Response.Redirect("NewsletterPreview.aspx?nl=" + Server.UrlEncode(query));
         }
     }
 }

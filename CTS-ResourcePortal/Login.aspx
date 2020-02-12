@@ -22,11 +22,11 @@
             <div class="row">
                 <div class="col"></div>
                 <div class="col-md-auto">
-                    <b>Username:</b>
+                    <asp:Label runat="server" Font-Bold="true">Email:</asp:Label>
                 </div>
                 <div class="col-md-auto">
                     <p>
-                        <asp:TextBox ID="txtUsername" Placeholder="" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtEmail" Placeholder="" runat="server"></asp:TextBox>
                     </p>
                 </div>
                 <div class="col"></div>
@@ -35,7 +35,7 @@
             <div class="row">
                 <div class="col"></div>
                 <div class="col-md-auto">
-                    <b>Password:</b>
+                    <asp:Label runat="server" Font-Bold="true">Password:</asp:Label>
                 </div>
                 <div class="col-md-auto">
                     <p>
@@ -47,7 +47,7 @@
 
             <div class="row justify-content-center align-items-center  text-center">
                 <div class="col-md-4">
-                    <a class="btn btn-large btn-info" href="ResourceList.aspx">Submit</a>
+                    <asp:Button runat="server" ID="btnSubmitLogin" Text="Submit" class="btn btn-large btn-info" OnClick="btnSubmitLogin_Click"/>
                 </div>
             </div>
         </div>
@@ -56,7 +56,7 @@
             <div class="row">
                 <div class="col"></div>
                 <div class="col-md-auto">
-                    <a href="ResourceList.aspx">Forgot Password?</a>
+                    <asp:LinkButton runat="server" ID="btnForgotPassword" Text="Forgot Password?" OnClick="btnForgotPassword_Click"></asp:LinkButton>
                 </div>
                 <div class="col"></div>
             </div>
@@ -64,7 +64,10 @@
             <div class="row ">
                 <div class="col"></div>
                 <div class="col-md-auto">
-                    <p>Don't Have an account? <a href="Signup.aspx">Sign Up </a></p>
+                    <asp:Label runat="server" ID="lblError" Visible="false"></asp:Label>
+                    <br />
+                    <asp:Label runat="server" ID="UserRegistrationError" Visible="false"></asp:Label> 
+                    <p>Don't Have an account? <asp:LinkButton runat="server" ID="btnSignUpLogin" Text="Sign Up" OnClick="btnSignUpLogin_Click"></asp:LinkButton></p>
                 </div>
                 <div class="col"></div>
             </div>

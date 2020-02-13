@@ -9,6 +9,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Globalization;
 using Utilities;
+using System.Text.RegularExpressions;
+
 
 namespace CTS_ResourcePortal
 {
@@ -219,6 +221,10 @@ namespace CTS_ResourcePortal
 
             lblOtherRequirements.Text = (string)db.GetField("Requirements", 0);
 
+
+            btnLink.CommandName = "btnLinkCN";
+            btnLink.CommandArgument = db.GetField("Link", 0).ToString();
+
             JobVisibilityControls();
 
             ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
@@ -278,6 +284,10 @@ namespace CTS_ResourcePortal
             lblStartEnd.Text = "From: " + starttime + " To: " + endtime;
 
             lblAttire1.Text = (string)db.GetField("Attire", 0);
+
+
+            btnLink.CommandName = "btnLinkCN";
+            btnLink.CommandArgument = db.GetField("Link", 0).ToString();
 
             EventVisibilityControls();
 
@@ -343,6 +353,10 @@ namespace CTS_ResourcePortal
 
             lblOtherRequirements.Text = (string)db.GetField("Requirements", 0);
 
+            btnLink.CommandName = "btnLinkCN";
+            btnLink.CommandArgument = db.GetField("Link", 0).ToString();
+
+
             TrainingVisibilityControls();
 
             ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
@@ -396,6 +410,23 @@ namespace CTS_ResourcePortal
             lblAttire.Visible = false;
             lblAttire1.Visible = false;
 
+        }
+
+        protected void btnLink_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            if (btn.CommandName == "btnLinkCN")
+            {
+                Regex rgx = new Regex("^https?://");
+                if (rgx.IsMatch(btn.CommandArgument))
+                {
+                    Response.Redirect(btn.CommandArgument);
+                }
+                else
+                {
+                    Response.Redirect("http://"+btn.CommandArgument);
+                }
+            }
         }
     }
 }

@@ -142,16 +142,16 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('[id*=datatable]').DataTable({
-                columnDefs: [{
-                    orderable: false,
-                    className: 'select-checkbox',
-                    targets: 0
-                }],
-                select: {
-                    style: 'os',
-                    selector: 'td:first-child'
-                },
-                order: [[1, 'asc']]
+                //columnDefs: [{
+                //    orderable: false,
+                //    className: 'select-checkbox',
+                //    targets: 0
+                //}],
+                //select: {
+                //    style: 'os',
+                //    selector: 'td:first-child'
+                //},
+                //order: [[1, 'asc']]
             });
         });
     </script>
@@ -194,7 +194,7 @@
                 <br />
                 <br />
                     <asp:Label ID="lblDDLResources" runat="server" Text="Select Resources to View: "></asp:Label>
-                    <asp:DropDownList ID="ddlResources" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+                    <asp:DropDownList ID="ddlResources" runat="server" AutoPostBack="false" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
                         <asp:ListItem Text="All Resources"></asp:ListItem>
                     </asp:DropDownList> &nbsp <asp:Button ID="btnViewR" runat="server" OnClick="btnViewR_Click" Text="View" />  &nbsp <asp:Button ID="btnAllResources" runat="server" OnClick="btnAllResources_Click"  Text="View All Resources"/>
 
@@ -243,12 +243,12 @@
                             </td>
                             <td>
 
-                                <asp:Button ID="btnSelect" Text="Inactivate Resource" runat="server" />
+                                <asp:Button ID="btnSelect" Text="Inactivate Resource" runat="server" OnClick="btnSelect_Click" />
 
                             </td>
                             <td>
 
-                                <asp:Button ID="btnEdit" Text="Edit" runat="server" />
+                                <asp:Button ID="btnEdit" Text="Edit" runat="server" OnClick="btnEdit_Click" />
 
                             </td>
                         </tr>

@@ -66,7 +66,7 @@ namespace CTS_ResourcePortal
             cmd.Parameters.Clear();
 
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "SelectResources";
+            cmd.CommandText = "SelectAllFeedback";
 
             DataSet dataSet = db.GetDataSetUsingCmdObj(cmd);
 

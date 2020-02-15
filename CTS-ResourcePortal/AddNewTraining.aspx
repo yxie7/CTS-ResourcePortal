@@ -21,7 +21,7 @@
                     <asp:TextBox ID="txtTitle" class="form-control" runat="server"></asp:TextBox>
                 </div>
                 <div class="col-sm-6">
-                    <asp:Label ID="lblHost" runat="server">Hosted By: </asp:Label><br />
+                    <asp:Label ID="lblHost" runat="server"><span class="requiredRed">*</span>Hosted By: </asp:Label><br />
                     <asp:TextBox ID="txtHost" class="form-control" runat="server"></asp:TextBox>
                 </div>
             </div>
@@ -205,6 +205,10 @@
             <div class="row justify-content-center align-items-center">
                 <div class="col-md-2">
                     <asp:Button ID="btnCreate" runat="server" Text="Add Training" class="btn btn-dark" OnClick="btnCreate_Click" />
+                </div>
+                <div class="'col-md-2"></div>
+                <div class="'col-md-2">
+                    <asp:Label runat="server" ID="lblError" class="requiredRed" Text="Please fill out all of the required fields!" Visible="false"></asp:Label>
                 </div>
             </div>
             <br />

@@ -18,7 +18,9 @@
             <div class="row" id="titleRow">
                 <div class="col-sm-6">
                     <asp:Label ID="lblTitle" runat="server"><span class="requiredRed">*</span>Job Opportunity Title: </asp:Label><br />
-                    <asp:TextBox ID="txtTitle" class="form-control" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtTitle" class="form-control" runat="server" ></asp:TextBox>
+
+
                 </div>
                 <div class="col-sm-6">
                     <asp:Label ID="lblCompany" runat="server"><span class="requiredRed">*</span>Company Name: </asp:Label><br />
@@ -196,6 +198,10 @@
             <div class="row justify-content-center align-items-center">
                 <div class="col-md-2">
                     <asp:Button ID="btnCreate" runat="server" Text="Add Job Opportunity" class="btn btn-dark" OnClick="btnCreate_Click" />
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-2">
+                    <asp:Label runat="server" ID="lblError" class="requiredRed" Text="Please fill out all of the required fields!" Visible="false"></asp:Label>
                 </div>
             </div>
             <br />

@@ -47,7 +47,6 @@
                     </thead>
                     <tbody>
                         <tr>
-
                             <td>Tyreak</td>
                             <td>Allen</td>
                             <td>tyreak.allen@gmail.com</td>
@@ -96,9 +95,39 @@
                 </div>
             </div>
         </div>
-        <br />
         <div class="section">
-            <div class="row">
+
+             <asp:GridView ID="grdAllAccounts" runat="server" AutoGenerateColumns="False"
+             Width="623px" class="table table-striped">
+            <Columns>
+                <asp:TemplateField>
+            <ItemTemplate>
+                <asp:CheckBox ID="chkRow" runat="server" />
+            </ItemTemplate>
+                </asp:TemplateField>
+                
+                <asp:BoundField DataField="Firstname" HeaderText="First Name" />
+
+                <asp:BoundField DataField="Lastname" HeaderText="Last Name" />
+
+                <asp:BoundField DataField="Username" HeaderText="Username" />
+
+                <asp:BoundField DataField="Address" HeaderText="Address" />
+
+                <asp:BoundField DataField="Email" HeaderText="Email" />
+
+                <asp:BoundField DataField="Phone" HeaderText="Phone" />
+
+                <asp:TemplateField HeaderText="Resume">
+
+                    <ItemTemplate>
+                        <asp:LinkButton ID="lnkType" runat="server" Text="View" OnClick="lnkView_Click"></asp:LinkButton >
+                    </ItemTemplate>                   
+                </asp:TemplateField>
+            </Columns>
+        </asp:GridView>
+
+            <!--<div class="row">
                 <div class="col"></div>
                 <h2 class="col-md-auto">All Citizens</h2>
                 <div class="col"></div>
@@ -109,13 +138,11 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
+                            <td></td>
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>User Name</th>
-                            <th>Street Address</th>
-                            <th>City</th>
-                            <th>State</th>
-                            <th>Zip Code</th>
+                            <th>Address</th>                           
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Resume</th>
@@ -123,40 +150,31 @@
                     </thead>
                     <tbody>
                         <tr>
-
+                            <td><input type="checkbox"/></td>
                             <td>Isabella</td>
                             <td>Christensen</td>
                             <td>IsabellaC</td>
-                            <td>2244 N Glenwood ST</td>
-                            <td>Philadelphia</td>
-                            <td>PA</td>
-                            <td>19133</td>
+                            <td>2244 N Glenwood ST, Philadelphia, PA, 19133</td>
                             <td>isabella@gmail.com</td>
                             <td>(171) 555-2222</td>
-                            <td><asp:LinkButton runat="server" Text="View"></asp:LinkButton></td>
+                            <td><asp:LinkButton runat="server" ID="lnkView" Text="View" OnClick="lnkView_Click"></asp:LinkButton></td>
                         </tr>
                         <tr>
-
+                            <td><input type="checkbox"/></td>
                             <td>Don Quixote</td>
                             <td>Quixote</td>
                             <td>DQuixote</td>
-                            <td>1122 E Main ST</td>
-                            <td>Philadelphia</td>
-                            <td>PA</td>
-                            <td>19133</td>
+                            <td>1122 E Main ST, Philadelphia, PA, 19133
                             <td>don.ouixote@gmail.com</td>
                             <td>(313) 555-5735</td>
                             <td><asp:LinkButton runat="server" Text="View"></asp:LinkButton></td>
                         </tr>
                         <tr>
-
+                            <td><input type="checkbox"/></td>
                             <td>John</td>
                             <td>Doe</td>
                             <td>JDoe</td>
-                            <td>4622 W Germantown ST</td>
-                            <td>Philadelphia</td>
-                            <td>PA</td>
-                            <td>19133</td>
+                            <td>4622 W Germantown ST, Philadelphia, PA, 19133
                             <td>john.doe@gmail.com</td>
                             <td>(503) 555-9931</td>
                             <td>N/A</td>
@@ -175,9 +193,10 @@
                         <li class="page-item"><a href="#" class="page-link">Next</a></li>
                     </ul>
                 </div>
-            </div>		
+            </div>-->		
 			
         </div>
+        <br />
     </div>
 
     <script type="text/javascript">

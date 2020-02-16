@@ -61,30 +61,37 @@ namespace CTS_ResourcePortal
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            objCommand.Parameters.Clear();
-            objCommand.CommandText = "AddFeedback";
+            if (txtFeedback.Text != ""){
+                objCommand.Parameters.Clear();
+                objCommand.CommandText = "AddFeedback";
 
 
-            objCommand.Parameters.AddWithValue("@CitizenID", lblCitizenID.Text.ToString());
-            
-            objCommand.Parameters.AddWithValue("@FeedbackText", txtFeedback.Text.ToString());
+                objCommand.Parameters.AddWithValue("@CitizenID", lblCitizenID.Text.ToString());
 
-            objCommand.Parameters.AddWithValue("@ResourceID", lblResourceID.Text.ToString());
+                objCommand.Parameters.AddWithValue("@FeedbackText", txtFeedback.Text.ToString());
 
-            objCommand.Parameters.AddWithValue("@Date", DateTime.Now.ToString("M/d/yyyy"));
+                objCommand.Parameters.AddWithValue("@ResourceID", lblResourceID.Text.ToString());
 
-            var ResponseReceived = objDB.DoUpdateUsingCmdObj(objCommand);
+                objCommand.Parameters.AddWithValue("@Date", DateTime.Now.ToString("M/d/yyyy"));
 
-            if (ResponseReceived == 1)
-            {
+                var ResponseReceived = objDB.DoUpdateUsingCmdObj(objCommand);
 
-                lblConfirm.Text = "Thank you for submitting feedback!";
+                if (ResponseReceived == 1)
+                {
+
+                    lblConfirm.Text = "Thank you for submitting feedback!";
+                    lblConfirm.Visible = true;
+                }
+                else
+
+                    lblConfirm.Text = "Failed";
                 lblConfirm.Visible = true;
             }
             else
-          
-                lblConfirm.Text = "Failed";
+            {
+                lblConfirm.Text = "Please enter Feedback text";
                 lblConfirm.Visible = true;
+            }
         }
     }
 }

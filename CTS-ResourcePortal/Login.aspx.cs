@@ -72,6 +72,7 @@ namespace CTS_ResourcePortal
                         
                         if (plainTextPassword == password)
                         {
+                            Session.Add("userEmail", txtEmail.Text);
                             Response.Redirect("ResourceList.aspx");
                         }
                         else

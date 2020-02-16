@@ -35,18 +35,26 @@ namespace CTS_ResourcePortal
                     for (int i = 0; i < count; i++)
                     {
                         Job j = new Job();
+
                         j.resourceID = db.GetField("ResourcesID", i).ToString();
                         j.resourceTitle = db.GetField("ResourceName", i).ToString();
                         j.email = db.GetField("ContactEmail", i).ToString();
 
+                        if (!(String.IsNullOrEmpty(db.GetField("StartDate", i).ToString())))
+                        {
+                            var dateValue = db.GetField("StartDate", i);
+                            string date1 = Convert.ToDateTime(dateValue).ToString("MM-dd-yyyy");
+                            j.datePosted = Convert.ToDateTime(date1);
+                        }
 
-                        var dateValue = db.GetField("StartDate", i);
-                        string date1 = Convert.ToDateTime(dateValue).ToString("MM-dd-yyyy");
-                        j.datePosted = Convert.ToDateTime(date1);
+                        if (!(String.IsNullOrEmpty(db.GetField("EndDate", i).ToString())))
+                        {
+                            var dateValue2 = db.GetField("EndDate", i);
+                            string date2 = Convert.ToDateTime(dateValue2).ToString("MM-dd-yyyy");
+                            j.expDate = Convert.ToDateTime(date2);
+                        }
 
-                        var dateValue2 = db.GetField("EndDate", i);
-                        string date2 = Convert.ToDateTime(dateValue2).ToString("MM-dd-yyyy");
-                        j.expDate = Convert.ToDateTime(date2);
+                 
 
 
                         j.addressLine1 = db.GetField("AddressLine", i).ToString();
@@ -82,13 +90,20 @@ namespace CTS_ResourcePortal
                         E.email = db.GetField("ContactEmail", i).ToString();
 
 
-                        var dateValue = db.GetField("StartDate", i);
-                        string date1 = Convert.ToDateTime(dateValue).ToString("MM-dd-yyyy");
-                        E.eventDate = Convert.ToDateTime(date1);
+                        if (!(String.IsNullOrEmpty(db.GetField("StartDate", i).ToString())))
+                        {
+                            var dateValue = db.GetField("StartDate", i);
+                            string date1 = Convert.ToDateTime(dateValue).ToString("MM-dd-yyyy");
+                            E.eventDate = Convert.ToDateTime(date1);
+                        }
 
-                        var dateValue2 = db.GetField("EndDate", i);
-                        string date2 = Convert.ToDateTime(dateValue2).ToString("MM-dd-yyyy");
-                        E.expDate = Convert.ToDateTime(date2);
+                        if (!(String.IsNullOrEmpty(db.GetField("EndDate", i).ToString())))
+                        {
+                            var dateValue2 = db.GetField("EndDate", i);
+                            string date2 = Convert.ToDateTime(dateValue2).ToString("MM-dd-yyyy");
+                            E.expDate = Convert.ToDateTime(date2);
+                        }
+
 
 
                         E.addressLine1 = db.GetField("AddressLine", i).ToString();
@@ -122,13 +137,19 @@ namespace CTS_ResourcePortal
                         T.email = db.GetField("ContactEmail", i).ToString();
 
 
-                        var dateValue = db.GetField("StartDate", i);
-                        string date1 = Convert.ToDateTime(dateValue).ToString("MM-dd-yyyy");
-                        T.startDate = Convert.ToDateTime(date1);
+                        if (!(String.IsNullOrEmpty(db.GetField("StartDate", i).ToString())))
+                        {
+                            var dateValue = db.GetField("StartDate", i);
+                            string date1 = Convert.ToDateTime(dateValue).ToString("MM-dd-yyyy");
+                            T.startDate = Convert.ToDateTime(date1);
+                        }
 
-                        var dateValue2 = db.GetField("EndDate", i);
-                        string date2 = Convert.ToDateTime(dateValue2).ToString("MM-dd-yyyy");
-                        T.expDate = Convert.ToDateTime(date2);
+                        if (!(String.IsNullOrEmpty(db.GetField("EndDate", i).ToString())))
+                        {
+                            var dateValue2 = db.GetField("EndDate", i);
+                            string date2 = Convert.ToDateTime(dateValue2).ToString("MM-dd-yyyy");
+                            T.expDate = Convert.ToDateTime(date2);
+                        }
 
 
                         T.addressLine1 = db.GetField("AddressLine", i).ToString();
@@ -177,7 +198,7 @@ namespace CTS_ResourcePortal
             lblCompanyName.Text = (string)db.GetField("Company", 0);
             lblResponsibilities.Text = (string)db.GetField("Description", 0);
             lblHours.Text = (string)db.GetField("WeeklyHours", 0);
-            lblLength.Text = (string)db.GetField("Length", 0);
+            //lblLength.Text = (string)db.GetField("Length", 0);
 
             string addressLine1 = (string)db.GetField("AddressLine", 0);
             string city = (string)db.GetField("LocationCity", 0);
@@ -193,10 +214,10 @@ namespace CTS_ResourcePortal
             lblPosted.Text = Convert.ToDateTime(dateValue).ToString("MM-dd-yyyy");
 
 
-            var dateValue2 = db.GetField("EndDate", 0);
+            var dateValue2 = db.GetField("RegistrationDeadline", 0);
             lblExpired.Text = Convert.ToDateTime(dateValue2).ToString("MM-dd-yyyy");
 
-            lblAttire.Text = (string)db.GetField("Attire", 0);
+            //lblAttire.Text = (string)db.GetField("Attire", 0);
 
             lblOtherRequirements.Text = (string)db.GetField("Requirements", 0);
 
@@ -355,6 +376,7 @@ namespace CTS_ResourcePortal
             lblStartEnd.Visible = false;
             lblAttire.Visible = false;
             lblAttire1.Visible = false;
+            lblStartDt.Visible = false;
         }
         public void EventVisibilityControls()
         {
@@ -405,6 +427,23 @@ namespace CTS_ResourcePortal
                     Response.Redirect("http://"+btn.CommandArgument);
                 }
             }
+        }
+
+        protected void btnFeedback_Click(object sender, EventArgs e)
+        {
+            // Append data using key-value pairs to the URL
+
+            // After the Full URL, absolute path to a file, or relative path to a file and a Filename,
+
+            // the ? symbol and key-value pair list must follow the filename.
+
+            // Each key-value pair must be separated by the & symbol
+
+            // Format: ?Key1=value1&Key2=value2&KeyN=valueN
+
+            Response.Redirect("Feedback.aspx?resource=" + myHeader.InnerHtml);
+
+
         }
     }
 }

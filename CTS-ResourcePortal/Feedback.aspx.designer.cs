@@ -13,6 +13,15 @@ namespace CTS_ResourcePortal {
     public partial class MobileFeedback {
         
         /// <summary>
+        /// txtCitizen control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCitizen;
+        
+        /// <summary>
         /// txtResourceTitle control.
         /// </summary>
         /// <remarks>
@@ -22,6 +31,15 @@ namespace CTS_ResourcePortal {
         protected global::System.Web.UI.WebControls.TextBox txtResourceTitle;
         
         /// <summary>
+        /// lblCitizenID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCitizenID;
+        
+        /// <summary>
         /// txtFeedback control.
         /// </summary>
         /// <remarks>
@@ -29,5 +47,32 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtFeedback;
+        
+        /// <summary>
+        /// lblResourceID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblResourceID;
+        
+        /// <summary>
+        /// btnSubmit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSubmit;
+        
+        /// <summary>
+        /// lblConfirm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblConfirm;
     }
 }

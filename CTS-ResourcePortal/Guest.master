@@ -7,7 +7,7 @@
         <a class="nav-link" href="Signup.aspx">Sign-Up</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="MobileLogin.aspx">Login</a>
+        <a class="nav-link" href="Login.aspx">Login</a>
     </li>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">

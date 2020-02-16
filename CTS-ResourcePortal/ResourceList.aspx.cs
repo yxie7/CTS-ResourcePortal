@@ -428,5 +428,22 @@ namespace CTS_ResourcePortal
                 }
             }
         }
+
+        protected void btnFeedback_Click(object sender, EventArgs e)
+        {
+            // Append data using key-value pairs to the URL
+
+            // After the Full URL, absolute path to a file, or relative path to a file and a Filename,
+
+            // the ? symbol and key-value pair list must follow the filename.
+
+            // Each key-value pair must be separated by the & symbol
+
+            // Format: ?Key1=value1&Key2=value2&KeyN=valueN
+
+            Response.Redirect("Feedback.aspx?resource=" + myHeader.InnerHtml);
+
+
+        }
     }
 }

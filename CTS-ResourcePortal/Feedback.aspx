@@ -26,21 +26,21 @@
                 <div class="col-1"></div>
 
                 <div class="col-md-8">
-                    <p>
-                        Isabella Christensen
-                    </p>
+
+                    <asp:TextBox ID="txtCitizen" Placeholder="Isabella Christensen" Text="" runat="server" ReadOnly="True"></asp:TextBox>
+
                 </div>
             </div>
         </div>
         <div class="section">
             <div class="row">
                 <div class="col-md-3">
-                    <b>Job Title:</b>
+                    <b>Resource Title:</b>
                 </div>
                 <div class="col-1"></div>
 
                 <div class="col-md-8">
-                   <asp:TextBox ID="txtResourceTitle" Placeholder="Entry Level Contractor" text="Entry Level Contractor" runat="server" ReadOnly="True"></asp:TextBox>
+                   <asp:TextBox ID="txtResourceTitle" Placeholder="Entry Level Contractor" text="" runat="server" ReadOnly="True"></asp:TextBox>
                 </div>
             </div>
         </div>
@@ -52,8 +52,11 @@
                 <div class="col-1"></div>
 
                 <div class="col-md-8">
+                <asp:Label runat="server" Text="" ID="lblCitizenID" Visible="False"></asp:Label>
+                
                    <asp:TextBox ID="txtFeedback" style="height:150px; width:90%;" Wrap="True"  TextMode="MultiLine" runat="server"></asp:TextBox>
-                </div>
+               <asp:Label runat="server" Text="" ID="lblResourceID" Visible="False"></asp:Label>
+                    </div>
             </div>
         </div>
         <br />
@@ -67,7 +70,9 @@
         <div class="row  justify-content-center align-items-center text-center">
             <div class="col"></div>
             <div class="col-md-4">
-                <a class="btn btn-large btn-info" href="MobileFeedback.aspx">Submit Feedback</a>
+
+                <asp:Button runat="server" CssClass="btn btn-large btn-info" Text="Submit Feedback" ID="btnSubmit" OnClick="btnSubmit_Click" />
+                <asp:Label runat="server" Text="" ID="lblConfirm" Visible="False"></asp:Label>
             </div>
             <div class="col"></div>
         </div>

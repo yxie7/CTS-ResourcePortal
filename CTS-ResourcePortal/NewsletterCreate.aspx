@@ -73,7 +73,7 @@
                     </div>
                     <br />
                     <div class="row justify-content-center align-items-center">
-                        <asp:TextBox runat="server" ID="txtTitleSearch" AutoPostBack="true" CssClass="form-text" placeholder="Search Titles Here..." on OnTextChanged="txtTitleSearch_TextChanged"></asp:TextBox>
+                        <asp:TextBox runat="server" ID="txtTitleSearch" AutoPostBack="true" CssClass="form-text" placeholder="Search Titles Here..." OnTextChanged="txtTitleSearch_TextChanged"></asp:TextBox>
                     </div>
                     <!--
             <div class="row justify-content-center align-items-center">

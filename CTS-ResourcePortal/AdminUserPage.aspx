@@ -97,7 +97,61 @@
         </div>
         <div class="section">
 
-             <asp:GridView ID="grdAllAccounts" runat="server" AutoGenerateColumns="False"
+            <asp:Repeater ID="rptManageR" runat="server">
+                    <HeaderTemplate>
+                        <table id="datatable" class="table table-striped table-bordered" border="0" cellpadding="0"
+                            cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <asp:CheckBox ID="chkHeader" runat="server" /></th>
+                                    <th>First Name
+                                    </th>
+                                    <th>Last Name
+                                    </th>
+                                    <th>Email
+                                    </th>
+                                    <th>Phone Number
+                                    </th>
+                                    <th>Address
+                                    </th>
+                                    <th>Resume
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                    </HeaderTemplate>
+
+                    <ItemTemplate>
+                        <tr>
+                            <td>
+                                <asp:Label ID="lblfName" runat=server Text='<%# DataBinder.Eval(Container.DataItem, ("FirstName")) %>'></asp:Label>
+                            </td>
+                            <td>
+                               <asp:Label ID="lblLName" runat="server" Text=' <%# DataBinder.Eval(Container.DataItem, ("LastName")) %>'></asp:Label>
+                            </td>
+                            <td>
+                               <asp:Label ID="lblEmail" runat="server" Text=' <%# DataBinder.Eval(Container.DataItem, ("Email")) %>'></asp:Label>
+                            </td>
+                            <td>
+                                <asp:Label ID="lblPhone" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, ("PhoneNumber")) %>'></asp:Label>
+                            </td>
+                            <td>
+                                <asp:Label ID="lblAddress" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, ("Address")) %>'></asp:Label>
+                            </td>
+                            <td>
+                                <asp:LinkButton ID="lnkType" runat="server" Text="View" OnClick="lnkView_Click"></asp:LinkButton >
+                            </td>
+                        </tr>
+
+                    </ItemTemplate>
+
+                    <FooterTemplate>
+                        </tbody></table>
+                    </FooterTemplate>
+                </asp:Repeater>
+
+             <!--<asp:GridView ID="grdAllAccounts" runat="server" AutoGenerateColumns="False"
              Width="623px" class="table table-striped">
             <Columns>
                 <asp:TemplateField>
@@ -116,7 +170,7 @@
 
                 <asp:BoundField DataField="Email" HeaderText="Email" />
 
-                <asp:BoundField DataField="Phone" HeaderText="Phone" />
+                <asp:BoundField DataField="Cellphone" HeaderText="Cellphone" />
 
                 <asp:TemplateField HeaderText="Resume">
 
@@ -125,7 +179,7 @@
                     </ItemTemplate>                   
                 </asp:TemplateField>
             </Columns>
-        </asp:GridView>
+        </asp:GridView>-->
 
             <!--<div class="row">
                 <div class="col"></div>

@@ -52,9 +52,8 @@ namespace CTS_ResourcePortal
                             var dateValue2 = db.GetField("EndDate", i);
                             string date2 = Convert.ToDateTime(dateValue2).ToString("MM-dd-yyyy");
                             j.expDate = Convert.ToDateTime(date2);
-                        }
-
-                 
+                        }        
+                        
 
 
                         j.addressLine1 = db.GetField("AddressLine", i).ToString();

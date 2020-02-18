@@ -199,7 +199,7 @@ namespace CTS_ResourcePortal
 
                         cmd.CommandType = CommandType.StoredProcedure;
 
-                        cmd.Parameters.AddWithValue("@ResumeTitle", resumeTitle);
+                        cmd.Parameters.AddWithValue("@ResumeTitle", resumeName);
 
                         cmd.Parameters.AddWithValue("@ResumeType", resumeType);
 

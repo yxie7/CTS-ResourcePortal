@@ -14,6 +14,7 @@
             <br />
             <asp:Label ID="lblRequired" runat="server"><span class="requiredRed">*</span>Required</asp:Label>
             <br />
+            <asp:Label runat="server" ID="lblError" class="requiredRed" Text="You have left one of the fields blank. Please fill out all of the required fields!" Visible="false"></asp:Label>
             <br />
             <div class="row" id="titleRow">
                 <div class="col-sm-6">
@@ -161,11 +162,11 @@
             <div class="row" id="cont2">
                 <div class="col-sm-6">
                     <asp:Label ID="lblContEmail" runat="server"><span class="requiredRed">*</span>Primary Contact Email: </asp:Label><br />
-                    <asp:TextBox ID="txtContEmail" class="form-control" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtContEmail" class="form-control" runat="server" TextMode="Email"></asp:TextBox>
                 </div>
                 <div class="col-sm-6">
                     <asp:Label ID="lblContPhone" runat="server"><span class="requiredRed">*</span>Primary Contact Phone #: </asp:Label><br />
-                    <asp:TextBox ID="txtContPhone" class="form-control" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtContPhone" class="form-control" runat="server" TextMode="Phone"></asp:TextBox>
                 </div>
             </div>
             <br />
@@ -200,9 +201,7 @@
                     <asp:Button ID="btnCreate" runat="server" Text="Add Job Opportunity" class="btn btn-dark" OnClick="btnCreate_Click" />
                 </div>
                 <div class="col-md-2"></div>
-                <div class="col-md-2">
-                    <asp:Label runat="server" ID="lblError" class="requiredRed" Text="Please fill out all of the required fields!" Visible="false"></asp:Label>
-                </div>
+                <div class="col-md-2"></div>
             </div>
             <br />
         </div>

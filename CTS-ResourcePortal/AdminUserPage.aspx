@@ -116,7 +116,7 @@
 
                 <asp:BoundField DataField="Email" HeaderText="Email" />
 
-                <asp:BoundField DataField="Phone" HeaderText="Phone" />
+                <asp:BoundField DataField="CellPhone" HeaderText="Phone" />
 
                 <asp:TemplateField HeaderText="Resume">
 

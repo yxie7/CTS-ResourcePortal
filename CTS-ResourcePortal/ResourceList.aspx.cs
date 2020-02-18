@@ -44,7 +44,7 @@ namespace CTS_ResourcePortal
                         string date1 = Convert.ToDateTime(dateValue).ToString("MM-dd-yyyy");
                         j.datePosted = Convert.ToDateTime(date1);
 
-                        var dateValue2 = db.GetField("EndDate", i);
+                        var dateValue2 = db.GetField("RegistrationDeadline", i);
                         string date2 = Convert.ToDateTime(dateValue2).ToString("MM-dd-yyyy");
                         j.expDate = Convert.ToDateTime(date2);
 
@@ -177,7 +177,7 @@ namespace CTS_ResourcePortal
             lblCompanyName.Text = (string)db.GetField("Company", 0);
             lblResponsibilities.Text = (string)db.GetField("Description", 0);
             lblHours.Text = (string)db.GetField("WeeklyHours", 0);
-            lblLength.Text = (string)db.GetField("Length", 0);
+            //lblLength.Text = (string)db.GetField("Length", 0);
 
             string addressLine1 = (string)db.GetField("AddressLine", 0);
             string city = (string)db.GetField("LocationCity", 0);
@@ -193,10 +193,10 @@ namespace CTS_ResourcePortal
             lblPosted.Text = Convert.ToDateTime(dateValue).ToString("MM-dd-yyyy");
 
 
-            var dateValue2 = db.GetField("EndDate", 0);
+            var dateValue2 = db.GetField("RegistrationDeadline", 0);
             lblExpired.Text = Convert.ToDateTime(dateValue2).ToString("MM-dd-yyyy");
 
-            lblAttire.Text = (string)db.GetField("Attire", 0);
+            //lblAttire.Text = (string)db.GetField("Attire", 0);
 
             lblOtherRequirements.Text = (string)db.GetField("Requirements", 0);
 

@@ -40,15 +40,11 @@
                         <div class="card-body">
                             <div class="row d-flex justify-content-center align-items-center">
                                 <ul class="cardlist col-8  justify-content-center align-items-center ">
-                                    <li>
-                                        <a class="" href="MobileJob.aspx">Entry Level Contractor</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Plumber's Apprentice</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Coca-Cola Delivery</a>
-                                    </li>
+                                    <asp:Repeater ID="rptJob" runat="server">
+                                        <ItemTemplate>
+                                            <li><a href=""><%# Eval("ResourceName") %></a></li>
+                                        </ItemTemplate>
+                                    </asp:Repeater>
                                 </ul>
                             </div>
                         </div>
@@ -67,7 +63,7 @@
                             <div class="row d-flex justify-content-center">
                                 <ul class="cardlist col-8  justify-content-center align-items-center ">
                                     <li>
-                                        <a href="MobileEvent.aspx">North Philly Job Fair</a>
+                                        <a href="Event.aspx">North Philly Job Fair</a>
                                     </li>
                                     <li>
                                         <a href="#">Newtown Job Fair</a>
@@ -94,7 +90,7 @@
                             <div class="row d-flex justify-content-center">
                                 <ul class="cardlist col-8  justify-content-center align-items-center ">
                                     <li>
-                                        <a href="MobileTraining.aspx">CDL Classes</a>
+                                        <a href="Training.aspx">CDL Classes</a>
                                     </li>
                                     <li>
                                         <a href="#">Electrician Classes</a>

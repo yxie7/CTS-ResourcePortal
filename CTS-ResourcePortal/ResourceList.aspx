@@ -151,7 +151,7 @@
                     <div class="row  justify-content-center align-items-center text-center">
                         <div class="col"></div>
                         <div class="col-md-4">
-                            <a class="btn btn-large btn-info" href="MobileFeedback.aspx">Leave Feedback</a>
+                            <a class="btn btn-large btn-info" href="Feedback.aspx">Leave Feedback</a>
                         </div>
                         <div class="col"></div>
                     </div>

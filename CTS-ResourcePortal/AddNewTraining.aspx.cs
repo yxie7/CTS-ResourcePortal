@@ -106,5 +106,10 @@ namespace CTS_ResourcePortal
             }
 
         }
+
+        /*public bool IsValid()
+        {
+
+        }*/
     }
 }

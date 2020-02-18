@@ -28,8 +28,8 @@ namespace CTS_ResourcePortal
         protected void btnCreate_Click(object sender, EventArgs e)
         {
             if (txtTitle.Text == string.Empty || txtHost.Text == string.Empty || txtAddLine1.Text == string.Empty || txtCity.Text == string.Empty ||
-                txtZip.Text == string.Empty || txtStartTime.Text == string.Empty || txtEndTime.Text == string.Empty || txtFn.Text == string.Empty || 
-                txtLn.Text == string.Empty || txtContEmail.Text == string.Empty || txtContPhone.Text == string.Empty || txtLink.Text == string.Empty 
+                txtZip.Text == string.Empty || txtStartTime.Text == string.Empty || txtEndTime.Text == string.Empty || txtFn.Text == string.Empty ||
+                txtLn.Text == string.Empty || txtContEmail.Text == string.Empty || txtContPhone.Text == string.Empty || txtLink.Text == string.Empty
                 || txtDesc.Text == string.Empty)
             {
                 lblError.Visible = true;
@@ -100,6 +100,92 @@ namespace CTS_ResourcePortal
 
                 lblError.Visible = false;
             }
+            
         }
+
+       /* public bool IsValid()
+        {
+            if (txtTitle.Text == string.Empty)
+            {
+                lblTitleError.Visible = true;
+                return false;
+            }
+
+            if (txtHost.Text == string.Empty)
+            {
+                lblHostError.Visible = true;
+                return false;
+            }
+
+            else if (txtAddLine1.Text == string.Empty)
+            {
+                lblAdd1Error.Visible = true;
+                return false;
+            }
+
+            if (txtCity.Text == string.Empty)
+            {
+                lblCityError.Visible = true;
+                return false;
+            }
+
+            if (txtZip.Text == string.Empty)
+            {
+                lblZipError.Visible = true;
+                return false;
+            }
+
+            if (txtStartTime.Text == string.Empty)
+            {
+                lblStartError.Visible = true;
+                return false;
+            }
+
+            if (txtEndTime.Text == string.Empty)
+            {
+                lblEndError.Visible = true;
+                return false;
+            }
+
+            if (txtFn.Text == string.Empty)
+            {
+                lblFNError.Visible = true;
+                return false;
+            }
+
+            if (txtLn.Text == string.Empty)
+            {
+                lblLNError.Visible = true;
+                return false;
+            }
+
+            if (txtContEmail.Text == string.Empty)
+            {
+                lblEmailError.Visible = true;
+                return false;
+            }
+
+            if (txtContPhone.Text == string.Empty)
+            {
+                lblPhoneError.Visible = true;
+                return false;
+            }
+
+            if (txtLink.Text == string.Empty)
+            {
+                lblLinkError.Visible = true;
+                return false;
+            }
+
+            if (txtDesc.Text == string.Empty)
+            {
+                lblDescError.Visible = true;
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }*/
     }
 }

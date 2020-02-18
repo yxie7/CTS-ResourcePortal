@@ -13,6 +13,15 @@ namespace CTS_ResourcePortal {
     public partial class AddNewEvent {
         
         /// <summary>
+        /// lblRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRequired;
+        
+        /// <summary>
         /// lblError control.
         /// </summary>
         /// <remarks>
@@ -40,6 +49,15 @@ namespace CTS_ResourcePortal {
         protected global::System.Web.UI.WebControls.TextBox txtTitle;
         
         /// <summary>
+        /// lblTitleError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTitleError;
+        
+        /// <summary>
         /// lblHost control.
         /// </summary>
         /// <remarks>
@@ -56,6 +74,15 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtHost;
+        
+        /// <summary>
+        /// lblHostError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblHostError;
         
         /// <summary>
         /// lblLocation control.
@@ -83,6 +110,15 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAddLine1;
+        
+        /// <summary>
+        /// lblAdd1Error control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAdd1Error;
         
         /// <summary>
         /// lblAddLine2 control.
@@ -121,6 +157,15 @@ namespace CTS_ResourcePortal {
         protected global::System.Web.UI.WebControls.TextBox txtCity;
         
         /// <summary>
+        /// lblCityError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCityError;
+        
+        /// <summary>
         /// lblState control.
         /// </summary>
         /// <remarks>
@@ -155,6 +200,15 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtZip;
+        
+        /// <summary>
+        /// lblZipError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblZipError;
         
         /// <summary>
         /// lblDate control.
@@ -211,6 +265,15 @@ namespace CTS_ResourcePortal {
         protected global::System.Web.UI.WebControls.TextBox txtStartTime;
         
         /// <summary>
+        /// lblStartError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblStartError;
+        
+        /// <summary>
         /// lblEnd control.
         /// </summary>
         /// <remarks>
@@ -227,6 +290,15 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtEndTime;
+        
+        /// <summary>
+        /// lblEndError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEndError;
         
         /// <summary>
         /// lblFn control.
@@ -247,6 +319,15 @@ namespace CTS_ResourcePortal {
         protected global::System.Web.UI.WebControls.TextBox txtFn;
         
         /// <summary>
+        /// lblFNError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFNError;
+        
+        /// <summary>
         /// lblLn control.
         /// </summary>
         /// <remarks>
@@ -263,6 +344,15 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtLn;
+        
+        /// <summary>
+        /// lblLNError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblLNError;
         
         /// <summary>
         /// lblContEmail control.
@@ -283,6 +373,15 @@ namespace CTS_ResourcePortal {
         protected global::System.Web.UI.WebControls.TextBox txtContEmail;
         
         /// <summary>
+        /// lblEmailError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEmailError;
+        
+        /// <summary>
         /// lblContPhone control.
         /// </summary>
         /// <remarks>
@@ -299,6 +398,15 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtContPhone;
+        
+        /// <summary>
+        /// lblPhoneError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPhoneError;
         
         /// <summary>
         /// lblAtire control.
@@ -337,6 +445,15 @@ namespace CTS_ResourcePortal {
         protected global::System.Web.UI.WebControls.TextBox txtLink;
         
         /// <summary>
+        /// lblLinkError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblLinkError;
+        
+        /// <summary>
         /// lblDesc control.
         /// </summary>
         /// <remarks>
@@ -353,6 +470,15 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDesc;
+        
+        /// <summary>
+        /// lblDescError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDescError;
         
         /// <summary>
         /// btnCreate control.

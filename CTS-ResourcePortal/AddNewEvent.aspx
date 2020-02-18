@@ -16,20 +16,20 @@
         <br />
         <div id="" class="section">
             <br />
-            <p><span class="requiredRed">*</span>Required</p>
-            <div class="'col-md-2"></div>
-                <div class="'col-md-2">
-                    <asp:Label runat="server" ID="lblError" class="requiredRed" Text="Please fill out all of the required fields!" Visible="false"></asp:Label>
-                </div>
+            <asp:Label ID="lblRequired" runat="server"><span class="requiredRed">*</span>Required</asp:Label>
+            <br />
+            <asp:Label runat="server" ID="lblError" class="requiredRed" Text="You have left one of the fields blank. Please fill out all of the required fields!" Visible="false"></asp:Label>
             <br />
             <div class="row" id="titleRow">
                 <div class="col-sm-6">
                     <asp:Label ID="lblTitle" runat="server"><span class="requiredRed">*</span>Event Title: </asp:Label><br />
                     <asp:TextBox ID="txtTitle" class="form-control" runat="server"></asp:TextBox>
+                   <asp:Label ID="lblTitleError" Visible="false" runat="server" Text="Please enter a Title for the Event."></asp:Label>
                 </div>
                 <div class="col-sm-6">
                     <asp:Label ID="lblHost" runat="server"><span class="requiredRed">*</span>Hosted By: </asp:Label><br />
                     <asp:TextBox ID="txtHost" class="form-control" runat="server" ></asp:TextBox>
+                    <asp:Label ID="lblHostError" Visible="false" runat="server" Text="Please enter a Host for the Event."></asp:Label>
                 </div>
             </div>
             <br />
@@ -39,6 +39,7 @@
 
                     <asp:Label ID="lblAddLine1" runat="server"><span class="requiredRed">*</span>Address Line 1: </asp:Label><br />
                     <asp:TextBox ID="txtAddLine1" class="form-control" runat="server"></asp:TextBox>
+                    <asp:Label ID="lblAdd1Error" Visible="false" runat="server" Text="Please enter an Address for the Event."></asp:Label>
                 </div>
                 <div class="col-sm-6">
                     <asp:Label ID="lblAddLine2" runat="server">Address Line 2: </asp:Label><br />
@@ -49,6 +50,7 @@
                 <div class="col-sm-4">
                     <asp:Label ID="lblCity" runat="server"><span class="requiredRed">*</span>City: </asp:Label><br />
                     <asp:TextBox ID="txtCity" class="form-control" runat="server"></asp:TextBox>
+                    <asp:Label ID="lblCityError" Visible="false" runat="server" Text="Please enter a City for the Event."></asp:Label>
                 </div>
                 <div class="col-sm-4">
                     <asp:Label ID="lblState" runat="server"><span class="requiredRed">*</span>State: </asp:Label><br />
@@ -109,6 +111,7 @@
                 <div class="col-sm-4">
                     <asp:Label ID="lblZip" runat="server"><span class="requiredRed">*</span>Zip: </asp:Label><br />
                     <asp:TextBox ID="txtZip" class="form-control" runat="server"></asp:TextBox>
+                    <asp:Label ID="lblZipError" Visible="false" runat="server" Text="Please enter a Zip for the Event."></asp:Label>
                 </div>
             </div>
             <br />
@@ -159,10 +162,12 @@
                 <div class="col-sm-6">
                     <asp:Label ID="lblStart" runat="server"><span class="requiredRed">*</span>Start Time: </asp:Label><br />
                     <asp:TextBox ID="txtStartTime" class="form-control" runat="server"></asp:TextBox>
+                    <asp:Label ID="lblStartError" Visible="false" runat="server" Text="Please enter a Start Time for the Event."></asp:Label>
                 </div>
                 <div class="col-sm-6">
                     <asp:Label ID="lblEnd" runat="server"><span class="requiredRed">*</span>End Time: </asp:Label><br />
                     <asp:TextBox ID="txtEndTime" class="form-control" runat="server"></asp:TextBox>
+                    <asp:Label ID="lblEndError" Visible="false" runat="server" Text="Please enter an Address for the Event."></asp:Label>
                 </div>
             </div>
             <br />
@@ -170,20 +175,24 @@
                 <div class="col-sm-6">
                     <asp:Label ID="lblFn" runat="server"><span class="requiredRed">*</span>Primary Contact First Name: </asp:Label><br />
                     <asp:TextBox ID="txtFn" class="form-control" runat="server"></asp:TextBox>
+                    <asp:Label ID="lblFNError" Visible="false" runat="server" Text="Please enter a Contact First Name for the Event."></asp:Label>
                 </div>
                 <div class="col-sm-6">
                     <asp:Label ID="lblLn" runat="server"><span class="requiredRed">*</span>Primary Contact Last Name: </asp:Label><br />
                     <asp:TextBox ID="txtLn" class="form-control" runat="server"></asp:TextBox>
+                    <asp:Label ID="lblLNError" Visible="false" runat="server" Text="Please enter a Contact Last Name for the Event."></asp:Label>
                 </div>
             </div>
             <div class="row" id="cont2">
                 <div class="col-sm-6">
                     <asp:Label ID="lblContEmail" runat="server"><span class="requiredRed">*</span>*Primary Contact Email: </asp:Label><br />
-                    <asp:TextBox ID="txtContEmail" class="form-control" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtContEmail" class="form-control" runat="server" TextMode="Email"></asp:TextBox>
+                    <asp:Label ID="lblEmailError" Visible="false" runat="server" Text="Please enter an Email for the Event."></asp:Label>
                 </div>
                 <div class="col-sm-6">
                     <asp:Label ID="lblContPhone" runat="server"><span class="requiredRed">*</span>Primary Contact Phone #: </asp:Label><br />
                     <asp:TextBox ID="txtContPhone" class="form-control" runat="server"></asp:TextBox>
+                    <asp:Label ID="lblPhoneError" Visible="false" runat="server" Text="Please enter an Address for the Event."></asp:Label>
                 </div>
             </div>
             <br />
@@ -195,6 +204,7 @@
                 <div class="col-sm-6">
                     <asp:Label ID="lblLink" runat="server"><span class="requiredRed">*</span>Link to Apply: </asp:Label><br />
                     <asp:TextBox ID="txtLink" class="form-control" runat="server"></asp:TextBox>
+                    <asp:Label ID="lblLinkError" Visible="false" runat="server" Text="Please enter a Link for the Event."></asp:Label>
                 </div>
             </div>
             <br />
@@ -202,6 +212,7 @@
                 <div class="col-sm-12">
                     <asp:Label ID="lblDesc" runat="server"><span class="requiredRed">*</span>Event Description: </asp:Label><br />
                     <asp:TextBox ID="txtDesc"  class="form-control" runat="server"  TextMode="multiline" Rows="4" CssClass="col-md-8 form-control"></asp:TextBox>
+                    <asp:Label ID="lblDescError" Visible="false" runat="server" Text="Please enter an Address for the Event."></asp:Label>
                 </div>
             </div>
             <br />

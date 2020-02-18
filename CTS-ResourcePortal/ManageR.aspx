@@ -216,8 +216,8 @@
                                     </th>
                                     <th>Date Posted
                                     </th>
-                                    <th>Inactivate Resource
-                                    </th>
+                                    <%--<th>Inactivate Resource
+                                    </th>--%>
                                     <th>Edit Resource
                                     </th>
                                 </tr>
@@ -241,11 +241,11 @@
                             <td>
                                 <%# DataBinder.Eval(Container.DataItem, ("StartDate")) %>
                             </td>
-                            <td>
+                            <%--<td>
 
                                 <asp:Button ID="btnSelect" Text="Inactivate Resource" runat="server" OnClick="btnSelect_Click" />
 
-                            </td>
+                            </td>--%>
                             <td>
 
                                 <asp:Button ID="btnEdit" Text="Edit" runat="server" OnClick="btnEdit_Click" />
@@ -259,6 +259,11 @@
                         </tbody></table>
                     </FooterTemplate>
                 </asp:Repeater>
+                <br />
+                <br />
+                <div style="align-content:center">
+                    <asp:Button ID="btnSelect" Text="Inactivate Resource(s)" runat="server" OnClick="btnSelect_Click"  />
+                </div>
 
                 <%--<asp:GridView ID="gvManageR" runat="server" AutoGenerateColumns="False">
                     <Columns>

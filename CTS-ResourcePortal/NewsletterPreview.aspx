@@ -14,7 +14,7 @@
 
                     <div id="newsletterPreview" class="newsletterPreview" runat="server">
                         <br />
-                        <h2>October 21st, 2019 Newsletter</h2>
+                        <h2 id="h2Date" runat="server"></h2>
                         <h2 runat="server" id="H1"></h2>
                         <div class="row nls"></div>
                         <div class="row col-10">

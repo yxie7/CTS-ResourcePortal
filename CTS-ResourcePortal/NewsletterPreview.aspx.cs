@@ -19,11 +19,13 @@ namespace CTS_ResourcePortal
         protected void Page_Load(object sender, EventArgs e)
         {
             JavaScriptSerializer js = new JavaScriptSerializer();
-            if (Request.QueryString["nl"] != "")
+            if (Request.QueryString["nl"] != null)
             {
                 Dictionary<string, string> selections = js.Deserialize<Dictionary<string, string>>(System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(Request.QueryString["nl"])));
 
                 //<string,string> selections = js.Deserialize<Dictionary<string,string>>(Server.UrlDecode(Request.QueryString["nl"]));
+
+                h2Date.InnerText = DateTime.Now.ToShortDateString() + " Newsletter";
 
                 DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
                 DataTable dt = new DataTable();
@@ -64,20 +66,22 @@ namespace CTS_ResourcePortal
             newsletterPreview.RenderControl(new HtmlTextWriter(new StringWriter(sb)));
             string hnl = sb.ToString();
 
+            DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "SelectCitizens";
+            DataSet ds = db.GetDataSetUsingCmdObj(cmd);
+            int count = ds.Tables[0].Rows.Count;
+
             using (MailMessage mm = new MailMessage())
             {
-                mm.From = new MailAddress(ConfigurationManager.AppSettings["SMTPuser"]);
-                DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "SelectCitizens";
-                DataSet ds = db.GetDataSetUsingCmdObj(cmd);
-                int count = ds.Tables[0].Rows.Count;
                 for (int i = 0; i < count; i++)
                 {
-                    mm.To.Add(db.GetField("Email", i).ToString());
+                    //mm.To.Add(db.GetField("Email", i).ToString());
+                    mm.Bcc.Add(db.GetField("Email", i).ToString());
                 }
-                mm.Subject = "xx/xx/xx Newsletter";
+                mm.From = new MailAddress(ConfigurationManager.AppSettings["SMTPuser"]);
+                mm.Subject = DateTime.Now.ToShortDateString() + " Newsletter"; //TODO subject date to either current date or take user input.
                 mm.Body = hnl;
                 mm.IsBodyHtml = true;
                 SmtpClient smtp = new SmtpClient();

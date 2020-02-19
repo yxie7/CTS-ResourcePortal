@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Web.Script.Serialization;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 using Utilities;
 
@@ -200,11 +201,18 @@ namespace CTS_ResourcePortal
                 }
             }
 
-            JavaScriptSerializer js = new JavaScriptSerializer();
-            var query = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(js.Serialize(selections)));
-            Response.Redirect("NewsletterPreview.aspx?nl=" + query);
+            if (selections.Count != 0)
+            {
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                var query = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(js.Serialize(selections)));
+                Response.Redirect("NewsletterPreview.aspx?nl=" + query);
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "Script", "toasted();", true);
 
-            //            Response.Redirect("NewsletterPreview.aspx?nl=" + Server.UrlEncode(query));
+                //ClientScript.RegisterStartupScript(GetType(), "Toast", "toasted();", true);
+            }
         }
 
         protected void txtTitleSearch_TextChanged(object sender, EventArgs e)

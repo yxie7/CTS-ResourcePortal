@@ -155,7 +155,7 @@
                                             <div class="table-responsive-lg  ">
                                                 <asp:GridView ID="gvJob" runat="server" AutoGenerateColumns="false" class="table table-striped table-dark" DataKeyNames="ResourceID">
                                                     <Columns>
-                                                        <asp:BoundField DataField="ResourceID" Visible="false" />
+<%--                                                        <asp:BoundField DataField="ResourceID" Visible="false" />--%>
                                                         <asp:TemplateField HeaderText="Select">
                                                             <ItemTemplate>
                                                                 <asp:CheckBox ID="chkSelect" runat="server" />
@@ -188,7 +188,7 @@
                                             <div class="table-responsive-lg  ">
                                                 <asp:GridView ID="gvEvent" runat="server" AutoGenerateColumns="false" class="table table-striped table-dark" DataKeyNames="ResourceID">
                                                     <Columns>
-                                                        <asp:BoundField DataField="ResourceID" Visible="false" />
+<%--                                                        <asp:BoundField DataField="ResourceID" Visible="false" />--%>
                                                         <asp:TemplateField HeaderText="Select">
                                                             <ItemTemplate>
                                                                 <asp:CheckBox ID="chkSelect" AutoPostBack="false" runat="server" />
@@ -221,7 +221,7 @@
                                             <div class="table-responsive-lg  ">
                                                 <asp:GridView ID="gvTraining" runat="server" AutoGenerateColumns="false" class="table table-striped table-dark" DataKeyNames="ResourceID">
                                                     <Columns>
-                                                        <asp:BoundField DataField="ResourceID" Visible="false" />
+<%--                                                        <asp:BoundField DataField="ResourceID" Visible="false" />--%>
                                                         <asp:TemplateField HeaderText="Select">
                                                             <ItemTemplate>
                                                                 <asp:CheckBox ID="chkSelect" AutoPostBack="false" runat="server" />

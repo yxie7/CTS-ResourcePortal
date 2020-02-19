@@ -201,15 +201,12 @@
                         <div class="card-body">
                             <div class="row d-flex justify-content-center">
                                 <ul class="cardlist col-8  justify-content-center align-items-center ">
-                                    <li>
-                                        <a href="Event.aspx">North Philly Job Fair</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Newtown Job Fair</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Resume Critique</a>
-                                    </li>
+                                    <asp:Repeater ID="rptEvent" runat="server">
+                                        <ItemTemplate>
+                                            <li>
+                                                <asp:LinkButton runat="server" ID="btnEvent" CommandArgument='<%#Eval("ResourcesID") %>' Text='<%# Eval("ResourceName") %>' OnCommand="btnEvent_Command"></asp:LinkButton></li>
+                                        </ItemTemplate>
+                                    </asp:Repeater>
                                 </ul>
                             </div>
                         </div>
@@ -228,15 +225,12 @@
                         <div class="card-body">
                             <div class="row d-flex justify-content-center">
                                 <ul class="cardlist col-8  justify-content-center align-items-center ">
-                                    <li>
-                                        <a href="Training.aspx">CDL Classes</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Electrician Classes</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Fork Lift Training</a>
-                                    </li>
+                                    <asp:Repeater ID="rptTraining" runat="server">
+                                        <ItemTemplate>
+                                            <li>
+                                                <asp:LinkButton runat="server" ID="btnTraining" CommandArgument='<%#Eval("ResourcesID") %>' Text='<%# Eval("ResourceName") %>' OnCommand="btnTraining_Command"></asp:LinkButton></li>
+                                        </ItemTemplate>
+                                    </asp:Repeater>
                                 </ul>
                             </div>
                         </div>

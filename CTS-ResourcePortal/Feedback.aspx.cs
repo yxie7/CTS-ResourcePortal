@@ -30,6 +30,8 @@ namespace CTS_ResourcePortal
             if (Request.QueryString["resource"] != null)
             {
                 txtResourceTitle.Text = (Request.QueryString["resource"]).ToString();
+
+                lblResourceID.Text = (Request.QueryString["ID"]).ToString();
             }
 
             objCommand.Parameters.Clear();
@@ -47,14 +49,14 @@ namespace CTS_ResourcePortal
 
             txtCitizen.Text = fn +" "+ ln;
 
-            objCommand.Parameters.Clear();
-            objCommand.CommandType = CommandType.StoredProcedure;
-            objCommand.CommandText = "GetResourceIdByName";
+            //objCommand.Parameters.Clear();
+            //objCommand.CommandType = CommandType.StoredProcedure;
+            //objCommand.CommandText = "GetResourceIdByName";
 
-            objCommand.Parameters.AddWithValue("@ResourceName", txtResourceTitle.Text.ToString());
-            DataSet ResourceID = objDB.GetDataSetUsingCmdObj(objCommand);
-            int resID = (Int32)objDB.GetField("ResourcesId", 0);
-            lblResourceID.Text = resID.ToString();
+            //objCommand.Parameters.AddWithValue("@ResourceName", txtResourceTitle.Text.ToString());
+            //DataSet ResourceID = objDB.GetDataSetUsingCmdObj(objCommand);
+            //int resID = (Int32)objDB.GetField("ResourcesId", 0);
+            //lblResourceID.Text = resID.ToString();
 
 
         }

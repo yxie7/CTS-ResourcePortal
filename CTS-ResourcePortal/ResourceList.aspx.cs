@@ -182,7 +182,7 @@ namespace CTS_ResourcePortal
             GridViewRow gvr = (GridViewRow)btn.NamingContainer;
 
             //Fetch value of ResourceID
-            string id = gvr.Cells[0].Text;
+            string id = gvJob.DataKeys[gvr.RowIndex].Value.ToString();
 
 
             cmd.Parameters.Clear();
@@ -224,6 +224,8 @@ namespace CTS_ResourcePortal
             btnLink.CommandName = "btnLinkCN";
             btnLink.CommandArgument = db.GetField("Link", 0).ToString();
 
+            btnFeedback.CommandArgument = db.GetField("ResourcesId", 0).ToString();
+
             JobVisibilityControls();
 
             ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
@@ -243,7 +245,7 @@ namespace CTS_ResourcePortal
             GridViewRow gvr = (GridViewRow)btn.NamingContainer;
 
             //Fetch value of ResourceID
-            string id = gvr.Cells[0].Text;
+            string id = gvEvent.DataKeys[gvr.RowIndex].Value.ToString();
 
 
             cmd.Parameters.Clear();
@@ -288,6 +290,8 @@ namespace CTS_ResourcePortal
             btnLink.CommandName = "btnLinkCN";
             btnLink.CommandArgument = db.GetField("Link", 0).ToString();
 
+            btnFeedback.CommandArgument = db.GetField("ResourcesId", 0).ToString();
+
             EventVisibilityControls();
 
             ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
@@ -307,7 +311,7 @@ namespace CTS_ResourcePortal
             GridViewRow gvr = (GridViewRow)btn.NamingContainer;
 
             //Fetch value of ResourceID
-            string id = gvr.Cells[0].Text;
+            string id = gvTraining.DataKeys[gvr.RowIndex].Value.ToString();
 
 
             cmd.Parameters.Clear();
@@ -355,6 +359,8 @@ namespace CTS_ResourcePortal
             btnLink.CommandName = "btnLinkCN";
             btnLink.CommandArgument = db.GetField("Link", 0).ToString();
 
+
+            btnFeedback.CommandArgument = db.GetField("ResourcesId", 0).ToString();
 
             TrainingVisibilityControls();
 
@@ -440,9 +446,14 @@ namespace CTS_ResourcePortal
 
             // Format: ?Key1=value1&Key2=value2&KeyN=valueN
 
-            Response.Redirect("Feedback.aspx?resource=" + myHeader.InnerHtml);
+            Response.Redirect("Feedback.aspx?resource=" + myHeader.InnerHtml + "&ID=" + btnFeedback.CommandArgument);
 
 
+        }
+
+        protected void txtTitleSearch_TextChanged(object sender, EventArgs e)
+        {
+            generateTables(txtTitleSearch.Text);
         }
     }
 }

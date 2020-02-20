@@ -90,6 +90,17 @@ namespace CTS_ResourcePortal
             }
             gvTraining.DataSource = tl;
             gvTraining.DataBind();
+
+
+            SqlCommand cmd = new SqlCommand();
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "SelectResources";
+
+            DataSet dataSet = db.GetDataSetUsingCmdObj(cmd);
+
+            //rpt.DataSource = dataSet;
+           // rpt.DataBind();
         }
         private void generateTables(string query)
         {

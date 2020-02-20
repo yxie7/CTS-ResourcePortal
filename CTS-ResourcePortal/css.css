@@ -9,6 +9,12 @@
     border: 1px solid black;
 }
 
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #3a3a3a;
+    opacity: .9; /* Firefox */
+}
+
+
 .accordion, .card-header {
     background-color: #F5F5F5;
     border-radius: 10px;

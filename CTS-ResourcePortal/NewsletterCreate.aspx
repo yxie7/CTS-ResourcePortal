@@ -32,6 +32,40 @@
                     <div class="col"></div>
                 </div>
                 <br />
+
+<%--                <div class="section">
+                    <br />
+                    <div class="row d-flex justify-content-center">
+                        <div class="accordion col-10">
+                            <br />
+                            <asp:Label ID="lblResourceSelect" runat="server" Text="Select Resources Type: "></asp:Label>
+                            
+                            <br />
+                            <table id="datatable" class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Resource Title</th>
+                                        <th>Comments</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <asp:Repeater runat="server" ID="rpt">
+                                        <ItemTemplate>
+                                            <tr>
+                                                <td><%# Eval("ResourceName") %></td>
+                                                <td>
+                                                    <asp:TextBox runat="server" ID="txtComment" TextMode="multiline" Columns="50" Rows="3" placeholder="Enter comments, tips, or other information you would like to give to citizens here..."></asp:TextBox>
+                                                </td>
+                                            </tr>
+                                        </ItemTemplate>
+                                    </asp:Repeater>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <br />
+                </div>--%>
+                <br />
                 <div class="section">
                     <br />
                     <div class="row text-left">
@@ -44,7 +78,9 @@
                     </div>
                     <br />
                     <div class="row justify-content-center align-items-center">
-                        <asp:TextBox runat="server" ID="txtTitleSearch" AutoPostBack="true" CssClass="form-text" placeholder="Search Titles Here..." OnTextChanged="txtTitleSearch_TextChanged"></asp:TextBox>
+                        <div class="col"></div>
+                        <asp:TextBox runat="server" ID="txtTitleSearch" AutoPostBack="true" CssClass="col-8 form-control" placeholder="Search Titles Here..." OnTextChanged="txtTitleSearch_TextChanged"></asp:TextBox>
+                        <div class="col"></div>
                     </div>
                     <!--
             <div class="row justify-content-center align-items-center">
@@ -88,6 +124,7 @@
                 <div class="col"></div>
             </div>
                 -->
+                    <br />
                     <div class="row">
                         <div class="col"></div>
                         <div class="col text-right">Include inactive resources</div>

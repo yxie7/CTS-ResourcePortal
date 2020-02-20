@@ -162,7 +162,7 @@
             <div class="accordion col-10" id="resources">
                 <div class="card">
                     <div class="card-header" id="title">
-                        <h2 class="mb-0">Upcoming Events
+                        <h2 class="mb-0">Resources
                         </h2>
                     </div>
                 </div>

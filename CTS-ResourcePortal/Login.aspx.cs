@@ -41,36 +41,40 @@ namespace CTS_ResourcePortal
                     if (CheckIfPasswordExist(email) == true)
                     {
                         string encryptedPassword = (string)db.GetField("Password", 0);
-                        Byte[] encryptedPasswordBytes = Convert.FromBase64String(encryptedPassword);
-                        Byte[] textBytes;
-                        String plainTextPassword;
-                        UTF8Encoding encoder = new UTF8Encoding();
+                        String encryptedPasswordLogin;
+                        System.Text.UTF8Encoding encoder = new UTF8Encoding();
+                        Byte[] PasswordBytes;
+
+
+                        //EmailBytes = encoder.GetBytes(plainTextEmail);
+                        PasswordBytes = encoder.GetBytes(password);
+
 
                         RijndaelManaged rmEncryption = new RijndaelManaged();
-                        MemoryStream myMemoryStream = new MemoryStream();
-                        CryptoStream myDecryptionStream = new CryptoStream(myMemoryStream, rmEncryption.CreateDecryptor(key, vector), CryptoStreamMode.Write);
+                        MemoryStream memStream = new MemoryStream();
+                        CryptoStream encryptionStream = new CryptoStream(memStream, rmEncryption.CreateEncryptor(key, vector), CryptoStreamMode.Write);
+                        //password
+                        memStream = new MemoryStream();
+                        encryptionStream = new CryptoStream(memStream, rmEncryption.CreateEncryptor(key, vector), CryptoStreamMode.Write);
 
-                        // Use the crypto stream to perform the decryption on the encrypted data in the byte array.
+                        encryptionStream.Write(PasswordBytes, 0, PasswordBytes.Length);
+                        encryptionStream.FlushFinalBlock();
 
-                        myDecryptionStream.Write(encryptedPasswordBytes, 0, encryptedPasswordBytes.Length);
-                        myDecryptionStream.FlushFinalBlock();
+                        memStream.Position = 0;
+                        Byte[] encryptedPasswordBytes = new byte[memStream.Length];
+                        memStream.Read(encryptedPasswordBytes, 0, encryptedPasswordBytes.Length);
 
-                        // Retrieve the decrypted data from the memory stream, and write it to a separate byte array.
+                        encryptionStream.Close();
+                        memStream.Close();
 
-                        myMemoryStream.Position = 0;
-                        textBytes = new Byte[myMemoryStream.Length];
-                        myMemoryStream.Read(textBytes, 0, textBytes.Length);
 
-                        // Close all the streams.
+                        //encryptedEmail = Convert.ToBase64String(encryptedEmailBytes);
+                        encryptedPasswordLogin = Convert.ToBase64String(encryptedPasswordBytes);
 
-                        myDecryptionStream.Close();
-                        myMemoryStream.Close();
+                        //hashing password
+                        PasswordHash hash = new PasswordHash(encryptedPasswordLogin);
 
-                        // Convert the bytes to a string and display it.
-
-                        plainTextPassword = encoder.GetString(textBytes);
-                        
-                        if (plainTextPassword == password)
+                        if (encryptedPassword == encryptedPasswordLogin)
                         {
                             Session.Add("userEmail", txtEmail.Text);
                             Response.Redirect("ResourceList.aspx");

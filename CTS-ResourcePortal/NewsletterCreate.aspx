@@ -7,41 +7,6 @@
     <script src="Scripts/popper.js"></script>
     <script src="Scripts/bootstrap.js"></script>
 
-    <script type="text/javascript">
-        var xmlhttp;
-
-        try {
-            // Code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp = new XMLHttpRequest();
-        }
-        catch (try_older_microsoft) {
-            try {
-                // Code for IE6, IE5
-                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-            }
-            catch (other) {
-                xmlhttp = false;
-                alert("Your browser doesn't support AJAX!");
-            }
-        }
-
-        function select() {
-            // Open a new asynchronous request, set the callback function, and send the request.
-            xmlhttp.open("POST", "AJAX_Quotes.aspx", true);
-            xmlhttp.onreadystatechange = onComplete;
-            xmlhttp.send();
-        }
-
-        // Callback function used to update the page when the server completes a response
-        // to an asynchronous request.
-        function onComplete() {
-            //Response is READY and Status is OK
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                document.getElementById("content_area").innerHTML = xmlhttp.responseText;
-            }
-        }
-    </script>
-
     <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
@@ -50,15 +15,64 @@
             });
         });
     </script>
+
     <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true" />
 
     <div class="container">
         <asp:UpdatePanel runat="server">
             <ContentTemplate>
+                <div class="toast" role="alert" data-delay="5000" data-autohide="true">
+                    <div id="toastMessage" class="toast-body">
+                        Hello, world! This is a toast message.
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col"></div>
                     <h2 class="col-md-auto">Create a Newsletter</h2>
                     <div class="col"></div>
+                </div>
+                <br />
+                <div class="section">
+                    <br />
+                    <div class="row d-flex justify-content-center">
+                        <div class="accordion col-10">
+                            <br />
+                            <asp:Label ID="lblResourceSelect" runat="server" Text="Select Resources Type: "></asp:Label>
+
+                            <br />
+
+                            <div class="row">
+                                <div class="col"></div>
+                                <asp:Button Text="ALL" ID="btnAll" runat="server" class="col-2 btn btn-dark m-2" OnClick="btnAll_Click" />
+                                <asp:Button Text="Jobs" ID="btnJob" runat="server" class="col-2 btn btn-dark m-2" OnClick="btnJob_Click" />
+                                <asp:Button Text="Events" ID="btnEvent" runat="server" class="col-2 btn btn-dark m-2" OnClick="btnEvent_Click" />
+                                <asp:Button Text="Training" ID="btnTraining" runat="server" class="col-2 btn btn-dark m-2" OnClick="btnTraining_Click" />
+                                <div class="col"></div>
+                            </div>
+                            <br />
+                            <table id="datatable" class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Resource Title</th>
+                                        <th>Comments</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <asp:Repeater runat="server" ID="rpt">
+                                        <ItemTemplate>
+                                            <tr>
+                                                <td><%# Eval("ResourceName") %></td>
+                                                <td>
+                                                    <asp:TextBox runat="server" ID="txtComment" TextMode="multiline" Columns="50" Rows="3" placeholder="Enter comments, tips, or other information you would like to give to citizens here..."></asp:TextBox>
+                                                </td>
+                                            </tr>
+                                        </ItemTemplate>
+                                    </asp:Repeater>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <br />
                 </div>
                 <br />
                 <div class="section">
@@ -73,7 +87,9 @@
                     </div>
                     <br />
                     <div class="row justify-content-center align-items-center">
-                        <asp:TextBox runat="server" ID="txtTitleSearch" AutoPostBack="true" CssClass="form-text" placeholder="Search Titles Here..." OnTextChanged="txtTitleSearch_TextChanged"></asp:TextBox>
+                        <div class="col"></div>
+                        <asp:TextBox runat="server" ID="txtTitleSearch" AutoPostBack="true" CssClass="col-8 form-control" placeholder="Search Titles Here..." OnTextChanged="txtTitleSearch_TextChanged"></asp:TextBox>
+                        <div class="col"></div>
                     </div>
                     <!--
             <div class="row justify-content-center align-items-center">
@@ -117,6 +133,7 @@
                 <div class="col"></div>
             </div>
                 -->
+                    <br />
                     <div class="row">
                         <div class="col"></div>
                         <div class="col text-right">Include inactive resources</div>
@@ -155,7 +172,7 @@
                                             <div class="table-responsive-lg  ">
                                                 <asp:GridView ID="gvJob" runat="server" AutoGenerateColumns="false" class="table table-striped table-dark" DataKeyNames="ResourceID">
                                                     <Columns>
-<%--                                                        <asp:BoundField DataField="ResourceID" Visible="false" />--%>
+                                                        <%--                                                        <asp:BoundField DataField="ResourceID" Visible="false" />--%>
                                                         <asp:TemplateField HeaderText="Select">
                                                             <ItemTemplate>
                                                                 <asp:CheckBox ID="chkSelect" runat="server" />
@@ -188,7 +205,7 @@
                                             <div class="table-responsive-lg  ">
                                                 <asp:GridView ID="gvEvent" runat="server" AutoGenerateColumns="false" class="table table-striped table-dark" DataKeyNames="ResourceID">
                                                     <Columns>
-<%--                                                        <asp:BoundField DataField="ResourceID" Visible="false" />--%>
+                                                        <%--                                                        <asp:BoundField DataField="ResourceID" Visible="false" />--%>
                                                         <asp:TemplateField HeaderText="Select">
                                                             <ItemTemplate>
                                                                 <asp:CheckBox ID="chkSelect" AutoPostBack="false" runat="server" />
@@ -221,7 +238,7 @@
                                             <div class="table-responsive-lg  ">
                                                 <asp:GridView ID="gvTraining" runat="server" AutoGenerateColumns="false" class="table table-striped table-dark" DataKeyNames="ResourceID">
                                                     <Columns>
-<%--                                                        <asp:BoundField DataField="ResourceID" Visible="false" />--%>
+                                                        <%--                                                        <asp:BoundField DataField="ResourceID" Visible="false" />--%>
                                                         <asp:TemplateField HeaderText="Select">
                                                             <ItemTemplate>
                                                                 <asp:CheckBox ID="chkSelect" AutoPostBack="false" runat="server" />
@@ -266,4 +283,11 @@
             </ContentTemplate>
         </asp:UpdatePanel>
     </div>
+
+    <script type="text/javascript">
+        function toasted() {
+            //$('.toast').toast('show');
+            alert("No selections were made... You can't continue!");
+        }
+    </script>
 </asp:Content>

@@ -11,7 +11,7 @@
         <div class="modal-dialog modal-xl">
             <!-- Modal content-->
             <div class="modal-content container">
-                <div class="modal-body " style="color: black">
+                <div class="modal-body">
 
                     <div class="row" id="h2">
                         <div class="col"></div>

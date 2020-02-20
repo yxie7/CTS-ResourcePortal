@@ -4,13 +4,16 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Web.Script.Serialization;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 using Utilities;
 
 namespace CTS_ResourcePortal
 {
     public partial class NewsletterCreate : System.Web.UI.Page
-    {        
+    {
+        private DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
+
         protected void Page_Load(object sender, EventArgs e)
         {
             int n = 5;
@@ -18,7 +21,8 @@ namespace CTS_ResourcePortal
 
             if (!IsPostBack)
             {
-                generateTables();
+                //generateTables();
+                generateAll();
             }
         }
 
@@ -27,8 +31,6 @@ namespace CTS_ResourcePortal
             List<Job> jl = new List<Job>();
             List<Events> el = new List<Events>();
             List<Training> tl = new List<Training>();
-
-            DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
 
             //Job
             SqlCommand jcmd = new SqlCommand();
@@ -90,13 +92,12 @@ namespace CTS_ResourcePortal
             gvTraining.DataSource = tl;
             gvTraining.DataBind();
         }
+
         private void generateTables(string query)
         {
             List<Job> jl = new List<Job>();
             List<Events> el = new List<Events>();
             List<Training> tl = new List<Training>();
-
-            DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
 
             //Job
             SqlCommand jcmd = new SqlCommand();
@@ -200,16 +201,83 @@ namespace CTS_ResourcePortal
                 }
             }
 
-            JavaScriptSerializer js = new JavaScriptSerializer();
-            var query = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(js.Serialize(selections)));
-            Response.Redirect("NewsletterPreview.aspx?nl=" + query);
+            if (selections.Count != 0)
+            {
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                var query = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(js.Serialize(selections)));
+                Response.Redirect("NewsletterPreview.aspx?nl=" + query);
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "Script", "toasted();", true);
 
-            //            Response.Redirect("NewsletterPreview.aspx?nl=" + Server.UrlEncode(query));
+                //ClientScript.RegisterStartupScript(GetType(), "Toast", "toasted();", true);
+            }
         }
 
         protected void txtTitleSearch_TextChanged(object sender, EventArgs e)
         {
-            generateTables(txtTitleSearch.Text);
+            //generateTables(txtTitleSearch.Text);
+        }
+
+        private void generateAll()
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "SelectResources";
+            DataSet dataSet = db.GetDataSetUsingCmdObj(cmd);
+            rpt.DataSource = dataSet;
+            rpt.DataBind();
+        }
+
+        private void generateJobs()
+        {
+            SqlCommand jcmd = new SqlCommand();
+            jcmd.CommandType = CommandType.StoredProcedure;
+            jcmd.CommandText = "JobSelect";
+            DataSet jds = db.GetDataSetUsingCmdObj(jcmd);
+            rpt.DataSource = jds;
+            rpt.DataBind();
+        }
+
+        private void generateEvents()
+        {
+            SqlCommand ecmd = new SqlCommand();
+            ecmd.CommandType = CommandType.StoredProcedure;
+            ecmd.CommandText = "EventSelect";
+            DataSet eds = db.GetDataSetUsingCmdObj(ecmd);
+            rpt.DataSource = eds;
+            rpt.DataBind();
+        }
+
+        private void generateTraining()
+        {
+            SqlCommand tcmd = new SqlCommand();
+            tcmd.CommandType = CommandType.StoredProcedure;
+            tcmd.CommandText = "TrainingSelect";
+            DataSet tds = db.GetDataSetUsingCmdObj(tcmd);
+            rpt.DataSource = tds;
+            rpt.DataBind();
+        }
+
+        protected void btnAll_Click(object sender, EventArgs e)
+        {
+            generateAll();
+        }
+
+        protected void btnJob_Click(object sender, EventArgs e)
+        {
+            generateJobs();
+        }
+
+        protected void btnEvent_Click(object sender, EventArgs e)
+        {
+            generateEvents();
+        }
+
+        protected void btnTraining_Click(object sender, EventArgs e)
+        {
+            generateTraining();
         }
     }
 }

@@ -453,7 +453,7 @@ namespace CTS_ResourcePortal
 
         protected void txtTitleSearch_TextChanged(object sender, EventArgs e)
         {
-            generateTables(txtTitleSearch.Text);
+            //generateTables(txtTitleSearch.Text);
         }
     }
 }

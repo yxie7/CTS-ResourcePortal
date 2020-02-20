@@ -96,15 +96,15 @@
             </div>
         </div>
         <div class="section">
-
+             <h2 class="col-md-auto">All Citizens</h2>
+            <div class="table-wrapper ">
             <asp:Repeater ID="rptManageR" runat="server">
                     <HeaderTemplate>
                         <table id="datatable" class="table table-striped table-bordered" border="0" cellpadding="0"
                             cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>
-                                        <asp:CheckBox ID="chkHeader" runat="server" /></th>
+
                                     <th>First Name
                                     </th>
                                     <th>Last Name
@@ -113,7 +113,7 @@
                                     </th>
                                     <th>Phone Number
                                     </th>
-                                    <th>Address
+                                     <th>Address
                                     </th>
                                     <th>Resume
                                     </th>
@@ -136,8 +136,11 @@
                             <td>
                                 <asp:Label ID="lblPhone" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, ("PhoneNumber")) %>'></asp:Label>
                             </td>
-                            <td>
+                             <td>
                                 <asp:Label ID="lblAddress" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, ("Address")) %>'></asp:Label>
+                                 <asp:Label ID="lblCity" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, ("City")) %>'></asp:Label>
+                                 <asp:Label ID="lblState" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, ("State")) %>'></asp:Label>
+                                 <asp:Label ID="lblZip" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, ("Zipcode")) %>'></asp:Label>
                             </td>
                             <td>
                                 <asp:LinkButton ID="lnkType" runat="server" Text="View" OnClick="lnkView_Click"></asp:LinkButton >
@@ -147,9 +150,23 @@
                     </ItemTemplate>
 
                     <FooterTemplate>
-                        </tbody></table>
+                        </tbody>
+                        </table>
+                        <div class="clearfix">
+                    <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+                    <ul class="pagination">
+                        <li class="page-item disabled"><a href="#">Previous</a></li>
+                        <li class="page-item"><a href="#" class="page-link">1</a></li>
+                        <li class="page-item"><a href="#" class="page-link">2</a></li>
+                        <li class="page-item active"><a href="#" class="page-link">3</a></li>
+                        <li class="page-item"><a href="#" class="page-link">4</a></li>
+                        <li class="page-item"><a href="#" class="page-link">5</a></li>
+                        <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                    </ul>
+                </div>
                     </FooterTemplate>
                 </asp:Repeater>
+                </div>
 
              <!--<asp:GridView ID="grdAllAccounts" runat="server" AutoGenerateColumns="False"
              Width="623px" class="table table-striped">

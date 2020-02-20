@@ -6,12 +6,12 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Configuration;
-using Utilities;
 using System.Data;
 using System.Security.Cryptography;
 using System.IO;
 using System.Text;
 using System.Collections;
+using Utilities;
 
 
 namespace CTS_ResourcePortal
@@ -19,7 +19,7 @@ namespace CTS_ResourcePortal
     public partial class Signup : System.Web.UI.Page
     {
         DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
-
+        
         ArrayList UserRegistrationError = new ArrayList();
         private Byte[] key = { 250, 101, 18, 76, 45, 135, 207, 118, 4, 171, 3, 168, 202, 241, 37, 199 };
         private Byte[] vector = { 146, 64, 191, 111, 23, 3, 113, 119, 231, 121, 252, 112, 79, 32, 114, 156 };
@@ -47,7 +47,6 @@ namespace CTS_ResourcePortal
             string firstName = txtFirstName.Text;
             string lastName = txtLastName.Text;
             string email = txtEmail.Text;
-            //string password = txtPassword.Text;
             string address = txtAddress.Text;
             string city = txtCity.Text;
             string state = txtState.Text;
@@ -61,16 +60,16 @@ namespace CTS_ResourcePortal
             String plainTextPassword = txtPassword.Text;
 
 
-            String encryptedEmail;
+            //String encryptedEmail;
             String encryptedPassword;
 
 
             System.Text.UTF8Encoding encoder = new UTF8Encoding();
-            Byte[] EmailBytes;
+            //Byte[] EmailBytes;
             Byte[] PasswordBytes;
 
 
-            EmailBytes = encoder.GetBytes(plainTextEmail);
+            //EmailBytes = encoder.GetBytes(plainTextEmail);
             PasswordBytes = encoder.GetBytes(plainTextPassword);
 
 
@@ -79,7 +78,7 @@ namespace CTS_ResourcePortal
             CryptoStream encryptionStream = new CryptoStream(memStream, rmEncryption.CreateEncryptor(key, vector), CryptoStreamMode.Write);
 
             //Email
-            encryptionStream.Write(EmailBytes, 0, EmailBytes.Length);
+            /*encryptionStream.Write(EmailBytes, 0, EmailBytes.Length);
             encryptionStream.FlushFinalBlock();
 
             memStream.Position = 0;
@@ -87,7 +86,7 @@ namespace CTS_ResourcePortal
             memStream.Read(encryptedEmailBytes, 0, encryptedEmailBytes.Length);
 
             encryptionStream.Close();
-            memStream.Close();
+            memStream.Close();*/
 
             //password
             memStream = new MemoryStream();
@@ -104,8 +103,11 @@ namespace CTS_ResourcePortal
             memStream.Close();
 
 
-            encryptedEmail = Convert.ToBase64String(encryptedEmailBytes);
+            //encryptedEmail = Convert.ToBase64String(encryptedEmailBytes);
             encryptedPassword = Convert.ToBase64String(encryptedPasswordBytes);
+
+            //hashing password
+            PasswordHash hash = new PasswordHash(encryptedPassword);
 
             if (UserRegistrationError.Count == 0)
             {
@@ -120,7 +122,7 @@ namespace CTS_ResourcePortal
                 {
                     //Register 
 
-                    Utilities.Citizens newCitizen = new Utilities.Citizens
+                    Citizens newCitizen = new Citizens
                     {
 
                         FirstName = firstName,
@@ -175,7 +177,7 @@ namespace CTS_ResourcePortal
 
 
 
-        FileUpload1.PostedFile.InputStream.Read(resumeData, 0, resumeSize);
+                    FileUpload1.PostedFile.InputStream.Read(resumeData, 0, resumeSize);
 
                     resumeName = FileUpload1.PostedFile.FileName;
 
@@ -204,6 +206,8 @@ namespace CTS_ResourcePortal
                         cmd.Parameters.AddWithValue("@ResumeType", resumeType);
 
                         cmd.Parameters.AddWithValue("@ResumeData", resumeData);
+
+                        cmd.Parameters.AddWithValue("@Email", email);
 
                         result = db.DoUpdateUsingCmdObj(cmd);
 

@@ -72,7 +72,14 @@
             <div class="col-md-4">
 
                 <asp:Button runat="server" CssClass="btn btn-large btn-info" Text="Submit Feedback" ID="btnSubmit" OnClick="btnSubmit_Click" />
-                <asp:Label runat="server" Text="" ID="lblConfirm" Visible="False"></asp:Label>
+               
+            </div>
+            <div class="col"></div>
+        </div>
+                <div class="row  justify-content-center align-items-center text-center">
+            <div class="col"></div>
+            <div class="col-md-4">
+                 <asp:Label runat="server" Text="" ID="lblConfirm" Visible="False"></asp:Label>
             </div>
             <div class="col"></div>
         </div>

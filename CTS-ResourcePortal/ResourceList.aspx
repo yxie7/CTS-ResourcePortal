@@ -160,7 +160,11 @@
         </div>
     </div>
 
+     <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true" />
+
     <div class="container">
+         <asp:UpdatePanel runat="server">
+               <ContentTemplate>
         <div class="row">
             <div class="col"></div>
             <h2 class="col-md-auto">Resource List</h2>
@@ -170,7 +174,7 @@
         <div class="section">
             <div class="row d-flex justify-content-center">
                 <div class="col-10">
-                    <input class="form-control search" type="text" placeholder="Search" aria-label="Search">
+                        <asp:TextBox runat="server" ID="txtTitleSearch" AutoPostBack="true" CssClass="form-control search" placeholder="Search Titles Here..." OnTextChanged="txtTitleSearch_TextChanged"></asp:TextBox>
                 </div>
             </div>
             <br />
@@ -188,9 +192,9 @@
                             <div class="card-body">
                                 <div class="row d-flex justify-content-center">
                                     <div class="table-responsive-lg  ">
-                                        <asp:GridView ID="gvJob" runat="server" AutoGenerateColumns="False" class="table table-striped table-light">
+                                        <asp:GridView ID="gvJob" runat="server" AutoGenerateColumns="False" class="table table-striped table-light"  DataKeyNames="ResourceID">
                                             <Columns>
-                                                <asp:BoundField DataField="ResourceID" HeaderText="ID" Visible="true" />
+                                               <%-- <asp:BoundField DataField="ResourceID" HeaderText="ID" Visible="false" />--%>
                                                 <asp:BoundField DataField="ResourceTitle" HeaderText="Title" />
                                                 <asp:BoundField DataField="email" HeaderText="Contact" />
                                                 <asp:BoundField DataField="AddressLine2" HeaderText="Location" />
@@ -219,9 +223,9 @@
                             <div class="card-body">
                                 <div class="row d-flex justify-content-center">
                                     <div class="table-responsive-lg  ">
-                                        <asp:GridView ID="gvEvent" runat="server" AutoGenerateColumns="False" class="table table-striped table-light">
+                                        <asp:GridView ID="gvEvent" runat="server" AutoGenerateColumns="False" class="table table-striped table-light" DataKeyNames="ResourceID">
                                             <Columns>
-                                                <asp:BoundField DataField="ResourceID" HeaderText="ID" Visible="true" />
+                                                <%--<asp:BoundField DataField="ResourceID" HeaderText="ID" Visible="false" />--%>
                                                 <asp:BoundField DataField="ResourceTitle" HeaderText="Title" />
                                                 <asp:BoundField DataField="email" HeaderText="Contact" />
                                                 <asp:BoundField DataField="AddressLine2" HeaderText="Location" />
@@ -250,9 +254,9 @@
                             <div class="card-body">
                                 <div class="row d-flex justify-content-center">
                                     <div class="table-responsive-lg  ">
-                                        <asp:GridView ID="gvTraining" runat="server" AutoGenerateColumns="False" class="table table-striped table-light">
+                                        <asp:GridView ID="gvTraining" runat="server" AutoGenerateColumns="False" class="table table-striped table-light" DataKeyNames="ResourceID">
                                             <Columns>
-                                                <asp:BoundField DataField="ResourceID" HeaderText="ID" Visible="true" />
+                                                <%--<asp:BoundField DataField="ResourceID" HeaderText="ID" Visible="false" />--%>
                                                 <asp:BoundField DataField="ResourceTitle" HeaderText="Title" />
                                                 <asp:BoundField DataField="email" HeaderText="Contact" />
                                                 <asp:BoundField DataField="AddressLine2" HeaderText="Location" />
@@ -274,6 +278,8 @@
             </div>
         </div>
         <br />
+                   </ContentTemplate>
+             </asp:UpdatePanel>
     </div>
 
     <script type="text/javascript">

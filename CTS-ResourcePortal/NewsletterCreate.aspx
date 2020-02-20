@@ -32,14 +32,23 @@
                     <div class="col"></div>
                 </div>
                 <br />
-
-<%--                <div class="section">
+                <div class="section">
                     <br />
                     <div class="row d-flex justify-content-center">
                         <div class="accordion col-10">
                             <br />
                             <asp:Label ID="lblResourceSelect" runat="server" Text="Select Resources Type: "></asp:Label>
-                            
+
+                            <br />
+
+                            <div class="row">
+                                <div class="col"></div>
+                                <asp:Button Text="ALL" ID="btnAll" runat="server" class="col-2 btn btn-dark m-2" OnClick="btnAll_Click" />
+                                <asp:Button Text="Jobs" ID="btnJob" runat="server" class="col-2 btn btn-dark m-2" OnClick="btnJob_Click" />
+                                <asp:Button Text="Events" ID="btnEvent" runat="server" class="col-2 btn btn-dark m-2" OnClick="btnEvent_Click" />
+                                <asp:Button Text="Training" ID="btnTraining" runat="server" class="col-2 btn btn-dark m-2" OnClick="btnTraining_Click" />
+                                <div class="col"></div>
+                            </div>
                             <br />
                             <table id="datatable" class="table">
                                 <thead>
@@ -64,7 +73,7 @@
                         </div>
                     </div>
                     <br />
-                </div>--%>
+                </div>
                 <br />
                 <div class="section">
                     <br />

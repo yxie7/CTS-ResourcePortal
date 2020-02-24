@@ -144,7 +144,7 @@ namespace CTS_ResourcePortal
                         //User Registered 
                         //Save UserEmail in Session Called UserEmail
                         Session.Add("userEmail", txtEmail.Text.ToString());
-
+                        ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
                     }
                     else
                     {

@@ -81,6 +81,7 @@ namespace CTS_ResourcePortal
             string title = "";
             string body = "Feedback Removed!";
             ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
+            BindAll();
         }
 
         protected void btnViewR_Click(object sender, EventArgs e)
@@ -114,6 +115,7 @@ namespace CTS_ResourcePortal
 
         protected void btnSelect_Click(object sender, EventArgs e)
         {
+            int removed = 0; 
             foreach (RepeaterItem item in rptViewR.Items)
             {
                 CheckBox checkBox = (CheckBox)item.FindControl("chkRow");
@@ -121,10 +123,13 @@ namespace CTS_ResourcePortal
                 if (checkBox.Checked)
                 {
 
-                    item.FindControl("ResourceName");
+
                     //Stored procedure to lookup feedback id by what is in the table 
                     //int feedbackid = Convert.ToInt32(label);
-                    string feedbacktext = item.DataItem.ToString();
+                    Label label = (Label)item.FindControl("lblFeedbackText");
+
+                    string feedbacktext = label.Text;
+                    cmd.Parameters.Clear();
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "GetFeedbackIDByText";
                     SqlParameter text = new SqlParameter("@FeedbackText", feedbacktext);
@@ -132,14 +137,15 @@ namespace CTS_ResourcePortal
                     text.SqlDbType = SqlDbType.VarChar;
                    
                     cmd.Parameters.Add(text);
-
+                    
                     DataSet dataSet = db.GetDataSetUsingCmdObj(cmd);
                     if (dataSet.Tables[0].Rows.Count>0)
                     {
                         cmd.Parameters.Clear();
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.CommandText = "InactivateFeedback";
-                        SqlParameter id = new SqlParameter("@id", dataSet.Tables[0].Rows[0]);
+                        int FeedbackID = Convert.ToInt32(dataSet.Tables[0].Rows[0].ItemArray[0]);
+                        SqlParameter id = new SqlParameter("@Feedbackid", FeedbackID);
                         id.Direction = ParameterDirection.Input;
                         id.SqlDbType = SqlDbType.Int;
                         id.Size = 4;
@@ -147,7 +153,7 @@ namespace CTS_ResourcePortal
                         int check = db.DoUpdateUsingCmdObj(cmd);
                         if(check > -1)
                         {
-                            btnRemove_Click(sender, e);
+                            removed++;
                         }
 
                         //DataSet dataSet = db.GetDataSetUsingCmdObj(cmd);
@@ -164,6 +170,11 @@ namespace CTS_ResourcePortal
                     //Do Something
                 }
             }
+            //string title = "";
+            //string body = "Feedback Removed!";
+            //ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
+            //ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+            BindAll();
         }
     }
 }

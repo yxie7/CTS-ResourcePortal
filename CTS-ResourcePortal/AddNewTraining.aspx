@@ -1,8 +1,36 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin.master" AutoEventWireup="true" CodeBehind="AddNewTraining.aspx.cs" Inherits="CTS_ResourcePortal.AddNewTraining" %>
 
+<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</asp:Content>
+    
+
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
     <link href="AddNew.css" rel="stylesheet" />
     <link href="css.css" rel="stylesheet" />
+
+    <div id="MyPopup" class="modal" role="dialog">
+        <div class="modal-dialog modal-xl">
+            <!-- Modal content-->
+            <div class="modal-content container">
+                <div class="modal-body">
+
+                    <br />
+                    <div class="row  justify-content-center align-items-center text-center">
+                        <div class="col"></div>
+                        <div class="col-md-4">
+                             <asp:Label runat="server" Text="Training Opportunity Successfully Added!" ID="Label1" Font-Bold="True"></asp:Label>
+                            </div>
+                        <div class="col"></div>
+                    </div>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <div class="row">
             <div class="col"></div>

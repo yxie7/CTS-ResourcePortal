@@ -1,19 +1,18 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin.master" AutoEventWireup="true" CodeBehind="AddNewEvent.aspx.cs" Inherits="CTS_ResourcePortal.AddNewEvent" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
 
     <link href="AddNew.css" rel="stylesheet" />
     <link href="css.css" rel="stylesheet" />
-    <div class="container">
-        <div class="row">
-            <div class="col"></div>
-            <h2 class="col-md-auto">Add New Event</h2>
-            <div class="col"></div>
-        </div>
-        <div id="MyPopup" class="modal" role="dialog">
+
+    <div id="MyPopup" class="modal" role="dialog">
         <div class="modal-dialog modal-xl">
             <!-- Modal content-->
             <div class="modal-content container">
@@ -32,6 +31,15 @@
             </div>
         </div>
     </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col"></div>
+            <h2 class="col-md-auto">Add New Event</h2>
+            <div class="col"></div>
+        </div>
+        
         <br />
         <div id="" class="section">
             <br />

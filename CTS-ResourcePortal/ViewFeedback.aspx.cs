@@ -122,16 +122,17 @@ namespace CTS_ResourcePortal
                 {
                     //Stored procedure to lookup feedback id by what is in the table 
                     //int feedbackid = Convert.ToInt32(item.ToString());
+                    string feedbacktext = item.DataItem.ToString();
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "GetFeedbackIDByText";
-                    SqlParameter text = new SqlParameter("@FeedbackText", item.ToString());
+                    SqlParameter text = new SqlParameter("@FeedbackText", feedbacktext);
                     text.Direction = ParameterDirection.Input;
                     text.SqlDbType = SqlDbType.VarChar;
                    
                     cmd.Parameters.Add(text);
 
                     DataSet dataSet = db.GetDataSetUsingCmdObj(cmd);
-                    if (dataSet.Tables.Count > 0)
+                    if (dataSet.Tables[0].Rows.Count>0)
                     {
                         cmd.Parameters.Clear();
                         cmd.CommandType = CommandType.StoredProcedure;

@@ -66,6 +66,39 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
     <link href="css.css" rel="stylesheet" />
+   <%-- <div id="MyPopup" class="modal" role="dialog">
+            <div class="modal-dialog modal-xl">
+                <!-- Modal content-->
+                <div class="modal-content container">
+                    <div class="modal-body">
+
+                        <br />
+                        <div class="row  justify-content-center align-items-center text-center">
+                            <div class="col"></div>
+                            <div class="col-md-4">
+                                <asp:Label runat="server" Text="Feedback Removed!" ID="lblThanks" Font-Bold="True"></asp:Label>
+                            </div>
+                            <div class="col"></div>
+                        </div>
+                        <br />
+                    </div>
+                </div>
+            </div>
+        </div>--%>
+    <%--<div id="MyPopup" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content" style="margin-top: 55%; }">
+                    <h4 class="modal-title"></h4>
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">
+                            Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>--%>
     <div class="container">
         <div class="row">
             <div class="col-10">
@@ -113,8 +146,8 @@
                                     </th>
                                     <th>Feedback
                                     </th>
-                                    <th>Active Status 
-                                    </th>
+                                    <%--<th>Active Status 
+                                    </th>--%>
                                     <th>Date Posted
                                     </th>
                                     <%--<th>Remove
@@ -132,9 +165,9 @@
                                 <asp:Label ID="lblResourceName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, ("ResourceName")) %>'></asp:Label>
                                 <%--<%# (string) DataBinder.Eval(Container.DataItem, ("ResourceName")) %>--%>
                             </td>
-                            <td>
+                            <%--<td>
                                 <%# DataBinder.Eval(Container.DataItem, ("Active")) %>
-                            </td>
+                            </td>--%>
                             <td>
                                 <asp:Label ID="lblFeedbackText" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, ("FeedbackText")) %>'></asp:Label>
                             </td>
@@ -172,38 +205,7 @@
             </div>
         </div>--%>
         </div>
-        <div id="MyPopup" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content" style="margin-top: 55%; }">
-                    <h4 class="modal-title"></h4>
-                    <div class="modal-body">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">
-                            Close</button>
-                    </div>
-                </div>
-            </div>
+        
         </div>
-        <%--<div id="MyPopup" class="modal" role="dialog">
-            <div class="modal-dialog modal-xl">
-                <!-- Modal content-->
-                <div class="modal-content container">
-                    <div class="modal-body">
-
-                        <br />
-                        <div class="row  justify-content-center align-items-center text-center">
-                            <div class="col"></div>
-                            <div class="col-md-4">
-                                <asp:Label runat="server" Text="Feedback Removed!" ID="lblThanks" Font-Bold="True"></asp:Label>
-                            </div>
-                            <div class="col"></div>
-                        </div>
-                        <br />
-                    </div>
-                </div>
-            </div>
-        </div>--%>
 </asp:Content>
 

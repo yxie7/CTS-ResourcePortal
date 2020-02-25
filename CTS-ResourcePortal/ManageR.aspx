@@ -208,6 +208,8 @@
                                 <tr>
                                     <th>
                                         <asp:CheckBox ID="chkHeader" runat="server" /></th>
+                                    <th>ID
+                                    </th>
                                     <th>Resource Title
                                     </th>
                                     <th>Address
@@ -216,8 +218,8 @@
                                     </th>
                                     <th>Date Posted
                                     </th>
-                                    <%--<th>Inactivate Resource
-                                    </th>--%>
+                                    <th>Current Status
+                                    </th>
                                     <th>Edit Resource
                                     </th>
                                 </tr>
@@ -230,6 +232,9 @@
                             <td>
                                 <asp:CheckBox ID="chkRow" runat="server" /></td>
                             <td>
+                                <%# DataBinder.Eval(Container.DataItem, ("ResourcesID")) %>
+                            </td>
+                            <td>
                                 <%# DataBinder.Eval(Container.DataItem, ("ResourceName")) %>
                             </td>
                             <td>
@@ -241,11 +246,11 @@
                             <td>
                                 <%# DataBinder.Eval(Container.DataItem, ("StartDate")) %>
                             </td>
-                            <%--<td>
+                            <td>
 
-                                <asp:Button ID="btnSelect" Text="Inactivate Resource" runat="server" OnClick="btnSelect_Click" />
+                                 <%# DataBinder.Eval(Container.DataItem, ("Active")) %>
 
-                            </td>--%>
+                            </td>
                             <td>
 
                                 <asp:Button ID="btnEdit" Text="Edit" runat="server" OnClick="btnEdit_Click" />
@@ -261,9 +266,15 @@
                 </asp:Repeater>
                 <br />
                 <br />
-                <div style="align-content:center">
-                    <asp:Button ID="btnSelect" Text="Inactivate Resource(s)" runat="server" OnClick="btnSelect_Click"  />
+                <div class="row justify-content-center align-items-center">
+                <div class="col-md-2">
+                    <asp:Button ID="btnActivate" runat="server" Text="Activate Resource(s)" OnClick="btnActivate_Click"/>
                 </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-2">
+                    <asp:Button ID="btnInactivate" Text="Inactivate Resource(s)" runat="server" OnClick="btnInactivate_Click"  />
+                </div>
+            </div>
 
                 <%--<asp:GridView ID="gvManageR" runat="server" AutoGenerateColumns="False">
                     <Columns>

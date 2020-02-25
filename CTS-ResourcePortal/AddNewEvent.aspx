@@ -13,6 +13,25 @@
             <h2 class="col-md-auto">Add New Event</h2>
             <div class="col"></div>
         </div>
+        <div id="MyPopup" class="modal" role="dialog">
+        <div class="modal-dialog modal-xl">
+            <!-- Modal content-->
+            <div class="modal-content container">
+                <div class="modal-body">
+
+                    <br />
+                    <div class="row  justify-content-center align-items-center text-center">
+                        <div class="col"></div>
+                        <div class="col-md-4">
+                             <asp:Label runat="server" Text="Event Successfully Added!" ID="lblEventAdded" Font-Bold="True"></asp:Label>
+                            </div>
+                        <div class="col"></div>
+                    </div>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
         <br />
         <div id="" class="section">
             <br />
@@ -225,4 +244,12 @@
         </div>
         <br />
     </div>
+
+    <script type="text/javascript">
+        function ShowPopup(title, body) {
+            $("#MyPopup .modal-title").html(title);
+            $("#MyPopup .modal-body").html(body);
+            $("#MyPopup").modal("show");
+        }
+    </script>
 </asp:Content>

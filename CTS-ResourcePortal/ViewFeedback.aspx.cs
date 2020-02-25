@@ -120,8 +120,10 @@ namespace CTS_ResourcePortal
                 //HtmlInputCheckBox chkRow = (HtmlInputCheckBox)item.FindControl("chkRow");
                 if (checkBox.Checked)
                 {
+
+                    item.FindControl("ResourceName");
                     //Stored procedure to lookup feedback id by what is in the table 
-                    //int feedbackid = Convert.ToInt32(item.ToString());
+                    //int feedbackid = Convert.ToInt32(label);
                     string feedbacktext = item.DataItem.ToString();
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "GetFeedbackIDByText";

@@ -116,8 +116,8 @@
                         <tr>
                             <td>
                                 <asp:CheckBox ID="chkRow" runat="server" /></td>
-                            <td>
-                                <%# DataBinder.Eval(Container.DataItem, ("ResourceName")) %>
+                            <td id="Resource">
+                                <%# (string) DataBinder.Eval(Container.DataItem, ("ResourceName")) %>
                             </td>
                             <td>
                                 <%# DataBinder.Eval(Container.DataItem, ("Active")) %>

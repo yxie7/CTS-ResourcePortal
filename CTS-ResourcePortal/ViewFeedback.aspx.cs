@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using Utilities;
 
@@ -109,6 +110,57 @@ namespace CTS_ResourcePortal
         protected void btnAllResources_Click(object sender, EventArgs e)
         {
             BindAll();
+        }
+
+        protected void btnSelect_Click(object sender, EventArgs e)
+        {
+            foreach (RepeaterItem item in rptViewR.Items)
+            {
+                CheckBox checkBox = (CheckBox)item.FindControl("chkRow");
+                //HtmlInputCheckBox chkRow = (HtmlInputCheckBox)item.FindControl("chkRow");
+                if (checkBox.Checked)
+                {
+                    //Stored procedure to lookup feedback id by what is in the table 
+                    //int feedbackid = Convert.ToInt32(item.ToString());
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "GetFeedbackIDByText";
+                    SqlParameter text = new SqlParameter("@FeedbackText", item.ToString());
+                    text.Direction = ParameterDirection.Input;
+                    text.SqlDbType = SqlDbType.VarChar;
+                   
+                    cmd.Parameters.Add(text);
+
+                    DataSet dataSet = db.GetDataSetUsingCmdObj(cmd);
+                    if (dataSet.Tables.Count > 0)
+                    {
+                        cmd.Parameters.Clear();
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "InactivateFeedback";
+                        SqlParameter id = new SqlParameter("@id", dataSet.Tables[0].Rows[0]);
+                        id.Direction = ParameterDirection.Input;
+                        id.SqlDbType = SqlDbType.Int;
+                        id.Size = 4;
+                        cmd.Parameters.Add(id);
+                        int check = db.DoUpdateUsingCmdObj(cmd);
+                        if(check > -1)
+                        {
+                            btnRemove_Click(sender, e);
+                        }
+
+                        //DataSet dataSet = db.GetDataSetUsingCmdObj(cmd);
+
+                    }
+
+
+                    //Stored Procedure to inactivate feedback by FeedbackID 
+
+                    //cmd.CommandType = CommandType.StoredProcedure;
+                    //cmd.CommandText = "InactivateFeedback";
+
+                    //SqlParameter id = new SqlParameter("@Feedbackid", 
+                    //Do Something
+                }
+            }
         }
     }
 }

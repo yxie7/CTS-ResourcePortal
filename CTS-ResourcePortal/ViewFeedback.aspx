@@ -101,6 +101,8 @@
                                     </th>
                                     <th>Feedback
                                     </th>
+                                    <th>Active Status 
+                                    </th>
                                     <th>Date Posted
                                     </th>
                                     <%--<th>Remove
@@ -116,6 +118,9 @@
                                 <asp:CheckBox ID="chkRow" runat="server" /></td>
                             <td>
                                 <%# DataBinder.Eval(Container.DataItem, ("ResourceName")) %>
+                            </td>
+                            <td>
+                                <%# DataBinder.Eval(Container.DataItem, ("Active")) %>
                             </td>
                             <td>
                                 <%# DataBinder.Eval(Container.DataItem, ("FeedbackText")) %>
@@ -140,7 +145,7 @@
                 <br />
                 <br />
                 <div style="align-content:center;margin:auto">
-                    <asp:Button ID="btnSelect" Text="Remove Feedback" runat="server" />
+                    <asp:Button ID="btnSelect" Text="Remove Feedback" runat="server" OnClick="btnSelect_Click" />
                 </div>
 
 

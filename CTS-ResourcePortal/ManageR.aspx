@@ -232,7 +232,7 @@
                             <td>
                                 <asp:CheckBox ID="chkRow" runat="server" /></td>
                             <td>
-                                <%# DataBinder.Eval(Container.DataItem, ("ResourcesID")) %>
+                                <asp:Label runat="server" ID="lblResID" Text='<%# DataBinder.Eval(Container.DataItem, ("ResourcesID")) %>' > </asp:Label>
                             </td>
                             <td>
                                 <%# DataBinder.Eval(Container.DataItem, ("ResourceName")) %>

@@ -169,12 +169,15 @@ namespace CTS_ResourcePortal
         {
             foreach (RepeaterItem item in rptManageR.Items)
             {
-                HtmlInputCheckBox chkRow = (HtmlInputCheckBox)item.FindControl("chkRow");
-                if (chkRow.Checked)
+                CheckBox cb = (CheckBox)item.FindControl("chkRow");
+                if (cb.Checked)
                 {
+                    Label label = (Label)item.FindControl("lblResID");
                     Resource resource = new Resource();
 
-                    //resource.resourceID = rptManageR    get ID from repeater column
+                    string lblID = label.Text;
+
+                    resource.resourceID = lblID;
                     resource.active = "Active";
 
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -193,12 +196,15 @@ namespace CTS_ResourcePortal
         {
             foreach (RepeaterItem item in rptManageR.Items)
             {
-                HtmlInputCheckBox chkRow = (HtmlInputCheckBox)item.FindControl("chkRow");
-                if (chkRow.Checked)
+                CheckBox cb = (CheckBox)item.FindControl("chkRow");
+                if (cb.Checked)
                 {
+                    Label label = (Label)item.FindControl("lblResID");
                     Resource resource = new Resource();
 
-                    //resource.resourceID = rptManageR    get ID from repeater column
+                    string lblID = label.Text;
+
+                    resource.resourceID = lblID;
                     resource.active = "Inactive";
 
                     cmd.CommandType = CommandType.StoredProcedure;

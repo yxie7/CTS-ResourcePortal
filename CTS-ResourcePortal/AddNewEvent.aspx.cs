@@ -4,10 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Utilities;
+using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
-using System.Data.SqlClient;
+using System.Security.Cryptography;
+using System.IO;
+using System.Text;
+using System.Collections;
+using Utilities;
 
 namespace CTS_ResourcePortal
 {
@@ -56,6 +60,7 @@ namespace CTS_ResourcePortal
                 eventt.attire = txtAtire.Text;
                 eventt.link = txtLink.Text;
                 eventt.description = txtDesc.Text;
+                eventt.active = "Active";
 
                 bigCommand.CommandType = CommandType.StoredProcedure;
                 bigCommand.CommandText = "AddNewEvent";
@@ -78,6 +83,7 @@ namespace CTS_ResourcePortal
                 bigCommand.Parameters.AddWithValue("@attire", eventt.attire);
                 bigCommand.Parameters.AddWithValue("@link", eventt.link);
                 bigCommand.Parameters.AddWithValue("@description", eventt.description);
+                bigCommand.Parameters.AddWithValue("@active", eventt.active);
 
                 dBConnect.DoUpdateUsingCmdObj(bigCommand);
                 bigCommand.Parameters.Clear();
@@ -99,8 +105,11 @@ namespace CTS_ResourcePortal
                 txtDesc.Text = string.Empty;
 
                 lblError.Visible = false;
+
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+
             }
-            
+
         }
 
        /* public bool IsValid()

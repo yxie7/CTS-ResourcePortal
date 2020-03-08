@@ -273,7 +273,7 @@
                     <br />
                     <div class="row justify-content-center align-items-center">
                         <div class="col-md-auto">
-                            <asp:Button runat="server" class="btn btn-dark" Text="Preview Newsletter" ID="btnPreview" OnClick="btnPreview_Click"></asp:Button>
+                            <asp:Button runat="server" class="btn btn-dark" Text="Preview Newsletter" ID="btnPreview"></asp:Button>
                         </div>
                     </div>
                     <br />

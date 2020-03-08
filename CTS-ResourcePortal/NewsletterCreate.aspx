@@ -50,26 +50,37 @@
                                 <div class="col"></div>
                             </div>
                             <br />
-                            <table id="datatable" class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Resource Title</th>
-                                        <th>Comments</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <asp:Repeater runat="server" ID="rpt">
-                                        <ItemTemplate>
+                            <asp:Repeater runat="server" ID="rpt">
+                                <HeaderTemplate>
+                                    <table id="datatable" class="table">
+                                        <thead>
                                             <tr>
-                                                <td><%# Eval("ResourceName") %></td>
+                                                <th>Resource Title</th>
+                                                <th>Comments</th>
+                                                <th>Add</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                </HeaderTemplate>
+                                <ItemTemplate>
+                                            <tr>
+                                                <td>
+                                                    <%# Eval("ResourceName") %>
+                                                    <asp:HiddenField runat="server" ID="hfID" Value='<%# Eval("ResourcesID") %>' />
+                                                </td>
                                                 <td>
                                                     <asp:TextBox runat="server" ID="txtComment" TextMode="multiline" Columns="50" Rows="3" placeholder="Enter comments, tips, or other information you would like to give to citizens here..."></asp:TextBox>
                                                 </td>
+                                                <td>
+                                                    <asp:Button Text="Add" runat="server" ID="btnAddSelection" />
+                                                </td>
                                             </tr>
-                                        </ItemTemplate>
-                                    </asp:Repeater>
-                                </tbody>
-                            </table>
+                                </ItemTemplate>
+                                <FooterTemplate>
+                                        </tbody>
+                                    </table>
+                                </FooterTemplate>
+                            </asp:Repeater>
                         </div>
                     </div>
                     <br />

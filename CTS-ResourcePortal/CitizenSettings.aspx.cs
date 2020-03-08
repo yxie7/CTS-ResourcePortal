@@ -13,18 +13,35 @@ namespace CTS_ResourcePortal
 {
     public partial class CitizenSettings : System.Web.UI.Page
     {
+        DBConnect objDB = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
+
+        SqlCommand objCommand = new SqlCommand();
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (string.IsNullOrEmpty(Session["userEmail"] as string))
+            {
+                Response.Redirect("Login.aspx");
+
+            }
+            objCommand.Parameters.Clear();
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "GetAllCitizensByEmail";
+
+            objCommand.Parameters.AddWithValue("@Email", Session["userEmail"].ToString());
+            DataSet CitizenInfo = objDB.GetDataSetUsingCmdObj(objCommand);
+
+            string fn = (string)objDB.GetField("FirstName", 0);
+            string ln = (string)objDB.GetField("LastName", 0);
+            int citiID = (Int32)objDB.GetField("CitizenID", 0);
+
+            lblCitizenID.Text = citiID.ToString();
         }
 
-        protected void Unnamed_Click(object sender, EventArgs e)
-        {
-        }
+
 
         protected void ResumeUpload_Click(object sender, EventArgs e)
         {
-            DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
 
             SqlCommand cmd = new SqlCommand();
 
@@ -77,7 +94,7 @@ namespace CTS_ResourcePortal
 
                         cmd.Parameters.AddWithValue("@ResumeData", resumeData);
 
-                        result = db.DoUpdateUsingCmdObj(cmd);
+                        result = objDB.DoUpdateUsingCmdObj(cmd);
 
                         lblStatus.Visible = true;
 
@@ -105,5 +122,39 @@ namespace CTS_ResourcePortal
 
             }
         }
+
+        protected void btnUpdateSubscribe_Click(object sender, EventArgs e)
+        {
+
+
+            SqlCommand objCommand = new SqlCommand();
+
+            objCommand.Parameters.Clear();
+            objCommand.CommandText = "UpdateSubscriberStatus";
+
+            string subscribe = rdoSubscribe.SelectedValue.ToString();
+
+            objCommand.Parameters.AddWithValue("@CitizenID", lblCitizenID.Text.ToString());
+            objCommand.Parameters.AddWithValue("@Subscribed", subscribe);
+
+            var ResponseReceived = objDB.DoUpdateUsingCmdObj(objCommand);
+
+            if (ResponseReceived == 1)
+            {
+
+                lblStatus.Text = "Thank you for updating your status!";
+                lblStatus.Visible = true;
+            }
+            else
+
+                lblStatus.Text = "Failed";
+            lblStatus.Visible = true;
+        }
+
+        protected void Delete_Click(object sender, EventArgs e)
+        {
+
+        }
     }
+    
 }

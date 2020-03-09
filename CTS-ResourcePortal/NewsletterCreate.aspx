@@ -128,7 +128,7 @@
                     <br />
                     <div class="row justify-content-end align-items-end">
                         <div class="col-md-auto">
-                            <asp:Button runat="server" class="btn btn-dark" Text="Preview Newsletter" ID="btnPreview"></asp:Button>
+                            <asp:Button runat="server" class="btn btn-dark" Text="Preview Newsletter" ID="btnPreview" OnClick="btnPreview_Click"></asp:Button>
                         </div>
                         <div class="col-1"></div>
                     </div>

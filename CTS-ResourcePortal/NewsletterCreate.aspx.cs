@@ -58,6 +58,19 @@ namespace CTS_ResourcePortal
             }
         }
 
+        protected void btnPreview_Click(object sender, EventArgs e)
+        {
+            if (Session["NewsletterSelections"] != null)
+            {
+                Response.Redirect("NewsletterPreview.aspx");
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "Script", "toasted();", true);
+
+                //ClientScript.RegisterStartupScript(GetType(), "Toast", "toasted();", true);
+            }
+        }
         /*
         protected void btnPreview_Click(object sender, EventArgs e)
         {
@@ -212,6 +225,6 @@ namespace CTS_ResourcePortal
             //UpdatePanel.Update();
             //ScriptManager.RegisterStartupScript(this, GetType(), "bindDataTable", "bindDataTable();", true);
         }
-        
+
     }
 }

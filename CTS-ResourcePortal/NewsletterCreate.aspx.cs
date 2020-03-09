@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 using Utilities;
 
@@ -14,15 +15,30 @@ namespace CTS_ResourcePortal
         private DataTable dt = new DataTable();
 
         protected void Page_Load(object sender, EventArgs e)
-        {          
-            if (!IsPostBack)
-            {
-                //generateTables();
-                generateAll();
-            }
-
+        {
             //Selections table
             loadSelections();
+            if (!IsPostBack)
+            {
+                if (Request.QueryString["filter"] == "1")
+                {
+                    generateJobs();
+                }
+                else if (Request.QueryString["filter"] == "2")
+                {
+                    generateEvents();
+                }
+                else if (Request.QueryString["filter"] == "3")
+                {
+                    generateTraining();
+                }
+                else
+                {
+                    //generateTables();
+                    generateAll();
+                }
+            }
+
         }
 
         private void loadSelections()
@@ -34,6 +50,12 @@ namespace CTS_ResourcePortal
             }
             Selections.DataSource = selectionList;
             Selections.DataBind();
+            if (Selections.Rows.Count > 0)
+            {
+                Selections.UseAccessibleHeader = true;
+                Selections.HeaderRow.TableSection = TableRowSection.TableHeader;
+                Selections.FooterRow.TableSection = TableRowSection.TableFooter;
+            }
         }
 
         /*
@@ -141,29 +163,29 @@ namespace CTS_ResourcePortal
 
         protected void btnAll_Click(object sender, EventArgs e)
         {
-            generateAll();
+            //generateAll();
+            Response.Redirect("NewsletterCreate.aspx");
+
         }
 
         protected void btnJob_Click(object sender, EventArgs e)
         {
-            generateJobs();
+            //generateJobs();
+            Response.Redirect("NewsletterCreate.aspx?filter=1");
         }
 
         protected void btnEvent_Click(object sender, EventArgs e)
         {
-            generateEvents();
+            //generateEvents();
+            Response.Redirect("NewsletterCreate.aspx?filter=2");
         }
 
         protected void btnTraining_Click(object sender, EventArgs e)
         {
-            generateTraining();
+            //generateTraining();
+            Response.Redirect("NewsletterCreate.aspx?filter=3");
         }
-
-        protected void btnAddSelection_Click(object sender, EventArgs e)
-        {
-        }
-
-
+        
         // triggers from botton click of each row, adds row details to list and list to session
         protected void rpt_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
@@ -184,16 +206,12 @@ namespace CTS_ResourcePortal
             }
             selectionList.Add(new NewsletterItem(selectionID, selectionName, selectionComment));
             Session["NewsletterSelections"] = selectionList;
-        }
 
-        protected void Selections_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            //check if the row is the header row
-            if (e.Row.RowType == DataControlRowType.Header)
-            {
-                //add the thead and tbody section programatically
-                e.Row.TableSection = TableRowSection.TableHeader;
-            }
+            Response.Redirect(Request.RawUrl);
+
+            //UpdatePanel.Update();
+            //ScriptManager.RegisterStartupScript(this, GetType(), "bindDataTable", "bindDataTable();", true);
         }
+        
     }
 }

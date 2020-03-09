@@ -13,10 +13,13 @@
         $(document).ready(function () {
             $('[id*=datatable]').DataTable({
             });
+            $('#<%= Selections.ClientID %>').DataTable({
+                "bFilter": false,
+                "bLengthChange": false,
+                rowReorder: true
+            });
         });
     </script>
-
-    <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true" />
 
     <div class="container">
         <div class="toast" role="alert" data-delay="5000" data-autohide="true">
@@ -48,7 +51,7 @@
                         <div class="col"></div>
                     </div>
                     <br />
-                    <asp:Repeater runat="server" ID="rpt">
+                    <asp:Repeater runat="server" ID="rpt" OnItemCommand="rpt_ItemCommand">
                         <HeaderTemplate>
                             <table id="datatable" class="table">
                                 <thead>
@@ -63,7 +66,7 @@
                         <ItemTemplate>
                             <tr>
                                 <td>
-                                    <%# Eval("ResourceName") %>
+                                    <asp:Label ID="lblName" Text='<%# Eval("ResourceName") %>' runat="server" />
                                     <asp:HiddenField runat="server" ID="hfID" Value='<%# Eval("ResourcesID") %>' />
                                 </td>
                                 <td>
@@ -75,17 +78,42 @@
                             </tr>
                         </ItemTemplate>
                         <FooterTemplate>
-                            </tbody>
-                                    </table>
+                            </tbody></table>
                         </FooterTemplate>
                     </asp:Repeater>
                 </div>
             </div>
             <br />
+
+            <asp:ScriptManager ID="ScriptManager1" runat="server" />
+            <asp:UpdatePanel runat="server" ID="UpdatePanel" UpdateMode="Conditional">
+                <Triggers>
+                    <asp:AsyncPostBackTrigger ControlID="rpt" EventName="Click" />
+                </Triggers>
+                <ContentTemplate>
+                    <!---->
+                    <div class="row d-flex justify-content-center">
+                        <div class="tableSelection col-10">
+                            <label>Current Newsletter Items:</label><br />
+                            <asp:GridView ID="Selections" class="dataTable" runat="server" OnRowDataBound="Selections_RowDataBound" AutoGenerateColumns="false" DataKeyNames="ResourceID">
+                                <Columns>
+                                    <asp:BoundField DataField="ResourceName" HeaderText="Resource Title" />
+                                    <asp:BoundField DataField="Comment" HeaderText="Comment" />
+                                </Columns>
+                                <EmptyDataTemplate>No Selections</EmptyDataTemplate>
+                            </asp:GridView>
+                        </div>
+                    </div>
+                    <!---->
+                </ContentTemplate>
+            </asp:UpdatePanel>
+
+            <br />
             <div class="row justify-content-end align-items-end">
                 <div class="col-md-auto">
                     <asp:Button runat="server" class="btn btn-dark" Text="Preview Newsletter" ID="btnPreview"></asp:Button>
                 </div>
+                <div class="col-1"></div>
             </div>
             <br />
         </div>

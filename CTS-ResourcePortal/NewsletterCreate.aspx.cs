@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Web.Script.Serialization;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using Utilities;
 
@@ -13,18 +11,31 @@ namespace CTS_ResourcePortal
     public partial class NewsletterCreate : System.Web.UI.Page
     {
         private DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
+        private DataTable dt = new DataTable();
 
         protected void Page_Load(object sender, EventArgs e)
-        {
-            int n = 5;
-            string ns = n.ToString();
-
+        {          
             if (!IsPostBack)
             {
                 //generateTables();
                 generateAll();
             }
+
+            //Selections table
+            loadSelections();
         }
+
+        private void loadSelections()
+        {
+            List<NewsletterItem> selectionList = new List<NewsletterItem>();
+            if (Session["NewsletterSelections"] != null)
+            {
+                selectionList = Session["NewsletterSelections"] as List<NewsletterItem>;
+            }
+            Selections.DataSource = selectionList;
+            Selections.DataBind();
+        }
+
         /*
         protected void btnPreview_Click(object sender, EventArgs e)
         {
@@ -78,6 +89,7 @@ namespace CTS_ResourcePortal
             }
         }
         */
+
         protected void txtTitleSearch_TextChanged(object sender, EventArgs e)
         {
             //generateTables(txtTitleSearch.Text);
@@ -89,7 +101,8 @@ namespace CTS_ResourcePortal
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "SelectResources";
             DataSet dataSet = db.GetDataSetUsingCmdObj(cmd);
-            rpt.DataSource = dataSet;
+            dt = dataSet.Tables[0];
+            rpt.DataSource = dt;
             rpt.DataBind();
         }
 
@@ -99,7 +112,8 @@ namespace CTS_ResourcePortal
             jcmd.CommandType = CommandType.StoredProcedure;
             jcmd.CommandText = "JobSelect";
             DataSet jds = db.GetDataSetUsingCmdObj(jcmd);
-            rpt.DataSource = jds;
+            dt = jds.Tables[0];
+            rpt.DataSource = dt;
             rpt.DataBind();
         }
 
@@ -109,7 +123,8 @@ namespace CTS_ResourcePortal
             ecmd.CommandType = CommandType.StoredProcedure;
             ecmd.CommandText = "EventSelect";
             DataSet eds = db.GetDataSetUsingCmdObj(ecmd);
-            rpt.DataSource = eds;
+            dt = eds.Tables[0];
+            rpt.DataSource = dt;
             rpt.DataBind();
         }
 
@@ -119,7 +134,8 @@ namespace CTS_ResourcePortal
             tcmd.CommandType = CommandType.StoredProcedure;
             tcmd.CommandText = "TrainingSelect";
             DataSet tds = db.GetDataSetUsingCmdObj(tcmd);
-            rpt.DataSource = tds;
+            dt = tds.Tables[0];
+            rpt.DataSource = dt;
             rpt.DataBind();
         }
 
@@ -145,12 +161,39 @@ namespace CTS_ResourcePortal
 
         protected void btnAddSelection_Click(object sender, EventArgs e)
         {
-
         }
 
+
+        // triggers from botton click of each row, adds row details to list and list to session
         protected void rpt_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
+            int rowIndex = e.Item.ItemIndex;
 
+            HiddenField hf = rpt.Items[rowIndex].FindControl("hfID") as HiddenField;
+            Label lbl = rpt.Items[rowIndex].FindControl("lblName") as Label;
+            TextBox txt = rpt.Items[rowIndex].FindControl("txtComment") as TextBox;
+
+            int selectionID = int.Parse(hf.Value);
+            string selectionName = lbl.Text;
+            string selectionComment = txt.Text;
+
+            List<NewsletterItem> selectionList = new List<NewsletterItem>();
+            if (Session["NewsletterSelections"] != null)
+            {
+                selectionList = Session["NewsletterSelections"] as List<NewsletterItem>;
+            }
+            selectionList.Add(new NewsletterItem(selectionID, selectionName, selectionComment));
+            Session["NewsletterSelections"] = selectionList;
+        }
+
+        protected void Selections_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            //check if the row is the header row
+            if (e.Row.RowType == DataControlRowType.Header)
+            {
+                //add the thead and tbody section programatically
+                e.Row.TableSection = TableRowSection.TableHeader;
+            }
         }
     }
 }

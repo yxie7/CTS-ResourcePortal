@@ -150,8 +150,8 @@
                                     </th>--%>
                                     <th>Date Posted
                                     </th>
-                                    <%--<th>Remove
-                                    </th>--%>
+                                    <th>Reply to Feedback
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -173,6 +173,9 @@
                             </td>
                             <td>
                                 <%# DataBinder.Eval(Container.DataItem, ("Date")) %>
+                            </td>
+                            <td>
+                                <asp:Button ID="btnReply" Text="Reply" runat="server" />
                             </td>
 
                             <%--<td>

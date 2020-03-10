@@ -106,12 +106,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin: 0;
 }
 
-.toast {
-    z-index: 999;
-    color: black;
-    position: absolute;
-    top: 100px;
-    left:50%;
+#sendPrompt {
+   font-size:1.5rem;
 }
 
 @media screen and (max-width: 1000px) {

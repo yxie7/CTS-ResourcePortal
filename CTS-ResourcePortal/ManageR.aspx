@@ -218,6 +218,8 @@
                                     </th>
                                     <th>Resource Title
                                     </th>
+                                    <th>Active Status 
+                                    </th>
                                     <th>Address
                                     </th>
                                     <th>City
@@ -242,6 +244,9 @@
                             </td>
                             <td>
                                 <%# DataBinder.Eval(Container.DataItem, ("ResourceName")) %>
+                            </td>
+                            <td>
+                                <%# DataBinder.Eval(Container.DataItem, ("Active")) %>
                             </td>
                             <td>
                                 <%# DataBinder.Eval(Container.DataItem, ("AddressLine")) %>

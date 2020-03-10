@@ -19,7 +19,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
     <div>
 
-        <button type="button" id="sidebarCollapse" class="btn btn-light btn-lg">
+        <button type="button" id="sidebarCollapse" class="btn btn-info btn-lg">
             <i class="fas fa-align-left"></i>
             <span>Menu</span>
         </button>

@@ -90,9 +90,9 @@
                             <table id="datatable" class="table">
                                 <thead>
                                     <tr>
-                                        <th>Resource Title</th>
-                                        <th>Comments</th>
-                                        <th>Add</th>
+                                        <th class="col-2">Resource Title</th>
+                                        <th class="col-5">Comments</th>
+                                        <th class="col-1">Add</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -104,7 +104,7 @@
                                     <asp:HiddenField runat="server" ID="hfID" Value='<%# Eval("ResourcesID") %>' />
                                 </td>
                                 <td>
-                                    <asp:TextBox runat="server" ID="txtComment" TextMode="multiline" Columns="50" Rows="3" placeholder="Enter comments, tips, or other information you would like to give to citizens here..."></asp:TextBox>
+                                    <asp:TextBox runat="server" ID="txtComment" CssClass="form-control" TextMode="multiline" Rows="3" placeholder="Enter comments, tips, or other information you would like to give to citizens here..."></asp:TextBox>
                                 </td>
                                 <td>
                                     <asp:Button ID="btnAdd" Text="Add" runat="server" />

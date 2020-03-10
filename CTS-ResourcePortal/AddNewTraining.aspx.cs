@@ -57,9 +57,8 @@ namespace CTS_ResourcePortal
                 training.link = txtSignUp.Text;
                 training.description = txtDesc.Text;
                 training.otherReqs = txtSkills.Text;
-
-
-
+                training.active = "Active";
+                
 
                 bigCommand.CommandType = CommandType.StoredProcedure;
                 bigCommand.CommandText = "AddNewTraining";
@@ -82,6 +81,7 @@ namespace CTS_ResourcePortal
                 bigCommand.Parameters.AddWithValue("@otherReqs", training.otherReqs);
                 bigCommand.Parameters.AddWithValue("@link", training.link);
                 bigCommand.Parameters.AddWithValue("@description", training.description);
+                bigCommand.Parameters.AddWithValue("@active", training.active);
 
                 dBConnect.DoUpdateUsingCmdObj(bigCommand);
                 bigCommand.Parameters.Clear();
@@ -103,6 +103,8 @@ namespace CTS_ResourcePortal
                 txtSkills.Text = string.Empty;
 
                 lblError.Visible = false;
+
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
             }
 
         }

@@ -59,7 +59,7 @@ namespace CTS_ResourcePortal
                 ddlResources.DataBind();
 
 
-
+                
 
             }
 
@@ -165,15 +165,55 @@ namespace CTS_ResourcePortal
             }
         }
 
-
-        protected void btnSelect_Click(object sender, EventArgs e)
+        protected void btnActivate_Click(object sender, EventArgs e)
         {
             foreach (RepeaterItem item in rptManageR.Items)
             {
-                HtmlInputCheckBox chkRow = (HtmlInputCheckBox)item.FindControl("chkRow");
-                if (chkRow.Checked)
+                CheckBox cb = (CheckBox)item.FindControl("chkRow");
+                if (cb.Checked)
                 {
-                    //Do Something
+                    Label label = (Label)item.FindControl("lblResID");
+                    Resource resource = new Resource();
+
+                    string lblID = label.Text;
+
+                    resource.resourceID = lblID;
+                    resource.active = "Active";
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "InactivateOrActivateResource";
+                    cmd.Parameters.AddWithValue("@resourceID", resource.resourceID);
+                    cmd.Parameters.AddWithValue("@active", resource.active);
+
+                    db.DoUpdateUsingCmdObj(cmd);
+                    cmd.Parameters.Clear();
+
+                }
+            }
+        }
+
+        protected void btnInactivate_Click(object sender, EventArgs e)
+        {
+            foreach (RepeaterItem item in rptManageR.Items)
+            {
+                CheckBox cb = (CheckBox)item.FindControl("chkRow");
+                if (cb.Checked)
+                {
+                    Label label = (Label)item.FindControl("lblResID");
+                    Resource resource = new Resource();
+
+                    string lblID = label.Text;
+
+                    resource.resourceID = lblID;
+                    resource.active = "Inactive";
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "InactivateOrActivateResource";
+                    cmd.Parameters.AddWithValue("@resourceID", resource.resourceID);
+                    cmd.Parameters.AddWithValue("@active", resource.active);
+
+                    db.DoUpdateUsingCmdObj(cmd);
+                    cmd.Parameters.Clear();
                 }
             }
         }
@@ -189,5 +229,7 @@ namespace CTS_ResourcePortal
                 }
             }
         }
+
+       
     }
 }

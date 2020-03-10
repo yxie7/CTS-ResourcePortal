@@ -54,6 +54,7 @@ namespace CTS_ResourcePortal
                 job.link = txtLink.Text;
                 job.responsibilities = txtPrimResp.Text;
                 job.otherReqs = txtSkills.Text;
+                job.active = "Active";
 
                 bigCommand.CommandType = CommandType.StoredProcedure;
                 bigCommand.CommandText = "AddNewJob";
@@ -75,6 +76,7 @@ namespace CTS_ResourcePortal
                 bigCommand.Parameters.AddWithValue("@otherReqs", job.otherReqs);
                 bigCommand.Parameters.AddWithValue("@link", job.link);
                 bigCommand.Parameters.AddWithValue("@primResp", job.responsibilities);
+                bigCommand.Parameters.AddWithValue("@active", job.active);
 
 
                 dBConnect.DoUpdateUsingCmdObj(bigCommand);
@@ -96,6 +98,8 @@ namespace CTS_ResourcePortal
                 txtSkills.Text = string.Empty;
 
                 lblError.Visible = false;
+
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
             }
 
         }

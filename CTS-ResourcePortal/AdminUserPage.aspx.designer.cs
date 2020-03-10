@@ -13,31 +13,40 @@ namespace CTS_ResourcePortal {
     public partial class AdminUserPage {
         
         /// <summary>
-        /// rptNewCitizen control.
+        /// Accept1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptNewCitizen;
+        protected global::System.Web.UI.WebControls.Button Accept1;
         
         /// <summary>
-        /// btnAccept control.
+        /// Reject1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAccept;
+        protected global::System.Web.UI.WebControls.Button Reject1;
         
         /// <summary>
-        /// btnReject control.
+        /// Accept2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnReject;
+        protected global::System.Web.UI.WebControls.Button Accept2;
+        
+        /// <summary>
+        /// Reject2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Reject2;
         
         /// <summary>
         /// rptManageR control.
@@ -47,7 +56,6 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptManageR;
-        
         
         /// <summary>
         /// grdAllAccounts control.

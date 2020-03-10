@@ -5,7 +5,7 @@
     <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
 </asp:Content>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="navli" runat="server">    
+<asp:Content ID="Content2" ContentPlaceHolderID="navli" runat="server">
     <li class="navbar-text">
         <p>Jeffrey Harley</p>
     </li>
@@ -17,20 +17,51 @@
     </li>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
-    <div class='sidebar'>
-        <h4>Administrator Menu</h4>
-        <ul>
-            <li><a href="AdminHomePage.aspx">Dashboard</a></li>
-            <li><a href="AddNewJobOpp.aspx">Add New Job Opening</a></li>
-            <li><a href="AddNewEvent.aspx">Add New Event</a></li>
-            <li><a href="AddNewTraining.aspx">Add New Training Opportunity</a></li>
-            <li><a href="ManageR.aspx">Manage Resources</a></li>
-            <li><a href="ViewFeedback.aspx">View Feedback</a></li>
-            <li><a href="NewsletterCreate.aspx">Create Newsletter</a></li>
-            <li><a href="AdminEmailPage.aspx">Edit Email</a></li>
-        </ul>
+    <div>
+
+        <button type="button" id="sidebarCollapse" class="btn btn-info btn-lg">
+            <i class="fas fa-align-left"></i>
+            <span>Menu</span>
+        </button>
+        <div class="wrapper">
+            <nav id='sidebar'>
+                <div class="sidebar-header">
+                    <h4>Administrator Menu</h4>
+                </div>
+                <ul class="list-unstyled components">
+                    <li class="active"><a href="AdminHomePage.aspx">Dashboard</a></li>
+                    <li><a href="AddNewJobOpp.aspx">Add New Job Opening</a></li>
+                    <li><a href="AddNewEvent.aspx">Add New Event</a></li>
+                    <li><a href="AddNewTraining.aspx">Add New Training Opportunity</a></li>
+                    <li><a href="ManageR.aspx">Manage Resources</a></li>
+                    <li><a href="ViewFeedback.aspx">View Feedback</a></li>
+                    <li><a href="NewsletterCreate.aspx">Create Newsletter</a></li>
+                    <li><a href="AdminEmailPage.aspx">Edit Email</a></li>
+                </ul>
+            </nav>
+        </div>
     </div>
     <div class="content">
         <asp:ContentPlaceHolder ID="Content" runat="server"></asp:ContentPlaceHolder>
     </div>
+
+    <script type="text/javascript">
+
+        $(window).scroll(function () {
+            $("#sidebarCollapse").css("top", Math.max(0, 250 - $(this).scrollTop()));
+        });
+        $(document).ready(function () {
+            $('#dismiss, .overlay').on('click', function () {
+                $('#sidebar').removeClass('active');
+                $('.overlay').removeClass('active');
+            });
+
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').addClass('active');
+                $('.overlay').addClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+        });
+    </script>
 </asp:Content>

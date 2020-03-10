@@ -17,16 +17,14 @@
     </li>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
+    <div>
+
         <button type="button" id="sidebarCollapse" class="btn btn-light btn-lg">
             <i class="fas fa-align-left"></i>
             <span>Menu</span>
         </button>
-    <div>
         <div class="wrapper">
             <nav id='sidebar'>
-                <%--                <div id="dismiss">
-                    <i class="fas fa-arrow-left"></i>
-                </div>--%>
                 <div class="sidebar-header">
                     <h4>Administrator Menu</h4>
                 </div>
@@ -43,25 +41,15 @@
             </nav>
         </div>
     </div>
-
-    <%--    <div class='sidebar'>
-        <h4>Administrator Menu</h4>
-        <ul>
-            <li><a href="AdminHomePage.aspx">Dashboard</a></li>
-            <li><a href="AddNewJobOpp.aspx">Add New Job Opening</a></li>
-            <li><a href="AddNewEvent.aspx">Add New Event</a></li>
-            <li><a href="AddNewTraining.aspx">Add New Training Opportunity</a></li>
-            <li><a href="ManageR.aspx">Manage Resources</a></li>
-            <li><a href="ViewFeedback.aspx">View Feedback</a></li>
-            <li><a href="NewsletterCreate.aspx">Create Newsletter</a></li>
-            <li><a href="AdminEmailPage.aspx">Edit Email</a></li>
-        </ul>
-    </div>--%>
     <div class="content">
         <asp:ContentPlaceHolder ID="Content" runat="server"></asp:ContentPlaceHolder>
     </div>
-    
+
     <script type="text/javascript">
+
+        $(window).scroll(function () {
+            $("#sidebarCollapse").css("top", Math.max(0, 250 - $(this).scrollTop()));
+        });
         $(document).ready(function () {
             $('#dismiss, .overlay').on('click', function () {
                 $('#sidebar').removeClass('active');

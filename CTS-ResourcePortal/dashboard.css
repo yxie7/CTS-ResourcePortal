@@ -1,6 +1,8 @@
 ﻿#sidebarCollapse {
-    margin: 10px;
-    position: fixed;
+    position:fixed;
+    top: 250px;
+    margin-left:5px;
+    margin-top: 5px;
 }
 
 .overlay {

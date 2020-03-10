@@ -1,4 +1,7 @@
-﻿.container {
+﻿footer{
+    position:relative;
+}
+.container {
     background-color: #3a3a3a;
     box-shadow: 0 0px 25px #fdd247;
     border-radius: 15px;

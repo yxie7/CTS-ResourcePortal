@@ -160,11 +160,11 @@
         </div>
     </div>
 
-     <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true" />
+     <%--<asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true" />--%>
 
     <div class="container">
-         <asp:UpdatePanel runat="server">
-               <ContentTemplate>
+<%--         <asp:UpdatePanel runat="server">
+               <ContentTemplate>--%>
         <div class="row">
             <div class="col"></div>
             <h2 class="col-md-auto">Resource List</h2>
@@ -278,8 +278,8 @@
             </div>
         </div>
         <br />
-                   </ContentTemplate>
-             </asp:UpdatePanel>
+                 <%--  </ContentTemplate>
+             </asp:UpdatePanel>--%>
     </div>
 
     <script type="text/javascript">

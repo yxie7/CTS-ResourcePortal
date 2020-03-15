@@ -28,8 +28,7 @@
             $('#<%= Selections.ClientID %>').DataTable({
                 "bFilter": false,
                 "bLengthChange": false,
-                stateSave: true,
-                rowReorder: true
+                stateSave: true
             });
         }
         <%--$(document).ready(function () {
@@ -107,7 +106,7 @@
                                     <asp:TextBox runat="server" ID="txtComment" CssClass="form-control" TextMode="multiline" Rows="3" placeholder="Enter comments, tips, or other information you would like to give to citizens here..."></asp:TextBox>
                                 </td>
                                 <td>
-                                    <asp:Button ID="btnAdd" Text="Add" runat="server" />
+                                    <asp:Button ID="btnAdd" CssClass="btn btn-success" Text="Add" runat="server" />
                                 </td>
                             </tr>
                         </ItemTemplate>
@@ -122,10 +121,15 @@
             <div class="row d-flex justify-content-center">
                 <div class="tableSelection col-10">
                     <label>Current Newsletter Items:</label><br />
-                    <asp:GridView ID="Selections" class="dataTable" runat="server" AutoGenerateColumns="false" DataKeyNames="ResourceID">
+                    <asp:GridView ID="Selections" CssClass="table" runat="server" AutoGenerateColumns="false" DataKeyNames="ResourceID" GridLines="None">
                         <Columns>
-                            <asp:BoundField DataField="ResourceName" HeaderText="Resource Title" />
-                            <asp:BoundField DataField="Comment" HeaderText="Comment" />
+                            <asp:BoundField DataField="ResourceName" HeaderText="Resource Title" HeaderStyle-CssClass="col-2"/>
+                            <asp:BoundField DataField="Comment" HeaderText="Comment" HeaderStyle-CssClass="col-5"/>
+                            <asp:TemplateField HeaderStyle-CssClass="col-1" HeaderText="Remove">
+                                <ItemTemplate>
+                                    <asp:Button Text="Remove" runat="server" id="btnRemove" CssClass="btn btn-danger" OnClick="btnRemove_Click" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
                         </Columns>
                         <EmptyDataTemplate>No Selections</EmptyDataTemplate>
                     </asp:GridView>

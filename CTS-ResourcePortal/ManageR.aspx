@@ -218,6 +218,8 @@
                                     </th>
                                     <th>Resource Title
                                     </th>
+                                    <th>Resource Type
+                                    </th>
                                     <th>Active Status 
                                     </th>
                                     <th>Address
@@ -241,6 +243,9 @@
                                 <asp:CheckBox ID="chkRow" runat="server" /></td>
                             <td>
                                 <asp:Label runat="server" ID="lblResID" Text='<%# DataBinder.Eval(Container.DataItem, ("ResourcesID")) %>' > </asp:Label>
+                            </td>
+                            <td>
+                                <%# DataBinder.Eval(Container.DataItem, ("ResourceName")) %>
                             </td>
                             <td>
                                 <%# DataBinder.Eval(Container.DataItem, ("ResourceName")) %>

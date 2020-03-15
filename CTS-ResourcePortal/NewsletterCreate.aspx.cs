@@ -259,6 +259,7 @@ namespace CTS_ResourcePortal
                     break;
                 }
             }
+            Response.Redirect(Request.RawUrl);
         }
     }
 }

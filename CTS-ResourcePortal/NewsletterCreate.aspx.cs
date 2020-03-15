@@ -17,7 +17,6 @@ namespace CTS_ResourcePortal
         protected void Page_Load(object sender, EventArgs e)
         {
             //Selections table
-            loadSelections();
             if (!IsPostBack)
             {
                 if (Request.QueryString["filter"] == "1")
@@ -37,6 +36,7 @@ namespace CTS_ResourcePortal
                     //generateTables();
                     generateAll();
                 }
+                loadSelections();
             }
 
         }
@@ -125,9 +125,26 @@ namespace CTS_ResourcePortal
         }
         */
 
-        protected void txtTitleSearch_TextChanged(object sender, EventArgs e)
+        private DataTable updateResourceList(DataTable dt)
         {
-            //generateTables(txtTitleSearch.Text);
+            List<NewsletterItem> selectionList = new List<NewsletterItem>();
+            if (Session["NewsletterSelections"] != null)
+            {
+                selectionList = Session["NewsletterSelections"] as List<NewsletterItem>;
+            }
+            foreach (NewsletterItem item in selectionList)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    if (int.Parse(row["ResourceID"].ToString()) == item.ResourceID)
+                    {
+                        row.Delete();
+                    }
+                }
+            }
+            dt.AcceptChanges();
+
+            return dt;
         }
 
         private void generateAll()
@@ -226,5 +243,23 @@ namespace CTS_ResourcePortal
             //ScriptManager.RegisterStartupScript(this, GetType(), "bindDataTable", "bindDataTable();", true);
         }
 
+        protected void btnRemove_Click(object sender, EventArgs e)
+        {
+            int rowIndex = ((sender as Button).NamingContainer as GridViewRow).RowIndex;
+            List<NewsletterItem> selectionList = new List<NewsletterItem>();
+            if (Session["NewsletterSelections"] != null)
+            {
+                selectionList = Session["NewsletterSelections"] as List<NewsletterItem>;
+            }
+            foreach (NewsletterItem item in selectionList)
+            {
+                if (item.ResourceID == int.Parse(Selections.DataKeys[rowIndex].Value.ToString()))
+                {
+                    selectionList.Remove(item);
+                    break;
+                }
+            }
+            Response.Redirect(Request.RawUrl);
+        }
     }
 }

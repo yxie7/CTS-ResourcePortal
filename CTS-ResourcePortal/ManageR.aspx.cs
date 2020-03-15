@@ -180,13 +180,28 @@ namespace CTS_ResourcePortal
 
         protected void btnEdit_Click(object sender, EventArgs e)
         {
+            HtmlInputCheckBox chkRow;
+            int count = 0;
             foreach (RepeaterItem item in rptManageR.Items)
             {
-                HtmlInputCheckBox chkRow = (HtmlInputCheckBox)item.FindControl("chkRow");
+                chkRow = (HtmlInputCheckBox)item.FindControl("chkRow");
                 if (chkRow.Checked)
                 {
-                    //Do Something
+                    count++;
                 }
+            }
+
+            if (count == 0)
+            {
+                //modal
+            }
+            else if (count > 1)
+            {
+                //modal
+            }
+            else
+            {
+
             }
         }
     }

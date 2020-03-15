@@ -6,6 +6,7 @@
 table {
     width: 100% !important;
     overflow: scroll;
+    background: grey;
 }
 
 .accordion, .card-header, .tableSelection {
@@ -97,19 +98,33 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 @media screen and (max-width: 1000px) {
-    th {
+    .rth {
         display: none;
         width: 100%;
     }
 
-    #jobResourceCollapse td, #eventResourceCollapse td, #trainingResourceCollaps td {
+    .rtd {
+        margin-top:25px;
         display: block;
         position: relative;
         text-align: right;
+        padding: 25px 10px 5px 10px;
     }
+        .rtd:before {
+            text-align:left;
+            padding: 0 10px;
+            display: inline-block;
+            font-weight: bold;
+            position:absolute;
+            margin-top:-25px;
+            top: 0px;
+            left: 0px;
+            content: attr(data-header);
+        }
 
-    #jobResourceCollapse thead, #eventResourceCollapse thead, #trainingResourceCollapse thead {
+    #jobResourceCollapse th, #eventResourceCollapse th, #trainingResourceCollaps th {
         display: none;
+        width: 100%;
     }
 
     #jobResourceCollapse td:last-of-type, #eventResourceCollapse td:last-of-type, #trainingResourceCollapse td:last-of-type {

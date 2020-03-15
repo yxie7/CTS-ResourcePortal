@@ -113,6 +113,11 @@ namespace CTS_ResourcePortal
 
         protected void btnSend_Click(object sender, EventArgs e)
         {
+            ScriptManager.RegisterStartupScript(this, GetType(), "Script", "sendModal();", true);
+        }
+
+        protected void sendNL()
+        {
             var sb = new StringBuilder();
             newsletterPreview.RenderControl(new HtmlTextWriter(new StringWriter(sb)));
             string hnl = sb.ToString();
@@ -120,7 +125,7 @@ namespace CTS_ResourcePortal
             DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "SelectCitizens";
+            cmd.CommandText = "SelectSubscribedCitizens";
             DataSet ds = db.GetDataSetUsingCmdObj(cmd);
             int count = ds.Tables[0].Rows.Count;
 
@@ -145,7 +150,6 @@ namespace CTS_ResourcePortal
                 smtp.Send(mm);
             }
         }
-
         protected void rptNL_ItemDataBound(object sender, System.Web.UI.WebControls.RepeaterItemEventArgs e)
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
@@ -154,6 +158,16 @@ namespace CTS_ResourcePortal
                 (e.Item.FindControl("preRequirements") as System.Web.UI.WebControls.Label).Font.Bold = true;
                 (e.Item.FindControl("preComments") as System.Web.UI.WebControls.Label).Font.Bold = true;
             }
+        }
+
+        protected void btnNoSend_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnYesSend_Click(object sender, EventArgs e)
+        {
+            sendNL();
         }
     }
 }

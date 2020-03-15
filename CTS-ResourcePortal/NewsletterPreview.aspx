@@ -1,8 +1,41 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin.master" AutoEventWireup="true" CodeBehind="NewsletterPreview.aspx.cs" Inherits="CTS_ResourcePortal.NewsletterPreview" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
-
     <link href="css.css" rel="stylesheet" />
+    <script src="Scripts/jquery-3.0.0.js"></script>
+    <script src="Scripts/popper.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+
+    <script type="text/javascript">
+        function sendModal() {
+            $("#sendPrompt").modal("show");
+        }
+        function sendNotif() {
+            $("#sent").modal("show");
+        }
+    </script>
+    <div class="modal" id="sendPrompt" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content container">
+                <div class="modal-body">
+                    <b class="">Send the newsletter?</b>
+                </div>
+                <div class="modal-footer">
+                    <asp:Button ID="btnNoSend" Text="No" runat="server" data-dismiss="modal" CssClass="btn btn-light" />
+                    <asp:Button ID="btnYesSend" Text="Yes" runat="server" OnClick="btnYesSend_Click" CssClass="btn btn-light" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="sent" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content container">
+                <div class="modal-body">
+                    <label class="">Newsletter has been sent out</label>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <h2>Preview Newsletter</h2>
         <br />

@@ -1,21 +1,53 @@
-﻿.sidebar {
-    width: 200px;
+﻿#sidebarCollapse {
+    position:fixed;
+    top: 250px;
+    margin-left:5px;
+    margin-top: 5px;
+    z-index:500;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 9998;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+    .overlay.active {
+        display: block;
+        opacity: 1;
+    }
+
+#sidebar {
+    width: auto;
     top: 0;
+    left: -999px;
     padding: 10px;
-    padding-top: 110px;
+    padding-top: 50px;
     position: fixed;
     height: calc(100vh);
     background: #3a3a3a;
     color: white;
+    z-index: 9999;
+    transition: all 0.3s ease;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
 }
 
-    .sidebar > ul {
+    #sidebar.active {
+        left: 0;
+    }
+
+    #sidebar > ul {
         list-style: none;
         margin: 0px;
         padding: 10px;
     }
 
-        .sidebar > ul > li {
+        #sidebar > ul > li {
             padding: 5px;
             padding: 10px 10px 10px 1em;
             transition: 0.5s;
@@ -23,31 +55,38 @@
             text-indent: -1em;
         }
 
-            .sidebar > ul > li:hover {
+            #sidebar > ul > li:hover {
                 background: #afafaf;
+                background: black;
                 color: #fdd247;
             }
 
-                .sidebar > ul > li:hover > a {
+                #sidebar > ul > li:hover > a {
                     color: #fdd247;
                 }
 
-            .sidebar > ul > li > a {
+            #sidebar > ul > li > a {
                 display: inline;
                 color: #afafaf;
+                display: block;
+                font-size: 1.1em;
                 padding: 10px;
             }
 
-                .sidebar > ul > li > a:hover {
+                #sidebar > ul > li > a:hover {
                     color: #fdd247;
                     cursor: pointer;
                     text-decoration: none;
                 }
 
-                .sidebar > ul > li > a:visited {
+                #sidebar > ul > li > a:visited {
                     text-decoration: none;
                 }
 
-.content {
+    #sidebar ul li a {
+        padding: 10px;
+    }
+
+/*.content {
     padding-left: 200px;
-}
+}*/

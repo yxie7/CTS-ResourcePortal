@@ -261,12 +261,7 @@
                             <td>
                                 <%# DataBinder.Eval(Container.DataItem, ("StartDate")) %>
                             </td>
-                            <%--<td>
-
-                                <asp:Button ID="btnSelect" Text="Inactivate Resource" runat="server" OnClick="btnSelect_Click" />
-
-
-                            </td>
+                            
                         </tr>
 
                     </ItemTemplate>
@@ -283,7 +278,7 @@
 
                     <div class="col-md-1"></div>
                     <div class="col-md-2">
-                    <asp:Button ID="btnInactivate" Text="Inactivate Resource(s)" runat="server" OnClick="btnInactivate_Click"  />
+                    <asp:Button ID="btnInactivate" Text="Inactivate Resource(s)" runat="server" />
                 </div>
                     <div class="col-md-1"></div>
                     <div class="col-md-2">

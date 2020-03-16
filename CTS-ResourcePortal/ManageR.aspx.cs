@@ -59,7 +59,7 @@ namespace CTS_ResourcePortal
                 ddlResources.DataBind();
 
 
-                
+
 
             }
 
@@ -165,62 +165,8 @@ namespace CTS_ResourcePortal
             }
         }
 
-        protected void btnActivate_Click(object sender, EventArgs e)
-        {
-            foreach (RepeaterItem item in rptManageR.Items)
-            {
-                CheckBox cb = (CheckBox)item.FindControl("chkRow");
-                if (cb.Checked)
-                {
-                    Label label = (Label)item.FindControl("lblResID");
-                    Resource resource = new Resource();
 
-                    string lblID = label.Text;
-
-                    resource.resourceID = lblID;
-                    resource.active = "Active";
-
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.CommandText = "InactivateOrActivateResource";
-                    cmd.Parameters.AddWithValue("@resourceID", resource.resourceID);
-                    cmd.Parameters.AddWithValue("@active", resource.active);
-
-                    db.DoUpdateUsingCmdObj(cmd);
-                    cmd.Parameters.Clear();
-
-                }
-            }
-            BindAll();
-        }
-
-        protected void btnInactivate_Click(object sender, EventArgs e)
-        {
-            foreach (RepeaterItem item in rptManageR.Items)
-            {
-                CheckBox cb = (CheckBox)item.FindControl("chkRow");
-                if (cb.Checked)
-                {
-                    Label label = (Label)item.FindControl("lblResID");
-                    Resource resource = new Resource();
-
-                    string lblID = label.Text;
-
-                    resource.resourceID = lblID;
-                    resource.active = "Inactive";
-
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.CommandText = "InactivateOrActivateResource";
-                    cmd.Parameters.AddWithValue("@resourceID", resource.resourceID);
-                    cmd.Parameters.AddWithValue("@active", resource.active);
-
-                    db.DoUpdateUsingCmdObj(cmd);
-                    cmd.Parameters.Clear();
-                }
-            }
-            BindAll();
-        }
-
-        protected void btnEdit_Click(object sender, EventArgs e)
+        protected void btnSelect_Click(object sender, EventArgs e)
         {
             foreach (RepeaterItem item in rptManageR.Items)
             {
@@ -230,8 +176,34 @@ namespace CTS_ResourcePortal
                     //Do Something
                 }
             }
+            BindAll();
         }
 
-       
+        protected void btnEdit_Click(object sender, EventArgs e)
+        {
+            HtmlInputCheckBox chkRow;
+            int count = 0;
+            foreach (RepeaterItem item in rptManageR.Items)
+            {
+                chkRow = (HtmlInputCheckBox)item.FindControl("chkRow");
+                if (chkRow.Checked)
+                {
+                    count++;
+                }
+            }
+
+            if (count == 0)
+            {
+                //modal
+            }
+            else if (count > 1)
+            {
+                //modal
+            }
+            else
+            {
+
+            }
+        }
     }
 }

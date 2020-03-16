@@ -58,13 +58,13 @@ namespace CTS_ResourcePortal {
         protected global::System.Web.UI.WebControls.Repeater rptManageR;
         
         /// <summary>
-        /// btnActivate control.
+        /// btnSelect control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnActivate;
+        protected global::System.Web.UI.WebControls.Button btnSelect;
         
         /// <summary>
         /// btnInactivate control.
@@ -74,15 +74,6 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnInactivate;
-        
-        /// <summary>
-        /// myBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button myBtn;
         
         /// <summary>
         /// btnEdit control.

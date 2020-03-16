@@ -13,7 +13,6 @@ namespace Utilities
     {
         private string firstname;
         private string lastname;
-        private string username;
         private string password;
         private string address;
         private string city;
@@ -32,11 +31,6 @@ namespace Utilities
         {
             get { return lastname; }
             set { lastname = value; }
-        }
-        public string Username
-        {
-            get { return username; }
-            set { username = value; }
         }
         public string Password
         {

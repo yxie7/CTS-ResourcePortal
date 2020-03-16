@@ -1,6 +1,12 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Admin.master" AutoEventWireup="true" CodeBehind="ManageR.aspx.cs" Inherits="CTS_ResourcePortal.ManageR" %>
 
 <asp:Content ID="head" ContentPlaceHolderID="head" runat="server">
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
     <style>
         .search {
             align-content: center;
@@ -208,21 +214,23 @@
                                 <tr>
                                     <th>
                                         <asp:CheckBox ID="chkHeader" runat="server" /></th>
-                                    <th>ID
-                                    </th>
                                     <th>Resource Title
+                                    </th>
+
+                                    <th>Resource Type ID
                                     </th>
                                     <th>Active Status 
                                     </th>
+
                                     <th>Address
                                     </th>
                                     <th>City
                                     </th>
                                     <th>Date Posted
                                     </th>
+
                                     <th>Current Status
-                                    </th>
-                                    <th>Edit Resource
+
                                     </th>
                                 </tr>
                             </thead>
@@ -234,15 +242,17 @@
                             <td>
                                 <asp:CheckBox ID="chkRow" runat="server" /></td>
                             <td>
-                                <asp:Label runat="server" ID="lblResID" Text='<%# DataBinder.Eval(Container.DataItem, ("ResourcesID")) %>' > </asp:Label>
+                                <%# DataBinder.Eval(Container.DataItem, ("ResourceName")) %>
                             </td>
                             <td>
-                                <%# DataBinder.Eval(Container.DataItem, ("ResourceName")) %>
+
+                                <asp:Label runat="server" ID="lblResTypeID" Text='<%# DataBinder.Eval(Container.DataItem, ("ResourceTypeID")) %>' > </asp:Label>
                             </td>
                             <td>
                                 <%# DataBinder.Eval(Container.DataItem, ("Active")) %>
                             </td>
                             <td>
+
                                 <%# DataBinder.Eval(Container.DataItem, ("AddressLine")) %>
                             </td>
                             <td>
@@ -251,16 +261,7 @@
                             <td>
                                 <%# DataBinder.Eval(Container.DataItem, ("StartDate")) %>
                             </td>
-                            <td>
-
-                                 <%# DataBinder.Eval(Container.DataItem, ("Active")) %>
-
-                            </td>
-                            <td>
-
-                                <asp:Button ID="btnEdit" Text="Edit" runat="server" OnClick="btnEdit_Click" />
-
-                            </td>
+                            
                         </tr>
 
                     </ItemTemplate>
@@ -271,15 +272,20 @@
                 </asp:Repeater>
                 <br />
                 <br />
-                <div class="row justify-content-center align-items-center">
-                <div class="col-md-2">
-                    <asp:Button ID="btnActivate" runat="server" Text="Activate Resource(s)" OnClick="btnActivate_Click"/>
+                <div style="align-content:center">
+                    <asp:Button ID="btnSelect" Text="Inactivate Resource(s)" runat="server" OnClick="btnSelect_Click"  />
+                </div>
+
+                    <div class="col-md-1"></div>
+                    <div class="col-md-2">
+                    <asp:Button ID="btnInactivate" Text="Inactivate Resource(s)" runat="server" />
                 </div>
                     <div class="col-md-1"></div>
                     <div class="col-md-2">
-                    <asp:Button ID="btnInactivate" Text="Inactivate Resource(s)" runat="server" OnClick="btnInactivate_Click"  />
+                    <asp:Button ID="btnEdit" Text="Edit Resource" runat="server" OnClick="btnEdit_Click" />
                 </div>
             </div>
+
 
                 <%--<asp:GridView ID="gvManageR" runat="server" AutoGenerateColumns="False">
                     <Columns>
@@ -298,13 +304,7 @@
             </div>
         </div>
         <br />
-        <!--<div class="row justify-content-center align-items-center">
-            <div class="col-md-2">
-                <asp:Button ID="myBtn" class="btn btn-dark" runat="server" Text="Inactivate" OnClientClick="showModal()" OnClick="myBtn_Click1"></asp:Button>
-                &nbsp
-                <asp:Button ID="btnEdit" runat="server" class="btn btn-dark" OnClick="EditJob"></asp:Button>
-            </div>
-        </div>-->
+
     </div>
 
 

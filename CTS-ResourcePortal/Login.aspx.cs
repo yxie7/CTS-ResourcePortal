@@ -27,7 +27,10 @@ namespace CTS_ResourcePortal
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
 
+            }
         }
 
         protected void btnSubmitLogin_Click(object sender, EventArgs e)
@@ -36,68 +39,78 @@ namespace CTS_ResourcePortal
             password = txtPassword.Text;
             if (ValidateUserRegistration() == true)
             {
-                if (CheckIfEmailExist(email) == true)
+                if(GrabAccepted(email) == true)
                 {
-                    if (CheckIfPasswordExist(email) == true)
+                    string accepted = (string)db.GetField("Accepted", 0);
+                    if(accepted == "FALSE")
                     {
-                        string encryptedPassword = (string)db.GetField("Password", 0);
-                        String encryptedPasswordLogin;
-                        System.Text.UTF8Encoding encoder = new UTF8Encoding();
-                        Byte[] PasswordBytes;
-
-
-                        //EmailBytes = encoder.GetBytes(plainTextEmail);
-                        PasswordBytes = encoder.GetBytes(password);
-
-
-                        RijndaelManaged rmEncryption = new RijndaelManaged();
-                        MemoryStream memStream = new MemoryStream();
-                        CryptoStream encryptionStream = new CryptoStream(memStream, rmEncryption.CreateEncryptor(key, vector), CryptoStreamMode.Write);
-                        //password
-                        memStream = new MemoryStream();
-                        encryptionStream = new CryptoStream(memStream, rmEncryption.CreateEncryptor(key, vector), CryptoStreamMode.Write);
-
-                        encryptionStream.Write(PasswordBytes, 0, PasswordBytes.Length);
-                        encryptionStream.FlushFinalBlock();
-
-                        memStream.Position = 0;
-                        Byte[] encryptedPasswordBytes = new byte[memStream.Length];
-                        memStream.Read(encryptedPasswordBytes, 0, encryptedPasswordBytes.Length);
-
-                        encryptionStream.Close();
-                        memStream.Close();
-
-
-                        //encryptedEmail = Convert.ToBase64String(encryptedEmailBytes);
-                        encryptedPasswordLogin = Convert.ToBase64String(encryptedPasswordBytes);
-
-                        //hashing password
-                        PasswordHash hash = new PasswordHash(encryptedPasswordLogin);
-
-                        if (encryptedPassword == encryptedPasswordLogin)
+                        UserRegistrationError.Text = "This account has not been accepted by the administrator";
+                    }
+                    if(accepted == "TRUE")
+                    {
+                        if (CheckIfEmailExist(email) == true)
                         {
-                            Session.Add("userEmail", txtEmail.Text);
-                            Response.Redirect("ResourceList.aspx");
+                            if (GrabPassword(email) == true)
+                            {
+                                string encryptedPassword = (string)db.GetField("Password", 0);
+                                String encryptedPasswordLogin;
+                                System.Text.UTF8Encoding encoder = new UTF8Encoding();
+                                Byte[] PasswordBytes;
+
+
+                                //EmailBytes = encoder.GetBytes(plainTextEmail);
+                                PasswordBytes = encoder.GetBytes(password);
+
+
+                                RijndaelManaged rmEncryption = new RijndaelManaged();
+                                MemoryStream memStream = new MemoryStream();
+                                CryptoStream encryptionStream = new CryptoStream(memStream, rmEncryption.CreateEncryptor(key, vector), CryptoStreamMode.Write);
+                                //password
+                                memStream = new MemoryStream();
+                                encryptionStream = new CryptoStream(memStream, rmEncryption.CreateEncryptor(key, vector), CryptoStreamMode.Write);
+
+                                encryptionStream.Write(PasswordBytes, 0, PasswordBytes.Length);
+                                encryptionStream.FlushFinalBlock();
+
+                                memStream.Position = 0;
+                                Byte[] encryptedPasswordBytes = new byte[memStream.Length];
+                                memStream.Read(encryptedPasswordBytes, 0, encryptedPasswordBytes.Length);
+
+                                encryptionStream.Close();
+                                memStream.Close();
+
+
+                                //encryptedEmail = Convert.ToBase64String(encryptedEmailBytes);
+                                encryptedPasswordLogin = Convert.ToBase64String(encryptedPasswordBytes);
+
+                                //hashing password
+                                PasswordHash hash = new PasswordHash(encryptedPasswordLogin);
+
+                                if (encryptedPassword == encryptedPasswordLogin)
+                                {
+                                    Session.Add("userEmail", txtEmail.Text);
+                                    Response.Redirect("ResourceList.aspx");
+                                }
+                                else
+                                {
+                                    lblError.Text = "Password is not registered";
+                                }
+
+
+                            }
+                            else
+                            {
+                                lblError.Text = "This password is not registered";
+                            }
                         }
                         else
                         {
-                            lblError.Text = "Password is not registered";
+                            lblError.Text = "This email is not registered";
                         }
-
-                        
-                    }
-                    else
-                    {
-                        lblError.Text = "This password is not registered";
                     }
                 }
-                else
-                {
-                    lblError.Text = "This email is not registered";
-                }
+                
             }
-            
-
 
         }
         public Boolean CheckIfEmailExist(String Email)
@@ -120,7 +133,7 @@ namespace CTS_ResourcePortal
             }
         }
 
-        public Boolean CheckIfPasswordExist(String email)
+        public Boolean GrabPassword(String email)
         {
             //checks to see if email matches email in db
             SqlCommand cmd = new SqlCommand("GetPassword", db.GetConnection());
@@ -140,6 +153,26 @@ namespace CTS_ResourcePortal
             }
         }
 
+        public Boolean GrabAccepted(String email)
+        {
+            //checks to see if email matches email in db
+            SqlCommand cmd = new SqlCommand("SelectActive", db.GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlParameter inputParameterName = new SqlParameter("@Email", email);
+            inputParameterName.Direction = ParameterDirection.Input;
+            inputParameterName.SqlDbType = SqlDbType.VarChar;
+            cmd.Parameters.Add(inputParameterName);
+            DataSet AcceptedDataSet = db.GetDataSetUsingCmdObj(cmd);
+            if (AcceptedDataSet.Tables[0].Rows.Count == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         public Boolean ValidateUserRegistration()
         {
             if (txtEmail.Text == "")
@@ -150,7 +183,7 @@ namespace CTS_ResourcePortal
             }
             if (txtPassword.Text == "")
             {
-                UserRegistrationError.Text = "Enter Last Password";
+                UserRegistrationError.Text = "Enter Password";
                 return false;
             }
             else
@@ -166,7 +199,7 @@ namespace CTS_ResourcePortal
 
         protected void btnForgotPassword_Click(object sender, EventArgs e)
         {
-            Response.Redirect("CitizenSettings.aspx");
+            
         }
     }
 }

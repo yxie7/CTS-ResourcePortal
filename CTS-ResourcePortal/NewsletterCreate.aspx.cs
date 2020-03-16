@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Utilities;
@@ -13,156 +12,66 @@ namespace CTS_ResourcePortal
     public partial class NewsletterCreate : System.Web.UI.Page
     {
         private DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
+        private DataTable dt = new DataTable();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            int n = 5;
-            string ns = n.ToString();
-
+            //Selections table
             if (!IsPostBack)
             {
-                //generateTables();
-                generateAll();
+                if (Request.QueryString["filter"] == "1")
+                {
+                    generateJobs();
+                }
+                else if (Request.QueryString["filter"] == "2")
+                {
+                    generateEvents();
+                }
+                else if (Request.QueryString["filter"] == "3")
+                {
+                    generateTraining();
+                }
+                else
+                {
+                    //generateTables();
+                    generateAll();
+                }
+                loadSelections();
             }
+
         }
 
-        private void generateTables()
+        private void loadSelections()
         {
-            List<Job> jl = new List<Job>();
-            List<Events> el = new List<Events>();
-            List<Training> tl = new List<Training>();
-
-            //Job
-            SqlCommand jcmd = new SqlCommand();
-            jcmd.CommandType = CommandType.StoredProcedure;
-            jcmd.CommandText = "JobSelect";
-
-            DataSet jds = db.GetDataSetUsingCmdObj(jcmd);
-            int count = jds.Tables[0].Rows.Count;
-            if (count > 0)
+            List<NewsletterItem> selectionList = new List<NewsletterItem>();
+            if (Session["NewsletterSelections"] != null)
             {
-                for (int i = 0; i < count; i++)
-                {
-                    Job j = new Job();
-                    j.resourceID = db.GetField("ResourcesID", i).ToString();
-                    j.resourceTitle = db.GetField("ResourceName", i).ToString();
-                    jl.Add(j);
-                }
+                selectionList = Session["NewsletterSelections"] as List<NewsletterItem>;
             }
-            gvJob.DataSource = jl;
-            gvJob.DataBind();
-
-            //Event
-            SqlCommand ecmd = new SqlCommand();
-            ecmd.CommandType = CommandType.StoredProcedure;
-            ecmd.CommandText = "EventSelect";
-
-            DataSet eds = db.GetDataSetUsingCmdObj(ecmd);
-            count = eds.Tables[0].Rows.Count;
-            if (count > 0)
+            Selections.DataSource = selectionList;
+            Selections.DataBind();
+            if (Selections.Rows.Count > 0)
             {
-                for (int i = 0; i < count; i++)
-                {
-                    Events ev = new Events();
-                    ev.resourceID = db.GetField("ResourcesID", i).ToString();
-                    ev.resourceTitle = db.GetField("ResourceName", i).ToString();
-                    el.Add(ev);
-                }
+                Selections.UseAccessibleHeader = true;
+                Selections.HeaderRow.TableSection = TableRowSection.TableHeader;
+                Selections.FooterRow.TableSection = TableRowSection.TableFooter;
             }
-            gvEvent.DataSource = el;
-            gvEvent.DataBind();
-
-            //Training
-            SqlCommand tcmd = new SqlCommand();
-            tcmd.CommandType = CommandType.StoredProcedure;
-            tcmd.CommandText = "TrainingSelect";
-
-            DataSet tds = db.GetDataSetUsingCmdObj(tcmd);
-            count = tds.Tables[0].Rows.Count;
-            if (count > 0)
-            {
-                for (int i = 0; i < count; i++)
-                {
-                    Training t = new Training();
-                    t.resourceID = db.GetField("ResourcesID", i).ToString();
-                    t.resourceTitle = db.GetField("ResourceName", i).ToString();
-                    tl.Add(t);
-                }
-            }
-            gvTraining.DataSource = tl;
-            gvTraining.DataBind();
         }
 
-        private void generateTables(string query)
+        protected void btnPreview_Click(object sender, EventArgs e)
         {
-            List<Job> jl = new List<Job>();
-            List<Events> el = new List<Events>();
-            List<Training> tl = new List<Training>();
-
-            //Job
-            SqlCommand jcmd = new SqlCommand();
-            jcmd.CommandType = CommandType.StoredProcedure;
-            jcmd.CommandText = "JobSelectByTitle";
-            jcmd.Parameters.AddWithValue("@query", query);
-
-            DataSet jds = db.GetDataSetUsingCmdObj(jcmd);
-            int count = jds.Tables[0].Rows.Count;
-            if (count > 0)
+            if (Session["NewsletterSelections"] != null)
             {
-                for (int i = 0; i < count; i++)
-                {
-                    Job j = new Job();
-                    j.resourceID = db.GetField("ResourcesID", i).ToString();
-                    j.resourceTitle = db.GetField("ResourceName", i).ToString();
-                    jl.Add(j);
-                }
+                Response.Redirect("NewsletterPreview.aspx");
             }
-            gvJob.DataSource = jl;
-            gvJob.DataBind();
-
-            //Event
-            SqlCommand ecmd = new SqlCommand();
-            ecmd.CommandType = CommandType.StoredProcedure;
-            ecmd.CommandText = "EventSelectByTitle";
-            ecmd.Parameters.AddWithValue("@query", query);
-
-            DataSet eds = db.GetDataSetUsingCmdObj(ecmd);
-            count = eds.Tables[0].Rows.Count;
-            if (count > 0)
+            else
             {
-                for (int i = 0; i < count; i++)
-                {
-                    Events ev = new Events();
-                    ev.resourceID = db.GetField("ResourcesID", i).ToString();
-                    ev.resourceTitle = db.GetField("ResourceName", i).ToString();
-                    el.Add(ev);
-                }
-            }
-            gvEvent.DataSource = el;
-            gvEvent.DataBind();
+                ScriptManager.RegisterStartupScript(this, GetType(), "Script", "toasted();", true);
 
-            //Training
-            SqlCommand tcmd = new SqlCommand();
-            tcmd.CommandType = CommandType.StoredProcedure;
-            tcmd.CommandText = "TrainingSelectByTitle";
-            tcmd.Parameters.AddWithValue("@query", query);
-
-            DataSet tds = db.GetDataSetUsingCmdObj(tcmd);
-            count = tds.Tables[0].Rows.Count;
-            if (count > 0)
-            {
-                for (int i = 0; i < count; i++)
-                {
-                    Training t = new Training();
-                    t.resourceID = db.GetField("ResourcesID", i).ToString();
-                    t.resourceTitle = db.GetField("ResourceName", i).ToString();
-                    tl.Add(t);
-                }
+                //ClientScript.RegisterStartupScript(GetType(), "Toast", "toasted();", true);
             }
-            gvTraining.DataSource = tl;
-            gvTraining.DataBind();
         }
-
+        /*
         protected void btnPreview_Click(object sender, EventArgs e)
         {
             Dictionary<string, string> selections = new Dictionary<string, string>();
@@ -214,10 +123,28 @@ namespace CTS_ResourcePortal
                 //ClientScript.RegisterStartupScript(GetType(), "Toast", "toasted();", true);
             }
         }
+        */
 
-        protected void txtTitleSearch_TextChanged(object sender, EventArgs e)
+        private DataTable updateResourceList(DataTable dt)
         {
-            //generateTables(txtTitleSearch.Text);
+            List<NewsletterItem> selectionList = new List<NewsletterItem>();
+            if (Session["NewsletterSelections"] != null)
+            {
+                selectionList = Session["NewsletterSelections"] as List<NewsletterItem>;
+            }
+            foreach (NewsletterItem item in selectionList)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    if (int.Parse(row["ResourceID"].ToString()) == item.ResourceID)
+                    {
+                        row.Delete();
+                    }
+                }
+            }
+            dt.AcceptChanges();
+
+            return dt;
         }
 
         private void generateAll()
@@ -226,7 +153,8 @@ namespace CTS_ResourcePortal
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "SelectResources";
             DataSet dataSet = db.GetDataSetUsingCmdObj(cmd);
-            rpt.DataSource = dataSet;
+            dt = dataSet.Tables[0];
+            rpt.DataSource = dt;
             rpt.DataBind();
         }
 
@@ -236,7 +164,8 @@ namespace CTS_ResourcePortal
             jcmd.CommandType = CommandType.StoredProcedure;
             jcmd.CommandText = "JobSelect";
             DataSet jds = db.GetDataSetUsingCmdObj(jcmd);
-            rpt.DataSource = jds;
+            dt = jds.Tables[0];
+            rpt.DataSource = dt;
             rpt.DataBind();
         }
 
@@ -246,7 +175,8 @@ namespace CTS_ResourcePortal
             ecmd.CommandType = CommandType.StoredProcedure;
             ecmd.CommandText = "EventSelect";
             DataSet eds = db.GetDataSetUsingCmdObj(ecmd);
-            rpt.DataSource = eds;
+            dt = eds.Tables[0];
+            rpt.DataSource = dt;
             rpt.DataBind();
         }
 
@@ -256,28 +186,80 @@ namespace CTS_ResourcePortal
             tcmd.CommandType = CommandType.StoredProcedure;
             tcmd.CommandText = "TrainingSelect";
             DataSet tds = db.GetDataSetUsingCmdObj(tcmd);
-            rpt.DataSource = tds;
+            dt = tds.Tables[0];
+            rpt.DataSource = dt;
             rpt.DataBind();
         }
 
         protected void btnAll_Click(object sender, EventArgs e)
         {
-            generateAll();
+            //generateAll();
+            Response.Redirect("NewsletterCreate.aspx");
+
         }
 
         protected void btnJob_Click(object sender, EventArgs e)
         {
-            generateJobs();
+            //generateJobs();
+            Response.Redirect("NewsletterCreate.aspx?filter=1");
         }
 
         protected void btnEvent_Click(object sender, EventArgs e)
         {
-            generateEvents();
+            //generateEvents();
+            Response.Redirect("NewsletterCreate.aspx?filter=2");
         }
 
         protected void btnTraining_Click(object sender, EventArgs e)
         {
-            generateTraining();
+            //generateTraining();
+            Response.Redirect("NewsletterCreate.aspx?filter=3");
+        }
+        
+        // triggers from botton click of each row, adds row details to list and list to session
+        protected void rpt_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            int rowIndex = e.Item.ItemIndex;
+
+            HiddenField hf = rpt.Items[rowIndex].FindControl("hfID") as HiddenField;
+            Label lbl = rpt.Items[rowIndex].FindControl("lblName") as Label;
+            TextBox txt = rpt.Items[rowIndex].FindControl("txtComment") as TextBox;
+
+            int selectionID = int.Parse(hf.Value);
+            string selectionName = lbl.Text;
+            string selectionComment = txt.Text;
+
+            List<NewsletterItem> selectionList = new List<NewsletterItem>();
+            if (Session["NewsletterSelections"] != null)
+            {
+                selectionList = Session["NewsletterSelections"] as List<NewsletterItem>;
+            }
+            selectionList.Add(new NewsletterItem(selectionID, selectionName, selectionComment));
+            Session["NewsletterSelections"] = selectionList;
+
+            Response.Redirect(Request.RawUrl);
+
+            //UpdatePanel.Update();
+            //ScriptManager.RegisterStartupScript(this, GetType(), "bindDataTable", "bindDataTable();", true);
+        }
+
+        protected void btnRemove_Click(object sender, EventArgs e)
+        {
+            int rowIndex = ((sender as Button).NamingContainer as GridViewRow).RowIndex;
+            List<NewsletterItem> selectionList = new List<NewsletterItem>();
+            if (Session["NewsletterSelections"] != null)
+            {
+                selectionList = Session["NewsletterSelections"] as List<NewsletterItem>;
+            }
+            foreach (NewsletterItem item in selectionList)
+            {
+                if (item.ResourceID == int.Parse(Selections.DataKeys[rowIndex].Value.ToString()))
+                {
+                    selectionList.Remove(item);
+                    break;
+                }
+            }
+            Response.Redirect(Request.RawUrl);
         }
     }
 }

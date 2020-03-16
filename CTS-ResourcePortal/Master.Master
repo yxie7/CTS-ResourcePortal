@@ -41,8 +41,8 @@
             <i class="far fa-envelope"></i>&nbsp info@calledtoservecdc.org&nbsp
             <a href="CitizenSettings.aspx">
                 <img src="Images/CTS_Logo.png" /></a>
-        </footer>
+            </footer>
+        </div>
     </form>
-
 </body>
 </html>

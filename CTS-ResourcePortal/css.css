@@ -1,4 +1,16 @@
-﻿.container {
+﻿footer {
+    position: absolute;
+    bottom: 0;
+    height: 2.5rem;
+}
+#page-container{
+    min-height:100vh;
+    position:relative;
+}
+#content-wrap{
+    padding-bottom: 2.5rem;
+}
+.container {
     background-color: #3a3a3a;
     box-shadow: 0 0px 25px #fdd247;
     border-radius: 15px;
@@ -14,8 +26,12 @@
     opacity: .9; /* Firefox */
 }
 
+table {
+    width: 100%;
+    overflow:scroll;
+}
 
-.accordion, .card-header {
+.accordion, .card-header, .tableSelection {
     background-color: #F5F5F5;
     border-radius: 10px;
     color: black;
@@ -31,7 +47,7 @@
 }
 
     .btn-link:hover {
-        color:black;
+        color: black;
     }
 
 .nls {
@@ -88,6 +104,7 @@
 .aspl {
     margin: 0 10px;
 }
+
 input[type="checkbox"] {
     margin: 0 0px;
 }
@@ -106,107 +123,113 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin: 0;
 }
 
-.toast {
-    z-index: 999;
-    color: black;
-    position: absolute;
-    top: 100px;
-    left:50%;
+#sendPrompt {
+    font-size: 1.5rem;
 }
 
 @media screen and (max-width: 1000px) {
-    th{
-        display:none;
-    }
-    #jobResourceCollapse thead, #eventResourceCollapse thead, #trainingResourceCollapse thead {
+    th {
         display: none;
+        width: 100%;
     }
 
-    #jobResourceCollapse td, #eventResourceCollapse td, #trainingResourceCollapse td {
+    #jobResourceCollapse td, #eventResourceCollapse td, #trainingResourceCollaps td{
         display: block;
         position: relative;
         text-align: right;
     }
 
-        #jobResourceCollapse td:before, #eventResourceCollapse td:before, #trainingResourceCollapse td:before {
-            padding-left: 5px;
-            display: inline-block;
-            font-weight: bold;
-            position: absolute;
-            top: 0px;
-            left: 0px;
+        #jobResourceCollapse thead, #eventResourceCollapse thead, #trainingResourceCollapse thead {
+            display: none;
+        }
+        #jobResourceCollapse td:last-of-type, #eventResourceCollapse td:last-of-type, #trainingResourceCollapse td:last-of-type {
+            padding-bottom: 25px;
+        }
+        #jobResourceCollapse td, #eventResourceCollapse td, #trainingResourceCollapse td {
+            display: block;
+            position: relative;
+            text-align: left;
+            padding: 25px 10px 5px 10px;
         }
 
-        #jobResourceCollapse td:nth-of-type(1):before {
-            content: "Title";
-        }
+            #jobResourceCollapse td:before, #eventResourceCollapse td:before, #trainingResourceCollapse td:before {
+                padding: 0 10px;
+                display: inline-block;
+                font-weight: bold;
+                position: absolute;
+                top: 0px;
+                left: 0px;
+            }
 
-        #jobResourceCollapse td:nth-of-type(2):before {
-            content: "Contact";
-        }
+            #jobResourceCollapse td:nth-of-type(1):before {
+                content: "Title";
+            }
 
-        #jobResourceCollapse td:nth-of-type(3):before {
-            content: "Location";
-        }
+            #jobResourceCollapse td:nth-of-type(2):before {
+                content: "Contact";
+            }
 
-        #jobResourceCollapse td:nth-of-type(4):before {
-            content: "Date Posted";
-        }
+            #jobResourceCollapse td:nth-of-type(3):before {
+                content: "Location";
+            }
 
-        #jobResourceCollapse td:nth-of-type(5):before {
-            content: "Date Expire";
-        }
+            #jobResourceCollapse td:nth-of-type(4):before {
+                content: "Date Posted";
+            }
 
-        #eventResourceCollapse td:nth-of-type(1):before {
-            content: "Title";
-        }
+            #jobResourceCollapse td:nth-of-type(5):before {
+                content: "Date Expire";
+            }
 
-        #eventResourceCollapse td:nth-of-type(2):before {
-            content: "Contact";
-        }
+            #eventResourceCollapse td:nth-of-type(1):before {
+                content: "Title";
+            }
 
-        #eventResourceCollapse td:nth-of-type(3):before {
-            content: "Location";
-        }
+            #eventResourceCollapse td:nth-of-type(2):before {
+                content: "Contact";
+            }
 
-        #eventResourceCollapse td:nth-of-type(4):before {
-            content: "Date";
-        }
+            #eventResourceCollapse td:nth-of-type(3):before {
+                content: "Location";
+            }
 
-        #trainingResourceCollapse td:nth-of-type(1):before {
-            content: "Title";
-        }
+            #eventResourceCollapse td:nth-of-type(4):before {
+                content: "Date";
+            }
 
-        #trainingResourceCollapse td:nth-of-type(2):before {
-            content: "Contact";
-        }
+            #trainingResourceCollapse td:nth-of-type(1):before {
+                content: "Title";
+            }
 
-        #trainingResourceCollapse td:nth-of-type(3):before {
-            content: "Location";
-        }
+            #trainingResourceCollapse td:nth-of-type(2):before {
+                content: "Contact";
+            }
 
-        #trainingResourceCollapse td:nth-of-type(4):before {
-            content: "Date Posted";
-        }
+            #trainingResourceCollapse td:nth-of-type(3):before {
+                content: "Location";
+            }
 
-        #trainingResourceCollapse td:nth-of-type(5):before {
-            content: "Date Expire";
-        }
+            #trainingResourceCollapse td:nth-of-type(4):before {
+                content: "Date Posted";
+            }
 
+            #trainingResourceCollapse td:nth-of-type(5):before {
+                content: "Date Expire";
+            }
 }
+
 .table-responsive-lg {
-    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: auto;
     max-height: 350px;
 }
+
 @media screen and (min-width: 992px) {
     modal-dialog modal-lg {
         width: 950px; /* New width for large modal */
     }
 }
 
-table {
-    overflow: scroll;
-}
 /*MyPopup{
     width:80%;
 }*/

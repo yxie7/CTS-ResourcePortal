@@ -2,16 +2,26 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
+    <%-- /*************************************************Stuff to make Data tables work*******************************/--%>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <!--<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>-->
+    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
     <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $('[id*=datatable]').DataTable({
+         
             });
         });
     </script>
+
     <script type="text/javascript">
         $(function () {
             $("#datatable [id*=chkHeader]").click(function () {
@@ -34,15 +44,11 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
-  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>-->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-
 
     <link href="AdminContent.css" rel="stylesheet" />
     <div id="MyPopup" class="modal fade" role="dialog">
         <div class="modal-dialog">
+            <a href="NewsletterPreview.aspx">NewsletterPreview.aspx</a>
             <!-- Modal content-->
             <div class="modal-content" style="margin-top: 55%; }">
 
@@ -51,17 +57,23 @@
                 <div class="modal-body" style="color: black">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">
-                        Close</button>
+                    <asp:Button runat="server" ID="close" class="btn btn-danger" data-dismiss="modal"/>
+                    <asp:Button runat="server" ID="no" class="btn btn-danger" data-dismiss="modal" UseSubmitBehavior="false" OnClick="no_Click"/>
+                    <asp:Button runat="server" ID="yes" class="btn btn-success" data-dismiss="modal" UseSubmitBehavior="false" OnClick="yes_Click" />
+                    <asp:Button runat="server" ID="yesAccept" class="btn btn-success" data-dismiss="modal" UseSubmitBehavior="false" OnClick="yesAccept_Click" />
                 </div>
             </div>
         </div>
     </div>
 
     <div class="container">
-
         <div class="section">
-             <h2 class="col-md-auto">New Ctizens</h2>
+            <div class="row">
+                <div class="col"></div>
+                <h2 class="col-md-auto">New Citizen Accounts</h2>
+                
+            </div>
+
             <div class="table-wrapper ">
             <asp:Repeater ID="rptNewCitizen" runat="server">
                     <HeaderTemplate>
@@ -69,15 +81,13 @@
                             cellspacing="0">
                             <thead>
                                 <tr>
-                                     <th>
-                                        <asp:CheckBox ID="chkHeader" runat="server" /></th>
+                                    <th></th>
                                     <th>First Name
                                     </th>
                                     <th>Last Name
                                     </th>
                                     <th>Email
                                     </th>
-                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -86,16 +96,16 @@
                     <ItemTemplate>
                         <tr>
                             <td>
-                                <asp:CheckBox ID="chkRow" runat="server" />
+                                <asp:CheckBox runat="server" ID="chkRow" />
                             </td>
                             <td>
                                 <asp:Label ID="lblfName" runat=server Text='<%# DataBinder.Eval(Container.DataItem, ("FirstName")) %>'></asp:Label>
                             </td>
                             <td>
-                               <asp:Label ID="lblLName" runat="server" Text=' <%# DataBinder.Eval(Container.DataItem, ("LastName")) %>'></asp:Label>
+                                <asp:Label ID="lblLName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, ("LastName")) %>'></asp:Label>
                             </td>
                             <td>
-                               <asp:Label ID="lblEmail" runat="server" Text=' <%# DataBinder.Eval(Container.DataItem, ("Email")) %>'></asp:Label>
+                                 <asp:Label ID="lblEmail" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, ("Email")) %>'></asp:Label>
                             </td>
                             
                         </tr>
@@ -103,33 +113,21 @@
                     </ItemTemplate>
 
                     <FooterTemplate>
-                        </tbody>
-                        </table>
-                        <!--<div class="clearfix">
-                    <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-                    <ul class="pagination">
-                        <li class="page-item disabled"><a href="#">Previous</a></li>
-                        <li class="page-item"><a href="#" class="page-link">1</a></li>
-                        <li class="page-item"><a href="#" class="page-link">2</a></li>
-                        <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                        <li class="page-item"><a href="#" class="page-link">4</a></li>
-                        <li class="page-item"><a href="#" class="page-link">5</a></li>
-                        <li class="page-item"><a href="#" class="page-link">Next</a></li>
-                    </ul>
-                </div>-->
+                        </tbody></table>
+                        <div style="align-content:center">
+                    <asp:Button ID="btnAccept" Text="Accept" runat="server" OnClick="btnAccept_Click" />
+                    <asp:Button ID="btnReject" Text="Reject" runat="server" OnClick="btnReject_Click"  />
+                        </div>
                     </FooterTemplate>
                 </asp:Repeater>
+                </div>
                 <br />
                 <br />
-                <div style="align-content:center">
-                    <asp:Button ID="btnAccept" Text="Accept" runat="server" OnClick="btnAccept_Click" />
-                    <asp:Button ID="btnReject" Text="Reject" runat="server" OnClick="btnReject_Click"/>
-                </div>
-                </div>			
-                </div>
+                
+                
+            
 
-        <!-------------------------------------------------------------------------------------------->
-
+        <!--------------------------------------Another table------------------------------------------------------>
         <div class="section">
              <h2 class="col-md-auto">All Citizens</h2>
             <div class="table-wrapper ">
@@ -187,189 +185,14 @@
                     <FooterTemplate>
                         </tbody>
                         </table>
-                        <!--<div class="clearfix">
-                    <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-                    <ul class="pagination">
-                        <li class="page-item disabled"><a href="#">Previous</a></li>
-                        <li class="page-item"><a href="#" class="page-link">1</a></li>
-                        <li class="page-item"><a href="#" class="page-link">2</a></li>
-                        <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                        <li class="page-item"><a href="#" class="page-link">4</a></li>
-                        <li class="page-item"><a href="#" class="page-link">5</a></li>
-                        <li class="page-item"><a href="#" class="page-link">Next</a></li>
-                    </ul>
-                </div>-->
                     </FooterTemplate>
                 </asp:Repeater>
-                </div>			
+				
+                </div>
         </div>
         <br />
     </div>
-
-     <!--<div class="section">
-            <div class="row">
-                <div class="col"></div>
-                <h2 class="col-md-auto">New Citizen Accounts</h2>
-                <div class="col"></div>
-            </div>
-
-            <div class="table-wrapper ">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Email</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Tyreak</td>
-                            <td>Allen</td>
-                            <td>tyreak.allen@gmail.com</td>
-                            <td>Pending</td>
-                            <td>
-
-                                
-                            </td>
-                        </tr>
-                        <tr>
-
-                            <td>Barack</td>
-                            <td>Obama</td>
-                            <td>obama@gmail.com</td>
-                            <td>Pending</td>
-                            <td>
-                                
-                            </td>
-                        </tr>
-                        <tr>
-
-                            <td>Cookie</td>
-                            <td>Monster</td>
-                            <td>cookie@gmail.com</td>
-                            <td style="color: red">Rejected</td>
-                            <td>
-                                <%--<asp:Button runat="server" id="Accept3" Text="Accept" class="btn btn-mini" title="Search" OnClick="Accept1_Click"></asp:Button>
-                           <asp:Button runat="server" id="Reject3" Text="Reject" class="btn btn-mini" title="Search" OnClick="Reject1_Click"></asp:Button>--%>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="clearfix">
-                    <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-                    <ul class="pagination">
-                        <li class="page-item disabled"><a href="#">Previous</a></li>
-                        <li class="page-item"><a href="#" class="page-link">1</a></li>
-                        <li class="page-item"><a href="#" class="page-link">2</a></li>
-                        <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                        <li class="page-item"><a href="#" class="page-link">4</a></li>
-                        <li class="page-item"><a href="#" class="page-link">5</a></li>
-                        <li class="page-item"><a href="#" class="page-link">Next</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>-->
-
-     <!--<asp:GridView ID="grdAllAccounts" runat="server" AutoGenerateColumns="False"
-             Width="623px" class="table table-striped">
-            <Columns>
-                <asp:TemplateField>
-            <ItemTemplate>
-                <asp:CheckBox ID="chkRow" runat="server" />
-            </ItemTemplate>
-                </asp:TemplateField>
-                
-                <asp:BoundField DataField="Firstname" HeaderText="First Name" />
-
-                <asp:BoundField DataField="Lastname" HeaderText="Last Name" />
-
-                <asp:BoundField DataField="Username" HeaderText="Username" />
-
-                <asp:BoundField DataField="Address" HeaderText="Address" />
-
-                <asp:BoundField DataField="Email" HeaderText="Email" />
-
-                <asp:BoundField DataField="Cellphone" HeaderText="Cellphone" />
-
-                <asp:TemplateField HeaderText="Resume">
-
-                    <ItemTemplate>
-                        <asp:LinkButton ID="lnkType" runat="server" Text="View" OnClick="lnkView_Click"></asp:LinkButton >
-                    </ItemTemplate>                   
-                </asp:TemplateField>
-            </Columns>
-        </asp:GridView>-->
-
-            <!--<div class="row">
-                <div class="col"></div>
-                <h2 class="col-md-auto">All Citizens</h2>
-                <div class="col"></div>
-
-
-            </div>
-            <div class="table-wrapper">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <td></td>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>User Name</th>
-                            <th>Address</th>                           
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Resume</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><input type="checkbox"/></td>
-                            <td>Isabella</td>
-                            <td>Christensen</td>
-                            <td>IsabellaC</td>
-                            <td>2244 N Glenwood ST, Philadelphia, PA, 19133</td>
-                            <td>isabella@gmail.com</td>
-                            <td>(171) 555-2222</td>
-                            <td><asp:LinkButton runat="server" ID="lnkView" Text="View" OnClick="lnkView_Click"></asp:LinkButton></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox"/></td>
-                            <td>Don Quixote</td>
-                            <td>Quixote</td>
-                            <td>DQuixote</td>
-                            <td>1122 E Main ST, Philadelphia, PA, 19133
-                            <td>don.ouixote@gmail.com</td>
-                            <td>(313) 555-5735</td>
-                            <td><asp:LinkButton runat="server" Text="View"></asp:LinkButton></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox"/></td>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>JDoe</td>
-                            <td>4622 W Germantown ST, Philadelphia, PA, 19133
-                            <td>john.doe@gmail.com</td>
-                            <td>(503) 555-9931</td>
-                            <td>N/A</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="clearfix">
-                    <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-                    <ul class="pagination">
-                        <li class="page-item disabled"><a href="#">Previous</a></li>
-                        <li class="page-item"><a href="#" class="page-link">1</a></li>
-                        <li class="page-item"><a href="#" class="page-link">2</a></li>
-                        <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                        <li class="page-item"><a href="#" class="page-link">4</a></li>
-                        <li class="page-item"><a href="#" class="page-link">5</a></li>
-                        <li class="page-item"><a href="#" class="page-link">Next</a></li>
-                    </ul>
-                </div>
-            </div>-->		
+        </div>
 
     <script type="text/javascript">
         function ShowPopup(title, body) {
@@ -378,5 +201,4 @@
             $("#MyPopup").modal("show");
         }
     </script>
-    
 </asp:Content>

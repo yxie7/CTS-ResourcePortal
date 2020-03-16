@@ -24,7 +24,6 @@ namespace Utilities
         private string Link;
         private string Description;
         private string OtherReqs;
-        private string Active;
 
         public string resourceID
         {
@@ -151,12 +150,6 @@ namespace Utilities
         {
             get { return OtherReqs; }
             set { OtherReqs = value; }
-        }
-
-        public string active
-        {
-            get { return Active; }
-            set { Active = value; }
         }
     }
 }

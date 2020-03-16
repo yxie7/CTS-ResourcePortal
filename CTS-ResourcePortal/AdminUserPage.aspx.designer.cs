@@ -13,40 +13,49 @@ namespace CTS_ResourcePortal {
     public partial class AdminUserPage {
         
         /// <summary>
-        /// Accept1 control.
+        /// close control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Accept1;
+        protected global::System.Web.UI.WebControls.Button close;
         
         /// <summary>
-        /// Reject1 control.
+        /// no control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Reject1;
+        protected global::System.Web.UI.WebControls.Button no;
         
         /// <summary>
-        /// Accept2 control.
+        /// yes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Accept2;
+        protected global::System.Web.UI.WebControls.Button yes;
         
         /// <summary>
-        /// Reject2 control.
+        /// yesAccept control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Reject2;
+        protected global::System.Web.UI.WebControls.Button yesAccept;
+        
+        /// <summary>
+        /// rptNewCitizen control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptNewCitizen;
         
         /// <summary>
         /// rptManageR control.
@@ -56,23 +65,5 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptManageR;
-        
-        /// <summary>
-        /// grdAllAccounts control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdAllAccounts;
-        
-        /// <summary>
-        /// lnkView control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkView;
     }
 }

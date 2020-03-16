@@ -151,6 +151,7 @@
     <div style="text-align: end">
         <asp:LinkButton CssClass="btn btn-link" runat="server" ID="btnUsers" Text="New Citizens" OnClick="btnUsers_Click" Style="font-size: 30px; margin-right: 6%;"></asp:LinkButton>
     </div>
+
     <div class="container">
         <div class="col row">
             <label class="col-lg-auto">Search: </label>

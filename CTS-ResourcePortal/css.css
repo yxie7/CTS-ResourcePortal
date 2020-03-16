@@ -110,6 +110,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         text-align: right;
         padding: 25px 10px 5px 10px;
     }
+        .rtd:last-of-type {
+            padding-bottom: 25px;
+        }
         .rtd:before {
             text-align:left;
             padding: 0 10px;

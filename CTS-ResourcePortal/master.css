@@ -73,11 +73,15 @@ a img {
 .navbar {
     background-color: black;
     z-index: 99;
+    position:fixed;
+    width:100%;
+    top:0;
 }
 
 .navbar-brand, .navbar-brand a {
     font-size: 28px;
     color: #fdd247 !important;
+
 }
 
 .search {

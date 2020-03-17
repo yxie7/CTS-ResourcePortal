@@ -216,6 +216,7 @@ namespace CTS_ResourcePortal
                     cmd.Parameters.Clear();
                 }
             }
+            BindAll();
         }
 
         protected void btnEdit_Click(object sender, EventArgs e)

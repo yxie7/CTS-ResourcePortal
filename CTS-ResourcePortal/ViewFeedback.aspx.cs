@@ -20,7 +20,7 @@ namespace CTS_ResourcePortal
         SqlCommand cmd = new SqlCommand();
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
             if (!IsPostBack)
             {
                 cmd.CommandType = CommandType.StoredProcedure;

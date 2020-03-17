@@ -218,7 +218,6 @@ namespace CTS_ResourcePortal
                     cmd.Parameters.Clear();
                 }
             }
-
             BindAll();
         }
 

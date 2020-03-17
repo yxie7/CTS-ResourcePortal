@@ -137,6 +137,7 @@
                                 <%# DataBinder.Eval(Container.DataItem, ("Date")) %>
                             </td>
                             <td>
+
                                 <asp:Button ID="btnReply" runat="server" Text="Reply" />
                             </td>
 

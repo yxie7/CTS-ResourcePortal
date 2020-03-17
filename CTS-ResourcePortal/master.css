@@ -7,6 +7,56 @@
     overflow-x: hidden;
 }
 
+#page-container {
+    min-height: 100vh;
+    position: relative;
+}
+
+#content-wrap {
+    padding-bottom: 2.5rem;
+}
+
+footer {
+    color: white !important;
+    background: black;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 11px;
+    z-index: 99;
+    padding: 7px;
+    position: absolute;
+    bottom: 0;
+    height: 2.5rem;
+}
+
+    footer img {
+        height: 2em;
+    }
+
+.container {
+    background-color: #3a3a3a;
+    box-shadow: 0 0px 25px #fdd247;
+    border-radius: 15px;
+    padding: 15px 0;
+    margin-top: 50px;
+    margin-bottom: 70px;
+    color: white;
+    border: 1px solid black;
+}
+
+.section {
+    background-color: #606060;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+    margin: 1px 10px;
+}
+
+.content {
+    padding-bottom: 75px;
+}
+
 h1, h2, h3, h4, h5 {
     text-align: center;
 }
@@ -20,34 +70,18 @@ a img {
     margin-bottom: 7px;
 }
 
-footer img {
-    height: 2em;
-}
-
-.navbar-brand, .navbar-brand a{
-    font-size: 28px;
-    color: #fdd247 !important;
-}
-
-footer {
-    position: fixed;
-    color: white !important;
-    background: black;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    font-size: 11px;
-    z-index: 99;
-    padding: 7px;
-}
-
 .navbar {
     background-color: black;
     z-index: 99;
+    position:fixed;
+    width:100%;
+    top:0;
 }
 
-.content {
-    padding-bottom: 75px;
+.navbar-brand, .navbar-brand a {
+    font-size: 28px;
+    color: #fdd247 !important;
+
 }
 
 .search {
@@ -59,7 +93,8 @@ footer {
     margin-left: 30px;
     margin-right: 30px;
 }
-.nav-item:hover a{
+
+.nav-item:hover a {
     color: white !important;
     cursor: pointer;
     text-decoration: none;

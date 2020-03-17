@@ -1,34 +1,12 @@
-﻿footer {
-    position: absolute;
-    bottom: 0;
-    height: 2.5rem;
-}
-#page-container{
-    min-height:100vh;
-    position:relative;
-}
-#content-wrap{
-    padding-bottom: 2.5rem;
-}
-.container {
-    background-color: #3a3a3a;
-    box-shadow: 0 0px 25px #fdd247;
-    border-radius: 15px;
-    padding: 15px 0;
-    margin-top: 50px;
-    margin-bottom: 70px;
-    color: white;
-    border: 1px solid black;
-}
-
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+﻿::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #3a3a3a;
     opacity: .9; /* Firefox */
 }
 
 table {
-    width: 100%;
-    overflow:scroll;
+    width: 100% !important;
+    overflow: scroll;
+    background: grey;
 }
 
 .accordion, .card-header, .tableSelection {
@@ -66,14 +44,6 @@ table {
 
 .col-form-label {
     text-align: right;
-}
-
-.section {
-    background-color: #606060;
-    border-radius: 10px;
-    color: white;
-    padding: 10px;
-    margin: 1px 10px;
 }
 
 .cardlist {
@@ -128,94 +98,113 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 @media screen and (max-width: 1000px) {
-    th {
+    .rth {
         display: none;
         width: 100%;
     }
 
-    #jobResourceCollapse td, #eventResourceCollapse td, #trainingResourceCollaps td{
+    .rtd {
+        margin-top:25px;
         display: block;
         position: relative;
         text-align: right;
+        padding: 25px 10px 5px 10px;
     }
-
-        #jobResourceCollapse thead, #eventResourceCollapse thead, #trainingResourceCollapse thead {
-            display: none;
-        }
-        #jobResourceCollapse td:last-of-type, #eventResourceCollapse td:last-of-type, #trainingResourceCollapse td:last-of-type {
+        .rtd:last-of-type {
             padding-bottom: 25px;
         }
-        #jobResourceCollapse td, #eventResourceCollapse td, #trainingResourceCollapse td {
-            display: block;
-            position: relative;
-            text-align: left;
-            padding: 25px 10px 5px 10px;
+        .rtd:before {
+            text-align:left;
+            padding: 0 10px;
+            display: inline-block;
+            font-weight: bold;
+            position:absolute;
+            margin-top:-25px;
+            top: 0px;
+            left: 0px;
+            content: attr(data-header);
         }
 
-            #jobResourceCollapse td:before, #eventResourceCollapse td:before, #trainingResourceCollapse td:before {
-                padding: 0 10px;
-                display: inline-block;
-                font-weight: bold;
-                position: absolute;
-                top: 0px;
-                left: 0px;
-            }
+    #jobResourceCollapse th, #eventResourceCollapse th, #trainingResourceCollaps th {
+        display: none;
+        width: 100%;
+    }
 
-            #jobResourceCollapse td:nth-of-type(1):before {
-                content: "Title";
-            }
+    #jobResourceCollapse td:last-of-type, #eventResourceCollapse td:last-of-type, #trainingResourceCollapse td:last-of-type {
+        padding-bottom: 25px;
+    }
 
-            #jobResourceCollapse td:nth-of-type(2):before {
-                content: "Contact";
-            }
+    #jobResourceCollapse td, #eventResourceCollapse td, #trainingResourceCollapse td {
+        display: block;
+        position: relative;
+        text-align: left;
+        padding: 25px 10px 5px 10px;
+    }
 
-            #jobResourceCollapse td:nth-of-type(3):before {
-                content: "Location";
-            }
+        #jobResourceCollapse td:before, #eventResourceCollapse td:before, #trainingResourceCollapse td:before {
+            padding: 0 10px;
+            display: inline-block;
+            font-weight: bold;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
 
-            #jobResourceCollapse td:nth-of-type(4):before {
-                content: "Date Posted";
-            }
+        #jobResourceCollapse td:nth-of-type(1):before {
+            content: "Title";
+        }
 
-            #jobResourceCollapse td:nth-of-type(5):before {
-                content: "Date Expire";
-            }
+        #jobResourceCollapse td:nth-of-type(2):before {
+            content: "Contact";
+        }
 
-            #eventResourceCollapse td:nth-of-type(1):before {
-                content: "Title";
-            }
+        #jobResourceCollapse td:nth-of-type(3):before {
+            content: "Location";
+        }
 
-            #eventResourceCollapse td:nth-of-type(2):before {
-                content: "Contact";
-            }
+        #jobResourceCollapse td:nth-of-type(4):before {
+            content: "Date Posted";
+        }
 
-            #eventResourceCollapse td:nth-of-type(3):before {
-                content: "Location";
-            }
+        #jobResourceCollapse td:nth-of-type(5):before {
+            content: "Date Expire";
+        }
 
-            #eventResourceCollapse td:nth-of-type(4):before {
-                content: "Date";
-            }
+        #eventResourceCollapse td:nth-of-type(1):before {
+            content: "Title";
+        }
 
-            #trainingResourceCollapse td:nth-of-type(1):before {
-                content: "Title";
-            }
+        #eventResourceCollapse td:nth-of-type(2):before {
+            content: "Contact";
+        }
 
-            #trainingResourceCollapse td:nth-of-type(2):before {
-                content: "Contact";
-            }
+        #eventResourceCollapse td:nth-of-type(3):before {
+            content: "Location";
+        }
 
-            #trainingResourceCollapse td:nth-of-type(3):before {
-                content: "Location";
-            }
+        #eventResourceCollapse td:nth-of-type(4):before {
+            content: "Date";
+        }
 
-            #trainingResourceCollapse td:nth-of-type(4):before {
-                content: "Date Posted";
-            }
+        #trainingResourceCollapse td:nth-of-type(1):before {
+            content: "Title";
+        }
 
-            #trainingResourceCollapse td:nth-of-type(5):before {
-                content: "Date Expire";
-            }
+        #trainingResourceCollapse td:nth-of-type(2):before {
+            content: "Contact";
+        }
+
+        #trainingResourceCollapse td:nth-of-type(3):before {
+            content: "Location";
+        }
+
+        #trainingResourceCollapse td:nth-of-type(4):before {
+            content: "Date Posted";
+        }
+
+        #trainingResourceCollapse td:nth-of-type(5):before {
+            content: "Date Expire";
+        }
 }
 
 .table-responsive-lg {

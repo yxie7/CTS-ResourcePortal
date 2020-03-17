@@ -80,6 +80,7 @@ namespace CTS_ResourcePortal
             string title = "";
             string body = "Feedback Removed!";
             ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
+            BindAll();
         }
 
         protected void btnViewR_Click(object sender, EventArgs e)
@@ -110,5 +111,52 @@ namespace CTS_ResourcePortal
         {
             BindAll();
         }
+
+        protected void btnSelect_Click(object sender, EventArgs e)
+        {
+            int removed = 0;
+            foreach (RepeaterItem item in rptViewR.Items)
+            {
+                CheckBox checkBox = (CheckBox)item.FindControl("chkRow");
+                //HtmlInputCheckBox chkRow = (HtmlInputCheckBox)item.FindControl("chkRow");
+                if (checkBox.Checked)
+                {
+                    Label label = (Label)item.FindControl("lblFeedbackText");
+
+                    string feedbacktext = label.Text;
+                    cmd.Parameters.Clear();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "GetFeedbackIDByText";
+                    SqlParameter text = new SqlParameter("@FeedbackText", feedbacktext);
+                    text.Direction = ParameterDirection.Input;
+                    text.SqlDbType = SqlDbType.VarChar;
+
+                    cmd.Parameters.Add(text);
+                    DataSet dataSet = db.GetDataSetUsingCmdObj(cmd);
+                    if (dataSet.Tables[0].Rows.Count > 0)
+                    {
+                        cmd.Parameters.Clear();
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "InactivateFeedback";
+                        int FeedbackID = Convert.ToInt32(dataSet.Tables[0].Rows[0].ItemArray[0]);
+                        SqlParameter id = new SqlParameter("@Feedbackid", FeedbackID);
+                        id.Direction = ParameterDirection.Input;
+                        id.SqlDbType = SqlDbType.Int;
+                        id.Size = 4;
+                        cmd.Parameters.Add(id);
+                        int check = db.DoUpdateUsingCmdObj(cmd);
+                        if (check > -1)
+                        {
+                            removed++;
+                        }
+                    }
+                }
+            }
+
+            BindAll();
+        }
+
     }
+
+
 }

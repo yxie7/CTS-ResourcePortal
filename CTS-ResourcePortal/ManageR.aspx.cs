@@ -190,6 +190,8 @@ namespace CTS_ResourcePortal
 
                 }
             }
+
+            BindAll();
         }
 
         protected void btnInactivate_Click(object sender, EventArgs e)

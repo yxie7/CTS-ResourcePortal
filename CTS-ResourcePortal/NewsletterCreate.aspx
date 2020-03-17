@@ -10,10 +10,7 @@
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
         function toasted() {
-            //$('.toast').toast('show');
-            $("#noSelect").modal("show");
-
-            //alert("No selections were made... You can't continue!");
+            $("#noSelect").modal("show");            
         }
 
         $(function () {
@@ -50,7 +47,7 @@
         </Triggers>
         <ContentTemplate>--%>
     <!---->
-    <div class="modal" id="noSelect" role="dialog">
+    <div class="modal fade" id="noSelect" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content container">
                 <div class="modal-body align-content-center  text-center">

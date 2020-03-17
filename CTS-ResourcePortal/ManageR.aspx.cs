@@ -190,6 +190,8 @@ namespace CTS_ResourcePortal
 
                 }
             }
+
+            BindAll();
         }
 
         protected void btnInactivate_Click(object sender, EventArgs e)
@@ -216,6 +218,8 @@ namespace CTS_ResourcePortal
                     cmd.Parameters.Clear();
                 }
             }
+
+            BindAll();
         }
 
         protected void btnEdit_Click(object sender, EventArgs e)

@@ -44,14 +44,10 @@ footer {
 .navbar {
     background-color: black;
     z-index: 99;
-    position:fixed;
-    width:100%;
-    top:0;
 }
 
 .content {
     padding-bottom: 75px;
-    padding-top:100px;
 }
 
 .search {

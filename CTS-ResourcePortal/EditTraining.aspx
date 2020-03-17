@@ -110,7 +110,8 @@
             <br />
 
             <div class="row" id="dates">
-                <div class="col-sm-6">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-3">
                     <asp:Label ID="lblRegDeadline" runat="server"><span class="requiredRed">*</span>Registration Deadline: </asp:Label><br />
                     <asp:Calendar ID="CalendarRegDead" runat="server">
                          <OtherMonthDayStyle ForeColor="LightGray">
@@ -128,7 +129,8 @@
            </SelectedDayStyle>
                     </asp:Calendar>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-3">
                     <asp:Label ID="lblStart" runat="server"><span class="requiredRed">*</span>Start Date: </asp:Label><br />
                     <asp:Calendar ID="CalanderStartDate" runat="server">
                          <OtherMonthDayStyle ForeColor="LightGray">
@@ -146,6 +148,7 @@
            </SelectedDayStyle>
                     </asp:Calendar>
                 </div>
+                <div class="col-sm-2"></div>
             </div>
 
             <div class="row" id="hrs">

@@ -9,8 +9,8 @@ namespace Utilities
     public class Resource
     {
         private string ResourceID;
-        private int ResourceTypeID;
-        private int Active;
+        private string ResourceName;
+        private string Active;
 
         public string resourceID
         {
@@ -18,14 +18,14 @@ namespace Utilities
             set { ResourceID = value; }
         }
 
-        public int resourceTypeID
+        public string resourceName
 
         {
-            get { return ResourceTypeID; }
-            set { ResourceTypeID = value; }
+            get { return ResourceName; }
+            set { ResourceName = value; }
         }
 
-        public int active
+        public string active
 
         {
             get { return Active; }

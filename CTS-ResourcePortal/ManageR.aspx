@@ -224,6 +224,46 @@
         </div>
     </div>
 
+    <div id="MyPopup2" class="modal" role="dialog">
+        <div class="modal-dialog modal-xl">
+            <!-- Modal content-->
+            <div class="modal-content container">
+                <div class="modal-body">
+
+                    <br />
+                    <div class="row  justify-content-center align-items-center text-center">
+                        <div class="col"></div>
+                        <div class="col-md-4">
+                            <asp:Label runat="server" Text="Please choose 1 Resource to edit!" ID="lblNoEdit" Font-Bold="True"></asp:Label>
+                        </div>
+                        <div class="col"></div>
+                    </div>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="MyPopup3" class="modal" role="dialog">
+        <div class="modal-dialog modal-xl">
+            <!-- Modal content-->
+            <div class="modal-content container">
+                <div class="modal-body">
+
+                    <br />
+                    <div class="row  justify-content-center align-items-center text-center">
+                        <div class="col"></div>
+                        <div class="col-md-4">
+                            <asp:Label runat="server" Text="Please only choose 1 Resource to edit!" ID="lblTooManyEdi" Font-Bold="True"></asp:Label>
+                        </div>
+                        <div class="col"></div>
+                    </div>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <div class="row">
             <div class="col-10 text-center">
@@ -384,6 +424,22 @@
             $("#MyPopup1 .modal-title").html(title);
             $("#MyPopup1 .modal-body").html(body);
             $("#MyPopup1").modal("show");
+        }
+    </script>
+
+        <script type="text/javascript">
+        function ShowPopup2(title, body) {
+            $("#MyPopup2 .modal-title").html(title);
+            $("#MyPopup2 .modal-body").html(body);
+            $("#MyPopup2").modal("show");
+        }
+    </script>
+
+    <script type="text/javascript">
+        function ShowPopup3(title, body) {
+            $("#MyPopup3 .modal-title").html(title);
+            $("#MyPopup3 .modal-body").html(body);
+            $("#MyPopup3").modal("show");
         }
     </script>
 </asp:Content>

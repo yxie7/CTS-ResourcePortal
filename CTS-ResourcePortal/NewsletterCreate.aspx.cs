@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using Utilities;
 
@@ -38,7 +37,6 @@ namespace CTS_ResourcePortal
                 }
                 loadSelections();
             }
-
         }
 
         private void loadSelections()
@@ -60,70 +58,21 @@ namespace CTS_ResourcePortal
 
         protected void btnPreview_Click(object sender, EventArgs e)
         {
+            List<NewsletterItem> selectionList = new List<NewsletterItem>();
             if (Session["NewsletterSelections"] != null)
+            {
+                selectionList = Session["NewsletterSelections"] as List<NewsletterItem>;
+            }
+            if (Selections.Rows.Count > 0)
             {
                 Response.Redirect("NewsletterPreview.aspx");
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "Script", "toasted();", true);
-
-                //ClientScript.RegisterStartupScript(GetType(), "Toast", "toasted();", true);
+                //ScriptManager.RegisterStartupScript(this, GetType(), "Script", "toasted();", true);
+                ClientScript.RegisterStartupScript(GetType(), "Toast", "toasted();", true);
             }
         }
-        /*
-        protected void btnPreview_Click(object sender, EventArgs e)
-        {
-            Dictionary<string, string> selections = new Dictionary<string, string>();
-
-            //Job
-            foreach (GridViewRow gvr in gvJob.Rows)
-            {
-                CheckBox chk = (CheckBox)gvr.FindControl("chkSelect");
-                if (chk.Checked == true)
-                {
-                    string id = gvJob.DataKeys[gvr.RowIndex].Value.ToString();
-                    string comment = ((TextBox)gvr.FindControl("txtComment")).Text;
-                    selections.Add(id, comment);
-                }
-            }
-            //Event
-            foreach (GridViewRow gvr in gvEvent.Rows)
-            {
-                CheckBox chk = (CheckBox)gvr.FindControl("chkSelect");
-                if (chk.Checked == true)
-                {
-                    string id = gvEvent.DataKeys[gvr.RowIndex].Value.ToString();
-                    string comment = ((TextBox)gvr.FindControl("txtComment")).Text;
-                    selections.Add(id, comment);
-                }
-            }
-            //Training
-            foreach (GridViewRow gvr in gvTraining.Rows)
-            {
-                CheckBox chk = (CheckBox)gvr.FindControl("chkSelect");
-                if (chk.Checked == true)
-                {
-                    string id = gvTraining.DataKeys[gvr.RowIndex].Value.ToString();
-                    string comment = ((TextBox)gvr.FindControl("txtComment")).Text;
-                    selections.Add(id, comment);
-                }
-            }
-
-            if (selections.Count != 0)
-            {
-                JavaScriptSerializer js = new JavaScriptSerializer();
-                var query = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(js.Serialize(selections)));
-                Response.Redirect("NewsletterPreview.aspx?nl=" + query);
-            }
-            else
-            {
-                ScriptManager.RegisterStartupScript(this, GetType(), "Script", "toasted();", true);
-
-                //ClientScript.RegisterStartupScript(GetType(), "Toast", "toasted();", true);
-            }
-        }
-        */
 
         private DataTable updateResourceList(DataTable dt)
         {
@@ -195,7 +144,6 @@ namespace CTS_ResourcePortal
         {
             //generateAll();
             Response.Redirect("NewsletterCreate.aspx");
-
         }
 
         protected void btnJob_Click(object sender, EventArgs e)
@@ -215,7 +163,7 @@ namespace CTS_ResourcePortal
             //generateTraining();
             Response.Redirect("NewsletterCreate.aspx?filter=3");
         }
-        
+
         // triggers from botton click of each row, adds row details to list and list to session
         protected void rpt_ItemCommand(object source, RepeaterCommandEventArgs e)
         {

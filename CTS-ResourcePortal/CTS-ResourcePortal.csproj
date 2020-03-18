@@ -242,6 +242,7 @@
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="EditTraining.aspx" />
     <Content Include="EditEvent.aspx" />
+    <Content Include="signup-form.css" />
     <Content Include="Training.aspx" />
     <Content Include="ViewFeedback.aspx" />
     <Content Include="DataTables\Buttons-1.6.1\css\common.scss" />

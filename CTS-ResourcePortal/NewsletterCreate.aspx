@@ -10,10 +10,7 @@
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
         function toasted() {
-            //$('.toast').toast('show');
-            $("#noSelect").modal("show");
-
-            //alert("No selections were made... You can't continue!");
+            $("#noSelect").modal("show");            
         }
 
         $(function () {
@@ -50,7 +47,7 @@
         </Triggers>
         <ContentTemplate>--%>
     <!---->
-    <div class="modal" id="noSelect" role="dialog">
+    <div class="modal fade" id="noSelect" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content container">
                 <div class="modal-body align-content-center  text-center">
@@ -86,26 +83,26 @@
                     <br />
                     <asp:Repeater runat="server" ID="rpt" OnItemCommand="rpt_ItemCommand">
                         <HeaderTemplate>
-                            <table id="datatable" class="table">
+                            <table id="datatable" class="table  table-hover">
                                 <thead>
                                     <tr>
-                                        <th class="col-2">Resource Title</th>
-                                        <th class="col-5">Comments</th>
-                                        <th class="col-1">Add</th>
+                                        <th class="col-2 rth">Resource Title</th>
+                                        <th class="col-5 rth">Comments</th>
+                                        <th class="col-1 rth">Add</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                         </HeaderTemplate>
                         <ItemTemplate>
                             <tr>
-                                <td>
+                                <td data-header="Resource Title:" class="rtd">
                                     <asp:Label ID="lblName" Text='<%# Eval("ResourceName") %>' runat="server" />
                                     <asp:HiddenField runat="server" ID="hfID" Value='<%# Eval("ResourcesID") %>' />
                                 </td>
-                                <td>
-                                    <asp:TextBox runat="server" ID="txtComment" CssClass="form-control" TextMode="multiline" Rows="3" placeholder="Enter comments, tips, or other information you would like to give to citizens here..."></asp:TextBox>
+                                <td data-header="Comment:" class="rtd">
+                                    <asp:TextBox runat="server" ID="txtComment" CssClass="form-control" TextMode="multiline" Rows="3" placeholder="(Optional) Enter comments, tips, or other information here..."></asp:TextBox>
                                 </td>
-                                <td>
+                                <td class="rtd">
                                     <asp:Button ID="btnAdd" CssClass="btn btn-success" Text="Add" runat="server" />
                                 </td>
                             </tr>
@@ -121,7 +118,7 @@
             <div class="row d-flex justify-content-center">
                 <div class="tableSelection col-10">
                     <label>Current Newsletter Items:</label><br />
-                    <asp:GridView ID="Selections" CssClass="table" runat="server" AutoGenerateColumns="false" DataKeyNames="ResourceID" GridLines="None">
+                    <asp:GridView ID="Selections" CssClass="table table-hover" runat="server" AutoGenerateColumns="false" DataKeyNames="ResourceID" GridLines="None">
                         <Columns>
                             <asp:BoundField DataField="ResourceName" HeaderText="Resource Title" HeaderStyle-CssClass="col-2"/>
                             <asp:BoundField DataField="Comment" HeaderText="Comment" HeaderStyle-CssClass="col-5"/>
@@ -136,8 +133,8 @@
                 </div>
             </div>
             <br />
-            <div class="row justify-content-end align-items-end">
-                <div class="col-md-auto">
+            <div class="row d-flex justify-content-end">            
+                <div>
                     <asp:Button runat="server" class="btn btn-dark" Text="Preview Newsletter" ID="btnPreview" OnClick="btnPreview_Click"></asp:Button>
                 </div>
                 <div class="col-1"></div>

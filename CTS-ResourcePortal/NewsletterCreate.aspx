@@ -9,14 +9,23 @@
     <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
-        function toasted() {
-            $("#noSelect").modal("show");            
+        var resourceList = $('[id*=datatable]').DataTable({
+            });
+        var selections = 
+            $('#<%= Selections.ClientID %>').DataTable({
+                "bFilter": false,
+                "bLengthChange": false,
+                stateSave: true
+            });
+        function toasted(body) {
+            $("#TheModal .modal-body").html(body);
+            $("#TheModal").modal("show");            
         }
 
         $(function () {
-            bindDataTable(); // bind data table on first page load
+            //bindDataTable(); // bind data table on first page load
             // bind data table on every UpdatePanel refresh
-            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(bindDataTable);
+            //Sys.WebForms.PageRequestManager.getInstance().add_endRequest(bindDataTable);
         });
 
         function bindDataTable() {
@@ -27,6 +36,10 @@
                 "bLengthChange": false,
                 stateSave: true
             });
+        }
+        function reloadTables() {
+            resourceList.ajax.reload();
+            selections.ajax.reload();
         }
         <%--$(document).ready(function () {
             $('[id*=datatable]').DataTable({
@@ -47,11 +60,10 @@
         </Triggers>
         <ContentTemplate>--%>
     <!---->
-    <div class="modal fade" id="noSelect" role="dialog">
-        <div class="modal-dialog">
+    <div class="modal fade" id="TheModal" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content container">
                 <div class="modal-body align-content-center  text-center">
-                    <h4 class="text-center">No selections were made... <br/>You can't continue!</h4>
                 </div>
             </div>
         </div>
@@ -103,7 +115,7 @@
                                     <asp:TextBox runat="server" ID="txtComment" CssClass="form-control" TextMode="multiline" Rows="3" placeholder="(Optional) Enter comments, tips, or other information here..."></asp:TextBox>
                                 </td>
                                 <td class="rtd">
-                                    <asp:Button ID="btnAdd" CssClass="btn btn-success" Text="Add" runat="server" />
+                                    <asp:Button ID="btnAdd" CssClass="btn btn-success" Text="Add" runat="server" OnClientClick="" UseSubmitBehavior="false"/>
                                 </td>
                             </tr>
                         </ItemTemplate>

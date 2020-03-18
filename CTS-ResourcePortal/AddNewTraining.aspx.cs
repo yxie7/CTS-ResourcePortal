@@ -29,7 +29,7 @@ namespace CTS_ResourcePortal
         {
             if (txtTitle.Text == string.Empty || txtHost.Text == string.Empty || txtAddLine1.Text == string.Empty || txtCity.Text == string.Empty ||
                 txtZip.Text == string.Empty || txtHours.Text == string.Empty || txtLength.Text == string.Empty || txtFn.Text == string.Empty ||
-                txtLn.Text == string.Empty || txtContEmail.Text == string.Empty || txtContPhone.Text == string.Empty || txtSignUp.Text == string.Empty 
+                txtLn.Text == string.Empty || txtContEmail.Text == string.Empty || txtContPhone.Text == string.Empty || txtSignUp.Text == string.Empty
                 || txtDesc.Text == string.Empty || txtSkills.Text == string.Empty)
             {
                 lblError.Visible = true;
@@ -58,7 +58,7 @@ namespace CTS_ResourcePortal
                 training.description = txtDesc.Text;
                 training.otherReqs = txtSkills.Text;
                 training.active = "Active";
-                
+
 
                 bigCommand.CommandType = CommandType.StoredProcedure;
                 bigCommand.CommandText = "AddNewTraining";

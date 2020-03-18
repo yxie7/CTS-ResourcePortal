@@ -26,7 +26,7 @@ namespace CTS_ResourcePortal
         SqlCommand cmd = new SqlCommand();
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
 
             if (!IsPostBack)
             {
@@ -55,11 +55,11 @@ namespace CTS_ResourcePortal
                 ddlResources.DataTextField = "ResourceTypeDescription";
                 ddlResources.DataValueField = "ResourceTypeDescription";
                 ListItem listItem = new ListItem(lblDDLResources.Text);
-                ddlResources.Items.Add(new ListItem (lblDDLResources.Text));
+                ddlResources.Items.Add(new ListItem(lblDDLResources.Text));
                 ddlResources.DataBind();
 
 
-                
+
 
             }
 
@@ -93,7 +93,7 @@ namespace CTS_ResourcePortal
 
         protected void gvManageR_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            if(e.Row.RowType == DataControlRowType.Header)
+            if (e.Row.RowType == DataControlRowType.Header)
             {
                 e.Row.TableSection = TableRowSection.TableHeader;
             }
@@ -102,7 +102,7 @@ namespace CTS_ResourcePortal
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Do Nothing
-            
+
         }
 
         public void Bind(int resourcenum)
@@ -126,7 +126,7 @@ namespace CTS_ResourcePortal
         public void BindAll()
         {
             cmd.Parameters.Clear();
-        
+
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "SelectResources";
 
@@ -190,6 +190,8 @@ namespace CTS_ResourcePortal
 
                 }
             }
+
+            BindAll();
         }
 
         protected void btnInactivate_Click(object sender, EventArgs e)
@@ -216,20 +218,36 @@ namespace CTS_ResourcePortal
                     cmd.Parameters.Clear();
                 }
             }
+            BindAll();
         }
 
         protected void btnEdit_Click(object sender, EventArgs e)
         {
+            HtmlInputCheckBox chkRow;
+            int count = 0;
             foreach (RepeaterItem item in rptManageR.Items)
             {
-                HtmlInputCheckBox chkRow = (HtmlInputCheckBox)item.FindControl("chkRow");
+                chkRow = (HtmlInputCheckBox)item.FindControl("chkRow");
                 if (chkRow.Checked)
                 {
-                    //Do Something
+                    count++;
                 }
+            }
+
+            if (count == 0)
+            {
+                //modal
+            }
+            else if (count > 1)
+            {
+                //modal
+            }
+            else
+            {
+
             }
         }
 
-       
+
     }
 }

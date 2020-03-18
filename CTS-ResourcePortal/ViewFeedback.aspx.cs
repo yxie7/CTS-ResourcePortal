@@ -6,7 +6,6 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using Utilities;
 
@@ -21,7 +20,7 @@ namespace CTS_ResourcePortal
         SqlCommand cmd = new SqlCommand();
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
             if (!IsPostBack)
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -115,17 +114,13 @@ namespace CTS_ResourcePortal
 
         protected void btnSelect_Click(object sender, EventArgs e)
         {
-            int removed = 0; 
+            int removed = 0;
             foreach (RepeaterItem item in rptViewR.Items)
             {
                 CheckBox checkBox = (CheckBox)item.FindControl("chkRow");
                 //HtmlInputCheckBox chkRow = (HtmlInputCheckBox)item.FindControl("chkRow");
                 if (checkBox.Checked)
                 {
-
-
-                    //Stored procedure to lookup feedback id by what is in the table 
-                    //int feedbackid = Convert.ToInt32(label);
                     Label label = (Label)item.FindControl("lblFeedbackText");
 
                     string feedbacktext = label.Text;
@@ -135,11 +130,10 @@ namespace CTS_ResourcePortal
                     SqlParameter text = new SqlParameter("@FeedbackText", feedbacktext);
                     text.Direction = ParameterDirection.Input;
                     text.SqlDbType = SqlDbType.VarChar;
-                   
+
                     cmd.Parameters.Add(text);
-                    
                     DataSet dataSet = db.GetDataSetUsingCmdObj(cmd);
-                    if (dataSet.Tables[0].Rows.Count>0)
+                    if (dataSet.Tables[0].Rows.Count > 0)
                     {
                         cmd.Parameters.Clear();
                         cmd.CommandType = CommandType.StoredProcedure;
@@ -151,30 +145,21 @@ namespace CTS_ResourcePortal
                         id.Size = 4;
                         cmd.Parameters.Add(id);
                         int check = db.DoUpdateUsingCmdObj(cmd);
-                        if(check > -1)
+                        if (check > -1)
                         {
                             removed++;
                         }
-
-                        //DataSet dataSet = db.GetDataSetUsingCmdObj(cmd);
-
                     }
-
-
-                    //Stored Procedure to inactivate feedback by FeedbackID 
-
-                    //cmd.CommandType = CommandType.StoredProcedure;
-                    //cmd.CommandText = "InactivateFeedback";
-
-                    //SqlParameter id = new SqlParameter("@Feedbackid", 
-                    //Do Something
                 }
             }
-            //string title = "";
-            //string body = "Feedback Removed!";
-            //ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
-            //ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+
+            string title = "";
+            string body = "Feedback Removed!";
+            ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
             BindAll();
         }
+
     }
+
+
 }

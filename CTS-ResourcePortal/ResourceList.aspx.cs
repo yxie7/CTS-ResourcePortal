@@ -602,5 +602,19 @@ namespace CTS_ResourcePortal
         {
             generateTables(txtTitleSearch.Text);
         }
+
+        protected void gv_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                TableCellCollection cell = e.Row.Cells;
+                cell[0].Attributes.Add("data-header", "Title");
+                cell[1].Attributes.Add("data-header", "Contact");
+                cell[2].Attributes.Add("data-header", "Location");
+                cell[3].Attributes.Add("data-header", "Date Posted");
+                cell[4].Attributes.Add("data-header", "Date Expire");
+            }
+        }
     }
 }

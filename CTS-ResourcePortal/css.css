@@ -1,21 +1,15 @@
-﻿.container {
-    background-color: #3a3a3a;
-    box-shadow: 0 0px 25px #fdd247;
-    border-radius: 15px;
-    padding: 15px 0;
-    margin-top: 50px;
-    margin-bottom: 70px;
-    color: white;
-    border: 1px solid black;
-}
-
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+﻿::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #3a3a3a;
     opacity: .9; /* Firefox */
 }
 
+table {
+    width: 100% !important;
+    overflow: scroll;
+    background: grey;
+}
 
-.accordion, .card-header {
+.accordion, .card-header, .tableSelection {
     background-color: #F5F5F5;
     border-radius: 10px;
     color: black;
@@ -31,7 +25,7 @@
 }
 
     .btn-link:hover {
-        color:black;
+        color: black;
     }
 
 .nls {
@@ -50,14 +44,6 @@
 
 .col-form-label {
     text-align: right;
-}
-
-.section {
-    background-color: #606060;
-    border-radius: 10px;
-    color: white;
-    padding: 10px;
-    margin: 1px 10px;
 }
 
 .cardlist {
@@ -88,6 +74,7 @@
 .aspl {
     margin: 0 10px;
 }
+
 input[type="checkbox"] {
     margin: 0 0px;
 }
@@ -106,30 +93,56 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin: 0;
 }
 
-.toast {
-    z-index: 999;
-    color: black;
-    position: absolute;
-    top: 100px;
-    left:50%;
+#sendPrompt {
+    font-size: 1.5rem;
 }
 
 @media screen and (max-width: 1000px) {
-    th{
-        display:none;
-    }
-    #jobResourceCollapse thead, #eventResourceCollapse thead, #trainingResourceCollapse thead {
+    .rth {
         display: none;
+        width: 100%;
+    }
+
+    .rtd {
+        margin-top:25px;
+        display: block;
+        position: relative;
+        text-align: right;
+        padding: 25px 10px 5px 10px;
+    }
+        .rtd:last-of-type {
+            padding-bottom: 25px;
+        }
+        .rtd:before {
+            text-align:left;
+            padding: 0 10px;
+            display: inline-block;
+            font-weight: bold;
+            position:absolute;
+            margin-top:-25px;
+            top: 0px;
+            left: 0px;
+            content: attr(data-header);
+        }
+
+    #jobResourceCollapse th, #eventResourceCollapse th, #trainingResourceCollaps th {
+        display: none;
+        width: 100%;
+    }
+
+    #jobResourceCollapse td:last-of-type, #eventResourceCollapse td:last-of-type, #trainingResourceCollapse td:last-of-type {
+        padding-bottom: 25px;
     }
 
     #jobResourceCollapse td, #eventResourceCollapse td, #trainingResourceCollapse td {
         display: block;
         position: relative;
-        text-align: right;
+        text-align: left;
+        padding: 25px 10px 5px 10px;
     }
 
         #jobResourceCollapse td:before, #eventResourceCollapse td:before, #trainingResourceCollapse td:before {
-            padding-left: 5px;
+            padding: 0 10px;
             display: inline-block;
             font-weight: bold;
             position: absolute;
@@ -192,21 +205,20 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         #trainingResourceCollapse td:nth-of-type(5):before {
             content: "Date Expire";
         }
-
 }
+
 .table-responsive-lg {
-    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: auto;
     max-height: 350px;
 }
+
 @media screen and (min-width: 992px) {
     modal-dialog modal-lg {
         width: 950px; /* New width for large modal */
     }
 }
 
-table {
-    overflow: scroll;
-}
 /*MyPopup{
     width:80%;
 }*/

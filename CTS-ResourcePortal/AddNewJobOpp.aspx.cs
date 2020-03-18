@@ -27,7 +27,7 @@ namespace CTS_ResourcePortal
         protected void btnCreate_Click(object sender, EventArgs e)
         {
             if (txtTitle.Text == string.Empty || txtCompany.Text == string.Empty || txtAddLine1.Text == string.Empty || txtCity.Text == string.Empty ||
-                txtZip.Text == string.Empty || txtHours.Text == string.Empty || txtFn.Text == string.Empty ||txtLn.Text == string.Empty 
+                txtZip.Text == string.Empty || txtHours.Text == string.Empty || txtFn.Text == string.Empty || txtLn.Text == string.Empty
                 || txtContEmail.Text == string.Empty || txtContPhone.Text == string.Empty || txtLink.Text == string.Empty ||
                  txtPrimResp.Text == string.Empty || txtSkills.Text == string.Empty)
             {

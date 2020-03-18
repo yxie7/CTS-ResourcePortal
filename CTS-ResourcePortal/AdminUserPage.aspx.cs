@@ -5,6 +5,8 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -21,17 +23,32 @@ namespace CTS_ResourcePortal
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
+            {
                 bind();
+                bindPending();
+            }
+
         }
 
         private void bind()
-        {       
+        {
 
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "GetAllCitizens";
             DataSet dataSet = db.GetDataSetUsingCmdObj(cmd);
             rptManageR.DataSource = dataSet;
             rptManageR.DataBind();
+
+        }
+
+        private void bindPending()
+        {
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "GetNewCitizens";
+            DataSet dataSet = db.GetDataSetUsingCmdObj(cmd);
+            rptNewCitizen.DataSource = dataSet;
+            rptNewCitizen.DataBind();
 
         }
 
@@ -84,71 +101,269 @@ namespace CTS_ResourcePortal
             Response.Flush();
             Response.End();
 
-            /*for (int i = 0; i < grdAllAccounts.Rows.Count; i++)
-            {
-                CheckBox cboxResume = (CheckBox)grdAllAccounts.Rows[i].FindControl("chkHeader");
-
-                if (cboxResume.Checked)
-                {
-
-                    RepeaterItem item = (sender as Button).NamingContainer as RepeaterItem;
-                    string email = (item.FindControl("lblName") as Label).Text;
-                    byte[] bytes;
-                    string fileName, contentType; 
-                    
-                        using (SqlCommand cmd = new SqlCommand())
-                        {
-                            cmd.CommandText = "select ResumeName, ResumeData, ResumeType from Citizen where Email=@email";
-                            cmd.Parameters.AddWithValue("@Id", email);
-                            cmd.Connection = con;
-                            con.Open();
-                            using (SqlDataReader sdr = cmd.ExecuteReader())
-                            {
-                                sdr.Read();
-                                bytes = (byte[])sdr["Data"];
-                                contentType = sdr["ContentType"].ToString();
-                                fileName = sdr["Name"].ToString();
-                            }
-                            con.Close();
-                        }
-                    
-                    Response.Clear();
-                    Response.Buffer = true;
-                    Response.Charset = "";
-                    Response.Cache.SetCacheability(HttpCacheability.NoCache);
-                    Response.ContentType = contentType;
-                    Response.AppendHeader("Content-Disposition", "attachment; filename=" + fileName);
-                    Response.BinaryWrite(bytes);
-                    Response.Flush();
-                    Response.End();
-
-
-                    /*string email = grdAllAccounts.Rows[i].Cells[5].Text;
-                    SqlCommand cmd = new SqlCommand("SELECT ResumeTitle, ResumeType, ResumeData FROM Citizen WHERE Email = '" + email + "'", db.GetConnection());
-                    db.GetConnection().Open();
-                    SqlDataReader sqlDataReader = cmd.ExecuteReader();
-                    while (sqlDataReader.Read())
-                    {
-                        Response.Clear();
-                        Response.Buffer = true;
-                        Response.ContentType = sqlDataReader["ResumeType"].ToString();
-                        Response.AddHeader("content-disposition", "attachment;filename=" + sqlDataReader["ResumeTitle"].ToString()); // to open file prompt Box open or Save file  
-                        Response.Charset = "";
-                        Response.Cache.SetCacheability(HttpCacheability.NoCache);
-                        Response.BinaryWrite((byte[])sqlDataReader["ResumeData"]);
-                        byte[] b = (byte[])sqlDataReader["ResumeData"];
-                        Response.OutputStream.Write(b, 0, b.Length);
-                        Response.End();
-
-                    }
-                    //sqlDataReader.Close();
-                    //db.CloseConnection();
-
-                }
-
-            }*/
         }
 
+        //confirmation of acceptance
+        protected void btnAccept_Click(object sender, EventArgs e)
+        {
+            int count = 0;
+            string title = "";
+            string body = "";
+
+
+            foreach (RepeaterItem item in rptNewCitizen.Items)
+            {
+                CheckBox chkRow = item.FindControl("chkRow") as CheckBox;
+
+                if (chkRow.Checked)
+                {
+                    count++;
+
+                }
+            }
+
+            if (count == 1)
+            {
+                title = "";
+                no.Visible = true;
+                yesAccept.Visible = true;
+                close.Visible = false;
+                yes.Visible = false;
+                no.Text = "No";
+                yesAccept.Text = "Yes";
+                body = "Do you want to accept this account?";
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
+
+            }
+
+            if (count >= 2)
+            {
+                title = "";
+                no.Visible = true;
+                yesAccept.Visible = true;
+                close.Visible = false;
+                yes.Visible = false;
+                no.Text = "No";
+                yesAccept.Text = "Yes";
+                body = "Do you want to accept these accounts?";
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
+
+            }
+
+            if (count == 0)
+            {
+
+                title = "";
+                yes.Visible = false;
+                yesAccept.Visible = false;
+                no.Visible = false;
+                close.Visible = true;
+                close.Text = "Close";
+                body = "Please select a account";
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
+            }
+
+
+        }
+
+
+        //if you click yes to accept account
+        protected void yesAccept_Click(object sender, EventArgs e)
+        {
+            yes.Visible = false;
+            yesAccept.Visible = false;
+            no.Visible = false;
+            close.Visible = true;
+            close.Text = "Close";
+            string title = "";
+            string body = "";
+
+            foreach (RepeaterItem item in rptNewCitizen.Items)
+            {
+                CheckBox chkRow = item.FindControl("chkRow") as CheckBox;
+                string email = (item.FindControl("lblEmail") as Label).Text;
+
+
+                if (chkRow.Checked)
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "AcceptCitizen";
+                    cmd.Parameters.AddWithValue("@email", email);
+                    int result = db.DoUpdateUsingCmdObj(cmd);
+                    cmd.Parameters.Clear();
+                    if (result == 1)
+                    {
+
+                        title = "";
+                        body = "Citizen(s) Accepted!";
+                        ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
+                        /*using (MailMessage mm = new MailMessage())
+                        {
+                            for (int i = 0; i < count; i++)
+                            {
+                            //mm.To.Add(db.GetField("Email", i).ToString());
+                            mm.Bcc.Add(db.GetField("Email", i).ToString());
+                            }
+                            mm.From = new MailAddress(ConfigurationManager.AppSettings["SMTPuser"]);
+                            mm.Subject = DateTime.Now.ToShortDateString() + " Newsletter"; //TODO subject date to either current date or take user input.
+                            mm.Body = hnl;
+                            mm.IsBodyHtml = true;
+                            SmtpClient smtp = new SmtpClient();
+                            smtp.Host = ConfigurationManager.AppSettings["Host"];
+                            smtp.EnableSsl = Convert.ToBoolean(ConfigurationManager.AppSettings["EnableSSL"]);
+                            NetworkCredential nc = new NetworkCredential(ConfigurationManager.AppSettings["SMTPuser"], ConfigurationManager.AppSettings["SMTPpassword"]);
+                            smtp.UseDefaultCredentials = true;
+                            smtp.Credentials = nc;
+                            smtp.Port = int.Parse(ConfigurationManager.AppSettings["Port"]);
+                            smtp.Send(mm);
+                        }*/
+
+                    }
+                    else
+                    {
+                        title = "";
+                        yes.Visible = false;
+                        yesAccept.Visible = false;
+                        no.Visible = false;
+                        body = "Something went wrong, please try again";
+                        ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
+                    }
+                }
+            }
+
+            bindPending();
+            bind();
+
+        }
+
+        //confirmation of rejection
+        protected void btnReject_Click(object sender, EventArgs e)
+        {
+            int count = 0;
+            string title = "";
+            string body = "";
+
+            foreach (RepeaterItem item in rptNewCitizen.Items)
+            {
+                CheckBox chkRow = item.FindControl("chkRow") as CheckBox;
+
+                if (chkRow.Checked)
+                {
+                    count++;
+                }
+            }
+
+            if (count == 0)
+            {
+
+                title = "";
+                close.Visible = true;
+                close.Text = "Close";
+                yesAccept.Visible = false;
+                yes.Visible = false;
+                no.Visible = false;
+                body = "Please select a account";
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
+            }
+
+            if (count >= 2)
+            {
+                close.Visible = false;
+                yesAccept.Visible = false;
+                yes.Visible = true;
+                no.Visible = true;
+                title = "";
+                body = "Do you want to reject these accounts?";
+                yes.Text = "Yes";
+                no.Text = "No";
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
+            }
+            if (count == 1)
+            {
+                close.Visible = false;
+                yesAccept.Visible = false;
+                yes.Visible = true;
+                no.Visible = true;
+                title = "";
+                body = "Do you want to reject this account?";
+                yes.Text = "Yes";
+                no.Text = "No";
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
+            }
+
+        }
+
+        //reject account
+        protected void yes_Click(object sender, EventArgs e)
+        {
+            yes.Visible = false;
+            no.Visible = false;
+            yesAccept.Visible = false;
+            close.Visible = true;
+            close.Text = "Close";
+            string title = "";
+            string body = "";
+
+            foreach (RepeaterItem item in rptNewCitizen.Items)
+            {
+                CheckBox chkRow = item.FindControl("chkRow") as CheckBox;
+                string email = (item.FindControl("lblEmail") as Label).Text;
+
+                if (chkRow.Checked)
+                {
+                    //send email to citizen before deleting it
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "RejectCitizen";
+                    cmd.Parameters.AddWithValue("@email", email);
+                    int result = db.DoUpdateUsingCmdObj(cmd);
+                    cmd.Parameters.Clear();
+                    if (result == 1)
+                    {
+                        title = "";
+                        body = "Citizen Rejected";
+                        ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
+
+                        /*using (MailMessage mm = new MailMessage())
+                        {
+                            for (int i = 0; i < count; i++)
+                            {
+                            //mm.To.Add(db.GetField("Email", i).ToString());
+                            mm.Bcc.Add(db.GetField("Email", i).ToString());
+                            }
+                            mm.From = new MailAddress(ConfigurationManager.AppSettings["SMTPuser"]);
+                            mm.Subject = DateTime.Now.ToShortDateString() + " Newsletter"; //TODO subject date to either current date or take user input.
+                            mm.Body = hnl;
+                            mm.IsBodyHtml = true;
+                            SmtpClient smtp = new SmtpClient();
+                            smtp.Host = ConfigurationManager.AppSettings["Host"];
+                            smtp.EnableSsl = Convert.ToBoolean(ConfigurationManager.AppSettings["EnableSSL"]);
+                            NetworkCredential nc = new NetworkCredential(ConfigurationManager.AppSettings["SMTPuser"], ConfigurationManager.AppSettings["SMTPpassword"]);
+                            smtp.UseDefaultCredentials = true;
+                            smtp.Credentials = nc;
+                            smtp.Port = int.Parse(ConfigurationManager.AppSettings["Port"]);
+                            smtp.Send(mm);
+                        }*/
+                    }
+                    else
+                    {
+                        title = "";
+                        body = "Something went wrong";
+                        ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
+
+                    }
+                }
+            }
+
+            bindPending();
+            bind();
+        }
+
+
+        protected void no_Click(object sender, EventArgs e)
+        {
+            //do nothing
+        }
     }
+
 
 }

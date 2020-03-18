@@ -14,35 +14,37 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-            <nav class="navbar navbar-expand-lg navbar-dark ">
-                <a class="navbar-brand" href="ResourceList.aspx">
-                    <img src="Images/CTS_Logo.png" />&nbsp:: Training & Resources
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nbitems" aria-controls="nbitems" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse " id="nbitems">
-                    <ul class="navbar-nav ml-auto">
-                        <asp:ContentPlaceHolder ID="navli" runat="server">
-                        </asp:ContentPlaceHolder>
-                    </ul>
-                </div>
-            </nav>
-            <asp:ContentPlaceHolder ID="Content" runat="server">
-            </asp:ContentPlaceHolder>
-        </div>
-        <footer>
-            <a href="AdminHomePage.aspx">
-                <img src="Images/CTS_Logo.png" /></a>&nbsp
+        <div class="overlay"></div>
+        <div id="page-container">
+            <div class="content-wrap">
+                <nav class="navbar navbar-expand-lg navbar-dark ">
+                    <a class="navbar-brand" href="ResourceList.aspx">
+                        <img src="Images/CTS_Logo.png" />&nbsp:: Resource Portal
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nbitems" aria-controls="nbitems" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse " id="nbitems">
+                        <ul class="navbar-nav ml-auto">
+                            <asp:ContentPlaceHolder ID="navli" runat="server">
+                            </asp:ContentPlaceHolder>
+                        </ul>
+                    </div>
+                </nav>
+                <asp:ContentPlaceHolder ID="Content" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <footer>
+                <a href="AdminHomePage.aspx">
+                    <img src="Images/CTS_Logo.png" /></a>&nbsp
             Called To Serve Resource Portal &nbsp
             <i class="fas fa-map-marker-alt"></i>&nbsp 3600 N. Broad Street Philadelphia, PA 19140&nbsp
             <i class="fas fa-phone-alt"></i>&nbsp (215) 588-4940&nbsp
             <i class="far fa-envelope"></i>&nbsp info@calledtoservecdc.org&nbsp
             <a href="CitizenSettings.aspx">
                 <img src="Images/CTS_Logo.png" /></a>
-        </footer>
+            </footer>
+        </div>
     </form>
-
 </body>
 </html>

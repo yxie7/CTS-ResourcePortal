@@ -1,25 +1,21 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin.master" AutoEventWireup="true" CodeBehind="ViewFeedback.aspx.cs" Inherits="CTS_ResourcePortal.ViewFeedback" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <%--    /*************************************************************Style Sheets************************************************/--%>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
     <link href="css.css" rel="stylesheet" />
+    <script src="Scripts/jquery-3.0.0.js"></script>
+    <script src="Scripts/popper.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
 
-    <%--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">--%>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-    <%--//https://datatables.net/examples/plug-ins/range_filtering.html--%>
-    <%--    https://datatables.net/extensions/fixedheader/examples/integration/buttons.html--%>
-
-    <%-- /*************************************************Stuff to make Data tables work*******************************/--%>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-    <%--   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />--%>
     <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
-    <%--    <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css" />--%>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
+        function ShowPopup(title, body) {
+            $("#MyPopup .modal-title").html(title);
+            $("#MyPopup .modal-body").html(body);
+            $("#MyPopup").modal("show");
+        }
         $(document).ready(function () {
             $('[id*=datatable]').DataTable({
                 columnDefs: [{
@@ -34,8 +30,6 @@
                 order: [[1, 'asc']]
             });
         });
-    </script>
-    <script type="text/javascript">
         $(function () {
             $("#datatable [id*=chkHeader]").click(function () {
                 if ($(this).is(":checked")) {
@@ -53,58 +47,25 @@
             });
         });
     </script>
-
-    <script type="text/javascript">
-        function ShowPopup(title, body) {
-            $("#MyPopup .modal-title").html(title);
-            $("#MyPopup .modal-body").html(body);
-            $("#MyPopup").modal("show");
-        }
-    </script>
-
-
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
-    <link href="css.css" rel="stylesheet" />
-   <%-- <div id="MyPopup" class="modal" role="dialog">
-            <div class="modal-dialog modal-xl">
-                <!-- Modal content-->
-                <div class="modal-content container">
-                    <div class="modal-body">
-
-                        <br />
-                        <div class="row  justify-content-center align-items-center text-center">
-                            <div class="col"></div>
-                            <div class="col-md-4">
-                                <asp:Label runat="server" Text="Feedback Removed!" ID="lblThanks" Font-Bold="True"></asp:Label>
-                            </div>
-                            <div class="col"></div>
-                        </div>
-                        <br />
-                    </div>
+    <div id="MyPopup" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content container" style="margin-top: 55%; }">
+                <h4 class="modal-title"></h4>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">
+                        Close</button>
                 </div>
             </div>
-        </div>--%>
-    <%--<div id="MyPopup" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content" style="margin-top: 55%; }">
-                    <h4 class="modal-title"></h4>
-                    <div class="modal-body">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">
-                            Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>--%>
+        </div>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-10">
 
                 <br />
-
             </div>
         </div>
 
@@ -112,7 +73,6 @@
             <div class="col-10">
 
                 <br />
-
             </div>
         </div>
         <br />
@@ -146,12 +106,10 @@
                                     </th>
                                     <th>Feedback
                                     </th>
-                                    <%--<th>Active Status 
-                                    </th>--%>
                                     <th>Date Posted
                                     </th>
-                                    <%--<th>Remove
-                                    </th>--%>
+                                    <th>Reply to Feedback
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -163,25 +121,20 @@
                                 <asp:CheckBox ID="chkRow" runat="server" /></td>
                             <td>
                                 <asp:Label ID="lblResourceName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, ("ResourceName")) %>'></asp:Label>
-                                <%--<%# (string) DataBinder.Eval(Container.DataItem, ("ResourceName")) %>--%>
+                                <%--<%# DataBinder.Eval(Container.DataItem, ("ResourceName")) %>--%>
                             </td>
-                            <%--<td>
-                                <%# DataBinder.Eval(Container.DataItem, ("Active")) %>
-                            </td>--%>
                             <td>
                                 <asp:Label ID="lblFeedbackText" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, ("FeedbackText")) %>'></asp:Label>
+                                <%--<%# DataBinder.Eval(Container.DataItem, ("FeedbackText")) %>--%>
                             </td>
                             <td>
                                 <%# DataBinder.Eval(Container.DataItem, ("Date")) %>
                             </td>
+                            <td>
 
-                            <%--<td>
-
-                                <asp:Button ID="btnSelect" Text="Remove Feedback" runat="server" />
-
-                            </td>--%>
+                                <asp:Button ID="btnReply" runat="server" Text="Reply" />
+                            </td>
                         </tr>
-
                     </ItemTemplate>
 
                     <FooterTemplate>
@@ -191,21 +144,10 @@
                 <br />
                 <br />
                 <div style="align-content: center; margin: auto">
-                    <asp:Button ID="btnSelect" Text="Remove Feedback" runat="server" OnClick="btnSelect_Click" />
+                    <asp:Button ID="btnRemove" Text="Remove Feedback" runat="server" OnClick="btnSelect_Click" />
                 </div>
-                
-
-
             </div>
             <br />
-            <%--<div class="row justify-content-center align-items-center text-center">
-            <div class="col-md-2">
-                <asp:Button ID="btnRemove" runat="server" class="btn btn-dark" Text="Remove" OnClick="btnRemove_Click" /></asp:Button>
-                
-            </div>
-        </div>--%>
         </div>
-        
-        </div>
+    </div>
 </asp:Content>
-

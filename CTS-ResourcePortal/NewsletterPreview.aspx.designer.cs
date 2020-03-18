@@ -13,6 +13,24 @@ namespace CTS_ResourcePortal {
     public partial class NewsletterPreview {
         
         /// <summary>
+        /// btnNoSend control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnNoSend;
+        
+        /// <summary>
+        /// btnYesSend control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnYesSend;
+        
+        /// <summary>
         /// newsletterPreview control.
         /// </summary>
         /// <remarks>

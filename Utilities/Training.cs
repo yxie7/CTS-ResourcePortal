@@ -8,10 +8,10 @@ namespace Utilities
         private int ResourceTypeID;
         private string ResourceTitle;
         private string Company;
-        private string AddressLine1;        
+        private string AddressLine1;
         private string AddressLine2;
         private string City;
-        private string State;            
+        private string State;
         private string ZipCode;
         private DateTime StartDate;
         private DateTime ExpDate;

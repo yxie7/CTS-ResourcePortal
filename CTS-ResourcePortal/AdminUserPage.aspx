@@ -48,7 +48,6 @@
     <link href="AdminContent.css" rel="stylesheet" />
     <div id="MyPopup" class="modal fade" role="dialog">
         <div class="modal-dialog">
-            <a href="NewsletterPreview.aspx">NewsletterPreview.aspx</a>
             <!-- Modal content-->
             <div class="modal-content" style="margin-top: 55%; }">
 

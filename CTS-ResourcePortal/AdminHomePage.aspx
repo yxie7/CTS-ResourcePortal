@@ -141,8 +141,14 @@
                             </div>
                         </div>
                     </div>
-
                     <br />
+                    <div class="row  justify-content-center align-items-center text-center">
+                        <div class="col"></div>
+                        <div class="col-md-4">
+                            <asp:Button runat="server" CssClass="btn btn-large btn-info" Text="Leave Feedback" ID="btnFeedback" OnClick="btnFeedback_Click" />
+                        </div>
+                        <div class="col"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -153,93 +159,125 @@
     </div>
 
     <div class="container">
-        <div class="col row">
-            <label class="col-lg-auto">Search: </label>
-            <div class="form-group date col-lg-auto" data-provide="datepicker" data-date-format="mm/dd/yyyy">
-                <input class="form-control" type="date" />
-            </div>
+<%--         <asp:UpdatePanel runat="server">
+               <ContentTemplate>--%>
+        <div class="row">
+            <div class="col"></div>
+            <h2 class="col-md-auto">Resource List</h2>
+            <div class="col"></div>
         </div>
-        <div class="row d-flex justify-content-center">
-            <div class="accordion col-10" id="resources">
-                <div class="card">
-                    <div class="card-header" id="title">
-                        <h2 class="mb-0">Resources
-                        </h2>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="jobHeader">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#jobCollapse" aria-expanded="true" aria-controls="jobCollapse">
-                                Job Openings
-                            </button>
-                        </h2>
-                    </div>
-                    <div class="collapse" id="jobCollapse" aria-labelledby="jobHeader" data-parent="#jobHeader">
-                        <div class="card-body">
-                            <div class="row d-flex justify-content-center align-items-center">
-                                <ul class="cardlist col-8  justify-content-center align-items-center ">
-                                    <asp:Repeater ID="rptJob" runat="server">
-                                        <ItemTemplate>
-                                            <li>
-                                                <asp:LinkButton runat="server" ID="btnJob" CommandArgument='<%#Eval("ResourcesID") %>' Text='<%# Eval("ResourceName") %>' OnCommand="btnJob_Command"></asp:LinkButton></li>
-                                        </ItemTemplate>
-                                    </asp:Repeater>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="eventHeader">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#eventCollapse" aria-expanded="true" aria-controls="eventCollapse">
-                                Events
-                            </button>
-                        </h2>
-                    </div>
-                    <div class="collapse" id="eventCollapse" aria-labelledby="eventHeader" data-parent="#eventHeader">
-                        <div class="card-body">
-                            <div class="row d-flex justify-content-center">
-                                <ul class="cardlist col-8  justify-content-center align-items-center ">
-                                    <asp:Repeater ID="rptEvent" runat="server">
-                                        <ItemTemplate>
-                                            <li>
-                                                <asp:LinkButton runat="server" ID="btnEvent" CommandArgument='<%#Eval("ResourcesID") %>' Text='<%# Eval("ResourceName") %>' OnCommand="btnEvent_Command"></asp:LinkButton></li>
-                                        </ItemTemplate>
-                                    </asp:Repeater>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header" id="trainingHeader">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#trainingCollapse" aria-expanded="true" aria-controls="trainingCollapse">
-                                Training Opportunity
-                            </button>
-                        </h2>
-                    </div>
-                    <div class="collapse" id="trainingCollapse" aria-labelledby="trainingHeader" data-parent="#trainingHeader">
-                        <div class="card-body">
-                            <div class="row d-flex justify-content-center">
-                                <ul class="cardlist col-8  justify-content-center align-items-center ">
-                                    <asp:Repeater ID="rptTraining" runat="server">
-                                        <ItemTemplate>
-                                            <li>
-                                                <asp:LinkButton runat="server" ID="btnTraining" CommandArgument='<%#Eval("ResourcesID") %>' Text='<%# Eval("ResourceName") %>' OnCommand="btnTraining_Command"></asp:LinkButton></li>
-                                        </ItemTemplate>
-                                    </asp:Repeater>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+        <br />
+        <div class="section">
+            <div class="row d-flex justify-content-center">
+                <div class="col-10">
+                        <asp:TextBox runat="server" ID="txtTitleSearch" AutoPostBack="true" CssClass="form-control search" placeholder="Search Titles Here..." OnTextChanged="txtTitleSearch_TextChanged"></asp:TextBox>
                 </div>
             </div>
+            <br />
+            <div class="row d-flex justify-content-center">
+                <div class="accordion col-11" id="resources">
+                    <div class="card">
+                        <div class="card-header" id="jobHeader">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#jobResourceCollapse" aria-expanded="true" aria-controls="jobResourceCollapse">
+                                    Job Openings
+                                </button>
+                            </h2>
+                        </div>
+                        <div class="collapse" id="jobResourceCollapse" aria-labelledby="jobHeader" data-parent="#jobHeader">
+                            <div class="card-body">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="table-responsive-lg  ">
+                                        <asp:GridView ID="gvJob" runat="server" AutoGenerateColumns="False" class="table table-striped table-light"  DataKeyNames="ResourceID" OnRowDataBound="gv_RowDataBound">
+                                            <Columns>
+                                               <%-- <asp:BoundField DataField="ResourceID" HeaderText="ID" Visible="false" />--%>
+                                                <asp:BoundField DataField="ResourceTitle" HeaderText="Title" HeaderStyle-CssClass="rrth" ItemStyle-CssClass="rrtd"/>
+                                                <asp:BoundField DataField="email" HeaderText="Contact" HeaderStyle-CssClass="rth" ItemStyle-CssClass="rtd"/>
+                                                <asp:BoundField DataField="AddressLine2" HeaderText="Location" HeaderStyle-CssClass="rrth" ItemStyle-CssClass="rrtd"/>
+                                                <asp:BoundField DataField="datePosted" HeaderText="Date Posted" HeaderStyle-CssClass="rrth" ItemStyle-CssClass="rrtd"/>
+                                                <asp:BoundField DataField="expDate" HeaderText="Date Expired" HeaderStyle-CssClass="rrth" ItemStyle-CssClass="rrtd"/>
+                                                <asp:TemplateField HeaderText="Details" HeaderStyle-CssClass="rrth" ItemStyle-CssClass="rrtd">
+                                                    <ItemTemplate>
+                                                        <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-dark" ID="btnJob" CommandName="Select" OnClick="btnJob_Click" />
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                            </Columns>
+                                        </asp:GridView>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="eventHeader">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#eventResourceCollapse" aria-expanded="true" aria-controls="eventResourceCollapse">
+                                    Events</button>
+                            </h2>
+                        </div>
+                        <div class="collapse" id="eventResourceCollapse" aria-labelledby="eventHeader" data-parent="#eventHeader">
+                            <div class="card-body">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="table-responsive-lg  ">
+                                        <asp:GridView ID="gvEvent" runat="server" AutoGenerateColumns="False" class="table table-striped table-light" DataKeyNames="ResourceID">
+                                            <Columns>
+                                                <%--<asp:BoundField DataField="ResourceID" HeaderText="ID" Visible="false" />--%>
+                                                <asp:BoundField DataField="ResourceTitle" HeaderText="Title" />
+                                                <asp:BoundField DataField="email" HeaderText="Contact" />
+                                                <asp:BoundField DataField="AddressLine2" HeaderText="Location" />
+                                                <asp:BoundField DataField="EventDate" HeaderText="Event Date" />
+                                                <asp:BoundField DataField="expDate" HeaderText="Date Expired" />
+                                                <asp:TemplateField HeaderText="Details">
+                                                    <ItemTemplate>
+                                                        <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-dark" ID="btnEvent" OnClick="btnEvent_Click" />
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                            </Columns>
+                                        </asp:GridView>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="trainingHeader">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#trainingResourceCollapse" aria-expanded="true" aria-controls="trainingResourceCollapse">
+                                    Training Opportunities</button>
+                            </h2>
+                        </div>
+                        <div class="collapse" id="trainingResourceCollapse" aria-labelledby="trainingHeader" data-parent="#trainingHeader">
+                            <div class="card-body">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="table-responsive-lg  ">
+                                        <asp:GridView ID="gvTraining" runat="server" AutoGenerateColumns="False" class="table table-striped table-light" DataKeyNames="ResourceID">
+                                            <Columns>
+                                                <%--<asp:BoundField DataField="ResourceID" HeaderText="ID" Visible="false" />--%>
+                                                <asp:BoundField DataField="ResourceTitle" HeaderText="Title" />
+                                                <asp:BoundField DataField="email" HeaderText="Contact" />
+                                                <asp:BoundField DataField="AddressLine2" HeaderText="Location" />
+                                                <asp:BoundField DataField="StartDate" HeaderText="Start Date" />
+                                                <asp:BoundField DataField="expDate" HeaderText="Date Expired" />
+                                                <asp:TemplateField HeaderText="Details">
+                                                    <ItemTemplate>
+                                                        <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-dark" ID="btnTraining" OnClick="btnTraining_Click" />
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                            </Columns>
+                                        </asp:GridView>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        <br />
+                 <%--  </ContentTemplate>
+             </asp:UpdatePanel>--%>
     </div>
+
     <br />
     <script type="text/javascript">
         function ShowPopup(title, body) {

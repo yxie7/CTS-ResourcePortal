@@ -159,6 +159,32 @@ namespace CTS_ResourcePortal
             BindAll();
         }
 
+        protected void btnReply_Click(object sender, EventArgs e)
+        {
+            foreach(RepeaterItem item in rptViewR.Items)
+            {
+                CheckBox checkBox = (CheckBox)item.FindControl("chkRow");
+                if (checkBox.Checked)
+                {
+                    Label label = (Label)item.FindControl("lblFeedbackText");
+
+                    string feedbacktext = label.Text;
+                    cmd.Parameters.Clear();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "GetFeedbackIDByText";
+                    SqlParameter text = new SqlParameter("@FeedbackText", feedbacktext);
+                    text.Direction = ParameterDirection.Input;
+                    text.SqlDbType = SqlDbType.VarChar;
+
+                    cmd.Parameters.Add(text);
+                    DataSet dataSet = db.GetDataSetUsingCmdObj(cmd);
+                    if (dataSet.Tables[0].Rows.Count > 0)
+                    {
+                        //Do Something
+                    }
+                }
+            }
+        }
     }
 
 

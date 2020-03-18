@@ -132,7 +132,7 @@
                             </td>
                             <td>
 
-                                <asp:Button ID="btnReply" runat="server" Text="Reply" />
+                                <asp:Button ID="btnReply" runat="server" Text="Reply" OnClick="btnReply_Click" />
                             </td>
                         </tr>
                     </ItemTemplate>

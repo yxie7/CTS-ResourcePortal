@@ -112,7 +112,8 @@
             <br />
 
             <div class="row" id="dates">
-                <div class="col-sm-6">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-3">
                     <asp:Label ID="lblStart" runat="server"><span class="requiredRed">*</span>Date Posted: </asp:Label><br />
                     <asp:Calendar ID="CalendarPostedDate" runat="server">
                          <OtherMonthDayStyle ForeColor="LightGray">
@@ -130,7 +131,8 @@
            </SelectedDayStyle>
                     </asp:Calendar>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-3">
                     <asp:Label ID="lblExp" runat="server"><span class="requiredRed">*</span>Expiration Date: </asp:Label><br />
                     <asp:Calendar ID="CalendarExpDate" runat="server">
                          <OtherMonthDayStyle ForeColor="LightGray">
@@ -148,6 +150,7 @@
            </SelectedDayStyle>
                     </asp:Calendar>
                 </div>
+                <div class="col-sm-2"></div>
             </div>
 
             <br />

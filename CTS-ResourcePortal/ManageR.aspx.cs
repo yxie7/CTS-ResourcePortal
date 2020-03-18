@@ -190,6 +190,7 @@ namespace CTS_ResourcePortal
 
                 }
             }
+            ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
 
             BindAll();
         }
@@ -218,6 +219,7 @@ namespace CTS_ResourcePortal
                     cmd.Parameters.Clear();
                 }
             }
+            ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup1();", true);
             BindAll();
         }
 

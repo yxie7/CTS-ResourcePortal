@@ -202,6 +202,15 @@ namespace CTS_ResourcePortal {
         protected global::System.Web.UI.WebControls.Label lblAttire1;
         
         /// <summary>
+        /// btnFeedback control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnFeedback;
+        
+        /// <summary>
         /// btnUsers control.
         /// </summary>
         /// <remarks>
@@ -211,30 +220,39 @@ namespace CTS_ResourcePortal {
         protected global::System.Web.UI.WebControls.LinkButton btnUsers;
         
         /// <summary>
-        /// rptJob control.
+        /// txtTitleSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptJob;
+        protected global::System.Web.UI.WebControls.TextBox txtTitleSearch;
         
         /// <summary>
-        /// rptEvent control.
+        /// gvJob control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptEvent;
+        protected global::System.Web.UI.WebControls.GridView gvJob;
         
         /// <summary>
-        /// rptTraining control.
+        /// gvEvent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptTraining;
+        protected global::System.Web.UI.WebControls.GridView gvEvent;
+        
+        /// <summary>
+        /// gvTraining control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvTraining;
     }
 }

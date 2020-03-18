@@ -4,6 +4,21 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
     <link href="AdminEmailPage.css" rel="stylesheet" />
+    <div id="MyPopup" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content" style="margin-top: 55%; }">
+
+                <h4 class="modal-title"></h4>
+
+                <div class="modal-body" style="color: black">
+                </div>
+                <div class="modal-footer">
+                    <asp:Button runat="server" ID="close" class="btn btn-danger" data-dismiss="modal"/>
+                </div>
+            </div>
+        </div>
+    </div>
 <style>
 </style>
 
@@ -49,7 +64,7 @@
                     </div>
                     <div class="row justify-content-start align-items-center">
                         <div class="col-md-2">
-                            <asp:Button ID="btnCreate" runat="server" Text="Update" class="btn btn-dark" />
+                            <asp:Button ID="btnCreate" runat="server" Text="Update" class="btn btn-dark" OnClick="btnCreate_Click" />
                         </div>
                     </div>
                 </div>

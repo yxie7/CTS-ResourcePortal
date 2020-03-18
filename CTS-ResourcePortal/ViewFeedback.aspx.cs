@@ -153,6 +153,9 @@ namespace CTS_ResourcePortal
                 }
             }
 
+            string title = "";
+            string body = "Feedback Removed!";
+            ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
             BindAll();
         }
 

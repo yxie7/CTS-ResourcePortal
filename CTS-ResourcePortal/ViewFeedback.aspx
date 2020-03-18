@@ -144,7 +144,7 @@
                 <br />
                 <br />
                 <div style="align-content: center; margin: auto">
-                    <asp:Button ID="btnRemove" Text="Remove Feedback" runat="server" OnClick="btnRemove_Click" />
+                    <asp:Button ID="btnRemove" Text="Remove Feedback" runat="server" OnClick="btnSelect_Click" />
                 </div>
             </div>
             <br />

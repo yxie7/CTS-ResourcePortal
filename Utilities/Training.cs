@@ -8,10 +8,10 @@ namespace Utilities
         private int ResourceTypeID;
         private string ResourceTitle;
         private string Company;
-        private string AddressLine1;        
+        private string AddressLine1;
         private string AddressLine2;
         private string City;
-        private string State;            
+        private string State;
         private string ZipCode;
         private DateTime StartDate;
         private DateTime ExpDate;
@@ -24,6 +24,7 @@ namespace Utilities
         private string Link;
         private string Description;
         private string OtherReqs;
+        private string Active;
 
         public string resourceID
         {
@@ -150,6 +151,12 @@ namespace Utilities
         {
             get { return OtherReqs; }
             set { OtherReqs = value; }
+        }
+
+        public string active
+        {
+            get { return Active; }
+            set { Active = value; }
         }
     }
 }

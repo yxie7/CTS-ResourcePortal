@@ -39,14 +39,14 @@ namespace CTS_ResourcePortal
             password = txtPassword.Text;
             if (ValidateUserRegistration() == true)
             {
-                if(GrabAccepted(email) == true)
+                if (GrabAccepted(email) == true)
                 {
                     string accepted = (string)db.GetField("Accepted", 0);
-                    if(accepted == "FALSE")
+                    if (accepted == "FALSE")
                     {
                         UserRegistrationError.Text = "This account has not been accepted by the administrator";
                     }
-                    if(accepted == "TRUE")
+                    if (accepted == "TRUE")
                     {
                         if (CheckIfEmailExist(email) == true)
                         {
@@ -109,7 +109,7 @@ namespace CTS_ResourcePortal
                         }
                     }
                 }
-                
+
             }
 
         }
@@ -199,7 +199,7 @@ namespace CTS_ResourcePortal
 
         protected void btnForgotPassword_Click(object sender, EventArgs e)
         {
-            
+
         }
     }
 }

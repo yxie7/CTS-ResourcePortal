@@ -29,7 +29,7 @@ namespace CTS_ResourcePortal
         {
             if (txtTitle.Text == string.Empty || txtHost.Text == string.Empty || txtAddLine1.Text == string.Empty || txtCity.Text == string.Empty ||
                 txtZip.Text == string.Empty || txtHours.Text == string.Empty || txtLength.Text == string.Empty || txtFn.Text == string.Empty ||
-                txtLn.Text == string.Empty || txtContEmail.Text == string.Empty || txtContPhone.Text == string.Empty || txtSignUp.Text == string.Empty 
+                txtLn.Text == string.Empty || txtContEmail.Text == string.Empty || txtContPhone.Text == string.Empty || txtSignUp.Text == string.Empty
                 || txtDesc.Text == string.Empty || txtSkills.Text == string.Empty)
             {
                 lblError.Visible = true;
@@ -57,8 +57,7 @@ namespace CTS_ResourcePortal
                 training.link = txtSignUp.Text;
                 training.description = txtDesc.Text;
                 training.otherReqs = txtSkills.Text;
-
-
+                training.active = "Active";
 
 
                 bigCommand.CommandType = CommandType.StoredProcedure;
@@ -82,6 +81,7 @@ namespace CTS_ResourcePortal
                 bigCommand.Parameters.AddWithValue("@otherReqs", training.otherReqs);
                 bigCommand.Parameters.AddWithValue("@link", training.link);
                 bigCommand.Parameters.AddWithValue("@description", training.description);
+                bigCommand.Parameters.AddWithValue("@active", training.active);
 
                 dBConnect.DoUpdateUsingCmdObj(bigCommand);
                 bigCommand.Parameters.Clear();
@@ -103,6 +103,8 @@ namespace CTS_ResourcePortal
                 txtSkills.Text = string.Empty;
 
                 lblError.Visible = false;
+
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
             }
 
         }

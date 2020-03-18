@@ -4,16 +4,20 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Utilities;
+using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
-using System.Data.SqlClient;
+using System.Security.Cryptography;
+using System.IO;
+using System.Text;
+using System.Collections;
+using Utilities;
 
 namespace CTS_ResourcePortal
 {
     public partial class AddNewEvent : System.Web.UI.Page
     {
-        
+
         DBConnect dBConnect = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
         SqlCommand bigCommand = new SqlCommand();
 
@@ -56,6 +60,7 @@ namespace CTS_ResourcePortal
                 eventt.attire = txtAtire.Text;
                 eventt.link = txtLink.Text;
                 eventt.description = txtDesc.Text;
+                eventt.active = "Active";
 
                 bigCommand.CommandType = CommandType.StoredProcedure;
                 bigCommand.CommandText = "AddNewEvent";
@@ -78,6 +83,7 @@ namespace CTS_ResourcePortal
                 bigCommand.Parameters.AddWithValue("@attire", eventt.attire);
                 bigCommand.Parameters.AddWithValue("@link", eventt.link);
                 bigCommand.Parameters.AddWithValue("@description", eventt.description);
+                bigCommand.Parameters.AddWithValue("@active", eventt.active);
 
                 dBConnect.DoUpdateUsingCmdObj(bigCommand);
                 bigCommand.Parameters.Clear();
@@ -99,93 +105,96 @@ namespace CTS_ResourcePortal
                 txtDesc.Text = string.Empty;
 
                 lblError.Visible = false;
+
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+
             }
-            
+
         }
 
-       /* public bool IsValid()
-        {
-            if (txtTitle.Text == string.Empty)
-            {
-                lblTitleError.Visible = true;
-                return false;
-            }
+        /* public bool IsValid()
+         {
+             if (txtTitle.Text == string.Empty)
+             {
+                 lblTitleError.Visible = true;
+                 return false;
+             }
 
-            if (txtHost.Text == string.Empty)
-            {
-                lblHostError.Visible = true;
-                return false;
-            }
+             if (txtHost.Text == string.Empty)
+             {
+                 lblHostError.Visible = true;
+                 return false;
+             }
 
-            else if (txtAddLine1.Text == string.Empty)
-            {
-                lblAdd1Error.Visible = true;
-                return false;
-            }
+             else if (txtAddLine1.Text == string.Empty)
+             {
+                 lblAdd1Error.Visible = true;
+                 return false;
+             }
 
-            if (txtCity.Text == string.Empty)
-            {
-                lblCityError.Visible = true;
-                return false;
-            }
+             if (txtCity.Text == string.Empty)
+             {
+                 lblCityError.Visible = true;
+                 return false;
+             }
 
-            if (txtZip.Text == string.Empty)
-            {
-                lblZipError.Visible = true;
-                return false;
-            }
+             if (txtZip.Text == string.Empty)
+             {
+                 lblZipError.Visible = true;
+                 return false;
+             }
 
-            if (txtStartTime.Text == string.Empty)
-            {
-                lblStartError.Visible = true;
-                return false;
-            }
+             if (txtStartTime.Text == string.Empty)
+             {
+                 lblStartError.Visible = true;
+                 return false;
+             }
 
-            if (txtEndTime.Text == string.Empty)
-            {
-                lblEndError.Visible = true;
-                return false;
-            }
+             if (txtEndTime.Text == string.Empty)
+             {
+                 lblEndError.Visible = true;
+                 return false;
+             }
 
-            if (txtFn.Text == string.Empty)
-            {
-                lblFNError.Visible = true;
-                return false;
-            }
+             if (txtFn.Text == string.Empty)
+             {
+                 lblFNError.Visible = true;
+                 return false;
+             }
 
-            if (txtLn.Text == string.Empty)
-            {
-                lblLNError.Visible = true;
-                return false;
-            }
+             if (txtLn.Text == string.Empty)
+             {
+                 lblLNError.Visible = true;
+                 return false;
+             }
 
-            if (txtContEmail.Text == string.Empty)
-            {
-                lblEmailError.Visible = true;
-                return false;
-            }
+             if (txtContEmail.Text == string.Empty)
+             {
+                 lblEmailError.Visible = true;
+                 return false;
+             }
 
-            if (txtContPhone.Text == string.Empty)
-            {
-                lblPhoneError.Visible = true;
-                return false;
-            }
+             if (txtContPhone.Text == string.Empty)
+             {
+                 lblPhoneError.Visible = true;
+                 return false;
+             }
 
-            if (txtLink.Text == string.Empty)
-            {
-                lblLinkError.Visible = true;
-                return false;
-            }
+             if (txtLink.Text == string.Empty)
+             {
+                 lblLinkError.Visible = true;
+                 return false;
+             }
 
-            if (txtDesc.Text == string.Empty)
-            {
-                lblDescError.Visible = true;
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }*/
+             if (txtDesc.Text == string.Empty)
+             {
+                 lblDescError.Visible = true;
+                 return false;
+             }
+             else
+             {
+                 return true;
+             }
+         }*/
     }
 }

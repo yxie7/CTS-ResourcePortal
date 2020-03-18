@@ -27,11 +27,11 @@ namespace CTS_ResourcePortal
                 bind();
                 bindPending();
             }
-                
+
         }
 
         private void bind()
-        {       
+        {
 
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "GetAllCitizens";
@@ -100,7 +100,7 @@ namespace CTS_ResourcePortal
             Response.BinaryWrite(bytes);
             Response.Flush();
             Response.End();
-          
+
         }
 
         //confirmation of acceptance
@@ -246,14 +246,14 @@ namespace CTS_ResourcePortal
             foreach (RepeaterItem item in rptNewCitizen.Items)
             {
                 CheckBox chkRow = item.FindControl("chkRow") as CheckBox;
-               
+
                 if (chkRow.Checked)
                 {
                     count++;
                 }
             }
 
-            if(count == 0)
+            if (count == 0)
             {
 
                 title = "";
@@ -266,7 +266,7 @@ namespace CTS_ResourcePortal
                 ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
             }
 
-            if(count >= 2)
+            if (count >= 2)
             {
                 close.Visible = false;
                 yesAccept.Visible = false;
@@ -367,4 +367,3 @@ namespace CTS_ResourcePortal
 
 
 }
-   

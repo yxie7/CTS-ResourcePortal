@@ -9,25 +9,26 @@
     <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
-        var resourceList = $('[id*=datatable]').DataTable({
-            });
-        var selections = 
-            $('#<%= Selections.ClientID %>').DataTable({
-                "bFilter": false,
-                "bLengthChange": false,
-                stateSave: true
-            });
-        function toasted(body) {
-            $("#TheModal .modal-body").html(body);
-            $("#TheModal").modal("show");            
-        }
-
         $(function () {
+            var resourceList = $('[id*=datatable]').DataTable({
+            });
+            var selections =
+                $('#<%= Selections.ClientID %>').DataTable({
+                    "bFilter": false,
+                    "bLengthChange": false,
+                    stateSave: true
+                });
+
+
             //bindDataTable(); // bind data table on first page load
             // bind data table on every UpdatePanel refresh
             //Sys.WebForms.PageRequestManager.getInstance().add_endRequest(bindDataTable);
         });
 
+        function toasted(body) {
+            $("#TheModal .modal-body").html(body);
+            $("#TheModal").modal("show");
+        }
         function bindDataTable() {
             $('[id*=datatable]').DataTable({
             });
@@ -37,10 +38,11 @@
                 stateSave: true
             });
         }
-        function reloadTables() {
-            resourceList.ajax.reload();
-            selections.ajax.reload();
-        }
+        
+            function reloadTables() {
+                resourceList.ajax.draw();
+                selections.ajax.draw();
+            }
         <%--$(document).ready(function () {
             $('[id*=datatable]').DataTable({
             });
@@ -115,7 +117,7 @@
                                     <asp:TextBox runat="server" ID="txtComment" CssClass="form-control" TextMode="multiline" Rows="3" placeholder="(Optional) Enter comments, tips, or other information here..."></asp:TextBox>
                                 </td>
                                 <td class="rtd">
-                                    <asp:Button ID="btnAdd" CssClass="btn btn-success" Text="Add" runat="server" OnClientClick="" UseSubmitBehavior="false"/>
+                                    <asp:Button ID="btnAdd" CssClass="btn btn-success" Text="Add" runat="server" OnClientClick="" UseSubmitBehavior="false" />
                                 </td>
                             </tr>
                         </ItemTemplate>
@@ -132,11 +134,11 @@
                     <label>Current Newsletter Items:</label><br />
                     <asp:GridView ID="Selections" CssClass="table table-hover" runat="server" AutoGenerateColumns="false" DataKeyNames="ResourceID" GridLines="None">
                         <Columns>
-                            <asp:BoundField DataField="ResourceName" HeaderText="Resource Title" HeaderStyle-CssClass="col-2"/>
-                            <asp:BoundField DataField="Comment" HeaderText="Comment" HeaderStyle-CssClass="col-5"/>
+                            <asp:BoundField DataField="ResourceName" HeaderText="Resource Title" HeaderStyle-CssClass="col-2" />
+                            <asp:BoundField DataField="Comment" HeaderText="Comment" HeaderStyle-CssClass="col-5" />
                             <asp:TemplateField HeaderStyle-CssClass="col-1" HeaderText="Remove">
                                 <ItemTemplate>
-                                    <asp:Button Text="Remove" runat="server" id="btnRemove" CssClass="btn btn-danger" OnClick="btnRemove_Click" />
+                                    <asp:Button Text="Remove" runat="server" ID="btnRemove" CssClass="btn btn-danger" OnClick="btnRemove_Click" UseSubmitBehavior="false" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
@@ -145,7 +147,7 @@
                 </div>
             </div>
             <br />
-            <div class="row d-flex justify-content-end">            
+            <div class="row d-flex justify-content-end">
                 <div>
                     <asp:Button runat="server" class="btn btn-dark" Text="Preview Newsletter" ID="btnPreview" OnClick="btnPreview_Click"></asp:Button>
                 </div>

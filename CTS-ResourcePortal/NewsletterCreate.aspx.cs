@@ -56,7 +56,6 @@ namespace CTS_ResourcePortal
                 Selections.HeaderRow.TableSection = TableRowSection.TableHeader;
                 Selections.FooterRow.TableSection = TableRowSection.TableFooter;
             }
-            ClientScript.RegisterStartupScript(GetType(), "Reload", "reloadTables();", true);
         }
 
         protected void btnPreview_Click(object sender, EventArgs e)
@@ -195,6 +194,7 @@ namespace CTS_ResourcePortal
                 selectionList.Add(new NewsletterItem(selectionID, selectionName, selectionComment));
                 Session["NewsletterSelections"] = selectionList;
                 refreshTables();
+                //ClientScript.RegisterStartupScript(GetType(), "Reload", "reloadTables();", true);
                 ClientScript.RegisterStartupScript(GetType(), "Modal", "toasted(\"Resource has been added\");", true);
 
                 // Response.Redirect(Request.RawUrl);
@@ -218,11 +218,12 @@ namespace CTS_ResourcePortal
                 {
                     selectionList.Remove(item);
                     Session["NewsletterSelections"] = selectionList;
-                    refreshTables();
-                    ClientScript.RegisterStartupScript(GetType(), "Modal", "toasted(\"Resource has been removed\");", true);
+                    //ClientScript.RegisterStartupScript(GetType(), "Reload", "reloadTables();", true);
                     break;
                 }
             }
+                refreshTables();
+            ClientScript.RegisterStartupScript(GetType(), "Modal", "toasted(\"Resource has been removed\");", true);
             //Response.Redirect(Request.RawUrl);
         }
     }

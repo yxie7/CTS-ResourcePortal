@@ -8,7 +8,7 @@
 }
 
 .col-md-3 {
-    background-color: #435d7d;
+    
     padding: 4%;
     border-top-left-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
@@ -19,7 +19,7 @@
 }
 
 .col-md-9 {
-    background: #fff;
+    
     padding: 3%;
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;

@@ -24,23 +24,11 @@ namespace CTS_ResourcePortal
             }
         }
 
-        protected void DdlMonths_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (DdlMonths.SelectedItem.Value == "1")
-            {
-                //txtComment.Text = "Hello, welcome to Called to Serve, we are happy that you could join us!";
-            }
-            if (DdlMonths.SelectedItem.Value == "2")
-            {
-                //txtComment.Text = "Hello, welcome to Called to Serve, we hope you can join us at a later date!";
-            }
-        }
-
         protected void btnCreate_Click(object sender, EventArgs e)
         {
             string text = txtComment.Text;
             string subject = txtSubject.Text;
-            string typeEmail = DdlMonths.SelectedItem.Text;
+            string typeEmail = DdlEmail.SelectedItem.Text;
             string title = "";
             string body = "";
 
@@ -60,6 +48,38 @@ namespace CTS_ResourcePortal
             else
             {
                 body = "Something went wrong, please try again";
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
+            }
+        }
+
+        protected void DdlEmail_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string title = "";
+            string body = "";
+            try
+            {
+                string typeofEmail = DdlEmail.SelectedItem.Text;
+                //txtComment.Text = "Hello, welcome to Called to Serve, we are happy that you could join us!";
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "GetEmail";
+                    cmd.Parameters.AddWithValue("@typeEmail", typeofEmail);
+                    cmd.Connection = db.GetConnection();
+                    db.GetConnection().Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        sdr.Read();
+                        txtSubject.Text = sdr["SubjectText"].ToString();
+                        txtComment.Text = sdr["BodyText"].ToString();
+                    }
+                    cmd.Parameters.Clear();
+                    db.GetConnection().Close();
+                }
+            }
+            catch
+            {
+                body = "Please select a email type";
                 ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
             }
         }

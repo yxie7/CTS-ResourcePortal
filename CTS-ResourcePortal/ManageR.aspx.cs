@@ -250,8 +250,6 @@ namespace CTS_ResourcePortal
                 //Label labelTypeID = (Label)item.FindControl("lblResTypeID");
 
                 //int typeID = Convert.ToInt32(labelTypeID);
-                
-               
             }
         }
 

@@ -13,6 +13,42 @@ namespace CTS_ResourcePortal {
     public partial class ManageR {
         
         /// <summary>
+        /// lblResourceActivated control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblResourceActivated;
+        
+        /// <summary>
+        /// lblResourceInactivated control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblResourceInactivated;
+        
+        /// <summary>
+        /// lblNoEdit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNoEdit;
+        
+        /// <summary>
+        /// lblTooManyEdi control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTooManyEdi;
+        
+        /// <summary>
         /// lblDDLResources control.
         /// </summary>
         /// <remarks>

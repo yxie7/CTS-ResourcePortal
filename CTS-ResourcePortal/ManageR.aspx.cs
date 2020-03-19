@@ -190,6 +190,7 @@ namespace CTS_ResourcePortal
 
                 }
             }
+            ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
 
             BindAll();
         }
@@ -218,6 +219,7 @@ namespace CTS_ResourcePortal
                     cmd.Parameters.Clear();
                 }
             }
+            ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup1();", true);
             BindAll();
         }
 
@@ -236,15 +238,31 @@ namespace CTS_ResourcePortal
 
             if (count == 0)
             {
-                //modal
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup2();", true);
             }
             else if (count > 1)
             {
-                //modal
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup3();", true);
             }
             else
             {
+               // Label label = (Label)item.FindControl("lblResID");
+                //Label labelTypeID = (Label)item.FindControl("lblResTypeID");
 
+                //int typeID = Convert.ToInt32(labelTypeID);
+                
+               // if(typeID == 1)
+                {
+
+                }
+               // else if (typeID == 2)
+                {
+
+                }
+                else
+                {
+
+                }
             }
         }
 

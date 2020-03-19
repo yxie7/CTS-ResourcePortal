@@ -125,8 +125,8 @@ namespace CTS_ResourcePortal
 
         protected void btnUpdateSubscribe_Click(object sender, EventArgs e)
         {
-            string yup = lblCitizenID.Text.ToString();
-            int CitizenID = int.Parse(yup);
+            string citiId = lblCitizenID.Text.ToString();
+            int CitizenID = int.Parse(citiId);
 
 
             objCommand.Parameters.Clear();

@@ -122,6 +122,7 @@
                                 <asp:Label Text='<%# Eval("ResourceTypeID").ToString() == "1" ? "Primary Responsibilites: ": (Eval("ResourceTypeID").ToString() == "2" ? "Event Description: ":"Training Description: ")  %>' runat="server" ID="preDescription" />
                                 <br />
                                 <div class="row col-10 desc " visible='<%# Eval("Description") == null ? false: true %>'>
+                                    <br />
                                     <asp:Label runat="server" ID="lblDecription" Text='<%# Eval("Description")==null ? String.Empty:Eval("Description") %>' Visible='<%# Eval("Description") == null ? false: true %>' />
                                     <br />
                                     <div class="row col-10 desc " visible='<%# Eval("WeeklyHours") == null ? false: true %>'>

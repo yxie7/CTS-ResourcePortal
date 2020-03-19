@@ -259,10 +259,6 @@ namespace CTS_ResourcePortal
                 {
 
                 }
-                else
-                {
-
-                }
             }
         }
 

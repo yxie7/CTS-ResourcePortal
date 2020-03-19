@@ -125,16 +125,16 @@ namespace CTS_ResourcePortal
 
         protected void btnUpdateSubscribe_Click(object sender, EventArgs e)
         {
+            string yup = lblCitizenID.Text.ToString();
+            int CitizenID = int.Parse(yup);
 
-
-            SqlCommand objCommand = new SqlCommand();
 
             objCommand.Parameters.Clear();
             objCommand.CommandText = "UpdateSubscriberStatus";
 
             string subscribe = rdoSubscribe.SelectedValue.ToString();
 
-            objCommand.Parameters.AddWithValue("@CitizenID", lblCitizenID.Text.ToString());
+            objCommand.Parameters.AddWithValue("@CitizenID", CitizenID);
             objCommand.Parameters.AddWithValue("@Subscribed", subscribe);
 
             var ResponseReceived = objDB.DoUpdateUsingCmdObj(objCommand);

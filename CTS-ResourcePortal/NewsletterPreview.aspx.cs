@@ -168,6 +168,8 @@ namespace CTS_ResourcePortal
         protected void btnYesSend_Click(object sender, EventArgs e)
         {
             sendNL();
+            ScriptManager.RegisterStartupScript(this, GetType(), "Script", "sendNotif();", true);
+
         }
     }
 }

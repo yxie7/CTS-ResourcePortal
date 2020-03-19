@@ -37,6 +37,7 @@
                     <li><a href="ViewFeedback.aspx">View Feedback</a></li>
                     <li><a href="NewsletterCreate.aspx">Create Newsletter</a></li>
                     <li><a href="AdminEmailPage.aspx">Edit Email</a></li>
+                    <li><a href="AdminUserPage.aspx">Citizen Accounts</a></li>
                 </ul>
             </nav>
         </div>

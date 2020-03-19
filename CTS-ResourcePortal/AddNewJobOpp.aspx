@@ -227,10 +227,8 @@
             <br />
             <div class="row justify-content-center align-items-center">
                 <div class="col-md-2">
-                    <asp:Button ID="btnCreate" runat="server" Text="Add Job Opportunity" class="btn btn-dark" OnClick="btnCreate_Click" />
+                    <asp:Button ID="btnCreate" runat="server" Text="Add Job" class="btn btn-dark" OnClick="btnCreate_Click" />
                 </div>
-                <div class="col-md-2"></div>
-                <div class="col-md-2"></div>
             </div>
             <br />
         </div>

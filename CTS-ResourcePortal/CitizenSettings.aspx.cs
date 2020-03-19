@@ -144,11 +144,15 @@ namespace CTS_ResourcePortal
 
                 lblStatus.Text = "Thank you for updating your status!";
                 lblStatus.Visible = true;
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+
             }
             else
 
                 lblStatus.Text = "Failed";
             lblStatus.Visible = true;
+            ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+
         }
 
         protected void Delete_Click(object sender, EventArgs e)

@@ -8,6 +8,29 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 
+
+    <div id="MyPopup" class="modal" role="dialog">
+        <div class="modal-dialog modal-xl">
+            <!-- Modal content-->
+            <div class="modal-content container">
+                <div class="modal-body">
+
+                    <br />
+                    <div class="row  justify-content-center align-items-center text-center">
+                        <div class="col"></div>
+                        <div class="col-md-4">
+                            <asp:Label runat="server" Text="Thank you for signing up!" ID="lblThanks" Font-Bold="True"></asp:Label>
+                            </div>
+                        <div class="col"></div>
+                    </div>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+
+         <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true" />
+
     <div class="container">
         <div class="row" id="h2">
             <div class="col"></div>
@@ -77,13 +100,24 @@
             <div class="col"></div>
         </div>
                 <div class="row  justify-content-center align-items-center text-center">
+                    <asp:Label runat="server" Text="" ID="lblConfirm" Visible="False"></asp:Label>
+                             
             <div class="col"></div>
             <div class="col-md-4">
-                 <asp:Label runat="server" Text="" ID="lblConfirm" Visible="False"></asp:Label>
+                 
             </div>
             <div class="col"></div>
         </div>
 
     </div>
+
+         <script type="text/javascript">
+         function ShowPopup(title, body) {
+             $("#MyPopup .modal-title").html(title);
+             $("#MyPopup .modal-body").html(body);
+             $("#MyPopup").modal("show");
+         }
+    </script>
+
 </asp:Content>
 

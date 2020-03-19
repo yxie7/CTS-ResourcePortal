@@ -24,7 +24,7 @@ namespace CTS_ResourcePortal
 
             if (string.IsNullOrEmpty(Session["userEmail"] as string))
             {
-                Response.Redirect("ResourceList.aspx");
+                Response.Redirect("Login.aspx");
 
             }
             if (Request.QueryString["resource"] != null)

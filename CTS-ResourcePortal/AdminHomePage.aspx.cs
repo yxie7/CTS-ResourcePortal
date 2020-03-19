@@ -435,13 +435,6 @@ namespace CTS_ResourcePortal
                 cell[4].Attributes.Add("data-header", "Date Expire");
             }
         }
-
-        protected void btnUsers_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("AdminUserPage.aspx");
-        }
-
-
        
     }
 }

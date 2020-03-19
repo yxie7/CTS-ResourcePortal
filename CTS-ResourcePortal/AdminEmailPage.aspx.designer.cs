@@ -22,13 +22,13 @@ namespace CTS_ResourcePortal {
         protected global::System.Web.UI.WebControls.Button close;
         
         /// <summary>
-        /// DdlMonths control.
+        /// DdlEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DdlMonths;
+        protected global::System.Web.UI.WebControls.DropDownList DdlEmail;
         
         /// <summary>
         /// txtSubject control.

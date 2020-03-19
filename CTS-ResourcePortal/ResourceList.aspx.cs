@@ -168,7 +168,152 @@ namespace CTS_ResourcePortal
             }
         }
 
+        private void generateTables(string query)
+        {
+            List<Job> jl = new List<Job>();
+            List<Events> el = new List<Events>();
+            List<Training> tl = new List<Training>();
 
+            //Job
+            SqlCommand jcmd = new SqlCommand();
+            jcmd.CommandType = CommandType.StoredProcedure;
+            jcmd.CommandText = "JobSelectByTitle";
+            jcmd.Parameters.AddWithValue("@query", query);
+
+            DataSet jds = db.GetDataSetUsingCmdObj(jcmd);
+            int count = jds.Tables[0].Rows.Count;
+            if (count > 0)
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    Job j = new Job();
+
+                    j.resourceID = db.GetField("ResourcesID", i).ToString();
+                    j.resourceTitle = db.GetField("ResourceName", i).ToString();
+                    j.email = db.GetField("ContactEmail", i).ToString();
+
+                    if (!(String.IsNullOrEmpty(db.GetField("StartDate", i).ToString())))
+                    {
+                        var dateValue = db.GetField("StartDate", i);
+                        string date1 = Convert.ToDateTime(dateValue).ToString("MM-dd-yyyy");
+                        j.datePosted = Convert.ToDateTime(date1);
+                    }
+
+                    if (!(String.IsNullOrEmpty(db.GetField("EndDate", i).ToString())))
+                    {
+                        var dateValue2 = db.GetField("EndDate", i);
+                        string date2 = Convert.ToDateTime(dateValue2).ToString("MM-dd-yyyy");
+                        j.expDate = Convert.ToDateTime(date2);
+                    }
+
+
+
+                    j.addressLine1 = db.GetField("AddressLine", i).ToString();
+                    j.city = db.GetField("LocationCity", i).ToString();
+                    j.zipCode = db.GetField("LocationZip", i).ToString();
+                    j.state = db.GetField("State", i).ToString();
+
+                    j.addressLine2 = j.addressLine1 + ", " + j.city + ", " + j.zipCode + ", " + j.state;
+
+                    jl.Add(j);
+                }
+            }
+            gvJob.DataSource = jl;
+            gvJob.DataBind();
+
+            //Event
+            SqlCommand ecmd = new SqlCommand();
+            ecmd.CommandType = CommandType.StoredProcedure;
+            ecmd.CommandText = "EventSelectByTitle";
+            ecmd.Parameters.AddWithValue("@query", query);
+
+            DataSet eds = db.GetDataSetUsingCmdObj(ecmd);
+            count = eds.Tables[0].Rows.Count;
+            if (count > 0)
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    Events E = new Events();
+                    E.resourceID = db.GetField("ResourcesID", i).ToString();
+                    E.resourceTitle = db.GetField("ResourceName", i).ToString();
+                    E.email = db.GetField("ContactEmail", i).ToString();
+
+
+                    if (!(String.IsNullOrEmpty(db.GetField("StartDate", i).ToString())))
+                    {
+                        var dateValue = db.GetField("StartDate", i);
+                        string date1 = Convert.ToDateTime(dateValue).ToString("MM-dd-yyyy");
+                        E.eventDate = Convert.ToDateTime(date1);
+                    }
+
+                    if (!(String.IsNullOrEmpty(db.GetField("EndDate", i).ToString())))
+                    {
+                        var dateValue2 = db.GetField("EndDate", i);
+                        string date2 = Convert.ToDateTime(dateValue2).ToString("MM-dd-yyyy");
+                        E.expDate = Convert.ToDateTime(date2);
+                    }
+
+
+
+                    E.addressLine1 = db.GetField("AddressLine", i).ToString();
+                    E.city = db.GetField("LocationCity", i).ToString();
+                    E.zipCode = db.GetField("LocationZip", i).ToString();
+                    E.state = db.GetField("State", i).ToString();
+
+                    E.addressLine2 = E.addressLine1 + ", " + E.city + ", " + E.zipCode + ", " + E.state;
+
+                    el.Add(E);
+                }
+            }
+            gvEvent.DataSource = el;
+            gvEvent.DataBind();
+
+            //Training
+            SqlCommand tcmd = new SqlCommand();
+            tcmd.CommandType = CommandType.StoredProcedure;
+            tcmd.CommandText = "TrainingSelectByTitle";
+            tcmd.Parameters.AddWithValue("@query", query);
+
+            DataSet tds = db.GetDataSetUsingCmdObj(tcmd);
+            count = tds.Tables[0].Rows.Count;
+            if (count > 0)
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    Training T = new Training();
+                    T.resourceID = db.GetField("ResourcesID", i).ToString();
+                    T.resourceTitle = db.GetField("ResourceName", i).ToString();
+                    T.email = db.GetField("ContactEmail", i).ToString();
+
+
+                    if (!(String.IsNullOrEmpty(db.GetField("StartDate", i).ToString())))
+                    {
+                        var dateValue = db.GetField("StartDate", i);
+                        string date1 = Convert.ToDateTime(dateValue).ToString("MM-dd-yyyy");
+                        T.startDate = Convert.ToDateTime(date1);
+                    }
+
+                    if (!(String.IsNullOrEmpty(db.GetField("EndDate", i).ToString())))
+                    {
+                        var dateValue2 = db.GetField("EndDate", i);
+                        string date2 = Convert.ToDateTime(dateValue2).ToString("MM-dd-yyyy");
+                        T.expDate = Convert.ToDateTime(date2);
+                    }
+
+
+                    T.addressLine1 = db.GetField("AddressLine", i).ToString();
+                    T.city = db.GetField("LocationCity", i).ToString();
+                    T.zipCode = db.GetField("LocationZip", i).ToString();
+                    T.state = db.GetField("State", i).ToString();
+
+                    T.addressLine2 = T.addressLine1 + ", " + T.city + ", " + T.zipCode + ", " + T.state;
+
+                    tl.Add(T);
+                }
+            }
+            gvTraining.DataSource = tl;
+            gvTraining.DataBind();
+        }
         protected void btnJob_Click(object sender, EventArgs e)
         {
             
@@ -295,6 +440,7 @@ namespace CTS_ResourcePortal
             EventVisibilityControls();
 
             ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+
 
             cmd.Parameters.Clear();
         }
@@ -446,6 +592,7 @@ namespace CTS_ResourcePortal
 
             // Format: ?Key1=value1&Key2=value2&KeyN=valueN
 
+
             Response.Redirect("Feedback.aspx?resource=" + myHeader.InnerHtml + "&ID=" + btnFeedback.CommandArgument);
 
 
@@ -453,7 +600,7 @@ namespace CTS_ResourcePortal
 
         protected void txtTitleSearch_TextChanged(object sender, EventArgs e)
         {
-            //generateTables(txtTitleSearch.Text);
+            generateTables(txtTitleSearch.Text);
         }
 
         protected void gv_RowDataBound(object sender, GridViewRowEventArgs e)

@@ -16,9 +16,10 @@ namespace CTS_ResourcePortal
 {
     public partial class AdminUserPage : System.Web.UI.Page
     {
-        ArrayList arrProducts = new ArrayList();
+        //ArrayList arrProducts = new ArrayList();
         DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
         SqlCommand cmd = new SqlCommand();
+ 
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -26,8 +27,37 @@ namespace CTS_ResourcePortal
             {
                 bind();
                 bindPending();
+                IfResume();
+                
             }
 
+        }
+
+        protected void IfResume()
+        {
+            foreach (RepeaterItem item in rptManageR.Items)
+            {
+                string email = (item.FindControl("lblEmail") as Label).Text;
+                LinkButton lnkType = item.FindControl("lnkType") as LinkButton;
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandText = "SELECT ResumeTitle FROM Citizen WHERE Email = '" + email + "'";
+                    cmd.Connection = db.GetConnection();
+                    DataSet EmailDataSet = db.GetDataSetUsingCmdObj(cmd);
+                    if (EmailDataSet.Tables[0].Rows[0].IsNull("ResumeTitle"))
+                    {
+                        db.CloseConnection();                        
+
+                    }
+                    else
+                    {
+                        db.CloseConnection();
+                        lnkType.Visible = true;
+                    }
+
+                }
+            }
+            
         }
 
         private void bind()
@@ -49,6 +79,7 @@ namespace CTS_ResourcePortal
             DataSet dataSet = db.GetDataSetUsingCmdObj(cmd);
             rptNewCitizen.DataSource = dataSet;
             rptNewCitizen.DataBind();
+            
 
         }
 
@@ -152,7 +183,7 @@ namespace CTS_ResourcePortal
 
             if (count == 0)
             {
-
+                
                 title = "";
                 yes.Visible = false;
                 yesAccept.Visible = false;
@@ -252,6 +283,7 @@ namespace CTS_ResourcePortal
 
             bindPending();
             bind();
+            IfResume();
 
         }
 
@@ -261,6 +293,7 @@ namespace CTS_ResourcePortal
             int count = 0;
             string title = "";
             string body = "";
+            
 
             foreach (RepeaterItem item in rptNewCitizen.Items)
             {
@@ -393,6 +426,7 @@ namespace CTS_ResourcePortal
 
             bindPending();
             bind();
+            IfResume();
         }
 
 

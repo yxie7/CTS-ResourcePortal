@@ -1,10 +1,41 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Citizen.master" AutoEventWireup="true" CodeBehind="CitizenSettings.aspx.cs" Inherits="CTS_ResourcePortal.CitizenSettings" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
+    
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+   
+    <div id="MyPopup" class="modal" role="dialog">
+        <div class="modal-dialog modal-xl">
+            <!-- Modal content-->
+            <div class="modal-content container">
+                <div class="modal-body">
+
+                    <br />
+                    <div class="row  justify-content-center align-items-center text-center">
+                        <div class="col"></div>
+                        <div class="col-md-4">
+                          <asp:Label runat="server" ID="lblStatus" Visible="false"></asp:Label>
+                     </div>
+                        <div class="col"></div>
+                    </div>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    
+    
     <link href="css.css" rel="stylesheet" />
+   
+    
+    
+    
     <div class="container">
         <div class="row">
             <div class="col"></div>
@@ -117,8 +148,7 @@
             <div class="row ">
                 <div class="col"></div>
                 <div class="col-6 d-flex justify-content-center">
-                    <asp:Label runat="server" ID="lblStatus" Visible="false"></asp:Label>
-                </div>
+               </div>
                 <div class="col"></div>
             </div>
             <div class="section" visible="false" runat="server" id="deleteAccount">
@@ -136,4 +166,14 @@
         </div>
         <br />
     </div>
+
+         <script type="text/javascript">
+         function ShowPopup(title, body) {
+             $("#MyPopup .modal-title").html(title);
+             $("#MyPopup .modal-body").html(body);
+             $("#MyPopup").modal("show");
+         }
+    </script>
+
+
 </asp:Content>

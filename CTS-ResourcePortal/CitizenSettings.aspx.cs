@@ -155,6 +155,39 @@ namespace CTS_ResourcePortal
         {
 
         }
+
+        protected void lnkBtnUpdateSubscriber_Click(object sender, EventArgs e)
+        {
+            UpdateSubscriber.Visible = true;
+            UpdatePassword.Visible = false;
+            UploadResume.Visible = false;
+            deleteAccount.Visible = false;
+
+        }
+
+        protected void lnkBtnUpdatePassword_Click(object sender, EventArgs e)
+        {
+            UpdateSubscriber.Visible = false; ;
+            UpdatePassword.Visible = true; ;
+            UploadResume.Visible = false;
+            deleteAccount.Visible = false;
+        }
+
+        protected void lnkBtnUploadResume_Click(object sender, EventArgs e)
+        {
+            UpdateSubscriber.Visible = false;
+            UpdatePassword.Visible = false;
+            UploadResume.Visible = true;
+            deleteAccount.Visible = false;
+        }
+
+        protected void lnkBtnDeleteAccount_Click(object sender, EventArgs e)
+        {
+            UpdateSubscriber.Visible = false;
+            UpdatePassword.Visible = false;
+            UploadResume.Visible = false;
+            deleteAccount.Visible = true;
+        }
     }
     
 }

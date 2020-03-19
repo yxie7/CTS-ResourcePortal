@@ -10,21 +10,25 @@
             <div class="col"></div>
             <div class="col-md-4">
                 <h3>Account Settings</h3>
+                <asp:LinkButton ID="lnkBtnUpdateSubscriber" CssClass="buttonClass" runat="server" OnClick="lnkBtnUpdateSubscriber_Click">Update Subscriber Status</asp:LinkButton>
+                                <br />
+                <asp:LinkButton ID="lnkBtnUpdatePassword" CssClass="buttonClass" runat="server" OnClick="lnkBtnUpdatePassword_Click">Update Password</asp:LinkButton>
+                                <br />
+                <asp:LinkButton ID="lnkBtnUploadResume" CssClass="buttonClass" runat="server" OnClick="lnkBtnUploadResume_Click">Upload Resume</asp:LinkButton>
+                                <br />   
+                <asp:LinkButton ID="lnkBtnDeleteAccount" CssClass="buttonClass" runat="server" OnClick="lnkBtnDeleteAccount_Click">Delete Account</asp:LinkButton>
+                
             </div>
             <div class="col"></div>
         </div>
         <br />
         <div class="section">
             <br />
-            <div class="row justify-content-center align-items-center">
+            <div class="section" visible="false" runat="server" id="UpdateSubscriber">
                 <div class="col"></div>
                 <div class="col-lg-3 d-flex justify-content-center">Subscribe to our newsletters?</div>
                 <div class="col-lg-3 d-flex justify-content-center">
                     <div class="row">
-                        <div class="col-sm-6">
-                            <label>Would you like to receive Newsletters?</label>
-
-                        </div>
                         <div class="col-sm-6">
                             <asp:RadioButtonList ID="rdoSubscribe" runat="server" RepeatLayout="Flow">
                                 <asp:ListItem Value="Yes">Yes</asp:ListItem>
@@ -42,6 +46,7 @@
             </div>
             <hr />
             <br />
+            <div class="section" visible="false" runat="server" id="UpdatePassword" >
             <div class="row">
                 <div class="col-1"></div>
                 <div class="col-lg-10 form-group row d-flex justify-content-center">
@@ -80,7 +85,11 @@
                 </div>
                 <div class="col"></div>
             </div>
+                </div>
             <br />
+
+            <div class="section" visible="false" runat="server" id="UploadResume">
+
             <div class="row justify-content-center align-items-center" >
             <div class="col-lg-4 d-flex justify-content-center">
                     <asp:label runat="server" ID="lblResume">Would you like to load/reupload resume?</asp:label>
@@ -102,6 +111,8 @@
                 </div>
                 <div class="col"></div>
             </div>
+
+                </div>
             <br />
             <div class="row ">
                 <div class="col"></div>
@@ -113,7 +124,7 @@
             <br />
         </div>
         <br />
-        <div class="section">
+        <div class="section" visible="false" runat="server" id="deleteAccount">
             <br />
             <div class="row">
                 <div class="col"></div>

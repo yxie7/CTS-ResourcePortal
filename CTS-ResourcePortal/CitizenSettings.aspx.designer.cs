@@ -13,6 +13,51 @@ namespace CTS_ResourcePortal {
     public partial class CitizenSettings {
         
         /// <summary>
+        /// lnkBtnUpdateSubscriber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkBtnUpdateSubscriber;
+        
+        /// <summary>
+        /// lnkBtnUpdatePassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkBtnUpdatePassword;
+        
+        /// <summary>
+        /// lnkBtnUploadResume control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkBtnUploadResume;
+        
+        /// <summary>
+        /// lnkBtnDeleteAccount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkBtnDeleteAccount;
+        
+        /// <summary>
+        /// UpdateSubscriber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl UpdateSubscriber;
+        
+        /// <summary>
         /// rdoSubscribe control.
         /// </summary>
         /// <remarks>
@@ -38,6 +83,15 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnUpdateSubscribe;
+        
+        /// <summary>
+        /// UpdatePassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl UpdatePassword;
         
         /// <summary>
         /// txtCurrentPassword control.
@@ -76,6 +130,15 @@ namespace CTS_ResourcePortal {
         protected global::System.Web.UI.WebControls.Button btnUpdatePassword;
         
         /// <summary>
+        /// UploadResume control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl UploadResume;
+        
+        /// <summary>
         /// lblResume control.
         /// </summary>
         /// <remarks>
@@ -110,5 +173,14 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblStatus;
+        
+        /// <summary>
+        /// deleteAccount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl deleteAccount;
     }
 }

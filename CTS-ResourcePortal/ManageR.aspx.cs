@@ -251,18 +251,7 @@ namespace CTS_ResourcePortal
 
                 //int typeID = Convert.ToInt32(labelTypeID);
                 
-               // if(typeID == 1)
-                {
-
-                }
-               // else if (typeID == 2)
-                {
-
-                }
-                else
-                {
-
-                }
+               
             }
         }
 

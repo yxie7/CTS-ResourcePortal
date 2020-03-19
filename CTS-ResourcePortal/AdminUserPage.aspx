@@ -175,7 +175,7 @@
                                  <asp:Label ID="lblZip" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, ("Zipcode")) %>'></asp:Label>
                             </td>
                             <td>
-                                <asp:LinkButton ID="lnkType" runat="server" Text="View" OnClick="lnkView_Click"></asp:LinkButton >
+                                <asp:LinkButton ID="lnkType" runat="server" Text="View" OnClick="lnkView_Click" Visible="false"></asp:LinkButton >
                             </td>
                         </tr>
 

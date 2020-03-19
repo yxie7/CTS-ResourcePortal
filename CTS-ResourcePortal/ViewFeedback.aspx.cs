@@ -7,6 +7,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.IO;
+using System.Net;
+using System.Net.Mail;
+using System.Text;
 using Utilities;
 
 
@@ -18,6 +22,9 @@ namespace CTS_ResourcePortal
         DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
 
         SqlCommand cmd = new SqlCommand();
+
+        public static int FeedbackID;
+        public static int CitizenID;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -133,12 +140,13 @@ namespace CTS_ResourcePortal
 
                     cmd.Parameters.Add(text);
                     DataSet dataSet = db.GetDataSetUsingCmdObj(cmd);
+                    FeedbackID = Convert.ToInt32(dataSet.Tables[0].Rows[0].ItemArray[0]);
                     if (dataSet.Tables[0].Rows.Count > 0)
                     {
                         cmd.Parameters.Clear();
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.CommandText = "InactivateFeedback";
-                        int FeedbackID = Convert.ToInt32(dataSet.Tables[0].Rows[0].ItemArray[0]);
+                        //int FeedbacksID = Convert.ToInt32(dataSet.Tables[0].Rows[0].ItemArray[0]);
                         SqlParameter id = new SqlParameter("@Feedbackid", FeedbackID);
                         id.Direction = ParameterDirection.Input;
                         id.SqlDbType = SqlDbType.Int;
@@ -159,6 +167,67 @@ namespace CTS_ResourcePortal
             BindAll();
         }
 
+        protected void btnReply_Click(object sender, EventArgs e)
+        {
+            foreach(RepeaterItem item in rptViewR.Items)
+            {
+                CheckBox checkBox = (CheckBox)item.FindControl("chkRow");
+                if (checkBox.Checked)
+                {
+                    Label label = (Label)item.FindControl("lblFeedbackText");
+
+                    string feedbacktext = label.Text;
+                    cmd.Parameters.Clear();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "GetFeedbackByText";
+                    SqlParameter text = new SqlParameter("@FeedbackText", feedbacktext);
+                    text.Direction = ParameterDirection.Input;
+                    text.SqlDbType = SqlDbType.VarChar;
+
+                    cmd.Parameters.Add(text);
+                    DataSet dataSet = db.GetDataSetUsingCmdObj(cmd);
+                    FeedbackID = Convert.ToInt32(dataSet.Tables[0].Rows[0].ItemArray[0]);
+                    CitizenID = Convert.ToInt32(dataSet.Tables[0].Rows[0].ItemArray[1]);
+                    if (dataSet.Tables[0].Rows.Count > 0)
+                    {
+                        string title = "Reply to Feedback";
+                        string body = "This message will send an email to the citizen who left this feedback";
+                        ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
+                    }
+                }
+            }
+        }
+
+        protected void btnReplySubmit_Click(object sender, EventArgs e)
+        {
+            DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "GetCitizenByID";
+            SqlParameter id = new SqlParameter("@CitizenID", CitizenID);
+            id.Direction = ParameterDirection.Input;
+            id.SqlDbType = SqlDbType.Int;
+            cmd.Parameters.Add(id);
+            DataSet dataSet = db.GetDataSetUsingCmdObj(cmd);
+        
+
+            using (MailMessage mm = new MailMessage())
+            {
+                mm.Bcc.Add(db.GetField("Email", 0).ToString());
+                mm.From = new MailAddress(ConfigurationManager.AppSettings["SMTPuser"]);
+                mm.Subject = DateTime.Now.ToShortDateString() + " Feedback Reply";
+                mm.Body = txtReply.InnerText;
+                mm.IsBodyHtml = true;
+                SmtpClient smtp = new SmtpClient();
+                smtp.Host = ConfigurationManager.AppSettings["Host"];
+                smtp.EnableSsl = Convert.ToBoolean(ConfigurationManager.AppSettings["EnableSSL"]);
+                NetworkCredential nc = new NetworkCredential(ConfigurationManager.AppSettings["SMTPuser"], ConfigurationManager.AppSettings["SMTPpassword"]);
+                smtp.UseDefaultCredentials = true;
+                smtp.Credentials = nc;
+                smtp.Port = int.Parse(ConfigurationManager.AppSettings["Port"]);
+                smtp.Send(mm);
+            }
+        }
     }
 
 

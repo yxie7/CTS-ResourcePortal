@@ -54,9 +54,18 @@
                 <h4 class="modal-title"></h4>
                 <div class="modal-body">
                 </div>
+                <div class="modal-msg">
+                    <form action="">
+                        <textarea id="txtReply" name="myTextBox" runat="server" cols="68" rows="8"> Enter some text...
+                            </textarea>
+                        <br />
+                        
+                    </form>
+                </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">
-                        Close</button>
+                    <%--<button type="button" class="btn btn-danger" data-dismiss="modal">
+                        Close</button>--%>
+                    <asp:Button ID="btnReplySubmit" runat="server" Text="Submit" OnClick="btnReplySubmit_Click" />
                 </div>
             </div>
         </div>
@@ -90,7 +99,7 @@
                 &nbsp
                 <asp:Button ID="btnViewR" runat="server" Text="View" OnClick="btnViewR_Click" />
                 &nbsp
-                <asp:Button ID="btnAllResources" runat="server" Text="View All Resources" OnClick="btnAllResources_Click" />
+                <asp:Button ID="btnAllResources" runat="server" Text="View All Feedback" OnClick="btnAllResources_Click" />
 
                 <br />
                 <br />
@@ -132,7 +141,7 @@
                             </td>
                             <td>
 
-                                <asp:Button ID="btnReply" runat="server" Text="Reply" />
+                                <asp:Button ID="btnReply" runat="server" Text="Reply" OnClick="btnReply_Click" />
                             </td>
                         </tr>
                     </ItemTemplate>

@@ -222,7 +222,7 @@ namespace CTS_ResourcePortal
                 smtp.Host = ConfigurationManager.AppSettings["Host"];
                 smtp.EnableSsl = Convert.ToBoolean(ConfigurationManager.AppSettings["EnableSSL"]);
                 NetworkCredential nc = new NetworkCredential(ConfigurationManager.AppSettings["SMTPuser"], ConfigurationManager.AppSettings["SMTPpassword"]);
-                smtp.UseDefaultCredentials = true;
+                smtp.UseDefaultCredentials = false;
                 smtp.Credentials = nc;
                 smtp.Port = int.Parse(ConfigurationManager.AppSettings["Port"]);
                 smtp.Send(mm);

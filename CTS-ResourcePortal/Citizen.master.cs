@@ -13,7 +13,23 @@ namespace CTS_ResourcePortal
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["userName"] == null)
+            {
+                lblCitizenName.Visible = false;
+                //lblCitizenName.Text = "Admin Name";
+                lnkAccountSettings.Visible = false;
+                lnkSignOut.Visible = false;
+                lnkLogin.Visible = true;
+                lnkSignup.Visible = true;
+            }
+            else
+            {
+                lblCitizenName.Text = (string)Session["userName"];
+                lnkAccountSettings.Visible = true;
+                lnkSignOut.Visible = true;
+                lnkLogin.Visible = false;
+                lnkSignup.Visible = false;
+            }
         }
     }
 }

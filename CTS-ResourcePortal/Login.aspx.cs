@@ -79,7 +79,17 @@ namespace CTS_ResourcePortal
 
                         if (encryptedPassword == encryptedPasswordLogin)
                         {
+                            SqlCommand cmd = new SqlCommand("GetAdminName", db.GetConnection());
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            SqlParameter inputParameterName = new SqlParameter("@Adminemail", txtEmail.Text);
+                            inputParameterName.Direction = ParameterDirection.Input;
+                            inputParameterName.SqlDbType = SqlDbType.VarChar;
+                            cmd.Parameters.Add(inputParameterName);
+                            DataSet EmailDataSet = db.GetDataSetUsingCmdObj(cmd);
+                            string fullname = EmailDataSet.Tables[0].Rows[0].ItemArray[0] + " " + EmailDataSet.Tables[0].Rows[0].ItemArray[1];
+
                             Session.Add("userEmail", txtEmail.Text);
+                            Session.Add("userName", fullname);
                             Response.Redirect("AdminHomePage.aspx");
                         }
                         else
@@ -148,7 +158,17 @@ namespace CTS_ResourcePortal
 
                                     if (encryptedPassword == encryptedPasswordLogin)
                                     {
+                                        SqlCommand cmd = new SqlCommand("GetCitizenName", db.GetConnection());
+                                        cmd.CommandType = CommandType.StoredProcedure;
+                                        SqlParameter inputParameterName = new SqlParameter("@Email", txtEmail.Text);
+                                        inputParameterName.Direction = ParameterDirection.Input;
+                                        inputParameterName.SqlDbType = SqlDbType.VarChar;
+                                        cmd.Parameters.Add(inputParameterName);
+                                        DataSet EmailDataSet = db.GetDataSetUsingCmdObj(cmd);
+                                        string fullname = EmailDataSet.Tables[0].Rows[0].ItemArray[0] + " " + EmailDataSet.Tables[0].Rows[0].ItemArray[1];
+
                                         Session.Add("userEmail", txtEmail.Text);
+                                        Session.Add("userName", fullname);
                                         Response.Redirect("ResourceList.aspx");
                                     }
                                     else

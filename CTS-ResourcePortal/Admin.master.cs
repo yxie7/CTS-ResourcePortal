@@ -13,7 +13,14 @@ namespace CTS_ResourcePortal
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(Session["userName"] == null)
+            {
+                lblAdminName.Text = "Admin Name";
+            }
+            else
+            {
+                lblAdminName.Text = (string)Session["userName"];
+            }
         }
     }
 }

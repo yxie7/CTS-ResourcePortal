@@ -7,7 +7,8 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="navli" runat="server">
     <li class="navbar-text">
-        <p>Jeffrey Harley</p>
+        <%--<p>Jeffrey Harley</p>--%>
+        <asp:Label ID="lblAdminName" runat="server" Text="Admin Name"></asp:Label>
     </li>
     <li class="navbar-text">
         <p>::</p>

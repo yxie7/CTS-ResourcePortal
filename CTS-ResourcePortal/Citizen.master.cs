@@ -31,5 +31,17 @@ namespace CTS_ResourcePortal
                 lnkSignup.Visible = false;
             }
         }
+
+        protected void lnkSignOut_Click(object sender, EventArgs e)
+        {
+            Session["userName"] = null;
+            lblCitizenName.Visible = false;
+            //lblCitizenName.Text = "Admin Name";
+            lnkAccountSettings.Visible = false;
+            lnkSignOut.Visible = false;
+            lnkLogin.Visible = true;
+            lnkSignup.Visible = true;
+            Response.Redirect("Login.aspx");
+        }
     }
 }

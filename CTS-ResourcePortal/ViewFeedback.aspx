@@ -59,7 +59,7 @@
                         <textarea id="txtReply" name="myTextBox" runat="server" cols="68" rows="8"> Enter some text...
                             </textarea>
                         <br />
-                        
+
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -71,92 +71,97 @@
         </div>
     </div>
     <div class="container">
-        <div class="row">
-            <div class="col-10">
+        <div class="section">
 
-                <br />
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-10">
+            <div class="row">
+                <div class="col-10">
 
-                <br />
-            </div>
-        </div>
-        <br />
-        <div class="row d-flex justify-content-center">
-            <div class="accordion col-10" id="resources">
-                <br />
-                <h2 class="col-sm-8" style="margin: auto">View Feedback
-                </h2>
-                <br />
-                <br />
-                <asp:Label ID="lblDDLResources" runat="server" Text="Select Resources to View: "></asp:Label>
-                <asp:DropDownList ID="ddlResources" runat="server" AutoPostBack="false">
-                    <asp:ListItem Text="All Resources"></asp:ListItem>
-                </asp:DropDownList>
-                &nbsp
-                <asp:Button ID="btnViewR" runat="server" Text="View" OnClick="btnViewR_Click" />
-                &nbsp
-                <asp:Button ID="btnAllResources" runat="server" Text="View All Feedback" OnClick="btnAllResources_Click" />
-
-                <br />
-                <br />
-                <asp:Repeater ID="rptViewR" runat="server">
-                    <HeaderTemplate>
-                        <table id="datatable" class="table table-striped table-bordered" border="0" cellpadding="0"
-                            cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        <asp:CheckBox ID="chkHeader" runat="server" /></th>
-                                    <th>Resource Title
-                                    </th>
-                                    <th>Feedback
-                                    </th>
-                                    <th>Date Posted
-                                    </th>
-                                    <th>Reply to Feedback
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                    </HeaderTemplate>
-
-                    <ItemTemplate>
-                        <tr>
-                            <td>
-                                <asp:CheckBox ID="chkRow" runat="server" /></td>
-                            <td>
-                                <asp:Label ID="lblResourceName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, ("ResourceName")) %>'></asp:Label>
-                                <%--<%# DataBinder.Eval(Container.DataItem, ("ResourceName")) %>--%>
-                            </td>
-                            <td>
-                                <asp:Label ID="lblFeedbackText" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, ("FeedbackText")) %>'></asp:Label>
-                                <%--<%# DataBinder.Eval(Container.DataItem, ("FeedbackText")) %>--%>
-                            </td>
-                            <td>
-                                <%# DataBinder.Eval(Container.DataItem, ("Date")) %>
-                            </td>
-                            <td>
-
-                                <asp:Button ID="btnReply" runat="server" Text="Reply" OnClick="btnReply_Click" />
-                            </td>
-                        </tr>
-                    </ItemTemplate>
-
-                    <FooterTemplate>
-                        </tbody></table>
-                    </FooterTemplate>
-                </asp:Repeater>
-                <br />
-                <br />
-                <div style="align-content: center; margin: auto">
-                    <asp:Button ID="btnRemove" Text="Remove Feedback" runat="server" OnClick="btnSelect_Click" />
+                    <br />
                 </div>
             </div>
             <br />
-        </div>
+            <div class="row d-flex justify-content-center">
+                <div class="accordion col-10" id="resources">
+                    <br />
+                    <h2 class="col-sm-8" style="margin: auto">View Feedback
+                    </h2>
+                    <br />
+                    <br />
+                    <asp:Label ID="lblDDLResources" runat="server" Text="Select Resources to View: "></asp:Label>
+                    <asp:DropDownList ID="ddlResources" runat="server" AutoPostBack="false">
+                        <asp:ListItem Text="All Resources"></asp:ListItem>
+                    </asp:DropDownList>
+                    &nbsp
+                <asp:Button ID="btnViewR" runat="server" Text="View" OnClick="btnViewR_Click" />
+                    &nbsp
+                <asp:Button ID="btnAllResources" runat="server" Text="View All Feedback" OnClick="btnAllResources_Click" />
+
+                    <br />
+                    <br />
+                    <asp:Repeater ID="rptViewR" runat="server">
+                        <HeaderTemplate>
+                            <table id="datatable" class="table  table-bordered" border="0" cellpadding="0"
+                                cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <asp:CheckBox ID="chkHeader" runat="server" /></th>
+                                        <th>Resource Title
+                                        </th>
+                                        <th>Feedback
+                                        </th>
+                                        <th>Date Posted
+                                        </th>
+                                        <th>Reply to Feedback
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                        </HeaderTemplate>
+
+                        <ItemTemplate>
+                            <tr>
+                                <td>
+                                    <asp:CheckBox ID="chkRow" runat="server" /></td>
+                                <td>
+                                    <asp:Label ID="lblResourceName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, ("ResourceName")) %>'></asp:Label>
+                                    <%--<%# DataBinder.Eval(Container.DataItem, ("ResourceName")) %>--%>
+                                </td>
+                                <td>
+                                    <asp:Label ID="lblFeedbackText" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, ("FeedbackText")) %>'></asp:Label>
+                                    <%--<%# DataBinder.Eval(Container.DataItem, ("FeedbackText")) %>--%>
+                                </td>
+                                <td>
+                                    <%# DataBinder.Eval(Container.DataItem, ("Date")) %>
+                                </td>
+                                <td>
+
+                                    <asp:Button ID="btnReply" runat="server" Text="Reply" OnClick="btnReply_Click" />
+                                </td>
+                            </tr>
+                        </ItemTemplate>
+
+                        <FooterTemplate>
+                            </tbody></table>
+                        </FooterTemplate>
+                    </asp:Repeater>
+                    <br />
+                    <br />
+                    <div style="align-content: center; margin: auto">
+                        <asp:Button ID="btnRemove" Text="Remove Feedback" runat="server" OnClick="btnSelect_Click" />
+                    </div>
+                </div>
+                <br />
+
+
+            </div>
+            <div class="row">
+                <div class="col-10">
+
+                    <br />
+                </div>
+            </div>
+    </div>
     </div>
 </asp:Content>

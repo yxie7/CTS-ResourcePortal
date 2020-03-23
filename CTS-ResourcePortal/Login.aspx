@@ -48,7 +48,7 @@
                 </div>
                 <div class="col-md-auto">
                     <p>
-                        <asp:TextBox ID="txtEmail" Placeholder="" runat="server"></asp:TextBox>
+                        &nbsp<asp:TextBox ID="txtEmail" Placeholder="" runat="server"></asp:TextBox>
                     </p>
                 </div>
                 <div class="col"></div>

@@ -22,6 +22,10 @@ namespace CTS_ResourcePortal
         //string con = master.getConnectionString();
 
         DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
+        
+        //Strings needed for Edit functionality
+        public string resTypeIDE = "";
+        public string resIDE = "";
 
         SqlCommand cmd = new SqlCommand();
         protected void Page_Load(object sender, EventArgs e)
@@ -190,7 +194,9 @@ namespace CTS_ResourcePortal
 
                 }
             }
-            ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+            string title = "";
+            string body = "Resource Activated!";
+            ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
 
             BindAll();
         }
@@ -219,7 +225,9 @@ namespace CTS_ResourcePortal
                     cmd.Parameters.Clear();
                 }
             }
-            ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup1();", true);
+            string title = "";
+            string body = "Resource Inactivated!";
+            ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
             BindAll();
         }
 
@@ -231,8 +239,12 @@ namespace CTS_ResourcePortal
             {
                 chkRow = (HtmlInputCheckBox)item.FindControl("chkRow");
                 if (chkRow.Checked)
-                {
+                {                    
                     count++;
+                    Label labelTypeID = (Label)item.FindControl("lblResTypeID");
+                    resTypeIDE = labelTypeID.Text;
+                    Label labelID = (Label)item.FindControl("lblResID");
+                    resIDE = labelID.Text;
                 }
             }
 
@@ -246,23 +258,24 @@ namespace CTS_ResourcePortal
             }
             else
             {
-               // Label label = (Label)item.FindControl("lblResID");
-                //Label labelTypeID = (Label)item.FindControl("lblResTypeID");
 
-                //int typeID = Convert.ToInt32(labelTypeID);
+                int typeID = Convert.ToInt32(resTypeIDE);
+                int resID = Convert.ToInt32(resIDE);
+
+                Session["Resource"] = resID;
                 
-               // if(typeID == 1)
-                {
-
-                }
-               // else if (typeID == 2)
-                {
-
-                }
-                else
-                {
-
-                }
+               if(typeID == 1)
+               {
+                    //Job
+               }
+               else if (typeID == 2)
+               {
+                    //Event
+               }
+               else
+               {
+                    //Training
+               }
             }
         }
 

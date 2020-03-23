@@ -24,7 +24,7 @@ namespace CTS_ResourcePortal
 
             if (string.IsNullOrEmpty(Session["userEmail"] as string))
             {
-                Response.Redirect("ResourceList.aspx");
+                Response.Redirect("Login.aspx");
 
             }
             if (Request.QueryString["resource"] != null)
@@ -83,16 +83,22 @@ namespace CTS_ResourcePortal
 
                     lblConfirm.Text = "Thank you for submitting feedback!";
                     lblConfirm.Visible = true;
+                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+
                 }
                 else
 
                     lblConfirm.Text = "Failed";
                 lblConfirm.Visible = true;
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+
             }
             else
             {
                 lblConfirm.Text = "Please enter Feedback text";
                 lblConfirm.Visible = true;
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+
             }
         }
     }

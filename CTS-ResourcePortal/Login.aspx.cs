@@ -39,81 +39,204 @@ namespace CTS_ResourcePortal
             password = txtPassword.Text;
             if (ValidateUserRegistration() == true)
             {
-                if (GrabAccepted(email) == true)
+                if (CheckIfAdminEmailExist(email) == true)
                 {
-                    string accepted = (string)db.GetField("Accepted", 0);
-                    if (accepted == "FALSE")
+                    if (GrabAdminPassword(email) == true)
                     {
-                        UserRegistrationError.Text = "This account has not been accepted by the administrator";
-                    }
-                    if (accepted == "TRUE")
-                    {
-                        if (CheckIfEmailExist(email) == true)
+                        string encryptedPassword = (string)db.GetField("Password", 0);
+                        String encryptedPasswordLogin;
+                        System.Text.UTF8Encoding encoder = new UTF8Encoding();
+                        Byte[] PasswordBytes;
+
+
+                        //EmailBytes = encoder.GetBytes(plainTextEmail);
+                        PasswordBytes = encoder.GetBytes(password);
+
+
+                        RijndaelManaged rmEncryption = new RijndaelManaged();
+                        MemoryStream memStream = new MemoryStream();
+                        CryptoStream encryptionStream = new CryptoStream(memStream, rmEncryption.CreateEncryptor(key, vector), CryptoStreamMode.Write);
+                        //password
+                        memStream = new MemoryStream();
+                        encryptionStream = new CryptoStream(memStream, rmEncryption.CreateEncryptor(key, vector), CryptoStreamMode.Write);
+
+                        encryptionStream.Write(PasswordBytes, 0, PasswordBytes.Length);
+                        encryptionStream.FlushFinalBlock();
+
+                        memStream.Position = 0;
+                        Byte[] encryptedPasswordBytes = new byte[memStream.Length];
+                        memStream.Read(encryptedPasswordBytes, 0, encryptedPasswordBytes.Length);
+
+                        encryptionStream.Close();
+                        memStream.Close();
+
+
+                        //encryptedEmail = Convert.ToBase64String(encryptedEmailBytes);
+                        encryptedPasswordLogin = Convert.ToBase64String(encryptedPasswordBytes);
+
+                        //hashing password
+                        PasswordHash hash = new PasswordHash(encryptedPasswordLogin);
+
+                        if (encryptedPassword == encryptedPasswordLogin)
                         {
-                            if (GrabPassword(email) == true)
-                            {
-                                string encryptedPassword = (string)db.GetField("Password", 0);
-                                String encryptedPasswordLogin;
-                                System.Text.UTF8Encoding encoder = new UTF8Encoding();
-                                Byte[] PasswordBytes;
+                            SqlCommand cmd = new SqlCommand("GetAdminName", db.GetConnection());
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            SqlParameter inputParameterName = new SqlParameter("@Adminemail", txtEmail.Text);
+                            inputParameterName.Direction = ParameterDirection.Input;
+                            inputParameterName.SqlDbType = SqlDbType.VarChar;
+                            cmd.Parameters.Add(inputParameterName);
+                            DataSet EmailDataSet = db.GetDataSetUsingCmdObj(cmd);
+                            string fullname = EmailDataSet.Tables[0].Rows[0].ItemArray[0] + " " + EmailDataSet.Tables[0].Rows[0].ItemArray[1];
 
-
-                                //EmailBytes = encoder.GetBytes(plainTextEmail);
-                                PasswordBytes = encoder.GetBytes(password);
-
-
-                                RijndaelManaged rmEncryption = new RijndaelManaged();
-                                MemoryStream memStream = new MemoryStream();
-                                CryptoStream encryptionStream = new CryptoStream(memStream, rmEncryption.CreateEncryptor(key, vector), CryptoStreamMode.Write);
-                                //password
-                                memStream = new MemoryStream();
-                                encryptionStream = new CryptoStream(memStream, rmEncryption.CreateEncryptor(key, vector), CryptoStreamMode.Write);
-
-                                encryptionStream.Write(PasswordBytes, 0, PasswordBytes.Length);
-                                encryptionStream.FlushFinalBlock();
-
-                                memStream.Position = 0;
-                                Byte[] encryptedPasswordBytes = new byte[memStream.Length];
-                                memStream.Read(encryptedPasswordBytes, 0, encryptedPasswordBytes.Length);
-
-                                encryptionStream.Close();
-                                memStream.Close();
-
-
-                                //encryptedEmail = Convert.ToBase64String(encryptedEmailBytes);
-                                encryptedPasswordLogin = Convert.ToBase64String(encryptedPasswordBytes);
-
-                                //hashing password
-                                PasswordHash hash = new PasswordHash(encryptedPasswordLogin);
-
-                                if (encryptedPassword == encryptedPasswordLogin)
-                                {
-                                    Session.Add("userEmail", txtEmail.Text);
-                                    Response.Redirect("ResourceList.aspx");
-                                }
-                                else
-                                {
-                                    lblError.Text = "Password is not registered";
-                                }
-
-
-                            }
-                            else
-                            {
-                                lblError.Text = "This password is not registered";
-                            }
+                            Session.Add("userEmail", txtEmail.Text);
+                            Session.Add("userName", fullname);
+                            Response.Redirect("AdminHomePage.aspx");
                         }
                         else
                         {
-                            lblError.Text = "This email is not registered";
+                            lblError.Text = "Password is not registered";
+                            ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
                         }
                     }
+                    else
+                    {
+                        lblError.Text = "Password is not regsitered";
+                        ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+                    }
                 }
+                if (CheckIfAdminEmailExist(email) == false)
+                {
+                    if (CheckIfCitizenEmailExist(email) == true)
+                    {
+                        if (IfCitizenIsAccepted(email) == true)
+                        {
+                            string accepted = (string)db.GetField("Accepted", 0);
+                            if (accepted == "FALSE")
+                            {
+                                lblError.Text = "This account has not been accepted by the administrator";
+                                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+                                
+                            }
+                            if (accepted == "TRUE")
+                            {
+
+                                if (GrabCitizenPassword(email) == true)
+                                {
+                                    string encryptedPassword = (string)db.GetField("Password", 0);
+                                    String encryptedPasswordLogin;
+                                    System.Text.UTF8Encoding encoder = new UTF8Encoding();
+                                    Byte[] PasswordBytes;
+
+
+                                    //EmailBytes = encoder.GetBytes(plainTextEmail);
+                                    PasswordBytes = encoder.GetBytes(password);
+
+
+                                    RijndaelManaged rmEncryption = new RijndaelManaged();
+                                    MemoryStream memStream = new MemoryStream();
+                                    CryptoStream encryptionStream = new CryptoStream(memStream, rmEncryption.CreateEncryptor(key, vector), CryptoStreamMode.Write);
+                                    //password
+                                    memStream = new MemoryStream();
+                                    encryptionStream = new CryptoStream(memStream, rmEncryption.CreateEncryptor(key, vector), CryptoStreamMode.Write);
+
+                                    encryptionStream.Write(PasswordBytes, 0, PasswordBytes.Length);
+                                    encryptionStream.FlushFinalBlock();
+
+                                    memStream.Position = 0;
+                                    Byte[] encryptedPasswordBytes = new byte[memStream.Length];
+                                    memStream.Read(encryptedPasswordBytes, 0, encryptedPasswordBytes.Length);
+
+                                    encryptionStream.Close();
+                                    memStream.Close();
+
+
+                                    //encryptedEmail = Convert.ToBase64String(encryptedEmailBytes);
+                                    encryptedPasswordLogin = Convert.ToBase64String(encryptedPasswordBytes);
+
+                                    //hashing password
+                                    PasswordHash hash = new PasswordHash(encryptedPasswordLogin);
+
+                                    if (encryptedPassword == encryptedPasswordLogin)
+                                    {
+                                        SqlCommand cmd = new SqlCommand("GetCitizenName", db.GetConnection());
+                                        cmd.CommandType = CommandType.StoredProcedure;
+                                        SqlParameter inputParameterName = new SqlParameter("@Email", txtEmail.Text);
+                                        inputParameterName.Direction = ParameterDirection.Input;
+                                        inputParameterName.SqlDbType = SqlDbType.VarChar;
+                                        cmd.Parameters.Add(inputParameterName);
+                                        DataSet EmailDataSet = db.GetDataSetUsingCmdObj(cmd);
+                                        string fullname = EmailDataSet.Tables[0].Rows[0].ItemArray[0] + " " + EmailDataSet.Tables[0].Rows[0].ItemArray[1];
+
+                                        Session.Add("userEmail", txtEmail.Text);
+                                        Session.Add("userName", fullname);
+                                        Response.Redirect("ResourceList.aspx");
+                                    }
+                                    else
+                                    {
+                                        lblError.Text = "Password is not registered";
+                                        ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+                                    }
+
+
+                                }
+                                else
+                                {
+                                    lblError.Text = "This password is not registered";
+                                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+                                }
+                            }
+                        }
+
+
+                    }
+
+                }
+
 
             }
 
         }
-        public Boolean CheckIfEmailExist(String Email)
+
+        private bool GrabAdminPassword(string Email)
+        {
+            SqlCommand cmd = new SqlCommand("GrabPasswordAdmin", db.GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlParameter inputParameterName = new SqlParameter("@Email", Email);
+            inputParameterName.Direction = ParameterDirection.Input;
+            inputParameterName.SqlDbType = SqlDbType.VarChar;
+            cmd.Parameters.Add(inputParameterName);
+            DataSet EmailDataSet = db.GetDataSetUsingCmdObj(cmd);
+            if (EmailDataSet.Tables[0].Rows.Count == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        public Boolean CheckIfAdminEmailExist(String Email)
+        {
+            //checks to see if email matches email in db
+            SqlCommand cmd = new SqlCommand("GrabAdminEmail", db.GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlParameter inputParameterName = new SqlParameter("@Email", Email);
+            inputParameterName.Direction = ParameterDirection.Input;
+            inputParameterName.SqlDbType = SqlDbType.VarChar;
+            cmd.Parameters.Add(inputParameterName);
+            DataSet EmailDataSet = db.GetDataSetUsingCmdObj(cmd);
+            if (EmailDataSet.Tables[0].Rows.Count == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        public Boolean CheckIfCitizenEmailExist(String Email)
         {
             //checks to see if email matches email in db
             SqlCommand cmd = new SqlCommand("CheckIfCitizenExists", db.GetConnection());
@@ -133,7 +256,7 @@ namespace CTS_ResourcePortal
             }
         }
 
-        public Boolean GrabPassword(String email)
+        public Boolean GrabCitizenPassword(String email)
         {
             //checks to see if email matches email in db
             SqlCommand cmd = new SqlCommand("GetPassword", db.GetConnection());
@@ -153,7 +276,7 @@ namespace CTS_ResourcePortal
             }
         }
 
-        public Boolean GrabAccepted(String email)
+        public Boolean IfCitizenIsAccepted(String email)
         {
             //checks to see if email matches email in db
             SqlCommand cmd = new SqlCommand("SelectActive", db.GetConnection());
@@ -177,13 +300,15 @@ namespace CTS_ResourcePortal
         {
             if (txtEmail.Text == "")
             {
-                UserRegistrationError.Text = "Enter First Name";
+                lblError.Text = "Enter Email";
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
                 return false;
 
             }
             if (txtPassword.Text == "")
             {
-                UserRegistrationError.Text = "Enter Password";
+                lblError.Text = "Enter Password";
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
                 return false;
             }
             else

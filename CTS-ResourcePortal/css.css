@@ -2,6 +2,10 @@
     color: #3a3a3a;
     opacity: .9; /* Firefox */
 }
+.buttonClass {
+    width: 0px;
+    padding: 5px;
+}
 
 table {
     width: 100% !important;
@@ -131,6 +135,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     }
 
     #jobResourceCollapse td:last-of-type, #eventResourceCollapse td:last-of-type, #trainingResourceCollapse td:last-of-type {
+        text-align:center;
         padding-bottom: 25px;
     }
 
@@ -219,6 +224,15 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     }
 }
 
+.btnDismiss {
+    position: fixed;
+    top: 25px;
+    right: 45px;
+    z-index: 999;
+}
+.modal-backdrop.show {
+    opacity: 0.9 !important;
+}
 /*MyPopup{
     width:80%;
 }*/

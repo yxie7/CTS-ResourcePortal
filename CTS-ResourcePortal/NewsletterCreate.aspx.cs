@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Web.UI.WebControls;
 using Utilities;
 
@@ -18,28 +19,29 @@ namespace CTS_ResourcePortal
             //Selections table
             if (!IsPostBack)
             {
-                if (Request.QueryString["filter"] == "1")
-                {
-                    generateJobs();
-                }
-                else if (Request.QueryString["filter"] == "2")
-                {
-                    generateEvents();
-                }
-                else if (Request.QueryString["filter"] == "3")
-                {
-                    generateTraining();
-                }
-                else
-                {
-                    //generateTables();
-                    generateAll();
-                }
-                loadSelections();
+                //if (Request.QueryString["filter"] == "1")
+                //{
+                //    generateJobs();
+                //}
+                //else if (Request.QueryString["filter"] == "2")
+                //{
+                //    generateEvents();
+                //}
+                //else if (Request.QueryString["filter"] == "3")
+                //{
+                //    generateTraining();
+                //}
+                //else
+                //{
+                //    //generateTables();
+                //    generateAll();
+                //}
+                generateAll();
+                refreshTables();
             }
         }
 
-        private void loadSelections()
+        private void refreshTables()
         {
             List<NewsletterItem> selectionList = new List<NewsletterItem>();
             if (Session["NewsletterSelections"] != null)
@@ -70,7 +72,7 @@ namespace CTS_ResourcePortal
             else
             {
                 //ScriptManager.RegisterStartupScript(this, GetType(), "Script", "toasted();", true);
-                ClientScript.RegisterStartupScript(GetType(), "Toast", "toasted();", true);
+                ClientScript.RegisterStartupScript(GetType(), "Toast", "toasted(\"No selections were made...<br> You can't continue!\");", true);
             }
         }
 
@@ -142,26 +144,26 @@ namespace CTS_ResourcePortal
 
         protected void btnAll_Click(object sender, EventArgs e)
         {
-            //generateAll();
-            Response.Redirect("NewsletterCreate.aspx");
+            generateAll();
+            //Response.Redirect("NewsletterCreate.aspx");
         }
 
         protected void btnJob_Click(object sender, EventArgs e)
         {
-            //generateJobs();
-            Response.Redirect("NewsletterCreate.aspx?filter=1");
+            generateJobs();
+            //Response.Redirect("NewsletterCreate.aspx?filter=1");
         }
 
         protected void btnEvent_Click(object sender, EventArgs e)
         {
-            //generateEvents();
-            Response.Redirect("NewsletterCreate.aspx?filter=2");
+            generateEvents();
+            //Response.Redirect("NewsletterCreate.aspx?filter=2");
         }
 
         protected void btnTraining_Click(object sender, EventArgs e)
         {
-            //generateTraining();
-            Response.Redirect("NewsletterCreate.aspx?filter=3");
+            generateTraining();
+            //Response.Redirect("NewsletterCreate.aspx?filter=3");
         }
 
         // triggers from botton click of each row, adds row details to list and list to session
@@ -182,10 +184,21 @@ namespace CTS_ResourcePortal
             {
                 selectionList = Session["NewsletterSelections"] as List<NewsletterItem>;
             }
-            selectionList.Add(new NewsletterItem(selectionID, selectionName, selectionComment));
-            Session["NewsletterSelections"] = selectionList;
 
-            Response.Redirect(Request.RawUrl);
+            if (selectionList.Any(s => s.ResourceID == selectionID))
+            { //resource already added
+                ClientScript.RegisterStartupScript(GetType(), "Modal", "toasted(\"Resources cannot be added twice!<br>Delete the existing one in the table below before continuing...\");", true);
+            }
+            else
+            { //resource not added yet
+                selectionList.Add(new NewsletterItem(selectionID, selectionName, selectionComment));
+                Session["NewsletterSelections"] = selectionList;
+                refreshTables();
+                //ClientScript.RegisterStartupScript(GetType(), "Reload", "reloadTables();", true);
+                ClientScript.RegisterStartupScript(GetType(), "Modal", "toasted(\"Resource has been added\");", true);
+
+                // Response.Redirect(Request.RawUrl);
+            }
 
             //UpdatePanel.Update();
             //ScriptManager.RegisterStartupScript(this, GetType(), "bindDataTable", "bindDataTable();", true);
@@ -204,10 +217,14 @@ namespace CTS_ResourcePortal
                 if (item.ResourceID == int.Parse(Selections.DataKeys[rowIndex].Value.ToString()))
                 {
                     selectionList.Remove(item);
+                    Session["NewsletterSelections"] = selectionList;
+                    //ClientScript.RegisterStartupScript(GetType(), "Reload", "reloadTables();", true);
                     break;
                 }
             }
-            Response.Redirect(Request.RawUrl);
+                refreshTables();
+            ClientScript.RegisterStartupScript(GetType(), "Modal", "toasted(\"Resource has been removed\");", true);
+            //Response.Redirect(Request.RawUrl);
         }
     }
 }

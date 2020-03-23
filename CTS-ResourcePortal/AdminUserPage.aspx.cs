@@ -16,9 +16,10 @@ namespace CTS_ResourcePortal
 {
     public partial class AdminUserPage : System.Web.UI.Page
     {
-        ArrayList arrProducts = new ArrayList();
+        //ArrayList arrProducts = new ArrayList();
         DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
         SqlCommand cmd = new SqlCommand();
+ 
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -26,8 +27,37 @@ namespace CTS_ResourcePortal
             {
                 bind();
                 bindPending();
+                IfResume();
+                
             }
 
+        }
+
+        protected void IfResume()
+        {
+            foreach (RepeaterItem item in rptManageR.Items)
+            {
+                string email = (item.FindControl("lblEmail") as Label).Text;
+                LinkButton lnkType = item.FindControl("lnkType") as LinkButton;
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandText = "SELECT ResumeTitle FROM Citizen WHERE Email = '" + email + "'";
+                    cmd.Connection = db.GetConnection();
+                    DataSet EmailDataSet = db.GetDataSetUsingCmdObj(cmd);
+                    if (EmailDataSet.Tables[0].Rows[0].IsNull("ResumeTitle"))
+                    {
+                        db.CloseConnection();                        
+
+                    }
+                    else
+                    {
+                        db.CloseConnection();
+                        lnkType.Visible = true;
+                    }
+
+                }
+            }
+            
         }
 
         private void bind()
@@ -49,6 +79,7 @@ namespace CTS_ResourcePortal
             DataSet dataSet = db.GetDataSetUsingCmdObj(cmd);
             rptNewCitizen.DataSource = dataSet;
             rptNewCitizen.DataBind();
+            
 
         }
 
@@ -152,7 +183,7 @@ namespace CTS_ResourcePortal
 
             if (count == 0)
             {
-
+                
                 title = "";
                 yes.Visible = false;
                 yesAccept.Visible = false;
@@ -177,6 +208,10 @@ namespace CTS_ResourcePortal
             close.Text = "Close";
             string title = "";
             string body = "";
+            //string typeEmail = "";
+            string subject = "";
+            string text = "";
+            string accepted = "Accept Citizen";
 
             foreach (RepeaterItem item in rptNewCitizen.Items)
             {
@@ -194,19 +229,30 @@ namespace CTS_ResourcePortal
                     if (result == 1)
                     {
 
-                        title = "";
-                        body = "Citizen(s) Accepted!";
-                        ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
-                        /*using (MailMessage mm = new MailMessage())
+                        using (SqlCommand cmd = new SqlCommand())
                         {
-                            for (int i = 0; i < count; i++)
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.CommandText = "GetEmail";
+                            cmd.Parameters.AddWithValue("@typeEmail", accepted);
+                            cmd.Connection = db.GetConnection();
+                            db.GetConnection().Open();
+                            using (SqlDataReader sdr = cmd.ExecuteReader())
                             {
-                            //mm.To.Add(db.GetField("Email", i).ToString());
-                            mm.Bcc.Add(db.GetField("Email", i).ToString());
+                                sdr.Read();
+                                subject = sdr["SubjectText"].ToString();
+                                text = sdr["BodyText"].ToString();
                             }
+                            cmd.Parameters.Clear();
+                            db.GetConnection().Close();
+                        }
+
+                        using (MailMessage mm = new MailMessage())
+                        {
+                            
+                            mm.Bcc.Add(email);
                             mm.From = new MailAddress(ConfigurationManager.AppSettings["SMTPuser"]);
-                            mm.Subject = DateTime.Now.ToShortDateString() + " Newsletter"; //TODO subject date to either current date or take user input.
-                            mm.Body = hnl;
+                            mm.Subject = subject; //TODO subject date to either current date or take user input.
+                            mm.Body = text;
                             mm.IsBodyHtml = true;
                             SmtpClient smtp = new SmtpClient();
                             smtp.Host = ConfigurationManager.AppSettings["Host"];
@@ -216,7 +262,11 @@ namespace CTS_ResourcePortal
                             smtp.Credentials = nc;
                             smtp.Port = int.Parse(ConfigurationManager.AppSettings["Port"]);
                             smtp.Send(mm);
-                        }*/
+                        }
+
+                        title = "";
+                        body = "Citizen(s) Accepted!";
+                        ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
 
                     }
                     else
@@ -233,6 +283,7 @@ namespace CTS_ResourcePortal
 
             bindPending();
             bind();
+            IfResume();
 
         }
 
@@ -242,6 +293,7 @@ namespace CTS_ResourcePortal
             int count = 0;
             string title = "";
             string body = "";
+            
 
             foreach (RepeaterItem item in rptNewCitizen.Items)
             {
@@ -303,6 +355,9 @@ namespace CTS_ResourcePortal
             close.Text = "Close";
             string title = "";
             string body = "";
+            string subject = "";
+            string text = "";
+            string accepted = "Reject Citizen";
 
             foreach (RepeaterItem item in rptNewCitizen.Items)
             {
@@ -319,20 +374,31 @@ namespace CTS_ResourcePortal
                     cmd.Parameters.Clear();
                     if (result == 1)
                     {
-                        title = "";
-                        body = "Citizen Rejected";
-                        ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
 
-                        /*using (MailMessage mm = new MailMessage())
+                        using (SqlCommand cmd = new SqlCommand())
                         {
-                            for (int i = 0; i < count; i++)
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.CommandText = "GetEmail";
+                            cmd.Parameters.AddWithValue("@typeEmail", accepted);
+                            cmd.Connection = db.GetConnection();
+                            db.GetConnection().Open();
+                            using (SqlDataReader sdr = cmd.ExecuteReader())
                             {
-                            //mm.To.Add(db.GetField("Email", i).ToString());
-                            mm.Bcc.Add(db.GetField("Email", i).ToString());
+                                sdr.Read();
+                                subject = sdr["SubjectText"].ToString();
+                                text = sdr["BodyText"].ToString();
                             }
+                            cmd.Parameters.Clear();
+                            db.GetConnection().Close();
+                        }
+
+                        using (MailMessage mm = new MailMessage())
+                        {
+
+                            mm.Bcc.Add(email);
                             mm.From = new MailAddress(ConfigurationManager.AppSettings["SMTPuser"]);
-                            mm.Subject = DateTime.Now.ToShortDateString() + " Newsletter"; //TODO subject date to either current date or take user input.
-                            mm.Body = hnl;
+                            mm.Subject = subject; //TODO subject date to either current date or take user input.
+                            mm.Body = text;
                             mm.IsBodyHtml = true;
                             SmtpClient smtp = new SmtpClient();
                             smtp.Host = ConfigurationManager.AppSettings["Host"];
@@ -342,7 +408,11 @@ namespace CTS_ResourcePortal
                             smtp.Credentials = nc;
                             smtp.Port = int.Parse(ConfigurationManager.AppSettings["Port"]);
                             smtp.Send(mm);
-                        }*/
+                        }
+
+                        title = "";
+                        body = "Citizen(s) Rejected";
+                        ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
                     }
                     else
                     {
@@ -356,6 +426,7 @@ namespace CTS_ResourcePortal
 
             bindPending();
             bind();
+            IfResume();
         }
 
 

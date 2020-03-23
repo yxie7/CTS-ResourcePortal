@@ -26,7 +26,10 @@ namespace CTS_ResourcePortal
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
 
+            }
         }
 
         protected void finishSignUp_Click(object sender, EventArgs e)
@@ -76,17 +79,6 @@ namespace CTS_ResourcePortal
             RijndaelManaged rmEncryption = new RijndaelManaged();
             MemoryStream memStream = new MemoryStream();
             CryptoStream encryptionStream = new CryptoStream(memStream, rmEncryption.CreateEncryptor(key, vector), CryptoStreamMode.Write);
-
-            //Email
-            /*encryptionStream.Write(EmailBytes, 0, EmailBytes.Length);
-            encryptionStream.FlushFinalBlock();
-
-            memStream.Position = 0;
-            Byte[] encryptedEmailBytes = new byte[memStream.Length];
-            memStream.Read(encryptedEmailBytes, 0, encryptedEmailBytes.Length);
-
-            encryptionStream.Close();
-            memStream.Close();*/
 
             //password
             memStream = new MemoryStream();

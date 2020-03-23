@@ -48,7 +48,6 @@
     <link href="AdminContent.css" rel="stylesheet" />
     <div id="MyPopup" class="modal fade" role="dialog">
         <div class="modal-dialog">
-            <a href="NewsletterPreview.aspx">NewsletterPreview.aspx</a>
             <!-- Modal content-->
             <div class="modal-content" style="margin-top: 55%; }">
 
@@ -69,8 +68,8 @@
     <div class="container">
         <div class="section">
             <div class="row">
-                <div class="col"></div>
-                <h2 class="col-md-auto">New Citizen Accounts</h2>
+                
+                <h2 class="col-md-auto" style="margin:auto">New Citizen Accounts</h2>
                 
             </div>
 
@@ -176,7 +175,7 @@
                                  <asp:Label ID="lblZip" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, ("Zipcode")) %>'></asp:Label>
                             </td>
                             <td>
-                                <asp:LinkButton ID="lnkType" runat="server" Text="View" OnClick="lnkView_Click"></asp:LinkButton >
+                                <asp:LinkButton ID="lnkType" runat="server" Text="View" OnClick="lnkView_Click" Visible="false"></asp:LinkButton >
                             </td>
                         </tr>
 

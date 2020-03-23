@@ -2,12 +2,24 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="navli" runat="server">
-    <li class="nav-item">
-        <a class="nav-link" href="CitizenSettings.aspx">Account Settings</a>
+     <li class="nav-item">
+        <asp:Label ID="lblCitizenName" runat="server" Text="Test Citizen" CssClass="nav-link"></asp:Label>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="ResourceList.aspx">Sign Out</a>
+
+        <a  id="lnkAccountSettings" class="nav-link" href="CitizenSettings.aspx" runat="server">Account Settings</a>
     </li>
+    <li class="nav-item">
+       <asp:LinkButton ID="lnkSignOut" CssClass="nav-link" runat="server" Text="Sign Out" OnClick="lnkSignOut_Click"></asp:LinkButton>
+        <%--<a id="lnkSignOut" class="nav-link" href="ResourceList.aspx" runat="server">Sign Out</a>--%>
+    </li>
+    <li class="nav-item">
+        <a id="lnkSignup" class="nav-link" href="Signup.aspx" runat="server">Sign-Up</a>
+    </li>
+    <li class="nav-item">
+        <a id="lnkLogin" class="nav-link" href="Login.aspx" runat="server">Login</a>
+    </li>
+   
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
     <div class="content">

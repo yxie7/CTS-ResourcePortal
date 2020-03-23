@@ -7,6 +7,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
+     <div id="MyPopup" class="modal" role="dialog">
+        <div class="modal-dialog modal-xl">
+            <!-- Modal content-->
+            <div class="modal-content container">
+                <div class="modal-body">
+
+                    <br />
+                    <div class="row  justify-content-center align-items-center text-center">
+                        <div class="col"></div>
+                        <div class="col-md-4">
+                             <asp:Label runat="server" ID="lblError" Font-Bold="True"></asp:Label>
+                            </div>
+                        <div class="col"></div>
+                    </div>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true" />
+
     <div class="container">
         <div class="row" id="h2">
             <div class="col"></div>
@@ -26,7 +48,7 @@
                 </div>
                 <div class="col-md-auto">
                     <p>
-                        <asp:TextBox ID="txtEmail" Placeholder="" runat="server"></asp:TextBox>
+                        &nbsp<asp:TextBox ID="txtEmail" Placeholder="" runat="server"></asp:TextBox>
                     </p>
                 </div>
                 <div class="col"></div>
@@ -63,14 +85,20 @@
             <hr />
             <div class="row ">
                 <div class="col"></div>
-                <div class="col-md-auto">
-                    <asp:Label runat="server" ID="lblError" Visible="false"></asp:Label>
-                    <br />
-                    <asp:Label runat="server" ID="UserRegistrationError" Visible="false"></asp:Label> 
+                <div class="col-md-auto"> 
                     <p>Don't Have an account? <asp:LinkButton runat="server" ID="btnSignUpLogin" Text="Sign Up" OnClick="btnSignUpLogin_Click"></asp:LinkButton></p>
                 </div>
                 <div class="col"></div>
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+         function ShowPopup(title, body) {
+             $("#MyPopup .modal-title").html(title);
+             $("#MyPopup .modal-body").html(body);
+             $("#MyPopup").modal("show");
+         }
+    </script>
+
 </asp:Content>

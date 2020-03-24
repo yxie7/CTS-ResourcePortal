@@ -108,7 +108,9 @@ namespace CTS_ResourcePortal
                 Boolean flag = CheckIfEmailExist(UserEmail);
                 if (flag == true)
                 {
-                    Response.Write("Email already exists");
+                    lblThanks.Text = "That email is already being used on our system. Please choose another.";
+                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+
                 }
                 else
                 {
@@ -140,7 +142,10 @@ namespace CTS_ResourcePortal
                     }
                     else
                     {
-                        Response.Write("Error Occured on the DATABASE");
+                        
+                        lblThanks.Text = "Error Occured on the Database";
+                        ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+
                     }
 
                 }

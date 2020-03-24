@@ -129,7 +129,8 @@
     </div>
 
     <div class="container">
-        <div class="row">
+        <div class="section">
+                        <div class="row">
             <div class="col-10 text-center">
             </div>
         </div>
@@ -250,6 +251,7 @@
             </div>
         </div>
         <br />
+        </div>
     </div>
 
     <%--<div id="MyPopup" class="modal fade" role="dialog">

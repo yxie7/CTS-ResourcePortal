@@ -68,8 +68,8 @@
     <div class="container">
         <div class="section">
             <div class="row">
-                <div class="col"></div>
-                <h2 class="col-md-auto">New Citizen Accounts</h2>
+                
+                <h2 class="col-md-auto" style="margin:auto">New Citizen Accounts</h2>
                 
             </div>
 

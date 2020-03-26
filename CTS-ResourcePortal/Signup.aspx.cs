@@ -138,6 +138,7 @@ namespace CTS_ResourcePortal
                         //User Registered 
                         //Save UserEmail in Session Called UserEmail
                         Session.Add("userEmail", txtEmail.Text.ToString());
+                        lblThanks.Text = "Thank you for signing up!";
                         ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
                     }
                     else

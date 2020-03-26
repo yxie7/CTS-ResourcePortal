@@ -197,11 +197,11 @@
                             <div class="card-body">
                                 <div class="row d-flex justify-content-center">
                                     <div class="table-responsive-lg  ">
-                                        <asp:GridView ID="gvJob" runat="server" AutoGenerateColumns="False" class="table table-striped table-light" DataKeyNames="ResourceID" OnRowDataBound="gv_RowDataBound">
+                                        <asp:GridView ID="gvJob" runat="server" AutoGenerateColumns="False" class="table table-stripe table-light" DataKeyNames="ResourceID" OnRowDataBound="gv_RowDataBound">
                                             <Columns>
                                                 <%-- <asp:BoundField DataField="ResourceID" HeaderText="ID" Visible="false" />--%>
                                                 <asp:BoundField DataField="ResourceTitle" HeaderText="Title" HeaderStyle-CssClass="rrth" ItemStyle-CssClass="rrtd" />
-                                                <asp:BoundField DataField="email" HeaderText="Contact" HeaderStyle-CssClass="rth" ItemStyle-CssClass="rtd" />
+                                                <asp:BoundField DataField="email" HeaderText="Contact" HeaderStyle-CssClass="rrth" ItemStyle-CssClass="rrtd" />
                                                 <asp:BoundField DataField="AddressLine2" HeaderText="Location" HeaderStyle-CssClass="rrth" ItemStyle-CssClass="rrtd" />
                                                 <asp:BoundField DataField="datePosted" HeaderText="Date Posted" HeaderStyle-CssClass="rrth" ItemStyle-CssClass="rrtd" />
                                                 <asp:BoundField DataField="expDate" HeaderText="Date Expired" HeaderStyle-CssClass="rrth" ItemStyle-CssClass="rrtd" />

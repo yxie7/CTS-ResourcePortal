@@ -19,7 +19,7 @@ namespace CTS_ResourcePortal
         private Byte[] key = { 250, 101, 18, 76, 45, 135, 207, 118, 4, 171, 3, 168, 202, 241, 37, 199 };
         private Byte[] vector = { 146, 64, 191, 111, 23, 3, 113, 119, 231, 121, 252, 112, 79, 32, 114, 156 };
 
-        DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
+        DBConnect objDB = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
 
         SqlCommand cmd = new SqlCommand();
 
@@ -43,7 +43,7 @@ namespace CTS_ResourcePortal
                 {
                     if (GrabAdminPassword(email) == true)
                     {
-                        string encryptedPassword = (string)db.GetField("Password", 0);
+                        string encryptedPassword = (string)objDB.GetField("Password", 0);
                         String encryptedPasswordLogin;
                         System.Text.UTF8Encoding encoder = new UTF8Encoding();
                         Byte[] PasswordBytes;
@@ -79,13 +79,13 @@ namespace CTS_ResourcePortal
 
                         if (encryptedPassword == encryptedPasswordLogin)
                         {
-                            SqlCommand cmd = new SqlCommand("GetAdminName", db.GetConnection());
+                            SqlCommand cmd = new SqlCommand("GetAdminName", objDB.GetConnection());
                             cmd.CommandType = CommandType.StoredProcedure;
                             SqlParameter inputParameterName = new SqlParameter("@Adminemail", txtEmail.Text);
                             inputParameterName.Direction = ParameterDirection.Input;
                             inputParameterName.SqlDbType = SqlDbType.VarChar;
                             cmd.Parameters.Add(inputParameterName);
-                            DataSet EmailDataSet = db.GetDataSetUsingCmdObj(cmd);
+                            DataSet EmailDataSet = objDB.GetDataSetUsingCmdObj(cmd);
                             string fullname = EmailDataSet.Tables[0].Rows[0].ItemArray[0] + " " + EmailDataSet.Tables[0].Rows[0].ItemArray[1];
 
                             Session.Add("userEmail", txtEmail.Text);
@@ -110,25 +110,31 @@ namespace CTS_ResourcePortal
                     {
                         if (IfCitizenIsAccepted(email) == true)
                         {
-                            string accepted = (string)db.GetField("Accepted", 0);
+                            string accepted = (string)objDB.GetField("Accepted", 0);
                             if (accepted == "FALSE")
                             {
                                 lblError.Text = "This account has not been accepted by the administrator";
                                 ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
                                 
                             }
+                            if (accepted == "Deactivated")
+                            {
+                                lblError.Text = "This account has been deactivated. If you would like to change this, please contact an administrator.";
+                                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+
+                            }
                             if (accepted == "TRUE")
                             {
 
                                 if (GrabCitizenPassword(email) == true)
                                 {
-                                    string encryptedPassword = (string)db.GetField("Password", 0);
+                                    string encryptedPassword = (string)objDB.GetField("Password", 0);
                                     String encryptedPasswordLogin;
                                     System.Text.UTF8Encoding encoder = new UTF8Encoding();
                                     Byte[] PasswordBytes;
 
 
-                                    //EmailBytes = encoder.GetBytes(plainTextEmail);
+              
                                     PasswordBytes = encoder.GetBytes(password);
 
 
@@ -149,8 +155,7 @@ namespace CTS_ResourcePortal
                                     encryptionStream.Close();
                                     memStream.Close();
 
-
-                                    //encryptedEmail = Convert.ToBase64String(encryptedEmailBytes);
+                                    
                                     encryptedPasswordLogin = Convert.ToBase64String(encryptedPasswordBytes);
 
                                     //hashing password
@@ -158,13 +163,13 @@ namespace CTS_ResourcePortal
 
                                     if (encryptedPassword == encryptedPasswordLogin)
                                     {
-                                        SqlCommand cmd = new SqlCommand("GetCitizenName", db.GetConnection());
+                                        SqlCommand cmd = new SqlCommand("GetCitizenName", objDB.GetConnection());
                                         cmd.CommandType = CommandType.StoredProcedure;
                                         SqlParameter inputParameterName = new SqlParameter("@Email", txtEmail.Text);
                                         inputParameterName.Direction = ParameterDirection.Input;
                                         inputParameterName.SqlDbType = SqlDbType.VarChar;
                                         cmd.Parameters.Add(inputParameterName);
-                                        DataSet EmailDataSet = db.GetDataSetUsingCmdObj(cmd);
+                                        DataSet EmailDataSet = objDB.GetDataSetUsingCmdObj(cmd);
                                         string fullname = EmailDataSet.Tables[0].Rows[0].ItemArray[0] + " " + EmailDataSet.Tables[0].Rows[0].ItemArray[1];
 
                                         Session.Add("userEmail", txtEmail.Text);
@@ -197,15 +202,16 @@ namespace CTS_ResourcePortal
 
         }
 
+
         private bool GrabAdminPassword(string Email)
         {
-            SqlCommand cmd = new SqlCommand("GrabPasswordAdmin", db.GetConnection());
+            SqlCommand cmd = new SqlCommand("GrabPasswordAdmin", objDB.GetConnection());
             cmd.CommandType = CommandType.StoredProcedure;
             SqlParameter inputParameterName = new SqlParameter("@Email", Email);
             inputParameterName.Direction = ParameterDirection.Input;
             inputParameterName.SqlDbType = SqlDbType.VarChar;
             cmd.Parameters.Add(inputParameterName);
-            DataSet EmailDataSet = db.GetDataSetUsingCmdObj(cmd);
+            DataSet EmailDataSet = objDB.GetDataSetUsingCmdObj(cmd);
             if (EmailDataSet.Tables[0].Rows.Count == 0)
             {
                 return false;
@@ -218,14 +224,14 @@ namespace CTS_ResourcePortal
 
         public Boolean CheckIfAdminEmailExist(String Email)
         {
-            //checks to see if email matches email in db
-            SqlCommand cmd = new SqlCommand("GrabAdminEmail", db.GetConnection());
+            //checks to see if email matches email in objDB
+            SqlCommand cmd = new SqlCommand("GrabAdminEmail", objDB.GetConnection());
             cmd.CommandType = CommandType.StoredProcedure;
             SqlParameter inputParameterName = new SqlParameter("@Email", Email);
             inputParameterName.Direction = ParameterDirection.Input;
             inputParameterName.SqlDbType = SqlDbType.VarChar;
             cmd.Parameters.Add(inputParameterName);
-            DataSet EmailDataSet = db.GetDataSetUsingCmdObj(cmd);
+            DataSet EmailDataSet = objDB.GetDataSetUsingCmdObj(cmd);
             if (EmailDataSet.Tables[0].Rows.Count == 0)
             {
                 return false;
@@ -238,14 +244,14 @@ namespace CTS_ResourcePortal
 
         public Boolean CheckIfCitizenEmailExist(String Email)
         {
-            //checks to see if email matches email in db
-            SqlCommand cmd = new SqlCommand("CheckIfCitizenExists", db.GetConnection());
+            //checks to see if email matches email in objDB
+            SqlCommand cmd = new SqlCommand("CheckIfCitizenExists", objDB.GetConnection());
             cmd.CommandType = CommandType.StoredProcedure;
             SqlParameter inputParameterName = new SqlParameter("@Email", Email);
             inputParameterName.Direction = ParameterDirection.Input;
             inputParameterName.SqlDbType = SqlDbType.VarChar;
             cmd.Parameters.Add(inputParameterName);
-            DataSet EmailDataSet = db.GetDataSetUsingCmdObj(cmd);
+            DataSet EmailDataSet = objDB.GetDataSetUsingCmdObj(cmd);
             if (EmailDataSet.Tables[0].Rows.Count == 0)
             {
                 return false;
@@ -258,14 +264,14 @@ namespace CTS_ResourcePortal
 
         public Boolean GrabCitizenPassword(String email)
         {
-            //checks to see if email matches email in db
-            SqlCommand cmd = new SqlCommand("GetPassword", db.GetConnection());
+            //checks to see if email matches email in objDB
+            SqlCommand cmd = new SqlCommand("GetPassword", objDB.GetConnection());
             cmd.CommandType = CommandType.StoredProcedure;
             SqlParameter inputParameterName = new SqlParameter("@Email", email);
             inputParameterName.Direction = ParameterDirection.Input;
             inputParameterName.SqlDbType = SqlDbType.VarChar;
             cmd.Parameters.Add(inputParameterName);
-            DataSet PasswordDataSet = db.GetDataSetUsingCmdObj(cmd);
+            DataSet PasswordDataSet = objDB.GetDataSetUsingCmdObj(cmd);
             if (PasswordDataSet.Tables[0].Rows.Count == 0)
             {
                 return false;
@@ -278,14 +284,14 @@ namespace CTS_ResourcePortal
 
         public Boolean IfCitizenIsAccepted(String email)
         {
-            //checks to see if email matches email in db
-            SqlCommand cmd = new SqlCommand("SelectActive", db.GetConnection());
+            //checks to see if email matches email in objDB
+            SqlCommand cmd = new SqlCommand("SelectActive", objDB.GetConnection());
             cmd.CommandType = CommandType.StoredProcedure;
             SqlParameter inputParameterName = new SqlParameter("@Email", email);
             inputParameterName.Direction = ParameterDirection.Input;
             inputParameterName.SqlDbType = SqlDbType.VarChar;
             cmd.Parameters.Add(inputParameterName);
-            DataSet AcceptedDataSet = db.GetDataSetUsingCmdObj(cmd);
+            DataSet AcceptedDataSet = objDB.GetDataSetUsingCmdObj(cmd);
             if (AcceptedDataSet.Tables[0].Rows.Count == 0)
             {
                 return false;

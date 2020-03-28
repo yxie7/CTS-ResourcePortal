@@ -53,7 +53,7 @@
 
             <asp:LinkButton ID="lnkBtnUploadResume" CssClass="buttonClass m-2 btn   btn-block btn-light col" runat="server" OnClick="lnkBtnUploadResume_Click">Upload Resume</asp:LinkButton>
 
-            <asp:LinkButton ID="lnkBtnDeleteAccount" CssClass="buttonClass btn m-2 btn-block btn-light col" runat="server" OnClick="lnkBtnDeleteAccount_Click">Delete Account</asp:LinkButton>
+            <asp:LinkButton ID="lnkBtnDeleteAccount" CssClass="buttonClass btn m-2 btn-block btn-light col" runat="server" OnClick="lnkBtnDeleteAccount_Click">Deactivate Account</asp:LinkButton>
             <div class="col-1"></div>
         </div>
         <br />
@@ -86,7 +86,7 @@
                     <div class="col-lg-10 form-group row d-flex justify-content-center">
                         <label for="currentPassword" class="col-form-label col-lg-4">Current Password</label>
                         <div class="col-lg-4">
-                            <asp:TextBox runat="server" ID="txtCurrentPassword" required="true" class="form-control"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="txtCurrentPassword" required="true"  class="form-control" TextMode="Password"></asp:TextBox>
                         </div>
                     </div>
                     <div class="col-1"></div>
@@ -96,7 +96,7 @@
                     <div class="col-lg-10 form-group row d-flex justify-content-center">
                         <label for="newPassword" class="col-form-label col-lg-4">New Password</label>
                         <div class="col-lg-4">
-                            <asp:TextBox runat="server" ID="txtNewPassword" required="true" class="form-control"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="txtNewPassword" required="true" class="form-control"  TextMode="Password"></asp:TextBox>
                         </div>
                     </div>
                     <div class="col-1"></div>
@@ -106,7 +106,7 @@
                     <div class="col-lg-10 form-group row d-flex justify-content-center">
                         <label for="confirmPassword" class="col-form-label col-lg-4">Confirm Password</label>
                         <div class="col-lg-4">
-                            <asp:TextBox runat="server" ID="txtConfirmPassword" required="true" class="form-control"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="txtConfirmPassword" required="true" class="form-control" TextMode="Password"></asp:TextBox>
                         </div>
                     </div>
                     <div class="col-1"></div>
@@ -115,7 +115,7 @@
                 <div class="row ">
                     <div class="col"></div>
                     <div class="col-6 d-flex justify-content-center">
-                        <asp:Button runat="server" CssClass="btn btn-light" ID="btnUpdatePassword" Text="Update Password" />
+                        <asp:Button runat="server" CssClass="btn btn-light" ID="btnUpdatePassword" Text="Update Password" OnClick="btnUpdatePassword_Click" />
                     </div>
                     <div class="col"></div>
                 </div>
@@ -165,7 +165,7 @@
                      <div class="row ">
                     <div class="col"></div>
                     <div class="col-6 d-flex justify-content-center">
-                    <asp:Button Text="Delete" runat="server" class="btn btn-light" OnClick="Delete_Click" />
+                    <asp:Button Text="Deactivate" id="btnDeactivate" runat="server" class="btn btn-light" OnClick="btnDeactivate_Click" />
                         </div>
                     <div class="col"></div>
                 </div>

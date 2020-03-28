@@ -29,7 +29,7 @@
     </div>
     <div class="modal" id="sent" role="dialog">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content container">
+            <div class="modal-content container justify-content-center align-items-center text-center">
                 <div class="modal-body">
                     <label class="">Newsletter has been sent out</label>
                 </div>

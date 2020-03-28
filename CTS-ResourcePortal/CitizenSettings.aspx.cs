@@ -11,6 +11,7 @@ using Utilities;
 using System.Security.Cryptography;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace CTS_ResourcePortal
 {
@@ -308,13 +309,18 @@ namespace CTS_ResourcePortal
                 if (ResponseReceived == 1)
                 {
 
-                    lblStatus.Text = "You have deactivated your account.";
+                    lblStatus.Text = "You have deactivated your account. Returning you to login page.";
                     lblStatus.Visible = true;
                     ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+
+                    System.Threading.Thread.Sleep(2300);
+
 
                     Session["userName"] = null;
                     Session["userEmail"] = null;
                     Response.Redirect("Login.aspx");
+
+                 
                 }
                 else
 

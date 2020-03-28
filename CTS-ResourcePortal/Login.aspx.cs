@@ -94,13 +94,13 @@ namespace CTS_ResourcePortal
                         }
                         else
                         {
-                            lblError.Text = "Password is not registered";
+                            lblError.Text = "Incorrect Password";
                             ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
                         }
                     }
                     else
                     {
-                        lblError.Text = "Password is not regsitered";
+                        lblError.Text = "Incorrect Password";
                         ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
                     }
                 }
@@ -178,7 +178,7 @@ namespace CTS_ResourcePortal
                                     }
                                     else
                                     {
-                                        lblError.Text = "Password is not registered";
+                                        lblError.Text = "Incorrect Password";
                                         ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
                                     }
 
@@ -186,7 +186,7 @@ namespace CTS_ResourcePortal
                                 }
                                 else
                                 {
-                                    lblError.Text = "This password is not registered";
+                                    lblError.Text = "Incorrect Password";
                                     ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
                                 }
                             }

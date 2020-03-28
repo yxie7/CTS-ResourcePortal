@@ -157,7 +157,40 @@ namespace CTS_ResourcePortal
 
         protected void Delete_Click(object sender, EventArgs e)
         {
+            string citiId = lblCitizenID.Text.ToString();
+            int CitizenID = int.Parse(citiId);
 
+            if (txtConfirmDeactivate.Text == "yes")
+            {
+                objCommand.Parameters.Clear();
+                objCommand.CommandText = "DeactivateAccount";
+
+                objCommand.Parameters.AddWithValue("@CitizenID", CitizenID);
+
+                var ResponseReceived = objDB.DoUpdateUsingCmdObj(objCommand);
+
+                if (ResponseReceived == 1)
+                {
+
+                    lblStatus.Text = "You have deactivated your account.";
+                    lblStatus.Visible = true;
+                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+
+                }
+                else
+
+                    lblStatus.Text = "Failed";
+                lblStatus.Visible = true;
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+
+            }
+            if (txtConfirmDeactivate.Text != "yes")
+            {
+                lblStatus.Text = "Please type "+"Yes"+" into the textbox if you would like to deactivate your account.";
+                lblStatus.Visible = true;
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+
+            }
         }
 
         protected void lnkBtnUpdateSubscriber_Click(object sender, EventArgs e)

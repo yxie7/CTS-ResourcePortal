@@ -74,7 +74,7 @@
                         <asp:Label runat="server" Text="" ID="lblCitizenID" Visible="False"></asp:Label>
 
                         <div class="form-group">
-                            <asp:Button runat="server" ID="btnUpdateSubscribe" class="btn btn-success" Text="Submit" OnClick="btnUpdateSubscribe_Click"></asp:Button>
+                            <asp:Button runat="server" ID="btnUpdateSubscribe" CssClass="btn btn-light" Text="Submit" OnClick="btnUpdateSubscribe_Click"></asp:Button>
                         </div>
                     </div>
                     <div class="col"></div>
@@ -155,13 +155,21 @@
                 <div class="row">
                     <div class="col"></div>
                     <div class="col-lg-auto row">
-                        <label class="col-md-auto">Would you like to delete your account?</label>
+                        <label class="col-md-auto">Would you like to deactivate your account?   Type "yes" if you are sure. </label>
                         <div class="col-md-auto text-center">
-                            <asp:Button Text="Delete" runat="server" class="btn btn-light" OnClick="Delete_Click" />
+                        <asp:TextBox runat="server" ID="txtConfirmDeactivate"  style="text-transform:lowercase;" required="true" class="form-control" onkeyup="this.value = this.value.toLowerCase();"  ></asp:TextBox>
                         </div>
                     </div>
                     <div class="col"></div>
                 </div>
+                     <div class="row ">
+                    <div class="col"></div>
+                    <div class="col-6 d-flex justify-content-center">
+                    <asp:Button Text="Delete" runat="server" class="btn btn-light" OnClick="Delete_Click" />
+                        </div>
+                    <div class="col"></div>
+                </div>
+           
             </div>
         </div>
         <br />

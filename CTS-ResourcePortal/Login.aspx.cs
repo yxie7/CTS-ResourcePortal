@@ -117,6 +117,12 @@ namespace CTS_ResourcePortal
                                 ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
                                 
                             }
+                            if (accepted == "Deactivated")
+                            {
+                                lblError.Text = "This account has been deactivated. If you would like to change this, please contact an administrator.";
+                                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+
+                            }
                             if (accepted == "TRUE")
                             {
 

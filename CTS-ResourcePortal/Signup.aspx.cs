@@ -207,9 +207,21 @@ namespace CTS_ResourcePortal
 
                         result = objDB.DoUpdateUsingCmdObj(cmd);
 
+                        if (result == 1)
+                        {
+                            lblStatus.Text = "Resume was successully uploaded.";
+                            
+                        }
+                        else
+                        {
+                            lblStatus.Text = "Hmm something went wrong, please try again";
+                        }
+                           
+                        
 
+                        
 
-                        lblStatus.Text = "Resume was successully uploaded.";
+                        
 
                     }
 

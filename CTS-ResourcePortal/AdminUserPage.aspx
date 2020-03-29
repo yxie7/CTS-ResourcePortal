@@ -142,8 +142,6 @@
                                     </th>
                                      <th>Address
                                     </th>
-                                    <th>Resume
-                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -169,8 +167,50 @@
                                  <asp:Label ID="lblState" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, ("State")) %>'></asp:Label>
                                  <asp:Label ID="lblZip" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, ("Zipcode")) %>'></asp:Label>
                             </td>
+                        </tr>
+
+                    </ItemTemplate>
+
+                    <FooterTemplate>
+                        </tbody>
+                        </table>
+                    </FooterTemplate>
+                </asp:Repeater>
+				
+                </div>
+        </div>
+    <!---------------------------------------- Resume Table ----------------------------------------------->
+            <div class="section">
+             <h2 class="col-md-auto">Resumes</h2>
+            <div class="table-wrapper ">
+            <asp:Repeater ID="rptResumes" runat="server">
+                    <HeaderTemplate>
+                        <table id="datatable" class="table table-striped table-bordered" border="0" cellpadding="0"
+                            cellspacing="0">
+                            <thead>
+                                <tr>
+
+                                    <th>Email
+                                    </th>
+                                    <th>Resume
+                                    </th>
+                                    <th>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                    </HeaderTemplate>
+
+                    <ItemTemplate>
+                        <tr>
                             <td>
-                                <asp:LinkButton ID="lnkType" runat="server" Text="View" OnClick="lnkView_Click" Visible="false"></asp:LinkButton >
+                                <asp:Label ID="lblEmail" runat=server Text='<%# DataBinder.Eval(Container.DataItem, ("Email")) %>'></asp:Label>
+                            </td>
+                            <td>
+                               <asp:Label ID="lblResume" runat="server" Text=' <%# DataBinder.Eval(Container.DataItem, ("ResumeTitle")) %>'></asp:Label>
+                            </td>
+                            <td>
+                                <asp:LinkButton ID="lnkType" runat="server" Text="View" OnClick="lnkView_Click"></asp:LinkButton >
                             </td>
                         </tr>
 
@@ -184,6 +224,7 @@
 				
                 </div>
         </div>
+
         <br />
     </div>
         </div>

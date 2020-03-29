@@ -7,13 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CTS_ResourcePortal
-{
-
-
-    public partial class AdminUserPage
-    {
-
+namespace CTS_ResourcePortal {
+    
+    
+    public partial class AdminUserPage {
+        
         /// <summary>
         /// close control.
         /// </summary>
@@ -22,7 +20,7 @@ namespace CTS_ResourcePortal
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button close;
-
+        
         /// <summary>
         /// no control.
         /// </summary>
@@ -31,7 +29,7 @@ namespace CTS_ResourcePortal
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button no;
-
+        
         /// <summary>
         /// yes control.
         /// </summary>
@@ -40,7 +38,7 @@ namespace CTS_ResourcePortal
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button yes;
-
+        
         /// <summary>
         /// yesAccept control.
         /// </summary>
@@ -49,7 +47,7 @@ namespace CTS_ResourcePortal
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button yesAccept;
-
+        
         /// <summary>
         /// rptNewCitizen control.
         /// </summary>
@@ -58,7 +56,7 @@ namespace CTS_ResourcePortal
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptNewCitizen;
-
+        
         /// <summary>
         /// rptManageR control.
         /// </summary>
@@ -67,5 +65,14 @@ namespace CTS_ResourcePortal
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptManageR;
+        
+        /// <summary>
+        /// rptResumes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptResumes;
     }
 }

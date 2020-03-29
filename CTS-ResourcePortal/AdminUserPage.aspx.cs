@@ -27,37 +27,20 @@ namespace CTS_ResourcePortal
             {
                 bind();
                 bindPending();
-                IfResume();
+                resumeTable();
                 
             }
 
         }
 
-        protected void IfResume()
+        protected void resumeTable()
         {
-            foreach (RepeaterItem item in rptManageR.Items)
-            {
-                string email = (item.FindControl("lblEmail") as Label).Text;
-                LinkButton lnkType = item.FindControl("lnkType") as LinkButton;
-                using (SqlCommand cmd = new SqlCommand())
-                {
-                    cmd.CommandText = "SELECT ResumeTitle FROM Citizen WHERE Email = '" + email + "'";
-                    cmd.Connection = db.GetConnection();
-                    DataSet EmailDataSet = db.GetDataSetUsingCmdObj(cmd);
-                    if (EmailDataSet.Tables[0].Rows[0].IsNull("ResumeTitle"))
-                    {
-                        db.CloseConnection();                        
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "GetAllResumes";
+            DataSet dataSet = db.GetDataSetUsingCmdObj(cmd);
+            rptResumes.DataSource = dataSet;
+            rptResumes.DataBind();
 
-                    }
-                    else
-                    {
-                        db.CloseConnection();
-                        lnkType.Visible = true;
-                    }
-
-                }
-            }
-            
         }
 
         private void bind()
@@ -104,12 +87,18 @@ namespace CTS_ResourcePortal
 
             //Reference the Label and TextBox.
             string email = (item.FindControl("lblEmail") as Label).Text;
+            string resumeTitle = (item.FindControl("lblResume") as Label).Text;
+
             byte[] bytes;
             string fileName, contentType;
 
             using (SqlCommand cmd = new SqlCommand())
             {
-                cmd.CommandText = "SELECT ResumeTitle, ResumeType, ResumeData FROM Citizen WHERE Email = '" + email + "'";
+
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "GetResumeFile";
+                cmd.Parameters.AddWithValue("@Email", email);
+                cmd.Parameters.AddWithValue("@ResumeTitle", resumeTitle);
                 cmd.Connection = db.GetConnection();
                 db.GetConnection().Open();
                 using (SqlDataReader sdr = cmd.ExecuteReader())
@@ -283,7 +272,7 @@ namespace CTS_ResourcePortal
 
             bindPending();
             bind();
-            IfResume();
+            resumeTable();
 
         }
 
@@ -426,7 +415,7 @@ namespace CTS_ResourcePortal
 
             bindPending();
             bind();
-            IfResume();
+            resumeTable();
         }
 
 

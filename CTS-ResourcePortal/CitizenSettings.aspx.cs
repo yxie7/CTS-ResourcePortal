@@ -43,8 +43,8 @@ namespace CTS_ResourcePortal
             int citiID = (Int32)objDB.GetField("CitizenID", 0);
 
             lblCitizenID.Text = citiID.ToString();
-        }
 
+        }
 
         protected void btnUpdateSubscribe_Click(object sender, EventArgs e)
         {
@@ -84,6 +84,8 @@ namespace CTS_ResourcePortal
             SqlCommand cmd = new SqlCommand();
 
             string fileExtension, resumeType, resumeName, resumeTitle, strSQL;
+
+            string email = Session["userEmail"].ToString();
 
             int result = 0, resumeSize;
 
@@ -126,17 +128,29 @@ namespace CTS_ResourcePortal
 
                         cmd.CommandType = CommandType.StoredProcedure;
 
-                        cmd.Parameters.AddWithValue("@ResumeTitle", resumeTitle);
+                        cmd.Parameters.AddWithValue("@ResumeTitle", resumeName);
 
                         cmd.Parameters.AddWithValue("@ResumeType", resumeType);
 
                         cmd.Parameters.AddWithValue("@ResumeData", resumeData);
 
+                        cmd.Parameters.AddWithValue("@Email", email);
+
                         result = objDB.DoUpdateUsingCmdObj(cmd);
 
-                        lblStatus.Visible = true;
+                        if (result == 1)
+                        {
+                            lblStatus.Visible = true;
+                            lblStatus.Text = "Resume was successully uploaded.";
+                            ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
 
-                        lblStatus.Text = "Resume was successully uploaded.";
+                        }
+                        else
+                        {
+                            lblStatus.Visible = true;
+                            lblStatus.Text = "Hmm something went wrong, please try again";
+                            ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+                        }
 
                     }
 
@@ -145,6 +159,7 @@ namespace CTS_ResourcePortal
                     {
                         lblStatus.Visible = true;
                         lblStatus.Text = "Only docx, pdf, and doc file formats supported.";
+                        ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
 
                     }
 
@@ -157,12 +172,14 @@ namespace CTS_ResourcePortal
             {
                 lblStatus.Visible = true;
                 lblStatus.Text = "Error ocurred: [" + ex.Message + "] cmd=" + result;
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
 
             }
         }
 
         protected void btnUpdatePassword_Click(object sender, EventArgs e)
         {
+            
             string email = Session["userEmail"].ToString();
             string password = txtCurrentPassword.Text;
 
@@ -294,6 +311,7 @@ namespace CTS_ResourcePortal
 
         protected void btnDeactivate_Click(object sender, EventArgs e)
         {
+            
             string citiId = lblCitizenID.Text.ToString();
             int CitizenID = int.Parse(citiId);
 
@@ -340,6 +358,7 @@ namespace CTS_ResourcePortal
 
         protected void lnkBtnUpdateSubscriber_Click(object sender, EventArgs e)
         {
+            rptResumes.Visible = false;
             UpdateSubscriber.Visible = true;
             UpdatePassword.Visible = false;
             UploadResume.Visible = false;
@@ -349,6 +368,7 @@ namespace CTS_ResourcePortal
 
         protected void lnkBtnUpdatePassword_Click(object sender, EventArgs e)
         {
+            rptResumes.Visible = false;
             UpdateSubscriber.Visible = false; ;
             UpdatePassword.Visible = true; ;
             UploadResume.Visible = false;
@@ -357,6 +377,7 @@ namespace CTS_ResourcePortal
 
         protected void lnkBtnUploadResume_Click(object sender, EventArgs e)
         {
+            rptResumes.Visible = false;
             UpdateSubscriber.Visible = false;
             UpdatePassword.Visible = false;
             UploadResume.Visible = true;
@@ -365,6 +386,7 @@ namespace CTS_ResourcePortal
 
         protected void lnkBtnDeleteAccount_Click(object sender, EventArgs e)
         {
+            rptResumes.Visible = false;
             UpdateSubscriber.Visible = false;
             UpdatePassword.Visible = false;
             UploadResume.Visible = false;
@@ -391,6 +413,79 @@ namespace CTS_ResourcePortal
             }
         }
 
-    }
 
-}
+        protected void lnkView_Click(object sender, EventArgs e)
+        {
+            RepeaterItem item = (sender as LinkButton).NamingContainer as RepeaterItem;
+
+            //Reference the Label and TextBox.
+            string email = Session["userEmail"].ToString();
+            byte[] bytes;
+            string fileName, contentType;
+            string resumeTitle = (item.FindControl("lblName") as Label).Text;
+
+            using (SqlCommand cmd = new SqlCommand())
+            {
+
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "GetResumeFile";
+                cmd.Parameters.AddWithValue("@Email", email);
+                cmd.Parameters.AddWithValue("@ResumeTitle", resumeTitle);
+                cmd.Connection = objDB.GetConnection();
+                objDB.GetConnection().Open();
+                using (SqlDataReader sdr = cmd.ExecuteReader())
+                {
+                    sdr.Read();
+                    bytes = (byte[])sdr["ResumeData"];
+                    contentType = sdr["ResumeType"].ToString();
+                    fileName = sdr["ResumeTitle"].ToString();
+                }
+                objDB.GetConnection().Close();
+            }
+
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            Response.ContentType = contentType;
+            Response.AppendHeader("Content-Disposition", "attachment; filename=" + fileName);
+            Response.BinaryWrite(bytes);
+            Response.Flush();
+            Response.End();
+        }
+
+        protected void lnkDelete_Click(object sender, EventArgs e)
+        {
+            RepeaterItem item = (sender as LinkButton).NamingContainer as RepeaterItem;
+            string resumeTitle = (item.FindControl("lblName") as Label).Text;
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "DeleteResume";
+            objCommand.Parameters.AddWithValue("@ResumeTitle", resumeTitle);
+            int result = objDB.DoUpdateUsingCmdObj(objCommand);
+            objCommand.Parameters.Clear();
+        }
+
+        protected void ResumeTable_Click(object sender, EventArgs e)
+        {
+            objCommand.Parameters.Clear();
+            //RepeaterItem item = (sender as Label).NamingContainer as RepeaterItem;
+            string email = Session["userEmail"].ToString();
+
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "GetResumeName";
+            objCommand.Parameters.AddWithValue("@Email", email);
+            DataSet dataSet = objDB.GetDataSetUsingCmdObj(objCommand);
+            rptResumes.DataSource = dataSet;
+            rptResumes.DataBind();
+            if (dataSet.Tables[0].Rows[0].IsNull("ResumeTitle"))
+            {
+                //do nothing                        
+
+            }
+            else
+            {
+                rptResumes.Visible = true;
+            }
+        }
+      }
+    }

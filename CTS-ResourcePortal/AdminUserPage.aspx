@@ -66,13 +66,8 @@
     </div>
 
     <div class="container">
-        <div class="section">
-            <div class="row">
-                
-                <h2 class="col-md-auto" style="margin:auto">New Citizen Accounts</h2>
-                
-            </div>
-
+        <div class="section">                
+                <h2 class="col-md-auto">New Citizen Accounts</h2>
             <div class="table-wrapper ">
             <asp:Repeater ID="rptNewCitizen" runat="server">
                     <HeaderTemplate>

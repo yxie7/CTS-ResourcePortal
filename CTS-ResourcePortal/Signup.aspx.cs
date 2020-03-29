@@ -18,7 +18,7 @@ namespace CTS_ResourcePortal
 {
     public partial class Signup : System.Web.UI.Page
     {
-        DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
+        DBConnect objDB = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
         
         ArrayList UserRegistrationError = new ArrayList();
         private Byte[] key = { 250, 101, 18, 76, 45, 135, 207, 118, 4, 171, 3, 168, 202, 241, 37, 199 };
@@ -59,20 +59,18 @@ namespace CTS_ResourcePortal
 
 
 
-            String plainTextEmail = txtEmail.Text;
+
             String plainTextPassword = txtPassword.Text;
 
-
-            //String encryptedEmail;
             String encryptedPassword;
 
 
             System.Text.UTF8Encoding encoder = new UTF8Encoding();
-            //Byte[] EmailBytes;
+
             Byte[] PasswordBytes;
 
 
-            //EmailBytes = encoder.GetBytes(plainTextEmail);
+  
             PasswordBytes = encoder.GetBytes(plainTextPassword);
 
 
@@ -95,7 +93,7 @@ namespace CTS_ResourcePortal
             memStream.Close();
 
 
-            //encryptedEmail = Convert.ToBase64String(encryptedEmailBytes);
+            
             encryptedPassword = Convert.ToBase64String(encryptedPasswordBytes);
 
             //hashing password
@@ -108,7 +106,9 @@ namespace CTS_ResourcePortal
                 Boolean flag = CheckIfEmailExist(UserEmail);
                 if (flag == true)
                 {
-                    Response.Write("Email already exists");
+                    lblThanks.Text = "That email is already being used on our system. Please choose another.";
+                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+
                 }
                 else
                 {
@@ -136,11 +136,15 @@ namespace CTS_ResourcePortal
                         //User Registered 
                         //Save UserEmail in Session Called UserEmail
                         Session.Add("userEmail", txtEmail.Text.ToString());
+                        lblThanks.Text = "Thank you for signing up!";
                         ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
                     }
                     else
                     {
-                        Response.Write("Error Occured on the DATABASE");
+                        
+                        lblThanks.Text = "Error Occured on the Database";
+                        ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+
                     }
 
                 }
@@ -201,7 +205,7 @@ namespace CTS_ResourcePortal
 
                         cmd.Parameters.AddWithValue("@Email", email);
 
-                        result = db.DoUpdateUsingCmdObj(cmd);
+                        result = objDB.DoUpdateUsingCmdObj(cmd);
 
 
 
@@ -245,7 +249,7 @@ namespace CTS_ResourcePortal
             inputParameter.SqlDbType = SqlDbType.NVarChar;
             objCommand.Parameters.Add(inputParameter); 
 
-            DataSet EmailDataSet = db.GetDataSetUsingCmdObj(objCommand);
+            DataSet EmailDataSet = objDB.GetDataSetUsingCmdObj(objCommand);
             if (EmailDataSet.Tables[0].Rows.Count == 0)
             {
                 return false;

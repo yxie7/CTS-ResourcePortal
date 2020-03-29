@@ -129,7 +129,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
             content: attr(data-header);
         }
 
-    #jobResourceCollapse th, #eventResourceCollapse th, #trainingResourceCollaps th {
+    #jobResourceCollapse th, #eventResourceCollapse th, #trainingResourceCollapse th {
         display: none;
         width: 100%;
     }

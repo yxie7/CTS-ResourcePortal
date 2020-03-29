@@ -50,17 +50,14 @@
     <div id="MyPopup" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <!-- Modal content-->
-            <div class="modal-content container" style="margin-top: 55%; }">
+            <div class="modal-content container">
                 <h4 class="modal-title"></h4>
                 <div class="modal-body">
                 </div>
-                <div class="modal-msg">
-                    <form action="">
-                        <textarea id="txtReply" name="myTextBox" runat="server" cols="68" rows="8"> Enter some text...
-                            </textarea>
-                        <br />
-
-                    </form>
+                <div class="modal-msg row">
+                    <div class="col-1"></div>
+                        <textarea id="txtReply" name="myTextBox" class="col form-control" runat="server" placeholder="Enter your reply here..."></textarea>
+                    <div class="col-1"></div>
                 </div>
                 <div class="modal-footer">
                     <%--<button type="button" class="btn btn-danger" data-dismiss="modal">

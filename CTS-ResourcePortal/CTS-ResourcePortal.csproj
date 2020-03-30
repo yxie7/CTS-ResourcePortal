@@ -16,7 +16,8 @@
     <AssemblyName>CTS_ResourcePortal</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -214,6 +215,7 @@
     <Content Include="DataTables\Scroller-2.0.1\js\scroller.semanicui.js" />
     <Content Include="DataTables\Scroller-2.0.1\js\scroller.semanticui.js" />
     <Content Include="DataTables\Scroller-2.0.1\js\scroller.semanticui.min.js" />
+    <Content Include="Global.asax" />
     <Content Include="Images\CTS_Logo.png" />
     <Content Include="Images\event.png" />
     <Content Include="Images\job.png" />
@@ -325,6 +327,9 @@
     </Compile>
     <Compile Include="CitizenSettings.aspx.designer.cs">
       <DependentUpon>CitizenSettings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Guest.master.cs">
       <DependentUpon>Guest.master</DependentUpon>

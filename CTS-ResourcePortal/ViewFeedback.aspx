@@ -16,6 +16,11 @@
             $("#MyPopup .modal-body").html(body);
             $("#MyPopup").modal("show");
         }
+        function ShowPopup2(title, body) {
+            $("#MyPopup2 .modal-title").html(title);
+            $("#MyPopup2 .modal-body").html(body);
+            $("#MyPopup2").modal("show");
+        }
         $(document).ready(function () {
             $('[id*=datatable]').DataTable({
                 columnDefs: [{
@@ -67,6 +72,22 @@
             </div>
         </div>
     </div>
+    <div id="MyPopup2" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content container">
+                <h4 class="modal-title"></h4>
+                <div class="modal-body">
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">
+                        Close</button>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="section">
 
@@ -96,7 +117,7 @@
 
                     <br />
                     <br />
-                    <asp:Repeater ID="rptViewR" runat="server">
+                    <asp:Repeater ID="rptViewR" runat="server" OnItemCommand="rptViewR_ItemCommand">
                         <HeaderTemplate>
                             <table id="datatable" class="table  table-bordered" border="0" cellpadding="0"
                                 cellspacing="0">

@@ -16,19 +16,8 @@
 table {
     width: 100% !important;
     overflow: scroll;
-    background: grey;
 }
 
-.accordion, .card-header, .tableSelection {
-    background-color: #F5F5F5;
-    border-radius: 10px;
-    color: black;
-    padding: 10px;
-}
-
-.card-body {
-    background-color: #3a3a3a;
-}
 
 .btn-link {
     color: black
@@ -55,17 +44,25 @@ table {
 .col-form-label {
     text-align: right;
 }
+.card {
+    border: 1px solid #001a3e;
+}
+.card-header {
+    color: black;
+    border-color: #001a3e;
+}
 
+.card-body {
+    background-color: white;
+}
 .cardlist {
+    border-top: #001a3e;
     background-color: white;
     list-style-type: none;
-    color: black;
+    color: white;
 }
 
     .cardlist li {
-        text-align: center;
-        padding: 5px;
-        margin: 10px;
         color: black;
     }
 

@@ -81,7 +81,6 @@
             <br />
             <div class="row d-flex justify-content-center">
                 <div class="accordion col-10">
-                    <br />
                     <asp:Label ID="lblResourceSelect" runat="server" Text="Select Resources Type: "></asp:Label>
 
                     <br />
@@ -128,7 +127,10 @@
                 </div>
             </div>
             <br />
-
+        </div>
+        <br />
+        <div class="section">
+            <br />
             <div class="row d-flex justify-content-center">
                 <div class="tableSelection col-10">
                     <label>Current Newsletter Items:</label><br />

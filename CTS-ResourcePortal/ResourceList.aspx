@@ -15,7 +15,6 @@
             <!-- Modal content-->
             <div class="modal-content container">
                 <div class="modal-body">
-
                     <div class="row" id="h2">
                         <div class="col"></div>
                         <div class="col-md-auto">
@@ -177,6 +176,7 @@
         </div>
         <br />
         <div class="section">
+            <br />
             <div class="row d-flex justify-content-center">
                 <div class="col-10">
                     <asp:TextBox runat="server" ID="txtTitleSearch" AutoPostBack="true" CssClass="form-control search" placeholder="Search Titles Here..." OnTextChanged="txtTitleSearch_TextChanged"></asp:TextBox>
@@ -281,8 +281,8 @@
                     </div>
                 </div>
             </div>
+            <br />
         </div>
-        <br />
 
         <%--  </ContentTemplate>
              </asp:UpdatePanel>--%>

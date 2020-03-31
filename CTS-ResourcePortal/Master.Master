@@ -6,7 +6,7 @@
 <head runat="server">
     <title>Called To Serve</title>
     <script src="https://kit.fontawesome.com/f03b07e8ab.js" crossorigin="anonymous"></script>
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <%--<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">--%>
     <link href="content/bootstrap.css" rel="stylesheet" />
     <link href="master.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="head" runat="server">
@@ -17,7 +17,7 @@
         <div class="overlay"></div>
         <div id="page-container">
             <div class="content-wrap">
-                <nav class="navbar navbar-expand-lg navbar-dark ">
+                <nav class="navbar navbar-expand-lg navbar-dark">
                     <a class="navbar-brand" href="ResourceList.aspx">
                         <img src="Images/CTS_Logo.png" />&nbsp:: Resource Portal
                     </a>
@@ -34,15 +34,51 @@
                 <asp:ContentPlaceHolder ID="Content" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
-            <footer>
-                <a href="AdminHomePage.aspx">
-                    <img src="Images/CTS_Logo.png" /></a>&nbsp
-            Called To Serve Resource Portal &nbsp
-            <i class="fas fa-map-marker-alt"></i>&nbsp 3600 N. Broad Street Philadelphia, PA 19140&nbsp
-            <i class="fas fa-phone-alt"></i>&nbsp (215) 588-4940&nbsp
-            <i class="far fa-envelope"></i>&nbsp info@calledtoservecdc.org&nbsp
-            <a href="CitizenSettings.aspx">
-                <img src="Images/CTS_Logo.png" /></a>
+            <footer class="row justify-content-center">
+                <div class="col-4">
+                    <div class="footer-item">
+                        <a href="AdminHomePage.aspx">
+                            <img src="Images/CTS_Logo.png" /></a>&nbsp
+                        <span>Called To Serve Resource Portal</span>
+                    </div>
+                    <div class="footer-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>3600 N. Broad Street Philadelphia, PA 19140</span>
+                    </div>
+                    <div class="footer-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <a href="tel:((215) 588-4940)">(215) 588-4940</a>
+                    </div>
+                    <div class="footer-item">
+                        <i class="far fa-envelope"></i>
+                        <a href="mailto:info@calledtoservecdc.org">info@calledtoservecdc.org</a>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="footer-item">
+                        <a href="CitizenSettings.aspx">
+                            <img src="Images/CTS_Logo.png" /></a>
+                        <span>Company Info</span>
+                    </div>
+                    <div class="footer-item">
+                        <a href="https://calledtoservecdc.org/">Home</a>
+                    </div>
+                    <div class="footer-item">
+                        <a href="https://calledtoservecdc.org/about/">About</a>
+                    </div>
+                    <div class="footer-item">
+                        <a href="https://calledtoservecdc.org/projects/">Projects</a>
+                    </div>
+                    <div class="footer-item">
+                        <a href="https://calledtoservecdc.org/news/">News</a>
+                    </div>
+                    <div class="footer-item">
+                        <a href="https://calledtoservecdc.org/contact-us/">Contact us</a>
+                    </div>
+                    <div class="footer-item">
+                        <a href="https://calledtoservecdc.org/take-action/">Take Action</a>
+                    </div>
+                </div>
             </footer>
         </div>
     </form>

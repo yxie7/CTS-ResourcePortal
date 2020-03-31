@@ -2,9 +2,15 @@
     color: #3a3a3a;
     opacity: .9; /* Firefox */
 }
+
 .buttonClass {
     width: 0px;
     padding: 5px;
+}
+
+.search {
+    border-bottom: 1px solid #003A8B;
+    box-shadow: 0 1px 0 0 #003A8B;
 }
 
 table {
@@ -108,22 +114,24 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     }
 
     .rtd {
-        margin-top:25px;
+        margin-top: 25px;
         display: block;
         position: relative;
         text-align: right;
         padding: 25px 10px 5px 10px;
     }
+
         .rtd:last-of-type {
             padding-bottom: 25px;
         }
+
         .rtd:before {
-            text-align:left;
+            text-align: left;
             padding: 0 10px;
             display: inline-block;
             font-weight: bold;
-            position:absolute;
-            margin-top:-25px;
+            position: absolute;
+            margin-top: -25px;
             top: 0px;
             left: 0px;
             content: attr(data-header);
@@ -135,7 +143,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     }
 
     #jobResourceCollapse td:last-of-type, #eventResourceCollapse td:last-of-type, #trainingResourceCollapse td:last-of-type {
-        text-align:center;
+        text-align: center;
         padding-bottom: 25px;
     }
 
@@ -230,6 +238,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     right: 45px;
     z-index: 999;
 }
+
 .modal-backdrop.show {
     opacity: 0.9 !important;
 }

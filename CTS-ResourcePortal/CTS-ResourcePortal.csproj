@@ -16,7 +16,8 @@
     <AssemblyName>CTS_ResourcePortal</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -214,6 +215,7 @@
     <Content Include="DataTables\Scroller-2.0.1\js\scroller.semanicui.js" />
     <Content Include="DataTables\Scroller-2.0.1\js\scroller.semanticui.js" />
     <Content Include="DataTables\Scroller-2.0.1\js\scroller.semanticui.min.js" />
+    <Content Include="Global.asax" />
     <Content Include="Images\CTS_Logo.png" />
     <Content Include="Images\event.png" />
     <Content Include="Images\job.png" />
@@ -229,8 +231,6 @@
     <Content Include="AddNewJobOpp.aspx" />
     <Content Include="AddNewEvent.aspx" />
     <Content Include="AddNewTraining.aspx" />
-    <Content Include="Event.aspx" />
-    <Content Include="Job.aspx" />
     <Content Include="Feedback.aspx" />
     <Content Include="AdminUserPage.aspx" />
     <Content Include="EditJob.aspx" />
@@ -243,7 +243,6 @@
     <Content Include="EditTraining.aspx" />
     <Content Include="EditEvent.aspx" />
     <Content Include="signup-form.css" />
-    <Content Include="Training.aspx" />
     <Content Include="ViewFeedback.aspx" />
     <Content Include="DataTables\Buttons-1.6.1\css\common.scss" />
     <Content Include="DataTables\Buttons-1.6.1\css\mixins.scss" />
@@ -326,6 +325,9 @@
     <Compile Include="CitizenSettings.aspx.designer.cs">
       <DependentUpon>CitizenSettings.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="Guest.master.cs">
       <DependentUpon>Guest.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -390,20 +392,6 @@
     <Compile Include="AddNewTraining.aspx.designer.cs">
       <DependentUpon>AddNewTraining.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Event.aspx.cs">
-      <DependentUpon>Event.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Event.aspx.designer.cs">
-      <DependentUpon>Event.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Job.aspx.cs">
-      <DependentUpon>Job.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Job.aspx.designer.cs">
-      <DependentUpon>Job.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Feedback.aspx.cs">
       <DependentUpon>Feedback.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -452,13 +440,6 @@
     </Compile>
     <Compile Include="Signup.aspx.designer.cs">
       <DependentUpon>Signup.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Training.aspx.cs">
-      <DependentUpon>Training.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Training.aspx.designer.cs">
-      <DependentUpon>Training.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewFeedback.aspx.cs">
       <DependentUpon>ViewFeedback.aspx</DependentUpon>

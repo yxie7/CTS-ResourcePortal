@@ -165,17 +165,15 @@
     <%--<asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true" />--%>
 
     <div class="container">
-
         <%--         <asp:UpdatePanel runat="server">
                <ContentTemplate>--%>
-
-        <div class="row">
-            <div class="col"></div>
-            <h2 class="col-md-auto">Resource List</h2>
-            <div class="col"></div>
-        </div>
-        <br />
         <div class="section">
+            <br />
+            <div class="row">
+                <div class="col"></div>
+                <h2 class="col-md-auto">Resource List</h2>
+                <div class="col"></div>
+            </div>
             <br />
             <div class="row d-flex justify-content-center">
                 <div class="col-10">
@@ -286,7 +284,6 @@
 
         <%--  </ContentTemplate>
              </asp:UpdatePanel>--%>
-
     </div>
 
     <script type="text/javascript">

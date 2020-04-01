@@ -35,7 +35,7 @@
                 </asp:ContentPlaceHolder>
             </div>
             <footer class="row justify-content-center">
-                <div class="col-4">
+                <div class="col-md-4">
                     <div class="footer-item">
                         <a href="AdminHomePage.aspx">
                             <img src="Images/CTS_Logo.png" /></a>&nbsp
@@ -54,7 +54,8 @@
                         <a href="mailto:info@calledtoservecdc.org">info@calledtoservecdc.org</a>
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-md-1"></div>
+                <div class="col-md-4">
                     <div class="footer-item">
                         <a href="CitizenSettings.aspx">
                             <img src="Images/CTS_Logo.png" /></a>

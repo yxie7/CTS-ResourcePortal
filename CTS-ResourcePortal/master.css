@@ -28,8 +28,7 @@ footer {
     z-index: 99;
     padding: 25px 25px 10px 25px;
     position: absolute;
-    height: 360px;
-    bottom: -360px;
+    bottom: -365px;
 }
 
     footer img {
@@ -52,6 +51,11 @@ footer .footer-item:not(:first-child) {
     color: white;
 }
 
+@media screen and (max-width: 768px) {
+    footer {
+        bottom: -700px;
+    }
+}
 /*.container {
     background-color: #334d71;
     box-shadow: 0 0px 25px #fdd247;
@@ -62,18 +66,19 @@ footer .footer-item:not(:first-child) {
     color: black;
     border: 1px solid black;
 }*/
-
-/*.section {
-    background-color: #606060;
+.section {
+    background-color: white;
+    border: 1px solid grey;
+    border-width: thin;
     border-radius: 10px;
-    color: white;
+    color: black;
     padding: 10px;
     margin: 1px 10px;
-}*/
+}
 
 .content {
     padding-bottom: 75px;
-    padding-top: 85px;
+    padding-top: 50px;
 }
 
 h1, h2, h3, h4, h5 {
@@ -98,7 +103,7 @@ a img {
 
 .navbar-brand, .navbar-brand a {
     font-size: 28px;
-    color: #fdd247 !important;
+    color: #ffba01 !important;
 }
 
 .navbar-nav > li {
@@ -106,12 +111,12 @@ a img {
     margin-right: 30px;
 }
 
-.navbar-text,.nav-item a {
+.navbar-text, .nav-item a {
     color: #d5d5d5 !important;
 }
 
-    .nav-item:hover a {
-        color: #fdd247 !important;
-        cursor: pointer;
-        text-decoration: none;
-    }
+.nav-item:hover a {
+    color: #ffba01 !important;
+    cursor: pointer;
+    text-decoration: none;
+}

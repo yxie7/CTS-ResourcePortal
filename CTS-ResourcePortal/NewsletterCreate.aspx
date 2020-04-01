@@ -1,13 +1,17 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin.master" AutoEventWireup="true" CodeBehind="NewsletterCreate.aspx.cs" Inherits="CTS_ResourcePortal.NewsletterCreate" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
+
+    <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
+    <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" />
     <link href="css.css" rel="stylesheet" />
+
     <script src="Scripts/jquery-3.0.0.js"></script>
     <script src="Scripts/popper.js"></script>
     <script src="Scripts/bootstrap.js"></script>
 
-    <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
     <script type="text/javascript">
         $(function () {
             var resourceList = $('[id*=datatable]').DataTable({
@@ -18,11 +22,6 @@
                     "bLengthChange": false,
                     stateSave: true
                 });
-
-
-            //bindDataTable(); // bind data table on first page load
-            // bind data table on every UpdatePanel refresh
-            //Sys.WebForms.PageRequestManager.getInstance().add_endRequest(bindDataTable);
         });
 
         function toasted(body) {
@@ -38,22 +37,12 @@
                 stateSave: true
             });
         }
-        
-            function reloadTables() {
-                resourceList.ajax.draw();
-                selections.ajax.draw();
-            }
-        <%--$(document).ready(function () {
-            $('[id*=datatable]').DataTable({
-            });
-            $('#<%= Selections.ClientID %>').DataTable({
-                "bFilter": false,
-                "bLengthChange": false,
-                stateSave: true,
-                rowReorder: true
-            });
-        });--%>
-</script>
+
+        function reloadTables() {
+            resourceList.ajax.draw();
+            selections.ajax.draw();
+        }
+    </script>
     <!---->
     <%--<asp:ScriptManager ID="ScriptManager1" runat="server" />
     <asp:UpdatePanel runat="server" ID="UpdatePanel" UpdateMode="Conditional" ChildrenAsTriggers="true">
@@ -81,7 +70,6 @@
             <br />
             <div class="row d-flex justify-content-center">
                 <div class="accordion col-10">
-                    <br />
                     <asp:Label ID="lblResourceSelect" runat="server" Text="Select Resources Type: "></asp:Label>
 
                     <br />
@@ -128,7 +116,10 @@
                 </div>
             </div>
             <br />
-
+        </div>
+        <br />
+        <div class="section">
+            <br />
             <div class="row d-flex justify-content-center">
                 <div class="tableSelection col-10">
                     <label>Current Newsletter Items:</label><br />

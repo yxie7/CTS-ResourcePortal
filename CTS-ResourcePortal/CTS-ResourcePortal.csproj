@@ -246,6 +246,8 @@
     <Content Include="ViewFeedback.aspx" />
     <Content Include="DataTables\Buttons-1.6.1\css\common.scss" />
     <Content Include="DataTables\Buttons-1.6.1\css\mixins.scss" />
+    <Content Include="ForgotPassword.aspx" />
+    <Content Include="NewPassword.aspx" />
     <None Include="packages.config" />
     <Content Include="NewsletterCreate.aspx" />
     <Content Include="NewsletterPreview.aspx" />
@@ -447,6 +449,20 @@
     </Compile>
     <Compile Include="ViewFeedback.aspx.designer.cs">
       <DependentUpon>ViewFeedback.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ForgotPassword.aspx.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ForgotPassword.aspx.designer.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NewPassword.aspx.cs">
+      <DependentUpon>NewPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewPassword.aspx.designer.cs">
+      <DependentUpon>NewPassword.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

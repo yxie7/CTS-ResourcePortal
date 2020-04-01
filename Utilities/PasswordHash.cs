@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Utilities
 {
-    public sealed class PasswordHash
+    public class PasswordHash
     {
         const int SaltSize = 16, HashSize = 20, HashIter = 10000;
         readonly byte[] _salt, _hash;
@@ -15,6 +15,7 @@ namespace Utilities
         {
             new RNGCryptoServiceProvider().GetBytes(_salt = new byte[SaltSize]);
             _hash = new Rfc2898DeriveBytes(password, _salt, HashIter).GetBytes(HashSize);
+            
         }
         public PasswordHash(byte[] hashBytes)
         {

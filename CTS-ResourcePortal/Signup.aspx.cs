@@ -21,8 +21,7 @@ namespace CTS_ResourcePortal
         DBConnect objDB = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
         
         ArrayList UserRegistrationError = new ArrayList();
-        private Byte[] key = { 250, 101, 18, 76, 45, 135, 207, 118, 4, 171, 3, 168, 202, 241, 37, 199 };
-        private Byte[] vector = { 146, 64, 191, 111, 23, 3, 113, 119, 231, 121, 252, 112, 79, 32, 114, 156 };
+        
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -62,42 +61,16 @@ namespace CTS_ResourcePortal
 
             String plainTextPassword = txtPassword.Text;
 
-            String encryptedPassword;
-
-
-            System.Text.UTF8Encoding encoder = new UTF8Encoding();
-
-            Byte[] PasswordBytes;
-
-
-  
-            PasswordBytes = encoder.GetBytes(plainTextPassword);
-
-
-            RijndaelManaged rmEncryption = new RijndaelManaged();
-            MemoryStream memStream = new MemoryStream();
-            CryptoStream encryptionStream = new CryptoStream(memStream, rmEncryption.CreateEncryptor(key, vector), CryptoStreamMode.Write);
-
-            //password
-            memStream = new MemoryStream();
-            encryptionStream = new CryptoStream(memStream, rmEncryption.CreateEncryptor(key, vector), CryptoStreamMode.Write);
-
-            encryptionStream.Write(PasswordBytes, 0, PasswordBytes.Length);
-            encryptionStream.FlushFinalBlock();
-
-            memStream.Position = 0;
-            Byte[] encryptedPasswordBytes = new byte[memStream.Length];
-            memStream.Read(encryptedPasswordBytes, 0, encryptedPasswordBytes.Length);
-
-            encryptionStream.Close();
-            memStream.Close();
-
-
             
-            encryptedPassword = Convert.ToBase64String(encryptedPasswordBytes);
 
-            //hashing password
-            PasswordHash hash = new PasswordHash(encryptedPassword);
+            byte[] salt;
+            new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
+            var pbkdf2 = new Rfc2898DeriveBytes(plainTextPassword, salt, 10000);
+            byte[] hash = pbkdf2.GetBytes(20);
+            byte[] hashBytes = new byte[36];
+            Array.Copy(salt, 0, hashBytes, 0, 16);
+            Array.Copy(hash, 0, hashBytes, 16, 20);
+            string savedPasswordHash = Convert.ToBase64String(hashBytes);
 
             if (UserRegistrationError.Count == 0)
             {
@@ -120,7 +93,7 @@ namespace CTS_ResourcePortal
                         FirstName = firstName,
                         LastName = lastName,
                         Email = email,
-                        Password = encryptedPassword,
+                        Password = savedPasswordHash,
                         Address = address,
                         City = city,
                         State = state,
@@ -216,11 +189,6 @@ namespace CTS_ResourcePortal
                         {
                             lblStatus.Text = "Hmm something went wrong, please try again";
                         }
-                           
-                        
-
-                        
-
                         
 
                     }

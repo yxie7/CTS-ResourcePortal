@@ -53,17 +53,17 @@
         #sidebar > ul > li {
             padding: 10px 1em 10px 1em;
             transition: 0.5s;
-            color: #fdd247;
+            color: #ffba01;
             text-indent: -1em;
         }
 
             #sidebar > ul > li:hover {
                 background: #2f4462;
-                color: #fdd247;
+                color: #ffba01;
             }
 
                 #sidebar > ul > li:hover > a {
-                    color: #fdd247;
+                    color: #ffba01;
                 }
 
             #sidebar > ul > li > a {
@@ -75,7 +75,7 @@
             }
 
                 #sidebar > ul > li > a:hover {
-                    color: #fdd247;
+                    color: #ffba01;
                     cursor: pointer;
                     text-decoration: none;
                 }

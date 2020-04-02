@@ -15,9 +15,7 @@ using Utilities;
 namespace CTS_ResourcePortal
 {
     public partial class WebForm2 : System.Web.UI.Page
-    {
-        //private Byte[] key = { 250, 101, 18, 76, 45, 135, 207, 118, 4, 171, 3, 168, 202, 241, 37, 199 };
-        //private Byte[] vector = { 146, 64, 191, 111, 23, 3, 113, 119, 231, 121, 252, 112, 79, 32, 114, 156 };
+    {     
 
         DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
         SqlCommand cmd = new SqlCommand();

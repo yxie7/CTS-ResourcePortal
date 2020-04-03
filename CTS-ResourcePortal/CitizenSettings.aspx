@@ -50,7 +50,7 @@
                     <div class="row  justify-content-center align-items-center text-center">
                         <div class="col"></div>
                         <div class="col-md-4">
-                          <asp:Label runat="server" ID="lblStatus" Visible="false"></asp:Label>
+                          <asp:Label runat="server" ID="lblStatus"></asp:Label>
                      </div>
                         <div class="col"></div>
                     </div>

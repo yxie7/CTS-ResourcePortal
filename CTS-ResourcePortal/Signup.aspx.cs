@@ -21,7 +21,7 @@ namespace CTS_ResourcePortal
         DBConnect objDB = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
         
         ArrayList UserRegistrationError = new ArrayList();
-        
+        SqlCommand cmd = new SqlCommand();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -33,18 +33,8 @@ namespace CTS_ResourcePortal
 
         protected void finishSignUp_Click(object sender, EventArgs e)
         {
-
-            SqlCommand cmd = new SqlCommand();
-
             string fileExtension, resumeType, resumeName, resumeTitle, strSQL;
-
             int result = 0, resumeSize;
-
-
-
-            //Validate
-            ValidateUserRegistration();
-
 
             string firstName = txtFirstName.Text;
             string lastName = txtLastName.Text;
@@ -56,12 +46,7 @@ namespace CTS_ResourcePortal
             string cellphone = txtCellPhone.Text;
             string subscribe = rdoSubscribe.SelectedValue.ToString(); 
 
-
-
-
-            String plainTextPassword = txtPassword.Text;
-
-            
+            String plainTextPassword = txtPassword.Text;  
 
             byte[] salt;
             new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
@@ -76,8 +61,7 @@ namespace CTS_ResourcePortal
             {
                 //Check if email already exist
                 String UserEmail = txtEmail.Text;
-                Boolean flag = CheckIfEmailExist(UserEmail);
-                if (flag == true)
+                if (CheckIfEmailExist(UserEmail) == true)
                 {
                     lblThanks.Text = "That email is already being used on our system. Please choose another.";
                     ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
@@ -115,7 +99,7 @@ namespace CTS_ResourcePortal
                     else
                     {
                         
-                        lblThanks.Text = "Error Occured on the Database";
+                        lblThanks.Text = "There was an error, please try again";
                         ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
 
                     }
@@ -212,11 +196,7 @@ namespace CTS_ResourcePortal
                 lblStatus.Text = "Error ocurred: [" + ex.Message + "] cmd=" + result;
 
             }
-
-
-            
-
-            
+      
         }
         public Boolean CheckIfEmailExist(String Email)
         {
@@ -240,7 +220,7 @@ namespace CTS_ResourcePortal
             }
         }
 
-        void ValidateUserRegistration()
+        /*void ValidateUserRegistration()
         {
             if (txtFirstName.Text == "")
             {
@@ -264,6 +244,6 @@ namespace CTS_ResourcePortal
                 UserRegistrationError.Add("Passwords Do not Match");
             }
 
-        }
+        }*/
     }
 }

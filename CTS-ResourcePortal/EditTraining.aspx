@@ -1,9 +1,56 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin.master" AutoEventWireup="true" CodeBehind="EditTraining.aspx.cs" Inherits="CTS_ResourcePortal.EditTraining" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
 
     <link href="AddNew.css" rel="stylesheet" />
     <link href="css.css" rel="stylesheet" />
+
+    <div id="MyPopup" class="modal" role="dialog">
+        <div class="modal-dialog modal-xl">
+            <!-- Modal content-->
+            <div class="modal-content container">
+                <div class="modal-body">
+
+                    <br />
+                    <div class="row  justify-content-center align-items-center text-center">
+                        <div class="col"></div>
+                        <div class="col-md-4">
+                             <asp:Label runat="server" Text="Training Opportunity Successfully Edited!" ID="lblTrainEdit" Font-Bold="True"></asp:Label>
+                            </div>
+                        <div class="col"></div>
+                    </div>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="MyPopup2" class="modal" role="dialog">
+        <div class="modal-dialog modal-xl">
+            <!-- Modal content-->
+            <div class="modal-content container">
+                <div class="modal-body">
+
+                    <br />
+                    <div class="row  justify-content-center align-items-center text-center">
+                        <div class="col"></div>
+                        <div class="col-md-4">
+                             <asp:Label runat="server" Text="Please fill out all of the required fields!" ID="lblFaill" Font-Bold="True"></asp:Label>
+                            </div>
+                        <div class="col"></div>
+                    </div>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <div class="row">
             <div class="col"></div>
@@ -49,57 +96,10 @@
                 <div class="col-sm-4">
                     <asp:Label ID="lblState" runat="server"><span class="requiredRed">*</span>State: </asp:Label><br />
                     <asp:DropDownList ID="ddlState" class="form-control" runat="server">
-	<asp:ListItem Value="AL">Alabama</asp:ListItem>
-	<asp:ListItem Value="AK">Alaska</asp:ListItem>
-	<asp:ListItem Value="AZ">Arizona</asp:ListItem>
-	<asp:ListItem Value="AR">Arkansas</asp:ListItem>
-	<asp:ListItem Value="CA">California</asp:ListItem>
-	<asp:ListItem Value="CO">Colorado</asp:ListItem>
-	<asp:ListItem Value="CT">Connecticut</asp:ListItem>
-	<asp:ListItem Value="DC">District of Columbia</asp:ListItem>
-	<asp:ListItem Value="DE">Delaware</asp:ListItem>
-	<asp:ListItem Value="FL">Florida</asp:ListItem>
-	<asp:ListItem Value="GA">Georgia</asp:ListItem>
-	<asp:ListItem Value="HI">Hawaii</asp:ListItem>
-	<asp:ListItem Value="ID">Idaho</asp:ListItem>
-	<asp:ListItem Value="IL">Illinois</asp:ListItem>
-	<asp:ListItem Value="IN">Indiana</asp:ListItem>
-	<asp:ListItem Value="IA">Iowa</asp:ListItem>
-	<asp:ListItem Value="KS">Kansas</asp:ListItem>
-	<asp:ListItem Value="KY">Kentucky</asp:ListItem>
-	<asp:ListItem Value="LA">Louisiana</asp:ListItem>
-	<asp:ListItem Value="ME">Maine</asp:ListItem>
-	<asp:ListItem Value="MD">Maryland</asp:ListItem>
-	<asp:ListItem Value="MA">Massachusetts</asp:ListItem>
-	<asp:ListItem Value="MI">Michigan</asp:ListItem>
-	<asp:ListItem Value="MN">Minnesota</asp:ListItem>
-	<asp:ListItem Value="MS">Mississippi</asp:ListItem>
-	<asp:ListItem Value="MO">Missouri</asp:ListItem>
-	<asp:ListItem Value="MT">Montana</asp:ListItem>
-	<asp:ListItem Value="NE">Nebraska</asp:ListItem>
-	<asp:ListItem Value="NV">Nevada</asp:ListItem>
-	<asp:ListItem Value="NH">New Hampshire</asp:ListItem>
+		<asp:ListItem Value="DE">Delaware</asp:ListItem>
 	<asp:ListItem Value="NJ">New Jersey</asp:ListItem>
-	<asp:ListItem Value="NM">New Mexico</asp:ListItem>
 	<asp:ListItem Value="NY">New York</asp:ListItem>
-	<asp:ListItem Value="NC">North Carolina</asp:ListItem>
-	<asp:ListItem Value="ND">North Dakota</asp:ListItem>
-	<asp:ListItem Value="OH">Ohio</asp:ListItem>
-	<asp:ListItem Value="OK">Oklahoma</asp:ListItem>
-	<asp:ListItem Value="OR">Oregon</asp:ListItem>
 	<asp:ListItem Value="PA">Pennsylvania</asp:ListItem>
-	<asp:ListItem Value="RI">Rhode Island</asp:ListItem>
-	<asp:ListItem Value="SC">South Carolina</asp:ListItem>
-	<asp:ListItem Value="SD">South Dakota</asp:ListItem>
-	<asp:ListItem Value="TN">Tennessee</asp:ListItem>
-	<asp:ListItem Value="TX">Texas</asp:ListItem>
-	<asp:ListItem Value="UT">Utah</asp:ListItem>
-	<asp:ListItem Value="VT">Vermont</asp:ListItem>
-	<asp:ListItem Value="VA">Virginia</asp:ListItem>
-	<asp:ListItem Value="WA">Washington</asp:ListItem>
-	<asp:ListItem Value="WV">West Virginia</asp:ListItem>
-	<asp:ListItem Value="WI">Wisconsin</asp:ListItem>
-	<asp:ListItem Value="WY">Wyoming</asp:ListItem>
 </asp:DropDownList>
                 </div>
                 <div class="col-sm-4">
@@ -220,4 +220,21 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        function ShowPopup(title, body) {
+            $("#MyPopup .modal-title").html(title);
+            $("#MyPopup .modal-body").html(body);
+            $("#MyPopup").modal("show");
+        }
+    </script>
+
+    <script type="text/javascript">
+        function ShowPopup2(title, body) {
+            $("#MyPopup2 .modal-title").html(title);
+            $("#MyPopup2 .modal-body").html(body);
+            $("#MyPopup2").modal("show");
+        }
+    </script>
+
 </asp:Content>

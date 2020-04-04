@@ -17,8 +17,10 @@ namespace CTS_ResourcePortal
 {
     public partial class CitizenSettings : System.Web.UI.Page
     {
-        private Byte[] key = { 250, 101, 18, 76, 45, 135, 207, 118, 4, 171, 3, 168, 202, 241, 37, 199 };
-        private Byte[] vector = { 146, 64, 191, 111, 23, 3, 113, 119, 231, 121, 252, 112, 79, 32, 114, 156 };
+        //private Byte[] key = { 250, 101, 18, 76, 45, 135, 207, 118, 4, 171, 3, 168, 202, 241, 37, 199 };
+        //private Byte[] vector = { 146, 64, 191, 111, 23, 3, 113, 119, 231, 121, 252, 112, 79, 32, 114, 156 };
+
+        string email, password;
 
         DBConnect objDB = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
 
@@ -43,8 +45,8 @@ namespace CTS_ResourcePortal
             int citiID = (Int32)objDB.GetField("CitizenID", 0);
 
             lblCitizenID.Text = citiID.ToString();
-        }
 
+        }
 
         protected void btnUpdateSubscribe_Click(object sender, EventArgs e)
         {
@@ -80,38 +82,24 @@ namespace CTS_ResourcePortal
 
         protected void ResumeUpload_Click(object sender, EventArgs e)
         {
-
-            SqlCommand cmd = new SqlCommand();
-
+            objCommand.Parameters.Clear();
             string fileExtension, resumeType, resumeName, resumeTitle, strSQL;
-
+            string email = Session["userEmail"].ToString();
             int result = 0, resumeSize;
 
             try
-
             {
-
-
                 if (ResumeUploadSettings.HasFile)
 
                 {
 
                     resumeSize = ResumeUploadSettings.PostedFile.ContentLength;
-
                     byte[] resumeData = new byte[resumeSize];
-
-
-
                     ResumeUploadSettings.PostedFile.InputStream.Read(resumeData, 0, resumeSize);
-
                     resumeName = ResumeUploadSettings.PostedFile.FileName;
-
                     resumeType = ResumeUploadSettings.PostedFile.ContentType;
-
                     resumeTitle = resumeName.Split('.')[0];
-
                     fileExtension = resumeName.Substring(resumeName.LastIndexOf(".")).ToLower();
-
                     //fileExtension = fileExtension.ToLower();
 
 
@@ -121,30 +109,37 @@ namespace CTS_ResourcePortal
                     {
 
                         strSQL = "StoreResume";
+                        objCommand.CommandText = strSQL;
+                        objCommand.CommandType = CommandType.StoredProcedure;
+                        objCommand.Parameters.AddWithValue("@ResumeTitle", resumeName);
+                        objCommand.Parameters.AddWithValue("@ResumeType", resumeType);
+                        objCommand.Parameters.AddWithValue("@ResumeData", resumeData);
 
-                        cmd.CommandText = strSQL;
+                        objCommand.Parameters.AddWithValue("@Email", email);
 
-                        cmd.CommandType = CommandType.StoredProcedure;
+                        result = objDB.DoUpdateUsingCmdObj(objCommand);
 
-                        cmd.Parameters.AddWithValue("@ResumeTitle", resumeTitle);
+                        if (result == 1)
+                        {
+                            lblStatus.Visible = true;
+                            lblStatus.Text = "Resume was successully uploaded.";
+                            ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
 
-                        cmd.Parameters.AddWithValue("@ResumeType", resumeType);
-
-                        cmd.Parameters.AddWithValue("@ResumeData", resumeData);
-
-                        result = objDB.DoUpdateUsingCmdObj(cmd);
-
-                        lblStatus.Visible = true;
-
-                        lblStatus.Text = "Resume was successully uploaded.";
+                        }
+                        else
+                        {
+                            lblStatus.Visible = true;
+                            lblStatus.Text = "Hmm something went wrong, please try again";
+                            ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+                        }
 
                     }
-
                     else
 
                     {
                         lblStatus.Visible = true;
                         lblStatus.Text = "Only docx, pdf, and doc file formats supported.";
+                        ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
 
                     }
 
@@ -157,143 +152,83 @@ namespace CTS_ResourcePortal
             {
                 lblStatus.Visible = true;
                 lblStatus.Text = "Error ocurred: [" + ex.Message + "] cmd=" + result;
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
 
             }
         }
 
         protected void btnUpdatePassword_Click(object sender, EventArgs e)
         {
-            string email = Session["userEmail"].ToString();
-            string password = txtCurrentPassword.Text;
-
+            objCommand.Parameters.Clear();
+            email = Session["userEmail"].ToString();
+            password = txtCurrentPassword.Text;
 
             if (GrabCitizenPassword(email) == true)
             {
-                string encryptedPassword = (string)objDB.GetField("Password", 0);
-                String encryptedPasswordLogin;
-                System.Text.UTF8Encoding encoder = new UTF8Encoding();
+                string savedPasswordHash = (string)objDB.GetField("Password", 0);
+                byte[] hashBytes = Convert.FromBase64String(savedPasswordHash);
+                byte[] salt = new byte[16];
+                Array.Copy(hashBytes, 0, salt, 0, 16);
 
-                Byte[] PasswordBytes;
+                var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 10000);
+                byte[] hash = pbkdf2.GetBytes(20);
 
-
-
-                PasswordBytes = encoder.GetBytes(password);
-
-
-                RijndaelManaged rmEncryption = new RijndaelManaged();
-                MemoryStream memStream = new MemoryStream();
-                CryptoStream encryptionStream = new CryptoStream(memStream, rmEncryption.CreateEncryptor(key, vector), CryptoStreamMode.Write);
-                //password
-                memStream = new MemoryStream();
-                encryptionStream = new CryptoStream(memStream, rmEncryption.CreateEncryptor(key, vector), CryptoStreamMode.Write);
-
-                encryptionStream.Write(PasswordBytes, 0, PasswordBytes.Length);
-                encryptionStream.FlushFinalBlock();
-
-                memStream.Position = 0;
-                Byte[] encryptedPasswordBytes = new byte[memStream.Length];
-                memStream.Read(encryptedPasswordBytes, 0, encryptedPasswordBytes.Length);
-
-                encryptionStream.Close();
-                memStream.Close();
-
-
-                encryptedPasswordLogin = Convert.ToBase64String(encryptedPasswordBytes);
-
-                //hashing password
-                PasswordHash hash = new PasswordHash(encryptedPasswordLogin);
-
-                if (encryptedPassword == encryptedPasswordLogin)
+                if (comparePasswords(hashBytes, hash) == false)
                 {
-                    String plainTextPassword = txtConfirmPassword.Text;
-
-                    String newEncryptedPassword;
-
-
-                    System.Text.UTF8Encoding encoder2 = new UTF8Encoding();
-
-                    Byte[] NewPasswordBytes;
-
-
-
-                    NewPasswordBytes = encoder.GetBytes(plainTextPassword);
-
-
-                    RijndaelManaged rmEncryption2 = new RijndaelManaged();
-                    MemoryStream memStream2 = new MemoryStream();
-                    CryptoStream NewEncryptionStream = new CryptoStream(memStream2, rmEncryption2.CreateEncryptor(key, vector), CryptoStreamMode.Write);
-
-                    //NewPassword
-                    memStream2 = new MemoryStream();
-                    NewEncryptionStream = new CryptoStream(memStream2, rmEncryption2.CreateEncryptor(key, vector), CryptoStreamMode.Write);
-
-                    NewEncryptionStream.Write(NewPasswordBytes, 0, NewPasswordBytes.Length);
-                    NewEncryptionStream.FlushFinalBlock();
-
-                    memStream2.Position = 0;
-                    Byte[] newEncryptedPasswordBytes = new byte[memStream2.Length];
-                    memStream2.Read(newEncryptedPasswordBytes, 0, newEncryptedPasswordBytes.Length);
-
-                    NewEncryptionStream.Close();
-                    memStream2.Close();
-
-
-
-                    newEncryptedPassword = Convert.ToBase64String(newEncryptedPasswordBytes);
-
-                    //hashing password
-                    PasswordHash hash2 = new PasswordHash(newEncryptedPassword);
-
-                    if (txtNewPassword.Text == txtConfirmPassword.Text)
-                    {
-                        string citiId = lblCitizenID.Text.ToString();
-                        int CitizenID = int.Parse(citiId);
-
-
-                            objCommand.Parameters.Clear();
-                            objCommand.CommandText = "UpdatePassword";
-
-                            objCommand.Parameters.AddWithValue("@CitizenID", CitizenID);
-                            objCommand.Parameters.AddWithValue("@Password", newEncryptedPassword);
-
-                        var ResponseReceived = objDB.DoUpdateUsingCmdObj(objCommand);
-
-                            if (ResponseReceived == 1)
-                            {
-
-                                lblStatus.Text = "You have changed your password.";
-                                lblStatus.Visible = true;
-                                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
-
-                            }
-                            else
-
-                            lblStatus.Text = "Failed";
-                            lblStatus.Visible = true;
-                            ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
-
-                    }
-                    else
-                    {
-                        lblStatus.Text = "Please confirm new password.";
-                        lblStatus.Visible = true;
-                        ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
-
-                    }
-
+                    lblStatus.Text = "Current Password is incorrect";
+                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
                 }
                 else
                 {
-                    lblStatus.Text = "Current Password is incorrect.";
-                    lblStatus.Visible = true;
-                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+                    objCommand.Parameters.Clear();
+                    if (txtNewPassword.Text == txtConfirmPassword.Text)
+                    {
+                        String plainTextPassword = txtNewPassword.Text;
 
+
+                        byte[] saltNew;
+                        new RNGCryptoServiceProvider().GetBytes(saltNew = new byte[16]);
+                        var pbkdf2New = new Rfc2898DeriveBytes(plainTextPassword, saltNew, 10000);
+                        byte[] hashNew = pbkdf2New.GetBytes(20);
+                        byte[] hashBytesNew = new byte[36];
+                        Array.Copy(saltNew, 0, hashBytesNew, 0, 16);
+                        Array.Copy(hashNew, 0, hashBytesNew, 16, 20);
+                        string savedPasswordHashNew = Convert.ToBase64String(hashBytesNew);
+
+                        objCommand.CommandType = CommandType.StoredProcedure;
+                        objCommand.CommandText = "UpdatePasswordPage";
+                        objCommand.Parameters.AddWithValue("@email", email);
+                        objCommand.Parameters.AddWithValue("@password", savedPasswordHashNew);
+                        int resultNew = objDB.DoUpdateUsingCmdObj(objCommand);
+                        if (resultNew == 1)
+                        {
+                            lblStatus.Text = "Password has been changed successfully";
+                            ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + lblStatus.Text + "');", true);
+                        }
+                        else
+                        {
+                            lblStatus.Text = "Something went wrong, please try again";
+                            ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + lblStatus.Text + "');", true);
+                        }
+                    }
+                    else
+                    {
+                        lblStatus.Text = "New passwords do not match";
+                        ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+                    }
                 }
             }
-        }
+            else
+            {
+                lblStatus.Text = "There was an error please try again";
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+            }
+      }
+        
 
         protected void btnDeactivate_Click(object sender, EventArgs e)
         {
+            
             string citiId = lblCitizenID.Text.ToString();
             int CitizenID = int.Parse(citiId);
 
@@ -340,6 +275,7 @@ namespace CTS_ResourcePortal
 
         protected void lnkBtnUpdateSubscriber_Click(object sender, EventArgs e)
         {
+            rptResumes.Visible = false;
             UpdateSubscriber.Visible = true;
             UpdatePassword.Visible = false;
             UploadResume.Visible = false;
@@ -349,6 +285,7 @@ namespace CTS_ResourcePortal
 
         protected void lnkBtnUpdatePassword_Click(object sender, EventArgs e)
         {
+            rptResumes.Visible = false;
             UpdateSubscriber.Visible = false; ;
             UpdatePassword.Visible = true; ;
             UploadResume.Visible = false;
@@ -357,6 +294,7 @@ namespace CTS_ResourcePortal
 
         protected void lnkBtnUploadResume_Click(object sender, EventArgs e)
         {
+            rptResumes.Visible = false;
             UpdateSubscriber.Visible = false;
             UpdatePassword.Visible = false;
             UploadResume.Visible = true;
@@ -365,22 +303,24 @@ namespace CTS_ResourcePortal
 
         protected void lnkBtnDeleteAccount_Click(object sender, EventArgs e)
         {
+            rptResumes.Visible = false;
             UpdateSubscriber.Visible = false;
             UpdatePassword.Visible = false;
             UploadResume.Visible = false;
             deleteAccount.Visible = true;
         }
 
+        //grabs password from database
         public Boolean GrabCitizenPassword(String email)
         {
-            //checks to see if email matches email in objDB
-            SqlCommand cmd = new SqlCommand("GetPassword", objDB.GetConnection());
-            cmd.CommandType = CommandType.StoredProcedure;
+            
+            objCommand = new SqlCommand("GetPassword", objDB.GetConnection());
+            objCommand.CommandType = CommandType.StoredProcedure;
             SqlParameter inputParameterName = new SqlParameter("@Email", email);
             inputParameterName.Direction = ParameterDirection.Input;
             inputParameterName.SqlDbType = SqlDbType.VarChar;
-            cmd.Parameters.Add(inputParameterName);
-            DataSet PasswordDataSet = objDB.GetDataSetUsingCmdObj(cmd);
+            objCommand.Parameters.Add(inputParameterName);
+            DataSet PasswordDataSet = objDB.GetDataSetUsingCmdObj(objCommand);
             if (PasswordDataSet.Tables[0].Rows.Count == 0)
             {
                 return false;
@@ -391,6 +331,100 @@ namespace CTS_ResourcePortal
             }
         }
 
-    }
 
-}
+        protected void lnkView_Click(object sender, EventArgs e)
+        {
+            RepeaterItem item = (sender as LinkButton).NamingContainer as RepeaterItem;
+
+            //Reference the Label and TextBox.
+            string email = Session["userEmail"].ToString();
+            byte[] bytes;
+            string fileName, contentType;
+            string resumeTitle = (item.FindControl("lblName") as Label).Text;
+
+            using (SqlCommand objCommand = new SqlCommand())
+            {
+
+                objCommand.CommandType = CommandType.StoredProcedure;
+                objCommand.CommandText = "GetResumeFile";
+                objCommand.Parameters.AddWithValue("@Email", email);
+                objCommand.Parameters.AddWithValue("@ResumeTitle", resumeTitle);
+                objCommand.Connection = objDB.GetConnection();
+                objDB.GetConnection().Open();
+                using (SqlDataReader sdr = objCommand.ExecuteReader())
+                {
+                    sdr.Read();
+                    bytes = (byte[])sdr["ResumeData"];
+                    contentType = sdr["ResumeType"].ToString();
+                    fileName = sdr["ResumeTitle"].ToString();
+                }
+                objDB.GetConnection().Close();
+                objCommand.Parameters.Clear();
+            }
+
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            Response.ContentType = contentType;
+            Response.AppendHeader("Content-Disposition", "attachment; filename=" + fileName);
+            Response.BinaryWrite(bytes);
+            Response.Flush();
+            Response.End();
+            
+        }
+
+        protected void lnkDelete_Click(object sender, EventArgs e)
+        {
+            RepeaterItem item = (sender as LinkButton).NamingContainer as RepeaterItem;
+            string resumeTitle = (item.FindControl("lblName") as Label).Text;
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "DeleteResume";
+            objCommand.Parameters.AddWithValue("@ResumeTitle", resumeTitle);
+            int result = objDB.DoUpdateUsingCmdObj(objCommand);
+            objCommand.Parameters.Clear();
+        }
+
+        protected void ResumeTable_Click(object sender, EventArgs e)
+        {
+            objCommand.Parameters.Clear();
+            //RepeaterItem item = (sender as Label).NamingContainer as RepeaterItem;
+            string email = Session["userEmail"].ToString();
+
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "GetResumeName";
+            objCommand.Parameters.AddWithValue("@Email", email);
+            DataSet dataSet = objDB.GetDataSetUsingCmdObj(objCommand);
+            rptResumes.DataSource = dataSet;
+            rptResumes.DataBind();
+            if (dataSet.Tables[0].Rows[0].IsNull("ResumeTitle"))
+            {
+                //do nothing                        
+
+            }
+            else
+            {
+                rptResumes.Visible = true;
+            }
+
+            objCommand.Parameters.Clear();
+        }
+
+        public Boolean comparePasswords(byte[] hashBytes, byte[] hash)
+        {
+            Boolean isCorrect = true;
+            for (int i = 0; i < 20; i++)
+            {
+                if (hashBytes[i + 16] != hash[i])
+                {
+                    isCorrect = false;
+                }
+                else
+                {
+                    isCorrect = true;
+                }
+            }
+            return isCorrect;
+        }
+    }
+    }

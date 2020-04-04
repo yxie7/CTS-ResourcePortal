@@ -2,11 +2,43 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
     
-    
+   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
+    <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('[id*=datatable]').DataTable({
+         
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(function () {
+            $("#datatable [id*=chkHeader]").click(function () {
+                if ($(this).is(":checked")) {
+                    $("#datatable [id*=chkRow]").attr("checked", "checked");
+                } else {
+                    $("#datatable [id*=chkRow]").removeAttr("checked");
+                }
+            });
+            $("#datatable [id*=chkRow]").click(function () {
+                if ($("#datatable [id*=chkRow]").length == $("#datatable [id*=chkRow]:checked").length) {
+                    $("#datatable [id*=chkHeader]").attr("checked", "checked");
+                } else {
+                    $("#datatable [id*=chkHeader]").removeAttr("checked");
+                }
+            });
+        });
+    </script>
    
     <div id="MyPopup" class="modal" role="dialog">
         <div class="modal-dialog modal-xl">
@@ -18,7 +50,7 @@
                     <div class="row  justify-content-center align-items-center text-center">
                         <div class="col"></div>
                         <div class="col-md-4">
-                          <asp:Label runat="server" ID="lblStatus" Visible="false"></asp:Label>
+                          <asp:Label runat="server" ID="lblStatus"></asp:Label>
                      </div>
                         <div class="col"></div>
                     </div>
@@ -57,6 +89,8 @@
             <div class="col-1"></div>
         </div>
         <br />
+
+        <!--Subscribe/Unsubscribe-->
         <div class="section">
             <div class="section" visible="false" runat="server" id="UpdateSubscriber">
                 <div class="row">
@@ -80,6 +114,8 @@
                     <div class="col"></div>
                 </div>
             </div>
+
+            <!--UpdatePassword-->
             <div class="section" visible="false" runat="server" id="UpdatePassword">
                 <div class="row">
                     <div class="col-1"></div>
@@ -121,11 +157,12 @@
                 </div>
             </div>
 
+            <!--Upload More Resumes-->
             <div class="section" visible="false" runat="server" id="UploadResume">
 
                 <div class="row justify-content-center align-items-center">
                     <div class="col-lg-4 d-flex justify-content-center">
-                        <asp:Label runat="server" ID="lblResume">Would you like to load/reupload resume?</asp:Label>
+                        <asp:Label runat="server" ID="lblResume">Would you like to upload another resume?</asp:Label>
                     </div>
                 </div>
                 <br />
@@ -138,19 +175,58 @@
                 </div>
                 <br />
                 <div class="row ">
-                    <div class="col"></div>
-                    <div class="col-6 d-flex justify-content-center">
-                        <asp:Button runat="server" Text="Upload Resume" ID="ResumeUpload" class="btn btn-light" OnClick="ResumeUpload_Click" />
+                    
+                    <div class="col-6">
+                        <asp:Button runat="server" Text="Upload Resume" ID="ResumeUpload" class="btn btn-light" OnClick="ResumeUpload_Click" />    
                     </div>
-                    <div class="col"></div>
+                    <div class="col-6">
+                        <asp:Button runat="server" Text="View Resumes" ID="ResumeTable" class="btn btn-light" OnClick="ResumeTable_Click" />
+                    </div>
                 </div>
             </div>
+            <br />
+            <br />
+
             <div class="row ">
                 <div class="col"></div>
                 <div class="col-6 d-flex justify-content-center">
+                    <!-- -->
+                     <asp:Repeater ID="rptResumes" runat="server" Visible="false">
+                    <HeaderTemplate>
+                        <table id="datatable" class="table table-striped table-bordered" border="0" cellpadding="0"
+                            cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Resume Name
+                                    </th>
+                                    <th>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                    </HeaderTemplate>
+
+                    <ItemTemplate>
+                        <tr>
+                            <td>
+                                <asp:Label ID="lblName" runat=server Text='<%# DataBinder.Eval(Container.DataItem, ("ResumeTitle")) %>'></asp:Label>
+                            </td>
+                            <td>
+                                <asp:LinkButton ID="lnkDelete" runat="server" Text="Delete" onclick="lnkDelete_Click"></asp:LinkButton >
+                                <asp:LinkButton ID="lnkView" runat="server" Text="View" onclick="lnkView_Click"></asp:LinkButton >
+                            </td>                          
+                        </tr>
+                    </ItemTemplate>
+
+                    <FooterTemplate>
+                        </tbody></table>
+                    </FooterTemplate>
+                </asp:Repeater>
                </div>
                 <div class="col"></div>
             </div>
+
+            <!--Delete Account-->
             <div class="section" visible="false" runat="server" id="deleteAccount">
                 <div class="row">
                     <div class="col"></div>

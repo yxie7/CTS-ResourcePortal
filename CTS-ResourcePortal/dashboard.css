@@ -1,9 +1,9 @@
 ﻿#sidebarCollapse {
-    position:fixed;
+    position: fixed;
     top: 250px;
-    margin-left:5px;
+    margin-left: 20px;
     margin-top: 5px;
-    z-index:500;
+    z-index: 500;
 }
 
 .overlay {
@@ -23,20 +23,24 @@
     }
 
 #sidebar {
-    width: auto;
+    width: 350px;
     top: 0;
     left: -999px;
-    padding: 10px;
-    padding-top: 50px;
+    padding: 50px 0;
     position: fixed;
     height: calc(100vh);
-    background: #3a3a3a;
+    background: #193051;
     color: white;
     z-index: 9999;
     transition: all 0.3s ease;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
 }
-
+#sidebar h3,h4{
+    text-align:left;
+   margin-left:20px;
+   padding-bottom:20px;
+}
     #sidebar.active {
         left: 0;
     }
@@ -44,25 +48,22 @@
     #sidebar > ul {
         list-style: none;
         margin: 0px;
-        padding: 10px;
     }
 
         #sidebar > ul > li {
-            padding: 5px;
-            padding: 10px 10px 10px 1em;
+            padding: 10px 1em 10px 1em;
             transition: 0.5s;
-            color: #fdd247;
+            color: #ffba01;
             text-indent: -1em;
         }
 
             #sidebar > ul > li:hover {
-                background: #afafaf;
-                background: black;
-                color: #fdd247;
+                background: #2f4462;
+                color: #ffba01;
             }
 
                 #sidebar > ul > li:hover > a {
-                    color: #fdd247;
+                    color: #ffba01;
                 }
 
             #sidebar > ul > li > a {
@@ -70,11 +71,11 @@
                 color: #afafaf;
                 display: block;
                 font-size: 1.1em;
-                padding: 10px;
+                margin-left:30px;
             }
 
                 #sidebar > ul > li > a:hover {
-                    color: #fdd247;
+                    color: #ffba01;
                     cursor: pointer;
                     text-decoration: none;
                 }

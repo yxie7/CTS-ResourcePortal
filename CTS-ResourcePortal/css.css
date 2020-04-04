@@ -2,26 +2,20 @@
     color: #3a3a3a;
     opacity: .9; /* Firefox */
 }
+
 .buttonClass {
     width: 0px;
     padding: 5px;
 }
 
+.search {
+    border-bottom: 1px solid #003A8B;
+    box-shadow: 0 1px 0 0 #003A8B;
+}
+
 table {
     width: 100% !important;
     overflow: scroll;
-    background: grey;
-}
-
-.accordion, .card-header, .tableSelection {
-    background-color: #F5F5F5;
-    border-radius: 10px;
-    color: black;
-    padding: 10px;
-}
-
-.card-body {
-    background-color: #3a3a3a;
 }
 
 .btn-link {
@@ -50,16 +44,27 @@ table {
     text-align: right;
 }
 
-.cardlist {
+.card {
+    border: 1px solid #001a3e;
+}
+
+.card-header {
+    color: black;
+    border-color: #001a3e;
+}
+
+    .card-header button {
+        font-weight: bold;
+    }
+
+/*.cardlist {
+    border-top: #001a3e;
     background-color: white;
     list-style-type: none;
-    color: black;
+    color: white;
 }
 
     .cardlist li {
-        text-align: center;
-        padding: 5px;
-        margin: 10px;
         color: black;
     }
 
@@ -73,8 +78,7 @@ table {
 
     .cardlist li:hover > a {
         color: #fdd247;
-    }
-
+    }*/
 .aspl {
     margin: 0 10px;
 }
@@ -108,22 +112,24 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     }
 
     .rtd {
-        margin-top:25px;
+        margin-top: 25px;
         display: block;
         position: relative;
         text-align: right;
         padding: 25px 10px 5px 10px;
     }
+
         .rtd:last-of-type {
             padding-bottom: 25px;
         }
+
         .rtd:before {
-            text-align:left;
+            text-align: left;
             padding: 0 10px;
             display: inline-block;
             font-weight: bold;
-            position:absolute;
-            margin-top:-25px;
+            position: absolute;
+            margin-top: -25px;
             top: 0px;
             left: 0px;
             content: attr(data-header);
@@ -135,7 +141,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     }
 
     #jobResourceCollapse td:last-of-type, #eventResourceCollapse td:last-of-type, #trainingResourceCollapse td:last-of-type {
-        text-align:center;
+        text-align: center;
         padding-bottom: 25px;
     }
 
@@ -230,6 +236,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     right: 45px;
     z-index: 999;
 }
+
 .modal-backdrop.show {
     opacity: 0.9 !important;
 }

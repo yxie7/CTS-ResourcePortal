@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="Signup.aspx.cs" Inherits="CTS_ResourcePortal.Signup" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Guest.Master" AutoEventWireup="true" CodeBehind="Signup.aspx.cs" Inherits="CTS_ResourcePortal.Signup" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
@@ -8,8 +8,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link href="signup-form.css" rel="stylesheet" />
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="navli" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
 
@@ -48,15 +46,15 @@
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <label>First Name</label>
-                                        <asp:TextBox ID="txtFirstName" CssClass="form-control" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtFirstName" required="true" CssClass="form-control" runat="server"></asp:TextBox>
                                     </div>
                                     <div class="col-lg-4">
                                         <label>Last Name</label>
-                                        <asp:TextBox ID="txtLastName" CssClass="form-control" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtLastName" required="true" CssClass="form-control" runat="server"></asp:TextBox>
                                     </div>
                                     <div class="col-lg-4">
                                         <label>Email Address</label>
-                                        <asp:TextBox ID="txtEmail" CssClass="form-control" runat="server" placeholder="email@example.com"></asp:TextBox>
+                                        <asp:TextBox ID="txtEmail" required="true" CssClass="form-control" runat="server" placeholder="email@example.com"></asp:TextBox>
                                     </div>
                                 </div>
                                 <br>
@@ -66,19 +64,19 @@
 
                                     <div class="col-md-4">
                                         <label>Street Address</label>
-                                        <asp:TextBox ID="txtAddress" CssClass="form-control" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtAddress" required="true" CssClass="form-control" runat="server"></asp:TextBox>
                                     </div>
                                     <div class="col-md-4">
                                         <label>City</label>
-                                        <asp:TextBox ID="txtCity" CssClass="form-control" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtCity" required="true" CssClass="form-control" runat="server"></asp:TextBox>
                                     </div>
                                     <div class="col-md-2">
                                         <label>State</label>
-                                        <asp:TextBox ID="txtState" CssClass="form-control" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtState" required="true" CssClass="form-control" runat="server"></asp:TextBox>
                                     </div>
                                     <div class="col-md-2">
                                         <label>Zipcode</label>
-                                        <asp:TextBox ID="txtZip" CssClass="form-control" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtZip" required="true" CssClass="form-control" runat="server"></asp:TextBox>
                                     </div>
                                 </div>
                                 <br>
@@ -88,18 +86,18 @@
 
                                     <div class="col-sm-6">
                                         <label>Cell Phone:</label>
-                                        <asp:TextBox ID="txtCellPhone" CssClass="form-control" runat="server" placeholder="(123)456-7890"></asp:TextBox>
+                                        <asp:TextBox ID="txtCellPhone" required="true" CssClass="form-control" runat="server" placeholder="(123)456-7890"></asp:TextBox>
                                     </div>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label>Password: </label>
-                                        <asp:TextBox ID="txtPassword" type="password" CssClass="form-control" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtPassword" required="true" type="password" CssClass="form-control" runat="server"></asp:TextBox>
                                     </div>
                                     <div class="col-sm-6">
                                         <label>Confirm Password:</label>
-                                        <asp:TextBox ID="txtCPassword" type="password" CssClass="form-control" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtCPassword" required="true" type="password" CssClass="form-control" runat="server"></asp:TextBox>
                                     </div>
                                 </div>
                                 <br>

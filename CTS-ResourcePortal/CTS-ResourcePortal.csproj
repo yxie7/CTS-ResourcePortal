@@ -16,7 +16,8 @@
     <AssemblyName>CTS_ResourcePortal</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -42,28 +43,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Google.Apis, Version=1.43.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
-      <HintPath>packages\Google.Apis.1.43.0\lib\net45\Google.Apis.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.Apis.Auth, Version=1.43.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
-      <HintPath>packages\Google.Apis.Auth.1.43.0\lib\net45\Google.Apis.Auth.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.Apis.Auth.PlatformServices, Version=1.43.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
-      <HintPath>packages\Google.Apis.Auth.1.43.0\lib\net45\Google.Apis.Auth.PlatformServices.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.Apis.Core, Version=1.43.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
-      <HintPath>packages\Google.Apis.Core.1.43.0\lib\net45\Google.Apis.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.Apis.Gmail.v1, Version=1.43.0.1835, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
-      <HintPath>packages\Google.Apis.Gmail.v1.1.43.0.1835\lib\net45\Google.Apis.Gmail.v1.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.Apis.PlatformServices, Version=1.43.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
-      <HintPath>packages\Google.Apis.1.43.0\lib\net45\Google.Apis.PlatformServices.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -214,11 +194,9 @@
     <Content Include="DataTables\Scroller-2.0.1\js\scroller.semanicui.js" />
     <Content Include="DataTables\Scroller-2.0.1\js\scroller.semanticui.js" />
     <Content Include="DataTables\Scroller-2.0.1\js\scroller.semanticui.min.js" />
+    <Content Include="Global.asax" />
     <Content Include="Images\CTS_Logo.png" />
-    <Content Include="Images\event.png" />
-    <Content Include="Images\job.png" />
     <Content Include="Images\Temple_Logo.png" />
-    <Content Include="Images\training.png" />
     <Content Include="Login.aspx" />
     <Content Include="master.css" />
     <Content Include="Master.Master" />
@@ -229,8 +207,6 @@
     <Content Include="AddNewJobOpp.aspx" />
     <Content Include="AddNewEvent.aspx" />
     <Content Include="AddNewTraining.aspx" />
-    <Content Include="Event.aspx" />
-    <Content Include="Job.aspx" />
     <Content Include="Feedback.aspx" />
     <Content Include="AdminUserPage.aspx" />
     <Content Include="EditJob.aspx" />
@@ -243,10 +219,11 @@
     <Content Include="EditTraining.aspx" />
     <Content Include="EditEvent.aspx" />
     <Content Include="signup-form.css" />
-    <Content Include="Training.aspx" />
     <Content Include="ViewFeedback.aspx" />
     <Content Include="DataTables\Buttons-1.6.1\css\common.scss" />
     <Content Include="DataTables\Buttons-1.6.1\css\mixins.scss" />
+    <Content Include="ForgotPassword.aspx" />
+    <Content Include="NewPassword.aspx" />
     <None Include="packages.config" />
     <Content Include="NewsletterCreate.aspx" />
     <Content Include="NewsletterPreview.aspx" />
@@ -326,6 +303,9 @@
     <Compile Include="CitizenSettings.aspx.designer.cs">
       <DependentUpon>CitizenSettings.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="Guest.master.cs">
       <DependentUpon>Guest.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -390,20 +370,6 @@
     <Compile Include="AddNewTraining.aspx.designer.cs">
       <DependentUpon>AddNewTraining.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Event.aspx.cs">
-      <DependentUpon>Event.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Event.aspx.designer.cs">
-      <DependentUpon>Event.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Job.aspx.cs">
-      <DependentUpon>Job.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Job.aspx.designer.cs">
-      <DependentUpon>Job.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Feedback.aspx.cs">
       <DependentUpon>Feedback.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -453,19 +419,26 @@
     <Compile Include="Signup.aspx.designer.cs">
       <DependentUpon>Signup.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Training.aspx.cs">
-      <DependentUpon>Training.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Training.aspx.designer.cs">
-      <DependentUpon>Training.aspx</DependentUpon>
-    </Compile>
     <Compile Include="ViewFeedback.aspx.cs">
       <DependentUpon>ViewFeedback.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ViewFeedback.aspx.designer.cs">
       <DependentUpon>ViewFeedback.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ForgotPassword.aspx.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ForgotPassword.aspx.designer.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NewPassword.aspx.cs">
+      <DependentUpon>NewPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewPassword.aspx.designer.cs">
+      <DependentUpon>NewPassword.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

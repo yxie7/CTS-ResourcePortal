@@ -17,62 +17,134 @@ namespace CTS_ResourcePortal
         SqlCommand bigCommand = new SqlCommand();
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                Events ev = new Events();
+                string resourceIDS = (string)Session["ResourceIDS"];
+                ev.resourceID = resourceIDS;
 
+                bigCommand.CommandType = CommandType.StoredProcedure;
+                bigCommand.CommandText = "SelectResourceByID";
+                SqlParameter id = new SqlParameter("@id", resourceIDS);
+                id.Direction = ParameterDirection.Input;
+                bigCommand.Parameters.Add(id);
+                DataSet ds = dBConnect.GetDataSetUsingCmdObj(bigCommand);
+
+                string title = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[2]);
+                string company = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[3]);
+                string primResp = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[4]);
+                string skills = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[5]);
+                string weekhrs = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[6]);
+                //string length = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[7]);
+                string attire = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[8]);
+                string firstName = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[9]);
+                string lastName = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[10]);
+                string phoneNo = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[11]);
+                string email = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[12]);
+                //string postedDate = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[13]);
+                //string expDate = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[14]);
+                string startTime = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[15]);
+                string endTime = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[16]);
+                //string applyReg = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[17]);
+                //string regDeadline = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[18]);
+                string link = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[19]);
+                string addLine1 = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[20]);
+                string addLine2 = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[21]);
+                string city = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[22]);
+                string zip = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[23]);
+                string state = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[24]);
+
+                txtTitle.Text = title;
+                txtHost.Text = company;
+                txtAddLine1.Text = addLine1;
+                txtAddLine2.Text = addLine2;
+                txtCity.Text = city;
+                ddlState.SelectedValue = state;
+                txtZip.Text = zip;
+                //CalendarPostedDate.SelectedDate =    event date
+                //CalendarExpDate.SelectedDate = 
+                txtStartTime.Text = startTime;
+                txtEndTime.Text = endTime;
+                txtFn.Text = firstName;
+                txtLn.Text = lastName;
+                txtContPhone.Text = phoneNo;
+                txtContEmail.Text = email;
+                txtLink.Text = link;
+                txtDesc.Text = primResp;
+                txtAtire.Text = attire;
+            }
         }
         protected void btnSubmit_click(object sender, EventArgs e)
         {
-            //Need to include ResourceID at some point which will come from 
-            //SQL Query String from "Edit" button on Manage Resource Table
 
-            Events eventt = new Events();
-            eventt.resourceTypeID = 2;
-            eventt.resourceTitle = txtTitle.Text;
-            eventt.company = txtHost.Text;
-            eventt.addressLine1 = txtAddLine1.Text;
-            eventt.addressLine2 = txtAddLine2.Text;
-            eventt.city = txtCity.Text;
-            eventt.state = ddlState.Text;
-            eventt.zipCode = txtZip.Text;
-            eventt.eventDate = CalanderDate.SelectedDate;
-            eventt.expDate = CalendarReg.SelectedDate;
-            eventt.startTime = Convert.ToDateTime(txtStartTime.Text);
-            eventt.endTime = Convert.ToDateTime(txtEndTime.Text);
-            eventt.contactFN = txtFn.Text;
-            eventt.contactLN = txtLn.Text;
-            eventt.phoneNumber = txtContPhone.Text;
-            eventt.email = txtContEmail.Text;
-            eventt.attire = txtAtire.Text;
-            eventt.link = txtLink.Text;
-            eventt.description = txtDesc.Text;
+            if (txtTitle.Text == string.Empty || txtHost.Text == string.Empty || txtAddLine1.Text == string.Empty || txtCity.Text == string.Empty ||
+               txtZip.Text == string.Empty || txtStartTime.Text == string.Empty || txtEndTime.Text == string.Empty || txtFn.Text == string.Empty ||
+               txtLn.Text == string.Empty || txtContEmail.Text == string.Empty || txtContPhone.Text == string.Empty || txtLink.Text == string.Empty
+               || txtDesc.Text == string.Empty)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup2();", true);
+            }
+            else
+            {
+                string resourceIDS = (string)Session["ResourceIDS"];
 
 
+                string title = txtTitle.Text;
+                //int typeID = 2;
+                string company = txtHost.Text;
+                string addressLine1 = txtAddLine1.Text;
+                string addressLine2 = txtAddLine2.Text;
+                string city = txtCity.Text;
+                string state = ddlState.Text;
+                string zip = txtZip.Text;
+                string start = txtStartTime.Text;
+                string end = txtEndTime.Text;
+                string fn = txtFn.Text;
+                string ln = txtLn.Text;
+                string phone = txtContPhone.Text;
+                string email = txtContEmail.Text;
+                string attire = txtAtire.Text;
+                string link = txtLink.Text;
+                string desc = txtDesc.Text;
 
-            bigCommand.CommandType = CommandType.StoredProcedure;
-            bigCommand.CommandText = "EditNUpdateEvent";
-            bigCommand.Parameters.AddWithValue("@resourceID", eventt.resourceTypeID);
-            bigCommand.Parameters.AddWithValue("@title", eventt.resourceTitle);
-            bigCommand.Parameters.AddWithValue("@company", eventt.company);
-            bigCommand.Parameters.AddWithValue("@addLine1", eventt.addressLine1);
-            bigCommand.Parameters.AddWithValue("@addLine2", eventt.addressLine2);
-            bigCommand.Parameters.AddWithValue("@city", eventt.city);
-            bigCommand.Parameters.AddWithValue("@state", eventt.state);
-            bigCommand.Parameters.AddWithValue("@zip", eventt.zipCode);
-            bigCommand.Parameters.AddWithValue("@eventDate", eventt.eventDate);
-            bigCommand.Parameters.AddWithValue("@regDate", eventt.expDate);
-            bigCommand.Parameters.AddWithValue("@startTime", eventt.startTime);
-            bigCommand.Parameters.AddWithValue("@endTime", eventt.endTime);
-            bigCommand.Parameters.AddWithValue("@firstName", eventt.contactFN);
-            bigCommand.Parameters.AddWithValue("@lastName", eventt.contactLN);
-            bigCommand.Parameters.AddWithValue("@phoneNumber", eventt.phoneNumber);
-            bigCommand.Parameters.AddWithValue("@email", eventt.email);
-            bigCommand.Parameters.AddWithValue("@attire", eventt.attire);
-            bigCommand.Parameters.AddWithValue("@link", eventt.link);
-            bigCommand.Parameters.AddWithValue("@description", eventt.description);
 
-            dBConnect.DoUpdateUsingCmdObj(bigCommand);
-            bigCommand.Parameters.Clear();
+                //Still need to add dates!!!!!!!!!!!!!!!!!!!!
 
-            Response.Redirect("ManageR.aspx");
+
+                bigCommand.CommandType = CommandType.StoredProcedure;
+                bigCommand.CommandText = "EditEvent";
+                bigCommand.Parameters.AddWithValue("@id", resourceIDS);
+                //bigCommand.Parameters.AddWithValue("@resourceID", eventt.resourceTypeID);
+                bigCommand.Parameters.AddWithValue("@title", title);
+                bigCommand.Parameters.AddWithValue("@company", company);
+                bigCommand.Parameters.AddWithValue("@addLine1", addressLine1);
+                bigCommand.Parameters.AddWithValue("@addLine2", addressLine2);
+                bigCommand.Parameters.AddWithValue("@city", city);
+                bigCommand.Parameters.AddWithValue("@state", state);
+                bigCommand.Parameters.AddWithValue("@zip", zip);
+                //bigCommand.Parameters.AddWithValue("@eventDate", eventDate);
+                //bigCommand.Parameters.AddWithValue("@regDate", expDate);
+                bigCommand.Parameters.AddWithValue("@startTime", start);
+                bigCommand.Parameters.AddWithValue("@endTime", end);
+                bigCommand.Parameters.AddWithValue("@firstName", fn);
+                bigCommand.Parameters.AddWithValue("@lastName", ln);
+                bigCommand.Parameters.AddWithValue("@phoneNumber", phone);
+                bigCommand.Parameters.AddWithValue("@email", email);
+                bigCommand.Parameters.AddWithValue("@attire", attire);
+                bigCommand.Parameters.AddWithValue("@link", link);
+                bigCommand.Parameters.AddWithValue("@description", desc);
+
+                dBConnect.DoUpdateUsingCmdObj(bigCommand);
+                bigCommand.Parameters.Clear();
+
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+
+                ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "redirectJS",
+                "setTimeout(function() { window.location.replace('ManageR.aspx') }, 3000);", true);
+
+                //Server.Transfer("ManageR.aspx");
+                //Response.Redirect("ManageR.aspx");
+            }
         }
     }
 }

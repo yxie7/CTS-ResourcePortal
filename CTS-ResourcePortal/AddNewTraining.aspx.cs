@@ -32,7 +32,7 @@ namespace CTS_ResourcePortal
                 txtLn.Text == string.Empty || txtContEmail.Text == string.Empty || txtContPhone.Text == string.Empty || txtSignUp.Text == string.Empty
                 || txtDesc.Text == string.Empty || txtSkills.Text == string.Empty)
             {
-                lblError.Visible = true;
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup2();", true);
             }
             else
             {
@@ -46,8 +46,8 @@ namespace CTS_ResourcePortal
                 training.city = txtCity.Text;
                 training.state = ddlState.Text;
                 training.zipCode = txtZip.Text;
-                training.startDate = CalanderStartDate.SelectedDate;
-                training.expDate = CalendarRegDead.SelectedDate;
+                training.startDate = Convert.ToDateTime(dateStart.Value);
+                training.expDate = Convert.ToDateTime(dateRegDeadline.Value);
                 training.weeklyHours = txtHours.Text;
                 training.trainingLength = txtLength.Text;
                 training.contactFN = txtFn.Text;
@@ -102,7 +102,6 @@ namespace CTS_ResourcePortal
                 txtSignUp.Text = string.Empty;
                 txtSkills.Text = string.Empty;
 
-                lblError.Visible = false;
 
                 ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
             }

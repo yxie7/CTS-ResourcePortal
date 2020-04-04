@@ -13,6 +13,24 @@ namespace CTS_ResourcePortal {
     public partial class EditEvent {
         
         /// <summary>
+        /// lblEventEdited control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEventEdited;
+        
+        /// <summary>
+        /// lblfailll control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblfailll;
+        
+        /// <summary>
         /// lblTitle control.
         /// </summary>
         /// <remarks>

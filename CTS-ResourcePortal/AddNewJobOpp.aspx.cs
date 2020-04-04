@@ -31,7 +31,7 @@ namespace CTS_ResourcePortal
                 || txtContEmail.Text == string.Empty || txtContPhone.Text == string.Empty || txtLink.Text == string.Empty ||
                  txtPrimResp.Text == string.Empty || txtSkills.Text == string.Empty)
             {
-                lblError.Visible = true;
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup2();", true);
             }
             else
             {
@@ -44,8 +44,8 @@ namespace CTS_ResourcePortal
                 job.city = txtCity.Text;
                 job.state = ddlState.Text;
                 job.zipCode = txtZip.Text;
-                job.datePosted = CalendarPostedDate.SelectedDate;
-                job.expDate = CalendarExpDate.SelectedDate;
+                job.datePosted = Convert.ToDateTime(datePosted.Value);
+                job.expDate = Convert.ToDateTime(dateExp.Value);
                 job.weeklyHours = txtHours.Text;
                 job.contactFN = txtFn.Text;
                 job.contactLN = txtLn.Text;
@@ -96,8 +96,6 @@ namespace CTS_ResourcePortal
                 txtPrimResp.Text = string.Empty;
                 txtLink.Text = string.Empty;
                 txtSkills.Text = string.Empty;
-
-                lblError.Visible = false;
 
                 ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
             }

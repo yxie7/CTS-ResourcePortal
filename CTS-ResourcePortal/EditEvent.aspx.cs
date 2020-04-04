@@ -41,12 +41,14 @@ namespace CTS_ResourcePortal
                 string lastName = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[10]);
                 string phoneNo = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[11]);
                 string email = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[12]);
-                //string postedDate = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[13]);
+                //string eventDate = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[13]);
+                DateTime evevdate = Convert.ToDateTime(ds.Tables[0].Rows[0].ItemArray[13]);
                 //string expDate = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[14]);
                 string startTime = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[15]);
                 string endTime = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[16]);
                 //string applyReg = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[17]);
                 //string regDeadline = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[18]);
+                DateTime regdate = Convert.ToDateTime(ds.Tables[0].Rows[0].ItemArray[18]);
                 string link = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[19]);
                 string addLine1 = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[20]);
                 string addLine2 = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[21]);
@@ -61,8 +63,10 @@ namespace CTS_ResourcePortal
                 txtCity.Text = city;
                 ddlState.SelectedValue = state;
                 txtZip.Text = zip;
-                //CalendarPostedDate.SelectedDate =    event date
-                //CalendarExpDate.SelectedDate = 
+                dateEventDate.Value = evevdate.ToShortDateString();
+                dateEventDate.DataBind();
+                dateRegDeadline.Value = regdate.ToShortDateString();
+                dateRegDeadline.DataBind();
                 txtStartTime.Text = startTime;
                 txtEndTime.Text = endTime;
                 txtFn.Text = firstName;
@@ -106,9 +110,9 @@ namespace CTS_ResourcePortal
                 string attire = txtAtire.Text;
                 string link = txtLink.Text;
                 string desc = txtDesc.Text;
+                DateTime eventDate = Convert.ToDateTime(dateEventDate.Value);
+                DateTime regDate = Convert.ToDateTime(dateRegDeadline.Value);
 
-
-                //Still need to add dates!!!!!!!!!!!!!!!!!!!!
 
 
                 bigCommand.CommandType = CommandType.StoredProcedure;
@@ -122,8 +126,8 @@ namespace CTS_ResourcePortal
                 bigCommand.Parameters.AddWithValue("@city", city);
                 bigCommand.Parameters.AddWithValue("@state", state);
                 bigCommand.Parameters.AddWithValue("@zip", zip);
-                //bigCommand.Parameters.AddWithValue("@eventDate", eventDate);
-                //bigCommand.Parameters.AddWithValue("@regDate", expDate);
+                bigCommand.Parameters.AddWithValue("@eventDate", eventDate);
+                bigCommand.Parameters.AddWithValue("@regDate", regDate);
                 bigCommand.Parameters.AddWithValue("@startTime", start);
                 bigCommand.Parameters.AddWithValue("@endTime", end);
                 bigCommand.Parameters.AddWithValue("@firstName", fn);

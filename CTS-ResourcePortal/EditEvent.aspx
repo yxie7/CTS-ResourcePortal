@@ -117,40 +117,12 @@
                 <div class="col-sm-2"></div>
                 <div class="col-sm-3">
                     <asp:Label ID="lblDate" runat="server"><span class="requiredRed">*</span>Event Date: </asp:Label><br />
-                    <asp:Calendar ID="CalanderDate" runat="server">
-                         <OtherMonthDayStyle ForeColor="LightGray">
-           </OtherMonthDayStyle>
-
-           <TitleStyle BackColor="Yellow"
-                       ForeColor="Black">
-           </TitleStyle>
-
-           <DayStyle BackColor="gray">
-           </DayStyle>
-
-           <SelectedDayStyle BackColor="LightGray"
-                             Font-Bold="True">
-           </SelectedDayStyle>
-                    </asp:Calendar>
+                    <input type="date" id="dateEventDate" class="form-control" runat="server" required />
                 </div>
                 <div class="col-sm-2"></div>
                 <div class="col-sm-3">
                     <asp:Label ID="lblRegDeadline" runat="server"><span class="requiredRed">*</span>Registration Deadline: </asp:Label><br />
-                    <asp:Calendar ID="CalendarReg" runat="server">
-                         <OtherMonthDayStyle ForeColor="LightGray">
-           </OtherMonthDayStyle>
-
-           <TitleStyle BackColor="Yellow"
-                       ForeColor="Black">
-           </TitleStyle>
-
-           <DayStyle BackColor="gray">
-           </DayStyle>
-
-           <SelectedDayStyle BackColor="LightGray"
-                             Font-Bold="True">
-           </SelectedDayStyle>
-                    </asp:Calendar>
+                    <input type="date" id="dateRegDeadline" class="form-control" runat="server" required />
                 </div>
                 <div class="col-sm-2"></div>
             </div>

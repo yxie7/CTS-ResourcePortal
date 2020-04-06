@@ -17,7 +17,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('[id*=datatable]').DataTable({
-         
+
             });
         });
     </script>
@@ -40,7 +40,6 @@
             });
         });
     </script>
-
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
@@ -56,8 +55,8 @@
                 <div class="modal-body" style="color: black">
                 </div>
                 <div class="modal-footer">
-                    <asp:Button runat="server" ID="close" class="btn btn-danger" data-dismiss="modal"/>
-                    <asp:Button runat="server" ID="no" class="btn btn-danger" data-dismiss="modal" UseSubmitBehavior="false" OnClick="no_Click"/>
+                    <asp:Button runat="server" ID="close" class="btn btn-danger" data-dismiss="modal" />
+                    <asp:Button runat="server" ID="no" class="btn btn-danger" data-dismiss="modal" UseSubmitBehavior="false" OnClick="no_Click" />
                     <asp:Button runat="server" ID="yes" class="btn btn-success" data-dismiss="modal" UseSubmitBehavior="false" OnClick="yes_Click" />
                     <asp:Button runat="server" ID="yesAccept" class="btn btn-success" data-dismiss="modal" UseSubmitBehavior="false" OnClick="yesAccept_Click" />
                 </div>
@@ -66,10 +65,10 @@
     </div>
 
     <div class="container">
-        <div class="section">                
-                <h2 class="col-md-auto">New Citizen Accounts</h2>
+        <div class="section">
+            <h2 class="col-md-auto">New Citizen Accounts</h2>
             <div class="table-wrapper ">
-            <asp:Repeater ID="rptNewCitizen" runat="server">
+                <asp:Repeater ID="rptNewCitizen" runat="server">
                     <HeaderTemplate>
                         <table id="datatable" class="table table-striped table-bordered" border="0" cellpadding="0"
                             cellspacing="0">
@@ -93,39 +92,33 @@
                                 <asp:CheckBox runat="server" ID="chkRow" />
                             </td>
                             <td>
-                                <asp:Label ID="lblfName" runat=server Text='<%# DataBinder.Eval(Container.DataItem, ("FirstName")) %>'></asp:Label>
+                                <asp:Label ID="lblfName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, ("FirstName")) %>'></asp:Label>
                             </td>
                             <td>
                                 <asp:Label ID="lblLName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, ("LastName")) %>'></asp:Label>
                             </td>
                             <td>
-                                 <asp:Label ID="lblEmail" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, ("Email")) %>'></asp:Label>
+                                <asp:Label ID="lblEmail" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, ("Email")) %>'></asp:Label>
                             </td>
-                            
                         </tr>
-
                     </ItemTemplate>
 
                     <FooterTemplate>
                         </tbody></table>
-                        <div style="align-content:center">
-                    <asp:Button ID="btnAccept" Text="Accept" runat="server" OnClick="btnAccept_Click" />
-                    <asp:Button ID="btnReject" Text="Reject" runat="server" OnClick="btnReject_Click"  />
+                        <div style="align-content: center">
+                            <asp:Button ID="btnAccept" Text="Accept" runat="server" OnClick="btnAccept_Click" />
+                            <asp:Button ID="btnReject" Text="Reject" runat="server" OnClick="btnReject_Click" />
                         </div>
                     </FooterTemplate>
                 </asp:Repeater>
-                </div>
-                <br />
-                <br />
-                
-                
-            
-
+            </div>
+        </div>
+        <br />
         <!--------------------------------------Another table------------------------------------------------------>
         <div class="section">
-             <h2 class="col-md-auto">All Citizens</h2>
+            <h2 class="col-md-auto">All Citizens</h2>
             <div class="table-wrapper ">
-            <asp:Repeater ID="rptManageR" runat="server">
+                <asp:Repeater ID="rptManageR" runat="server">
                     <HeaderTemplate>
                         <table id="datatable" class="table table-striped table-bordered" border="0" cellpadding="0"
                             cellspacing="0">
@@ -140,7 +133,7 @@
                                     </th>
                                     <th>Phone Number
                                     </th>
-                                     <th>Address
+                                    <th>Address
                                     </th>
                                 </tr>
                             </thead>
@@ -150,25 +143,24 @@
                     <ItemTemplate>
                         <tr>
                             <td>
-                                <asp:Label ID="lblfName" runat=server Text='<%# DataBinder.Eval(Container.DataItem, ("FirstName")) %>'></asp:Label>
+                                <asp:Label ID="lblfName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, ("FirstName")) %>'></asp:Label>
                             </td>
                             <td>
-                               <asp:Label ID="lblLName" runat="server" Text=' <%# DataBinder.Eval(Container.DataItem, ("LastName")) %>'></asp:Label>
+                                <asp:Label ID="lblLName" runat="server" Text=' <%# DataBinder.Eval(Container.DataItem, ("LastName")) %>'></asp:Label>
                             </td>
                             <td>
-                               <asp:Label ID="lblEmail" runat="server" Text=' <%# DataBinder.Eval(Container.DataItem, ("Email")) %>'></asp:Label>
+                                <asp:Label ID="lblEmail" runat="server" Text=' <%# DataBinder.Eval(Container.DataItem, ("Email")) %>'></asp:Label>
                             </td>
                             <td>
                                 <asp:Label ID="lblPhone" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, ("PhoneNumber")) %>'></asp:Label>
                             </td>
-                             <td>
+                            <td>
                                 <asp:Label ID="lblAddress" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, ("Address")) %>'></asp:Label>
-                                 <asp:Label ID="lblCity" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, ("City")) %>'></asp:Label>
-                                 <asp:Label ID="lblState" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, ("State")) %>'></asp:Label>
-                                 <asp:Label ID="lblZip" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, ("Zipcode")) %>'></asp:Label>
+                                <asp:Label ID="lblCity" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, ("City")) %>'></asp:Label>
+                                <asp:Label ID="lblState" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, ("State")) %>'></asp:Label>
+                                <asp:Label ID="lblZip" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, ("Zipcode")) %>'></asp:Label>
                             </td>
                         </tr>
-
                     </ItemTemplate>
 
                     <FooterTemplate>
@@ -176,14 +168,14 @@
                         </table>
                     </FooterTemplate>
                 </asp:Repeater>
-				
-                </div>
+            </div>
         </div>
-    <!---------------------------------------- Resume Table ----------------------------------------------->
-            <div class="section">
-             <h2 class="col-md-auto">Resumes</h2>
+        <br />
+        <!---------------------------------------- Resume Table ----------------------------------------------->
+        <div class="section">
+            <h2 class="col-md-auto">Resumes</h2>
             <div class="table-wrapper ">
-            <asp:Repeater ID="rptResumes" runat="server">
+                <asp:Repeater ID="rptResumes" runat="server">
                     <HeaderTemplate>
                         <table id="datatable" class="table table-striped table-bordered" border="0" cellpadding="0"
                             cellspacing="0">
@@ -194,8 +186,7 @@
                                     </th>
                                     <th>Resume
                                     </th>
-                                    <th>
-                                    </th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -204,16 +195,15 @@
                     <ItemTemplate>
                         <tr>
                             <td>
-                                <asp:Label ID="lblEmail" runat=server Text='<%# DataBinder.Eval(Container.DataItem, ("Email")) %>'></asp:Label>
+                                <asp:Label ID="lblEmail" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, ("Email")) %>'></asp:Label>
                             </td>
                             <td>
-                               <asp:Label ID="lblResume" runat="server" Text=' <%# DataBinder.Eval(Container.DataItem, ("ResumeTitle")) %>'></asp:Label>
+                                <asp:Label ID="lblResume" runat="server" Text=' <%# DataBinder.Eval(Container.DataItem, ("ResumeTitle")) %>'></asp:Label>
                             </td>
                             <td>
-                                <asp:LinkButton ID="lnkType" runat="server" Text="View" OnClick="lnkView_Click"></asp:LinkButton >
+                                <asp:LinkButton ID="lnkType" runat="server" Text="View" OnClick="lnkView_Click"></asp:LinkButton>
                             </td>
                         </tr>
-
                     </ItemTemplate>
 
                     <FooterTemplate>
@@ -221,13 +211,9 @@
                         </table>
                     </FooterTemplate>
                 </asp:Repeater>
-				
-                </div>
+            </div>
         </div>
-
-        <br />
     </div>
-        </div>
 
     <script type="text/javascript">
         function ShowPopup(title, body) {

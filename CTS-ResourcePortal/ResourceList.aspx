@@ -7,7 +7,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-    <div id="MyPopup" class="modal" role="dialog">
+    <div id="MyPopup" class="modal fade" role="dialog">
         <div class="modal-dialog modal-xl">
             <button type="button" class="btn btn-danger btnDismiss" data-dismiss="modal">
                 <span aria-hidden="true"><i class="fas fa-times fa-2x"></i></span>
@@ -162,7 +162,7 @@
         </div>
     </div>
 
-    <div id="MyPopup2" class="modal" role="dialog">
+    <div id="MyPopup2" class="modal fade" role="dialog">
         <div class="modal-dialog modal-xl">
             <!-- Modal content-->
             <div class="modal-content container">

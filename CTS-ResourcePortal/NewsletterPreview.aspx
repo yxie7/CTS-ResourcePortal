@@ -14,7 +14,7 @@
             $("#sent").modal("show");
         }
     </script>
-    <div class="modal" id="sendPrompt" role="dialog">
+    <div class="modal fade" id="sendPrompt" role="dialog">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content container">
                 <div class="modal-body">
@@ -27,7 +27,7 @@
             </div>
         </div>
     </div>
-    <div class="modal" id="sent" role="dialog">
+    <div class="modal fade" id="sent" role="dialog">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content container justify-content-center align-items-center text-center">
                 <div class="modal-body">

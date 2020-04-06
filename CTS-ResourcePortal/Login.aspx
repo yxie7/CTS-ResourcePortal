@@ -43,26 +43,22 @@
             <br />
             <div class="row">
                 <div class="col"></div>
-                <div class="col-md-auto">
-                    <asp:Label runat="server" Font-Bold="true">Email:</asp:Label>
-                </div>
-                <div class="col-md-auto">
-                    <p>
-                        &nbsp<asp:TextBox ID="txtEmail" Placeholder="" runat="server"></asp:TextBox>
-                    </p>
+                <div class="col-sm-6">
+                    <label>Email:</label>
+                    <asp:TextBox ID="txtEmail" TextMode="Password" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
                 <div class="col"></div>
             </div>
             <br />
             <div class="row">
                 <div class="col"></div>
-                <div class="col-md-auto">
-                    <asp:Label runat="server" Font-Bold="true">Password:</asp:Label>
-                </div>
-                <div class="col-md-auto">
-                    <p>
-                        <asp:TextBox ID="txtPassword" TextMode="Password" runat="server"></asp:TextBox>
-                    </p>
+
+                <div class="col-sm-6">
+                    <label>Password:</label>
+                    <asp:TextBox ID="txtPassword" TextMode="Password" CssClass="form-control" runat="server"></asp:TextBox>
+                    <br>
+
+                    <br>
                 </div>
                 <div class="col"></div>
             </div>

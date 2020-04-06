@@ -58,7 +58,13 @@
                 <div class="col"></div>
             </div>
             <br />
-            <asp:Label ID="lblRequired" runat="server"><span class="requiredRed">*</span>Required</asp:Label>
+            <div class="row" id="rowInst">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10">
+                    <asp:Label ID="lblInstructions" runat="server">This page is for adding a new Job Opening for citizens to view. To ensure a successful submission, all required fields must be correctly filled out. A required field is marked with a “<span class="requiredRed">*</span>”.<br />Once satisfied with the information that has been entered, click “Add Job” to complete adding a Job Opening.</asp:Label><br />
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
             <br />
             <br />
             <div class="row" id="titleRow">

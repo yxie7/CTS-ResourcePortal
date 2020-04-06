@@ -60,10 +60,15 @@
         <br />
         <div id="" class="section">
             <br />
-
-            <p><span class="requiredRed"><span class="requiredRed">*</span></span>Required</p>
+            <div class="row" id="rowInst">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10">
+                    <asp:Label ID="lblInstructions" runat="server">This page is for editing an already existing Event. All fields are filled with the current information, but any of them can be changed. To ensure a successful submission, all required fields must be correctly filled out. A required field is marked with a “<span class="requiredRed">*</span>”.<br />Once satisfied with the information that has been entered, click “Edit Event” to complete editing an Event.</asp:Label><br />
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
             <br />
-
+            <br />
             <div class="row" id="titleRow">
                 <div class="col-sm-6">
 
@@ -185,14 +190,9 @@
                 </div>
             </div>
             <br />
-            <br />
 
-            <div class="row" id="btn">
-                <div class="col-sm-4"></div>
-                <div class="col-sm-4">
+            <div class="row justify-content-center align-items-center">
                     <asp:Button ID="btnSubmit" runat="server" Text="Submit" Width="200px" OnClick="btnSubmit_click"  CssClass="btn btn-dark"/>
-                </div>
-                <div class="col-sm-4"></div>
             </div>
         </div>
     </div>

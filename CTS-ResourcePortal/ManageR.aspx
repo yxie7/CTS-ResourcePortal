@@ -147,6 +147,13 @@
                 </h2>
                 <br />
                 <br />
+
+                <div class="row" id="rowInst">
+                <asp:Label ID="lblInst" runat="server">The Manage Resources page is for Activating/Inactivating or Editing resources. In order to Activate/Inactivate a resource, click the checkboxes on left side of the table and click the respective button for the action needed. The current status of resource can be seen in the “Current Status” column. Multiple resources can be Activated/Inactivated at a time. To Edit a resource, click the checkbox next to only one resource and then Click “Edit Resource”. </asp:Label>
+                </div>
+
+                <br />
+                <br />
                 <asp:Label ID="lblDDLResources" runat="server" Text="Select Resources to View: "></asp:Label>
                 <asp:DropDownList ID="ddlResources" runat="server" AutoPostBack="false" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
                     <asp:ListItem Text="All Resources"></asp:ListItem>
@@ -172,15 +179,13 @@
                                     </th>
                                     <th>Resource Type ID
                                     </th>
-                                    <th>Active Status
+                                    <th>Current Status
                                     </th>
                                     <th>Address
                                     </th>
                                     <th>City
                                     </th>
                                     <th>Date Posted
-                                    </th>
-                                    <th>Current Status
                                     </th>
                                 </tr>
                             </thead>
@@ -212,10 +217,7 @@
                             <td>
                                 <%# DataBinder.Eval(Container.DataItem, ("StartDate")) %>
                             </td>
-                            <td>
 
-                                <%# DataBinder.Eval(Container.DataItem, ("Active")) %>
-                            </td>
                         </tr>
                     </ItemTemplate>
 

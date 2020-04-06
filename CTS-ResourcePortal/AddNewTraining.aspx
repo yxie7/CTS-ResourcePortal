@@ -58,7 +58,13 @@
                 <div class="col"></div>
             </div>
             <br />
-            <asp:Label ID="lblRequired" runat="server"><span class="requiredRed">*</span>Required</asp:Label>
+            <div class="row" id="rowInst">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10">
+                    <asp:Label ID="lblInstructions" runat="server">This page is for adding a new Training Opportunity for citizens to view. To ensure a successful submission, all required fields must be correctly filled out. A required field is marked with a “<span class="requiredRed">*</span>”.<br />Once satisfied with the information that has been entered, click “Add Training” to complete adding a Training Opportunity.</asp:Label><br />
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
             <br />
             <br />
             <div class="row" id="titleRow">
@@ -176,9 +182,6 @@
             <div class="row justify-content-center align-items-center">
                 <div class="col-md-2">
                     <asp:Button ID="btnCreate" runat="server" Text="Add Training" class="btn btn-success" OnClick="btnCreate_Click" />
-                </div>
-                <div class="'col-md-2"></div>
-                <div class="'col-md-2">
                 </div>
             </div>
         </div>

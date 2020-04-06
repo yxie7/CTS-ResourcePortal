@@ -31,13 +31,13 @@ namespace CTS_ResourcePortal {
         protected global::System.Web.UI.WebControls.Label lblFaill;
         
         /// <summary>
-        /// lblRequired control.
+        /// lblInstructions control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRequired;
+        protected global::System.Web.UI.WebControls.Label lblInstructions;
         
         /// <summary>
         /// lblTitle control.
@@ -184,13 +184,13 @@ namespace CTS_ResourcePortal {
         protected global::System.Web.UI.WebControls.Label lblRegDeadline;
         
         /// <summary>
-        /// CalendarRegDead control.
+        /// dateRegDeadline control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar CalendarRegDead;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl dateRegDeadline;
         
         /// <summary>
         /// lblStart control.
@@ -202,13 +202,13 @@ namespace CTS_ResourcePortal {
         protected global::System.Web.UI.WebControls.Label lblStart;
         
         /// <summary>
-        /// CalanderStartDate control.
+        /// dateStart control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar CalanderStartDate;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl dateStart;
         
         /// <summary>
         /// lblHours control.

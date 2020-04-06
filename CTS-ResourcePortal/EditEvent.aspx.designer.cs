@@ -31,6 +31,15 @@ namespace CTS_ResourcePortal {
         protected global::System.Web.UI.WebControls.Label lblfailll;
         
         /// <summary>
+        /// lblInstructions control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblInstructions;
+        
+        /// <summary>
         /// lblTitle control.
         /// </summary>
         /// <remarks>

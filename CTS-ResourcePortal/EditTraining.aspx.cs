@@ -43,12 +43,12 @@ namespace CTS_ResourcePortal
                 string lastName = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[10]);
                 string phoneNo = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[11]);
                 string email = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[12]);
-                //string postedDate = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[13]);
+                DateTime startDate = Convert.ToDateTime(ds.Tables[0].Rows[0].ItemArray[13]);
                 //string expDate = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[14]);
                 //string startTime = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[15]);
                 //string endTime = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[16]);
                 //string applyReg = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[17]);
-                //string regDeadline = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[18]);
+                DateTime expDate = Convert.ToDateTime(ds.Tables[0].Rows[0].ItemArray[18]);
                 string link = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[19]);
                 string addLine1 = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[20]);
                 string addLine2 = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[21]);
@@ -63,8 +63,8 @@ namespace CTS_ResourcePortal
                 txtCity.Text = city;
                 ddlState.SelectedValue = state;
                 txtZip.Text = zip;
-                //CalendarPostedDate.SelectedDate =    start date
-                //CalendarExpDate.SelectedDate =       end date
+                dateStart.Value = startDate.ToString("yyyy-MM-dd");
+                dateRegDeadline.Value = expDate.ToString("yyyy-MM-dd");
                 txtHours.Text = weekhrs;
                 txtLength.Text = length;
                 txtFn.Text = firstName;
@@ -111,6 +111,9 @@ namespace CTS_ResourcePortal
                 string otherReqs = txtSkills.Text;
                 string link = txtSignUp.Text;
                 string desc = txtDesc.Text;
+                DateTime startDate = Convert.ToDateTime(dateStart.Value);
+                DateTime expDate = Convert.ToDateTime(dateRegDeadline.Value);
+
 
                 bigCommand.CommandType = CommandType.StoredProcedure;
                 bigCommand.CommandText = "EditTraining";
@@ -123,8 +126,8 @@ namespace CTS_ResourcePortal
                 bigCommand.Parameters.AddWithValue("@city", city);
                 bigCommand.Parameters.AddWithValue("@state", state);
                 bigCommand.Parameters.AddWithValue("@zip", zip);
-                //bigCommand.Parameters.AddWithValue("@startDate", training.startDate);
-                //bigCommand.Parameters.AddWithValue("@expDate", training.expDate);
+                bigCommand.Parameters.AddWithValue("@startDate", startDate);
+                bigCommand.Parameters.AddWithValue("@expDate", expDate);
                 bigCommand.Parameters.AddWithValue("@weeklyHrs", hours);
                 bigCommand.Parameters.AddWithValue("@trainLength", length);
                 bigCommand.Parameters.AddWithValue("@firstName", fn);

@@ -60,7 +60,13 @@
         <br />
         <div class="section">
             <br />
-            <asp:Label ID="lblRequired" runat="server"><span class="requiredRed">*</span>Required</asp:Label>
+            <div class="row" id="rowInst">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10">
+                    <asp:Label ID="lblInstructions" runat="server">This page is for editing an already existing Training Opportunity. All fields are filled with the current information, but any of them can be changed. To ensure a successful submission, all required fields must be correctly filled out. A required field is marked with a “<span class="requiredRed">*</span>”.<br />Once satisfied with the information that has been entered, click “Edit Training” to complete editing a Training Opportunity.</asp:Label><br />
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
             <br />
             <br />
             <div class="row" id="titleRow">
@@ -113,40 +119,12 @@
                 <div class="col-sm-2"></div>
                 <div class="col-sm-3">
                     <asp:Label ID="lblRegDeadline" runat="server"><span class="requiredRed">*</span>Registration Deadline: </asp:Label><br />
-                    <asp:Calendar ID="CalendarRegDead" runat="server">
-                         <OtherMonthDayStyle ForeColor="LightGray">
-           </OtherMonthDayStyle>
-
-           <TitleStyle BackColor="Yellow"
-                       ForeColor="Black">
-           </TitleStyle>
-
-           <DayStyle BackColor="gray">
-           </DayStyle>
-
-           <SelectedDayStyle BackColor="LightGray"
-                             Font-Bold="True">
-           </SelectedDayStyle>
-                    </asp:Calendar>
+                    <input type="date" id="dateRegDeadline" class="form-control" runat="server" required />
                 </div>
                 <div class="col-sm-2"></div>
                 <div class="col-sm-3">
                     <asp:Label ID="lblStart" runat="server"><span class="requiredRed">*</span>Start Date: </asp:Label><br />
-                    <asp:Calendar ID="CalanderStartDate" runat="server">
-                         <OtherMonthDayStyle ForeColor="LightGray">
-           </OtherMonthDayStyle>
-
-           <TitleStyle BackColor="Yellow"
-                       ForeColor="Black">
-           </TitleStyle>
-
-           <DayStyle BackColor="gray">
-           </DayStyle>
-
-           <SelectedDayStyle BackColor="LightGray"
-                             Font-Bold="True">
-           </SelectedDayStyle>
-                    </asp:Calendar>
+                    <input type="date" id="dateStart" class="form-control" runat="server" required />
                 </div>
                 <div class="col-sm-2"></div>
             </div>
@@ -210,13 +188,9 @@
                 </div>
             </div>
             <br />
-            <br />
-            <div class="row" id="btn">
-                <div class="col-sm-4"></div>
-                <div class="col-sm-4">
+
+            <div class="row justify-content-center align-items-center">
                     <asp:Button ID="btnSubmit" runat="server" Text="Submit" Width="200px" OnClick="btnSubmit_click" class="btn btn-dark"/>
-                </div>
-                <div class="col-sm-4"></div>
             </div>
         </div>
     </div>

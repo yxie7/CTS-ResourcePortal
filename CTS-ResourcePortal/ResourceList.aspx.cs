@@ -592,6 +592,12 @@ namespace CTS_ResourcePortal
 
             // Format: ?Key1=value1&Key2=value2&KeyN=valueN
 
+            if (string.IsNullOrEmpty(Session["userEmail"] as string))
+            {
+                lblConfirm.Text = "Please log-in or sign-up to make an account to give feedback.";
+                lblConfirm.Visible = true;
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup2();", true);
+            } else
 
             Response.Redirect("Feedback.aspx?resource=" + myHeader.InnerHtml + "&ID=" + btnFeedback.CommandArgument);
 

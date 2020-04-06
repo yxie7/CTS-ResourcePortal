@@ -44,17 +44,13 @@
                         <div class="info-form">
                             <div class="form-group">
                                 <div class="row">
-                                    <div class="col-lg-4">
+                                    <div class="col-sm-6">
                                         <label>First Name</label>
                                         <asp:TextBox ID="txtFirstName" required="true" CssClass="form-control" runat="server"></asp:TextBox>
                                     </div>
-                                    <div class="col-lg-4">
+                                    <div class="col-sm-6">
                                         <label>Last Name</label>
                                         <asp:TextBox ID="txtLastName" required="true" CssClass="form-control" runat="server"></asp:TextBox>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <label>Email Address</label>
-                                        <asp:TextBox ID="txtEmail" required="true" CssClass="form-control" runat="server" placeholder="email@example.com"></asp:TextBox>
                                     </div>
                                 </div>
                                 <br>
@@ -62,23 +58,31 @@
                                 <br />
                                 <div class="row">
 
-                                    <div class="col-md-4">
+                                    <div class="col-sm-6">
                                         <label>Street Address</label>
                                         <asp:TextBox ID="txtAddress" required="true" CssClass="form-control" runat="server"></asp:TextBox>
                                     </div>
-                                    <div class="col-md-4">
+                                   <div class="col-sm-6">
                                         <label>City</label>
                                         <asp:TextBox ID="txtCity" required="true" CssClass="form-control" runat="server"></asp:TextBox>
                                     </div>
-                                    <div class="col-md-2">
+
+                                </div>
+                                <br>
+
+                                <br>
+                                 <div class="row">
+
+                                     <div class="col-sm-6">
                                         <label>State</label>
                                         <asp:TextBox ID="txtState" required="true" CssClass="form-control" runat="server"></asp:TextBox>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-sm-6">
                                         <label>Zipcode</label>
                                         <asp:TextBox ID="txtZip" required="true" CssClass="form-control" runat="server"></asp:TextBox>
                                     </div>
-                                </div>
+
+                                 </div>
                                 <br>
 
                                 <br>
@@ -87,6 +91,10 @@
                                     <div class="col-sm-6">
                                         <label>Cell Phone:</label>
                                         <asp:TextBox ID="txtCellPhone" required="true" CssClass="form-control" runat="server" placeholder="(123)456-7890"></asp:TextBox>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Email Address</label>
+                                        <asp:TextBox ID="txtEmail" required="true" CssClass="form-control" runat="server" placeholder="email@example.com"></asp:TextBox>
                                     </div>
                                 </div>
                                 <br>

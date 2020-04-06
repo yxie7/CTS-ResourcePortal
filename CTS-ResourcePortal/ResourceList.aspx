@@ -162,11 +162,29 @@
         </div>
     </div>
 
-    <%--<asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true" />--%>
+    <div id="MyPopup2" class="modal" role="dialog">
+        <div class="modal-dialog modal-xl">
+            <!-- Modal content-->
+            <div class="modal-content container">
+                <div class="modal-body">
 
+                    <br />
+                    <div class="row  justify-content-center align-items-center text-center">
+                        <div class="col"></div>
+                        <div class="col-md-4">
+                            <asp:Label runat="server" Text="" ID="lblConfirm" Visible="False"></asp:Label>
+                        </div>
+                        <div class="col"></div>
+                    </div>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
     <div class="container">
-        <%--         <asp:UpdatePanel runat="server">
-               <ContentTemplate>--%>
+
         <div class="section">
             <br />
             <div class="row">
@@ -291,6 +309,11 @@
             $("#MyPopup .modal-title").html(title);
             $("#MyPopup .modal-body").html(body);
             $("#MyPopup").modal("show");
+        }
+             function ShowPopup2(title, body) {
+            $("#MyPopup2 .modal-title").html(title);
+            $("#MyPopup2 .modal-body").html(body);
+            $("#MyPopup2").modal("show");
         }
     </script>
 </asp:Content>

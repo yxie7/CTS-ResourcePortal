@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CTS_ResourcePortal {
-    
-    
-    public partial class Signup {
-        
+namespace CTS_ResourcePortal
+{
+
+
+    public partial class Signup
+    {
+
         /// <summary>
         /// lblThanks control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblThanks;
-        
+
         /// <summary>
         /// ScriptManager1 control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.ScriptManager ScriptManager1;
-        
+
         /// <summary>
         /// txtFirstName control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtFirstName;
-        
+
         /// <summary>
         /// txtLastName control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtLastName;
-        
+
         /// <summary>
         /// txtAddress control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAddress;
-        
+
         /// <summary>
         /// txtCity control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCity;
-        
+
         /// <summary>
         /// txtState control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtState;
-        
+
         /// <summary>
         /// txtZip control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtZip;
-        
+
         /// <summary>
         /// txtCellPhone control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCellPhone;
-        
+
         /// <summary>
         /// txtEmail control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
-        
+
         /// <summary>
         /// txtPassword control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPassword;
-        
+
         /// <summary>
         /// txtCPassword control.
         /// </summary>
@@ -119,7 +121,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCPassword;
-        
+
         /// <summary>
         /// rdoSubscribe control.
         /// </summary>
@@ -128,7 +130,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList rdoSubscribe;
-        
+
         /// <summary>
         /// FileUpload1 control.
         /// </summary>
@@ -137,7 +139,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
-        
+
         /// <summary>
         /// finishSignUp control.
         /// </summary>
@@ -146,7 +148,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button finishSignUp;
-        
+
         /// <summary>
         /// lblStatus control.
         /// </summary>

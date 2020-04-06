@@ -60,14 +60,13 @@
         </div>
     </div>
     <div class="container">
+        <div class="section">
         <div class="row">
             <div class="col"></div>
             <h2 class="col-md-auto">Create a Newsletter</h2>
             <div class="col"></div>
         </div>
         <br />
-        <div class="section">
-            <br />
             <div class="row d-flex justify-content-center">
                 <div class="accordion col-10">
                     <asp:Label ID="lblResourceSelect" runat="server" Text="Select Resources Type: "></asp:Label>

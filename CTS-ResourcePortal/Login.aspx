@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Guest.master" AutoEventWireup="true" CodeBehind="MobileLogin.aspx.cs" Inherits="CTS_ResourcePortal.MobileLogin" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Guest.master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="CTS_ResourcePortal.MobileLogin" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
     <link href="css.css" rel="stylesheet" />

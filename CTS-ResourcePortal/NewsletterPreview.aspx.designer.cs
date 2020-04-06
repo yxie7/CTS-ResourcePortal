@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CTS_ResourcePortal {
-    
-    
-    public partial class NewsletterPreview {
-        
+namespace CTS_ResourcePortal
+{
+
+
+    public partial class NewsletterPreview
+    {
+
         /// <summary>
         /// btnNoSend control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnNoSend;
-        
+
         /// <summary>
         /// btnYesSend control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnYesSend;
-        
+
         /// <summary>
         /// newsletterPreview control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl newsletterPreview;
-        
+
         /// <summary>
         /// h2Date control.
         /// </summary>
@@ -47,16 +49,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl h2Date;
-        
-        /// <summary>
-        /// H1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl H1;
-        
+
         /// <summary>
         /// rptSummary control.
         /// </summary>
@@ -65,7 +58,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptSummary;
-        
+
         /// <summary>
         /// rptNL control.
         /// </summary>
@@ -74,7 +67,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptNL;
-        
+
         /// <summary>
         /// btnSend control.
         /// </summary>

@@ -190,7 +190,7 @@
             <br />
 
             <div class="row justify-content-center align-items-center">
-                    <asp:Button ID="btnSubmit" runat="server" Text="Submit" Width="200px" OnClick="btnSubmit_click" class="btn btn-dark"/>
+                    <asp:Button ID="btnSubmit" runat="server" Text="Submit" Width="200px" OnClick="btnSubmit_click" class="btn btn-primary"/>
             </div>
         </div>
     </div>

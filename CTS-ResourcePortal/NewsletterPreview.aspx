@@ -21,8 +21,8 @@
                     <b class="">Send the newsletter?</b>
                 </div>
                 <div class="modal-footer">
-                    <asp:Button ID="btnNoSend" Text="No" runat="server" data-dismiss="modal" CssClass="btn btn-light" />
-                    <asp:Button ID="btnYesSend" Text="Yes" runat="server" OnClick="btnYesSend_Click" CssClass="btn btn-light" />
+                    <asp:Button ID="btnNoSend" Text="No" runat="server" data-dismiss="modal" CssClass="btn btn-danger" />
+                    <asp:Button ID="btnYesSend" Text="Yes" runat="server" OnClick="btnYesSend_Click" CssClass="btn btn-success" />
                 </div>
             </div>
         </div>

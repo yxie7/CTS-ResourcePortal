@@ -172,7 +172,7 @@
             <br />
             <div class="row justify-content-center align-items-center">
                 <div class="col-md-2">
-                    <asp:Button ID="btnCreate" runat="server" Text="Add Job" class="btn btn-success" OnClick="btnCreate_Click" />
+                    <asp:Button ID="btnCreate" runat="server" Text="Add Job" CssClass="btn btn-primary btn-lg" OnClick="btnCreate_Click" />
                 </div>
             </div>
         </div>

@@ -86,7 +86,7 @@
 
         <div class="row justify-content-center align-items-center  text-center">
             <div class="col-md-4">
-                <a class="btn btn-large btn-info" href="ResourceList.aspx">Back To Resources</a>
+                <a class="btn btn-large btn-primary" href="ResourceList.aspx">Back To Resources</a>
             </div>
         </div>
         <br />
@@ -94,7 +94,7 @@
             <div class="col"></div>
             <div class="col-md-4">
 
-                <asp:Button runat="server" CssClass="btn btn-large btn-info" Text="Submit Feedback" ID="btnSubmit" OnClick="btnSubmit_Click" />
+                <asp:Button runat="server" CssClass="btn btn-large btn-primary" Text="Submit Feedback" ID="btnSubmit" OnClick="btnSubmit_Click" />
                
             </div>
             <div class="col"></div>

@@ -106,14 +106,19 @@
                     </h2>
                     <br />
                     <br />
+                    <div class="row" id="rowInst">
+                          <asp:Label ID="lblInst" runat="server">The View Feedback page is for Viewing Feedback left on a resource, removing it or  replying to feedback. In order to remove a feedback, click the checkboxes on left side of the table and click the respective button for the action needed. You can reply to a feedback by hitting the reply button on a feedback. Multiple feedbacks can be removed at a time. To filter feedbacks by resource, select a resource type from the dropdown list and then hit "View" or "View All Feedbacks" to see all feedbacks. You may also use the search box to narrow your results </asp:Label>
+                    </div>
+                    <br />
+                    <br />
                     <asp:Label ID="lblDDLResources" runat="server" Text="Select Resources to View: "></asp:Label>
                     <asp:DropDownList ID="ddlResources" runat="server" AutoPostBack="false">
                         <asp:ListItem Text="All Resources"></asp:ListItem>
                     </asp:DropDownList>
                     &nbsp
-                <asp:Button ID="btnViewR" runat="server" Text="View" OnClick="btnViewR_Click" />
+                <asp:Button ID="btnViewR" runat="server" Text="View" OnClick="btnViewR_Click" CssClass="btn btn-primary btn-sm"/>
                     &nbsp
-                <asp:Button ID="btnAllResources" runat="server" Text="View All Feedback" OnClick="btnAllResources_Click" />
+                <asp:Button ID="btnAllResources" runat="server" Text="View All Feedback" OnClick="btnAllResources_Click" CssClass="btn btn-primary btn-sm" />
 
                     <br />
                     <br />
@@ -155,7 +160,7 @@
                                 </td>
                                 <td>
 
-                                    <asp:Button ID="btnReply" runat="server" Text="Reply" OnClick="btnReply_Click" />
+                                    <asp:Button ID="btnReply" runat="server" Text="Reply" OnClick="btnReply_Click" CssClass="btn btn-primary btn-md" />
                                 </td>
                             </tr>
                         </ItemTemplate>
@@ -167,7 +172,7 @@
                     <br />
                     <br />
                     <div style="align-content: center; margin: auto">
-                        <asp:Button ID="btnRemove" Text="Remove Feedback" runat="server" OnClick="btnSelect_Click" />
+                        <asp:Button ID="btnRemove" Text="Remove Feedback" runat="server" OnClick="btnSelect_Click" CssClass="btn btn-primary btn-md" />
                     </div>
                 </div>
                 <br />

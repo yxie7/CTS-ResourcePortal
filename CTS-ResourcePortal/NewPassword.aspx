@@ -76,7 +76,7 @@
                 <div class="row ">
                     <div class="col"></div>
                     <div class="col-6 d-flex justify-content-center">
-                        <asp:Button runat="server" CssClass="btn btn-light" ID="btnUpdatePassword" Text="Update Password" OnClick="btnUpdatePassword_Click" />
+                        <asp:Button runat="server" CssClass="btn btn-primary" ID="btnUpdatePassword" Text="Update Password" OnClick="btnUpdatePassword_Click" />
                     </div>
                     <div class="col"></div>
                 </div>

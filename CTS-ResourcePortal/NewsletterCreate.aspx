@@ -73,10 +73,10 @@
                     <br />
                     <div class="row">
                         <div class="col"></div>
-                        <asp:Button Text="ALL" ID="btnAll" runat="server" class="col-2 btn btn-dark m-2" OnClick="btnAll_Click" />
-                        <asp:Button Text="Jobs" ID="btnJob" runat="server" class="col-2 btn btn-dark m-2" OnClick="btnJob_Click" />
-                        <asp:Button Text="Events" ID="btnEvent" runat="server" class="col-2 btn btn-dark m-2" OnClick="btnEvent_Click" />
-                        <asp:Button Text="Training" ID="btnTraining" runat="server" class="col-2 btn btn-dark m-2" OnClick="btnTraining_Click" />
+                        <asp:Button Text="ALL" ID="btnAll" runat="server" class="col-2 btn btn-primary m-2" OnClick="btnAll_Click" />
+                        <asp:Button Text="Jobs" ID="btnJob" runat="server" class="col-2 btn btn-primary m-2" OnClick="btnJob_Click" />
+                        <asp:Button Text="Events" ID="btnEvent" runat="server" class="col-2 btn btn-primary m-2" OnClick="btnEvent_Click" />
+                        <asp:Button Text="Training" ID="btnTraining" runat="server" class="col-2 btn btn-primary m-2" OnClick="btnTraining_Click" />
                         <div class="col"></div>
                     </div>
                     <br />
@@ -102,7 +102,7 @@
                                     <asp:TextBox runat="server" ID="txtComment" CssClass="form-control" TextMode="multiline" Rows="3" placeholder="(Optional) Enter comments, tips, or other information here..."></asp:TextBox>
                                 </td>
                                 <td class="rtd">
-                                    <asp:Button ID="btnAdd" CssClass="btn btn-success" Text="Add" runat="server" OnClientClick="" UseSubmitBehavior="false" />
+                                    <asp:Button ID="btnAdd" CssClass="btn btn-primary" Text="Add" runat="server" OnClientClick="" UseSubmitBehavior="false" />
                                 </td>
                             </tr>
                         </ItemTemplate>

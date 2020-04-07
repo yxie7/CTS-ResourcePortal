@@ -64,7 +64,7 @@
 
             <div class="row justify-content-center align-items-center  text-center">
                 <div class="col-md-4">
-                    <asp:Button runat="server" ID="btnSubmitLogin" Text="Submit" class="btn btn-large btn-info" OnClick="btnSubmitLogin_Click" />
+                    <asp:Button runat="server" ID="btnSubmitLogin" Text="Submit" class="btn btn-large btn-primary" OnClick="btnSubmitLogin_Click" />
                 </div>
             </div>
         </div>

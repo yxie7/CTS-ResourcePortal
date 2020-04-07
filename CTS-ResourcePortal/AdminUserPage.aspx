@@ -106,8 +106,8 @@
                     <FooterTemplate>
                         </tbody></table>
                         <div style="align-content: center">
-                            <asp:Button ID="btnAccept" Text="Accept" runat="server" OnClick="btnAccept_Click" />
-                            <asp:Button ID="btnReject" Text="Reject" runat="server" OnClick="btnReject_Click" />
+                            <asp:Button ID="btnAccept" Text="Accept" runat="server" OnClick="btnAccept_Click" CssClass="btn btn-primary btn-md"/>
+                            <asp:Button ID="btnReject" Text="Reject" runat="server" OnClick="btnReject_Click" CssClass="btn btn-danger btn-md"/>
                         </div>
                     </FooterTemplate>
                 </asp:Repeater>

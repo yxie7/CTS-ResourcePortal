@@ -145,7 +145,7 @@
                     <div class="row  justify-content-center align-items-center text-center">
                         <div class="col"></div>
                         <div class="col-md-4">
-                            <asp:Button runat="server" CssClass="btn btn-large btn-info" Text="Apply Here" ID="btnLink" OnClick="btnLink_Click" />
+                            <asp:Button runat="server" CssClass="btn btn-large btn-primary" Text="Apply Here" ID="btnLink" OnClick="btnLink_Click" />
                         </div>
                         <div class="col"></div>
                     </div>
@@ -153,7 +153,7 @@
                     <div class="row  justify-content-center align-items-center text-center">
                         <div class="col"></div>
                         <div class="col-md-4">
-                            <asp:Button runat="server" CssClass="btn btn-large btn-info" Text="Leave Feedback" ID="btnFeedback" OnClick="btnFeedback_Click" />
+                            <asp:Button runat="server" CssClass="btn btn-large btn-primary" Text="Leave Feedback" ID="btnFeedback" OnClick="btnFeedback_Click" />
                         </div>
                         <div class="col"></div>
                     </div>

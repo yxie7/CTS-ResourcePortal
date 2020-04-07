@@ -65,7 +65,7 @@
                         </div>
                         <div class="row justify-content-start align-items-center">
                             <div class="col-md-2">
-                                <asp:Button ID="btnCreate" runat="server" Text="Update" class="btn btn-success" OnClick="btnCreate_Click" CssClass="btn btn-info btn-lg" />
+                                <asp:Button ID="btnCreate" runat="server" Text="Update" class="btn btn-success" OnClick="btnCreate_Click" CssClass="btn btn-primary btn-lg" />
                             </div>
                         </div>
                     </div>

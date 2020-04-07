@@ -159,9 +159,9 @@
                     <asp:ListItem Text="All Resources"></asp:ListItem>
                 </asp:DropDownList>
                 &nbsp
-                <asp:Button ID="btnViewR" runat="server" OnClick="btnViewR_Click" Text="View" CssClass="btn btn-info btn-sm" />
+                <asp:Button ID="btnViewR" runat="server" OnClick="btnViewR_Click" Text="View" CssClass="btn btn-primary btn-sm" />
                 &nbsp
-                <asp:Button ID="btnAllResources" runat="server" OnClick="btnAllResources_Click" Text="View All Resources" CssClass="btn btn-info btn-sm"/>
+                <asp:Button ID="btnAllResources" runat="server" OnClick="btnAllResources_Click" Text="View All Resources" CssClass="btn btn-primary btn-sm"/>
 
                 <br />
                 <br />
@@ -229,11 +229,11 @@
                 <br />
                 <div class="row justify-content-center align-items-center">
                     <div class="col-md-2">
-                        <asp:Button ID="btnActivate" runat="server" Text="Activate Resource(s)" OnClick="btnActivate_Click" CssClass="btn btn-info btn-md" />
+                        <asp:Button ID="btnActivate" runat="server" Text="Activate Resource(s)" OnClick="btnActivate_Click" CssClass="btn btn-primary btn-md" />
                     </div>
                     <div class="col-md-1"></div>
                     <div class="col-md-2">
-                        <asp:Button ID="btnInactivate" Text="Inactivate Resource(s)" runat="server" OnClick="btnInactivate_Click" CssClass="btn btn-info btn-md" />
+                        <asp:Button ID="btnInactivate" Text="Inactivate Resource(s)" runat="server" OnClick="btnInactivate_Click" CssClass="btn btn-primary btn-md" />
                     </div>
                     <div class="col-md-1"></div>
                     <div class="col-md-2">

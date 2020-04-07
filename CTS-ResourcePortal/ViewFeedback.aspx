@@ -116,9 +116,9 @@
                         <asp:ListItem Text="All Resources"></asp:ListItem>
                     </asp:DropDownList>
                     &nbsp
-                <asp:Button ID="btnViewR" runat="server" Text="View" OnClick="btnViewR_Click" CssClass="btn btn-info btn-sm"/>
+                <asp:Button ID="btnViewR" runat="server" Text="View" OnClick="btnViewR_Click" CssClass="btn btn-primary btn-sm"/>
                     &nbsp
-                <asp:Button ID="btnAllResources" runat="server" Text="View All Feedback" OnClick="btnAllResources_Click" CssClass="btn btn-info btn-sm" />
+                <asp:Button ID="btnAllResources" runat="server" Text="View All Feedback" OnClick="btnAllResources_Click" CssClass="btn btn-primary btn-sm" />
 
                     <br />
                     <br />
@@ -160,7 +160,7 @@
                                 </td>
                                 <td>
 
-                                    <asp:Button ID="btnReply" runat="server" Text="Reply" OnClick="btnReply_Click" CssClass="btn btn-info btn-md" />
+                                    <asp:Button ID="btnReply" runat="server" Text="Reply" OnClick="btnReply_Click" CssClass="btn btn-primary btn-md" />
                                 </td>
                             </tr>
                         </ItemTemplate>
@@ -172,7 +172,7 @@
                     <br />
                     <br />
                     <div style="align-content: center; margin: auto">
-                        <asp:Button ID="btnRemove" Text="Remove Feedback" runat="server" OnClick="btnSelect_Click" CssClass="btn btn-info btn-md" />
+                        <asp:Button ID="btnRemove" Text="Remove Feedback" runat="server" OnClick="btnSelect_Click" CssClass="btn btn-primary btn-md" />
                     </div>
                 </div>
                 <br />

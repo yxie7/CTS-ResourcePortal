@@ -183,7 +183,7 @@
             <br />
 
             <div class="row justify-content-center align-items-center">
-                    <asp:Button ID="btnCreate" runat="server" Text="Submit" Width="200px" OnClick="btnCreate_Click" class="btn btn-dark" />
+                    <asp:Button ID="btnCreate" runat="server" Text="Submit" Width="200px" OnClick="btnCreate_Click" class="btn btn-primary" />
             </div>
         </div>
     </div>

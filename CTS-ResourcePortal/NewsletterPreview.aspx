@@ -149,7 +149,7 @@
             <br />
             <div class="row justify-content-center align-items-center text-center">
                 <div class="col-md-4">
-                    <asp:Button runat="server" class="btn btn-info" Text="Send Newsletter to Subscribers" ID="btnSend" OnClick="btnSend_Click" AutoPostBack="False"></asp:Button>
+                    <asp:Button runat="server" class="btn btn-primary" Text="Send Newsletter to Subscribers" ID="btnSend" OnClick="btnSend_Click" AutoPostBack="False"></asp:Button>
                 </div>
             </div>
         </div>

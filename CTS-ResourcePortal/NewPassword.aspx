@@ -7,7 +7,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
-    <div id="MyPopup" class="modal" role="dialog">
+    <div id="MyPopup" class="modal fade" role="dialog">
         <div class="modal-dialog modal-xl">
             <!-- Modal content-->
             <div class="modal-content container">

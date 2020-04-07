@@ -7,7 +7,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-    <div id="MyPopup" class="modal" role="dialog">
+    <div id="MyPopup" class="modal fade" role="dialog">
         <div class="modal-dialog modal-xl">
             <button type="button" class="btn btn-danger btnDismiss" data-dismiss="modal">
                 <span aria-hidden="true"><i class="fas fa-times fa-2x"></i></span>
@@ -162,7 +162,7 @@
         </div>
     </div>
 
-    <div id="MyPopup2" class="modal" role="dialog">
+    <div id="MyPopup2" class="modal fade" role="dialog">
         <div class="modal-dialog modal-xl">
             <!-- Modal content-->
             <div class="modal-content container">
@@ -183,6 +183,26 @@
     </div>
 
     <div class="container">
+        <div id="banner" class="text-center alert alert-warning alert-dismissible landingBanner" role="alert">
+            <strong>Welcome!</strong> You are at the Called to Serve's Resource Portal.
+            <br />
+            This will be your goto site for all the job related information you can find in the Nicetown-Tioga area!
+            <br />
+            You can find active job openings, upcoming events, and current training opportunites down below.
+            <button type="button" id="btnBanner" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="text-center alert alert-primary alert-dismissible landingBanner" role="alert">
+            <strong>Welcome!</strong> You are at the Called to Serve's Resource Portal.
+            <br />
+            This will be your goto site for all the job related information you can find in the Nicetown-Tioga area!
+            <br />
+            You can find active job openings, upcoming events, and current training opportunites down below.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
         <div class="section">
             <div class="row">
                 <div class="col"></div>
@@ -310,5 +330,21 @@
             $("#MyPopup2 .modal-body").html(body);
             $("#MyPopup2").modal("show");
         }
+        $(document).ready(function () {
+            document.getElementById("btnBanner").onclick = function () {
+                var days = 14;
+                var exp = new Date();
+                exp.setTime(exp.getTime() + (days * 24 * 60 * 60 * 1000));
+                exp = exp.toUTCString();
+
+                document.cookie = "ck=bannerDismissed; " + "expires=" + exp;
+            }
+            var ck = document.cookie.replace(/(?:(?:^|.*;\s*)ck\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+            if (ck == "bannerDismissed") {
+                $("#banner").alert('close');
+
+            }
+        });
+
     </script>
 </asp:Content>

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Guest.master" AutoEventWireup="true" CodeBehind="MobileLogin.aspx.cs" Inherits="CTS_ResourcePortal.MobileLogin" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Guest.master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="CTS_ResourcePortal.MobileLogin" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
     <link href="css.css" rel="stylesheet" />
@@ -7,7 +7,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-    <div id="MyPopup" class="modal" role="dialog">
+    <div id="MyPopup" class="modal fade" role="dialog">
         <div class="modal-dialog modal-xl">
             <!-- Modal content-->
             <div class="modal-content container">

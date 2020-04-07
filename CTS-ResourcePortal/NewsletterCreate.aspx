@@ -60,20 +60,17 @@
         </div>
     </div>
     <div class="container">
+        <div class="section">
         <div class="row">
             <div class="col"></div>
             <h2 class="col-md-auto">Create a Newsletter</h2>
             <div class="col"></div>
         </div>
         <br />
-        <div class="section">
-            <br />
             <div class="row d-flex justify-content-center">
                 <div class="accordion col-10">
                     <asp:Label ID="lblResourceSelect" runat="server" Text="Select Resources Type: "></asp:Label>
-
                     <br />
-
                     <div class="row">
                         <div class="col"></div>
                         <asp:Button Text="ALL" ID="btnAll" runat="server" class="col-2 btn btn-dark m-2" OnClick="btnAll_Click" />
@@ -115,11 +112,9 @@
                     </asp:Repeater>
                 </div>
             </div>
-            <br />
         </div>
         <br />
         <div class="section">
-            <br />
             <div class="row d-flex justify-content-center">
                 <div class="tableSelection col-10">
                     <label>Current Newsletter Items:</label><br />
@@ -137,14 +132,13 @@
                     </asp:GridView>
                 </div>
             </div>
-            <br />
+            <hr />
             <div class="row d-flex justify-content-end">
                 <div>
-                    <asp:Button runat="server" class="btn btn-dark" Text="Preview Newsletter" ID="btnPreview" OnClick="btnPreview_Click"></asp:Button>
+                    <asp:Button runat="server" class="btn btn-primary" Text="Preview Newsletter" ID="btnPreview" OnClick="btnPreview_Click"></asp:Button>
                 </div>
                 <div class="col-1"></div>
             </div>
-            <br />
         </div>
     </div>
     <!---->

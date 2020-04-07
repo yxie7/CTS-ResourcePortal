@@ -7,6 +7,7 @@
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
+
     <link href="css.css" rel="stylesheet" />
     <script src="Scripts/jquery-3.0.0.js"></script>
     <script src="Scripts/popper.js"></script>
@@ -48,7 +49,7 @@
             });
         });
     </script>
-    <div id="MyPopup" class="modal" role="dialog">
+    <div id="MyPopup" class="modal fade" role="dialog">
         <div class="modal-dialog modal-xl">
             <!-- Modal content-->
             <div class="modal-content container">
@@ -68,7 +69,7 @@
         </div>
     </div>
 
-    <div id="MyPopup1" class="modal" role="dialog">
+    <div id="MyPopup1" class="modal fade" role="dialog">
         <div class="modal-dialog modal-xl">
             <!-- Modal content-->
             <div class="modal-content container">
@@ -88,7 +89,7 @@
         </div>
     </div>
 
-    <div id="MyPopup2" class="modal" role="dialog">
+    <div id="MyPopup2" class="modal fade" role="dialog">
         <div class="modal-dialog modal-xl">
             <!-- Modal content-->
             <div class="modal-content container">
@@ -108,7 +109,7 @@
         </div>
     </div>
 
-    <div id="MyPopup3" class="modal" role="dialog">
+    <div id="MyPopup3" class="modal fade" role="dialog">
         <div class="modal-dialog modal-xl">
             <!-- Modal content-->
             <div class="modal-content container">

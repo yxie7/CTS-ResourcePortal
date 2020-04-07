@@ -19,10 +19,9 @@ namespace CTS_ResourcePortal
         DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
         SqlCommand cmd = new SqlCommand();
         protected void Page_Load(object sender, EventArgs e)
-        {
+        {       
             if (!this.IsPostBack)
             {
-
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 List<Job> jl = new List<Job>();

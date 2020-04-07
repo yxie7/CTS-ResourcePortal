@@ -10,7 +10,7 @@
     <link href="AddNew.css" rel="stylesheet" />
     <link href="css.css" rel="stylesheet" />
 
-    <div id="MyPopup" class="modal" role="dialog">
+    <div id="MyPopup" class="modal fade" role="dialog">
         <div class="modal-dialog modal-xl">
             <!-- Modal content-->
             <div class="modal-content container">
@@ -20,8 +20,8 @@
                     <div class="row  justify-content-center align-items-center text-center">
                         <div class="col"></div>
                         <div class="col-md-4">
-                             <asp:Label runat="server" Text="Job Opening Successfully Added!" ID="lblJobAdded" Font-Bold="True"></asp:Label>
-                            </div>
+                            <asp:Label runat="server" Text="Job Opening Successfully Added!" ID="lblJobAdded" Font-Bold="True"></asp:Label>
+                        </div>
                         <div class="col"></div>
                     </div>
                     <br />
@@ -30,7 +30,7 @@
         </div>
     </div>
 
-    <div id="MyPopup2" class="modal" role="dialog">
+    <div id="MyPopup2" class="modal fade" role="dialog">
         <div class="modal-dialog modal-xl">
             <!-- Modal content-->
             <div class="modal-content container">
@@ -40,8 +40,8 @@
                     <div class="row  justify-content-center align-items-center text-center">
                         <div class="col"></div>
                         <div class="col-md-4">
-                             <asp:Label runat="server" Text="Please fill out all of the required fields!" ID="lblfailll" Font-Bold="True"></asp:Label>
-                            </div>
+                            <asp:Label runat="server" Text="Please fill out all of the required fields!" ID="lblfailll" Font-Bold="True"></asp:Label>
+                        </div>
                         <div class="col"></div>
                     </div>
                     <br />
@@ -51,15 +51,12 @@
     </div>
 
     <div class="container">
-        <div class="row">
-            <div class="col"></div>
-            <h2 class="col-md-auto">Add New Job Opening</h2>
-            <div class="col"></div>
-        </div>
-
-        
-        <br />
         <div class="section">
+            <div class="row">
+                <div class="col"></div>
+                <h2 class="col-md-auto">Add New Job Opening</h2>
+                <div class="col"></div>
+            </div>
             <br />
             <div class="row" id="rowInst">
                 <div class="col-sm-1"></div>
@@ -73,9 +70,7 @@
             <div class="row" id="titleRow">
                 <div class="col-sm-6">
                     <asp:Label ID="lblTitle" runat="server"><span class="requiredRed">*</span>Job Opportunity Title: </asp:Label><br />
-                    <asp:TextBox ID="txtTitle" class="form-control" runat="server" ></asp:TextBox>
-
-
+                    <asp:TextBox ID="txtTitle" class="form-control" runat="server"></asp:TextBox>
                 </div>
                 <div class="col-sm-6">
                     <asp:Label ID="lblCompany" runat="server"><span class="requiredRed">*</span>Company Name: </asp:Label><br />
@@ -102,11 +97,11 @@
                 <div class="col-sm-4">
                     <asp:Label ID="lblState" runat="server"><span class="requiredRed">*</span>State: </asp:Label><br />
                     <asp:DropDownList ID="ddlState" class="form-control" runat="server">
-	<asp:ListItem Value="DE">Delaware</asp:ListItem>
-	<asp:ListItem Value="NJ">New Jersey</asp:ListItem>
-	<asp:ListItem Value="NY">New York</asp:ListItem>
-	<asp:ListItem Value="PA">Pennsylvania</asp:ListItem>
-</asp:DropDownList>
+                        <asp:ListItem Value="DE">Delaware</asp:ListItem>
+                        <asp:ListItem Value="NJ">New Jersey</asp:ListItem>
+                        <asp:ListItem Value="NY">New York</asp:ListItem>
+                        <asp:ListItem Value="PA">Pennsylvania</asp:ListItem>
+                    </asp:DropDownList>
                 </div>
                 <div class="col-sm-4">
                     <asp:Label ID="lblZip" runat="server"><span class="requiredRed">*</span>Zip: </asp:Label><br />
@@ -123,7 +118,7 @@
                 <div class="col-sm-2"></div>
                 <div class="col-sm-3">
                     <asp:Label ID="lblExp" runat="server"><span class="requiredRed">*</span>Expiration Date: </asp:Label><br />
-                     <input type="date" id="dateExp" class="form-control" runat="server" required />
+                    <input type="date" id="dateExp" class="form-control" runat="server" required />
                 </div>
                 <div class="col-sm-2"></div>
             </div>
@@ -176,12 +171,12 @@
             </div>
             <br />
             <div class="row justify-content-center align-items-center">
-                    <asp:Button ID="btnCreate" runat="server" Text="Add Job" class="btn btn-dark" OnClick="btnCreate_Click" />
+                <div class="col-md-2">
+                    <asp:Button ID="btnCreate" runat="server" Text="Add Job" class="btn btn-success" OnClick="btnCreate_Click" />
+                </div>
             </div>
-            <br />
         </div>
-        <br />
-    </div>  
+    </div>
 
     <script type="text/javascript">
         function ShowPopup(title, body) {
@@ -198,5 +193,4 @@
             $("#MyPopup2").modal("show");
         }
     </script>
-
 </asp:Content>

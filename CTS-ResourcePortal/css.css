@@ -247,3 +247,7 @@ input[type=radio]{
 .dbdata{
     padding-left: 5px;
 }
+
+.btn-group:hover, .btn-group label:hover{
+    cursor:pointer;
+}

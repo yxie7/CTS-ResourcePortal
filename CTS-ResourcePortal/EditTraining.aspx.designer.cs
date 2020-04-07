@@ -13,6 +13,24 @@ namespace CTS_ResourcePortal {
     public partial class EditTraining {
         
         /// <summary>
+        /// lblTrainEdit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTrainEdit;
+        
+        /// <summary>
+        /// lblFaill control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFaill;
+        
+        /// <summary>
         /// lblRequired control.
         /// </summary>
         /// <remarks>

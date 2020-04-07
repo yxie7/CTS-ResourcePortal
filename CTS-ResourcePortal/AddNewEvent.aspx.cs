@@ -36,7 +36,7 @@ namespace CTS_ResourcePortal
                 txtLn.Text == string.Empty || txtContEmail.Text == string.Empty || txtContPhone.Text == string.Empty || txtLink.Text == string.Empty
                 || txtDesc.Text == string.Empty)
             {
-                lblError.Visible = true;
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup2();", true);
             }
             else
             {
@@ -49,8 +49,8 @@ namespace CTS_ResourcePortal
                 eventt.city = txtCity.Text;
                 eventt.state = ddlState.Text;
                 eventt.zipCode = txtZip.Text;
-                eventt.eventDate = CalanderDate.SelectedDate;
-                eventt.expDate = CalendarReg.SelectedDate;
+                eventt.eventDate = Convert.ToDateTime(dateEventDate.Value);
+                eventt.expDate = Convert.ToDateTime(dateRegDeadline.Value);
                 eventt.startTime = Convert.ToDateTime(txtStartTime.Text);
                 eventt.endTime = Convert.ToDateTime(txtEndTime.Text);
                 eventt.contactFN = txtFn.Text;
@@ -104,7 +104,6 @@ namespace CTS_ResourcePortal
                 txtLink.Text = string.Empty;
                 txtDesc.Text = string.Empty;
 
-                lblError.Visible = false;
 
                 ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
 

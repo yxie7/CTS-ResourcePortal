@@ -13,6 +13,24 @@ namespace CTS_ResourcePortal {
     public partial class EditJob {
         
         /// <summary>
+        /// lblJobEdited control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblJobEdited;
+        
+        /// <summary>
+        /// lblfailll control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblfailll;
+        
+        /// <summary>
         /// lblRequired control.
         /// </summary>
         /// <remarks>

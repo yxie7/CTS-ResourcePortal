@@ -22,6 +22,15 @@ namespace CTS_ResourcePortal {
         protected global::System.Web.UI.WebControls.Label lblJobAdded;
         
         /// <summary>
+        /// lblfailll control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblfailll;
+        
+        /// <summary>
         /// lblRequired control.
         /// </summary>
         /// <remarks>
@@ -29,15 +38,6 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblRequired;
-        
-        /// <summary>
-        /// lblError control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblError;
         
         /// <summary>
         /// lblTitle control.
@@ -184,13 +184,13 @@ namespace CTS_ResourcePortal {
         protected global::System.Web.UI.WebControls.Label lblStart;
         
         /// <summary>
-        /// CalendarPostedDate control.
+        /// datePosted control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar CalendarPostedDate;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl datePosted;
         
         /// <summary>
         /// lblExp control.
@@ -202,13 +202,13 @@ namespace CTS_ResourcePortal {
         protected global::System.Web.UI.WebControls.Label lblExp;
         
         /// <summary>
-        /// CalendarExpDate control.
+        /// dateExp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar CalendarExpDate;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl dateExp;
         
         /// <summary>
         /// lblFn control.

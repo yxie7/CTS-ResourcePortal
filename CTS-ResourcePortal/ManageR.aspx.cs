@@ -23,6 +23,10 @@ namespace CTS_ResourcePortal
 
         DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
 
+        //Strings needed for Edit functionality
+        public string resTypeIDE = "";
+        public string resIDE = "";
+
         SqlCommand cmd = new SqlCommand();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -225,31 +229,64 @@ namespace CTS_ResourcePortal
 
         protected void btnEdit_Click(object sender, EventArgs e)
         {
-            HtmlInputCheckBox chkRow;
+            
             int count = 0;
             foreach (RepeaterItem item in rptManageR.Items)
             {
-                chkRow = (HtmlInputCheckBox)item.FindControl("chkRow");
-                if (chkRow.Checked)
+                CheckBox cb = (CheckBox)item.FindControl("chkRow");
+                if (cb.Checked)
                 {
                     count++;
+                    Label labelTypeID = (Label)item.FindControl("lblResTypeID");
+                    resTypeIDE = labelTypeID.Text;
+                    Label labelID = (Label)item.FindControl("lblResID");
+                    resIDE = labelID.Text;
                 }
             }
 
             if (count == 0)
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup2();", true);
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup2();", true); // Keep 1 modal and change text
             }
             else if (count > 1)
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup3();", true);
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup3();", true); // Keep 1 modal and change text
             }
             else
             {
-               // Label label = (Label)item.FindControl("lblResID");
-                //Label labelTypeID = (Label)item.FindControl("lblResTypeID");
+                int typeID = Convert.ToInt32(resTypeIDE);
+                string resID = Convert.ToString(resIDE);
 
-                //int typeID = Convert.ToInt32(labelTypeID);
+                Session["ResourceIDS"] = resID;
+
+                if (typeID == 1)
+                {
+                    //Job
+                    Job job = new Job();
+                    job.resourceID = resID;
+                    SqlCommand sqlGet = new SqlCommand("SELECT * FROM [Resources] WHERE ResourcesID = '" + resID + "'", db.GetConnection());
+                    Response.Redirect("EditJob.aspx");
+                    //Server.Transfer("EditJob.aspx");
+
+                }
+                else if (typeID == 2)
+                {
+                    //Event
+                    Events ev = new Events();
+                    ev.resourceID = resID;
+                    SqlCommand sqlGet = new SqlCommand("SELECT * FROM [Resources] WHERE ResourcesID = '" + resID + "'", db.GetConnection());
+                    Response.Redirect("EditEvent.aspx");
+                    //Server.Transfer("EditEvent.aspx");
+                }
+                else
+                {
+                    //Training
+                    Training train = new Training();
+                    train.resourceID = resID;
+                    SqlCommand sqlGet = new SqlCommand("SELECT * FROM [Resources] WHERE ResourcesID = '" + resID + "'", db.GetConnection());
+                    Response.Redirect("EditTraining.aspx");
+                    //Server.Transfer("EditTraining.aspx");
+                }
             }
         }
 

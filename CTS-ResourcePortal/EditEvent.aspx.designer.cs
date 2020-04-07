@@ -13,6 +13,24 @@ namespace CTS_ResourcePortal {
     public partial class EditEvent {
         
         /// <summary>
+        /// lblEventEdited control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEventEdited;
+        
+        /// <summary>
+        /// lblfailll control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblfailll;
+        
+        /// <summary>
         /// lblTitle control.
         /// </summary>
         /// <remarks>
@@ -157,13 +175,13 @@ namespace CTS_ResourcePortal {
         protected global::System.Web.UI.WebControls.Label lblDate;
         
         /// <summary>
-        /// CalanderDate control.
+        /// dateEventDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar CalanderDate;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl dateEventDate;
         
         /// <summary>
         /// lblRegDeadline control.
@@ -175,13 +193,13 @@ namespace CTS_ResourcePortal {
         protected global::System.Web.UI.WebControls.Label lblRegDeadline;
         
         /// <summary>
-        /// CalendarReg control.
+        /// dateRegDeadline control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar CalendarReg;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl dateRegDeadline;
         
         /// <summary>
         /// lblStart control.

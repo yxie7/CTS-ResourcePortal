@@ -13,22 +13,22 @@ namespace CTS_ResourcePortal {
     public partial class AddNewTraining {
         
         /// <summary>
-        /// Label1 control.
+        /// lblTrainAdded control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label lblTrainAdded;
         
         /// <summary>
-        /// lblTrainingAdded control.
+        /// lblFaill control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTrainingAdded;
+        protected global::System.Web.UI.WebControls.Label lblFaill;
         
         /// <summary>
         /// lblRequired control.
@@ -38,15 +38,6 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblRequired;
-        
-        /// <summary>
-        /// lblError control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblError;
         
         /// <summary>
         /// lblTitle control.
@@ -193,13 +184,13 @@ namespace CTS_ResourcePortal {
         protected global::System.Web.UI.WebControls.Label lblRegDeadline;
         
         /// <summary>
-        /// CalendarRegDead control.
+        /// dateRegDeadline control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar CalendarRegDead;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl dateRegDeadline;
         
         /// <summary>
         /// lblStart control.
@@ -211,13 +202,13 @@ namespace CTS_ResourcePortal {
         protected global::System.Web.UI.WebControls.Label lblStart;
         
         /// <summary>
-        /// CalanderStartDate control.
+        /// dateStart control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar CalanderStartDate;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl dateStart;
         
         /// <summary>
         /// lblHours control.

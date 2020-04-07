@@ -34,6 +34,9 @@
                         <div class="form-group">
 
                             <div class="col-sm-10">
+                                <h2 class="col-sm-8" style="margin: auto">Edit Automated Email
+                                </h2>
+                                <br />
                                 <asp:DropDownList ID="DdlEmail" runat="server" class="form-control" name="lname" AutoPostBack="True" OnSelectedIndexChanged="DdlEmail_SelectedIndexChanged">
                                     <asp:ListItem Enabled="true" Text="Type" Value="-1"></asp:ListItem>
                                     <asp:ListItem Text="Accept Citizen" Value="1"></asp:ListItem>
@@ -43,14 +46,18 @@
                         </div>
 
                         <div class="form-group">
-
+                            
+                            
+                            
                             <div class="col-sm-10">
                                 <asp:TextBox ID="txtSubject" class="form-control" runat="server" placeholder="Subject"></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
-
+                            
+                            
+                            
                             <div class="col-lg-10">
 
                                 <asp:TextBox ID="txtComment" class="form-control" Style="height: 150px;" Wrap="True" TextMode="MultiLine" runat="server"></asp:TextBox>
@@ -58,7 +65,7 @@
                         </div>
                         <div class="row justify-content-start align-items-center">
                             <div class="col-md-2">
-                                <asp:Button ID="btnCreate" runat="server" Text="Update" class="btn btn-success" OnClick="btnCreate_Click" />
+                                <asp:Button ID="btnCreate" runat="server" Text="Update" class="btn btn-success" OnClick="btnCreate_Click" CssClass="btn btn-info btn-lg" />
                             </div>
                         </div>
                     </div>

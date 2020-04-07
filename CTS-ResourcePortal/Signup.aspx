@@ -132,7 +132,7 @@
                                 <div class="col">
                                 </div>
                                 <div class="col-md-auto">
-                                    <asp:Button runat="server" ID="finishSignUp" class="btn btn-success" Text="Submit" OnClick="finishSignUp_Click"></asp:Button>
+                                    <asp:Button runat="server" ID="finishSignUp" class="btn btn-info" Text="Submit" OnClick="finishSignUp_Click"></asp:Button>
                                 </div>
                                 <div class="col">
                                 </div>

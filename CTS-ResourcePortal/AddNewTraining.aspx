@@ -181,7 +181,7 @@
             <br />
             <div class="row justify-content-center align-items-center">
                 <div class="col-md-2">
-                    <asp:Button ID="btnCreate" runat="server" Text="Add Training" class="btn btn-success" OnClick="btnCreate_Click" />
+                    <asp:Button ID="btnCreate" runat="server" Text="Add Training" CssClass="btn btn-info btn-lg" OnClick="btnCreate_Click" />
                 </div>
             </div>
         </div>

@@ -61,7 +61,7 @@
                 <div class="row ">
                     <div class="col"></div>
                     <div class="col-6 d-flex justify-content-center">
-                        <asp:Button runat="server" CssClass="btn btn-light" ID="btnSendEmail" Text="Send Email" onclick="btnSendEmail_Click"/>
+                        <asp:Button runat="server" CssClass="btn btn-info" ID="btnSendEmail" Text="Send Email" onclick="btnSendEmail_Click"/>
                     </div>
                     <div class="col"></div>
                 </div>

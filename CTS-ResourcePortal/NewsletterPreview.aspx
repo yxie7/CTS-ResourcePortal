@@ -21,8 +21,8 @@
                     <b class="">Send the newsletter?</b>
                 </div>
                 <div class="modal-footer">
-                    <asp:Button ID="btnNoSend" Text="No" runat="server" data-dismiss="modal" CssClass="btn btn-light" />
-                    <asp:Button ID="btnYesSend" Text="Yes" runat="server" OnClick="btnYesSend_Click" CssClass="btn btn-light" />
+                    <asp:Button ID="btnNoSend" Text="No" runat="server" data-dismiss="modal" CssClass="btn btn-danger" />
+                    <asp:Button ID="btnYesSend" Text="Yes" runat="server" OnClick="btnYesSend_Click" CssClass="btn btn-success" />
                 </div>
             </div>
         </div>
@@ -149,7 +149,7 @@
             <br />
             <div class="row justify-content-center align-items-center text-center">
                 <div class="col-md-4">
-                    <asp:Button runat="server" class="btn btn-primary" Text="Send Newsletter to Subscribers" ID="btnSend" OnClick="btnSend_Click" AutoPostBack="False"></asp:Button>
+                    <asp:Button runat="server" class="btn btn-info" Text="Send Newsletter to Subscribers" ID="btnSend" OnClick="btnSend_Click" AutoPostBack="False"></asp:Button>
                 </div>
             </div>
         </div>

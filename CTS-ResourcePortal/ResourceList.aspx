@@ -162,13 +162,28 @@
         </div>
     </div>
 
-    <%--<asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true" />--%>
+    <div id="MyPopup2" class="modal" role="dialog">
+        <div class="modal-dialog modal-xl">
+            <!-- Modal content-->
+            <div class="modal-content container">
+                <div class="modal-body">
+
+                    <br />
+                    <div class="row  justify-content-center align-items-center text-center">
+                        <div class="col"></div>
+                        <div class="col-md-4">
+                            <asp:Label runat="server" Text="" ID="lblConfirm" Visible="False"></asp:Label>
+                        </div>
+                        <div class="col"></div>
+                    </div>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="container">
-        <%--         <asp:UpdatePanel runat="server">
-               <ContentTemplate>--%>
         <div class="section">
-            <br />
             <div class="row">
                 <div class="col"></div>
                 <h2 class="col-md-auto">Resource List</h2>
@@ -205,7 +220,7 @@
                                                 <asp:BoundField DataField="expDate" HeaderText="Date Expired" HeaderStyle-CssClass="rrth" ItemStyle-CssClass="rrtd" />
                                                 <asp:TemplateField HeaderText="Details" HeaderStyle-CssClass="rrth" ItemStyle-CssClass="rrtd">
                                                     <ItemTemplate>
-                                                        <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-dark" ID="btnJob" CommandName="Select" OnClick="btnJob_Click" />
+                                                        <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-primary" ID="btnJob" CommandName="Select" OnClick="btnJob_Click" />
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                             </Columns>
@@ -236,7 +251,7 @@
                                                 <asp:BoundField DataField="expDate" HeaderText="Date Expired" />
                                                 <asp:TemplateField HeaderText="Details">
                                                     <ItemTemplate>
-                                                        <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-dark" ID="btnEvent" OnClick="btnEvent_Click" />
+                                                        <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-primary" ID="btnEvent" OnClick="btnEvent_Click" />
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                             </Columns>
@@ -267,7 +282,7 @@
                                                 <asp:BoundField DataField="expDate" HeaderText="Date Expired" />
                                                 <asp:TemplateField HeaderText="Details">
                                                     <ItemTemplate>
-                                                        <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-dark" ID="btnTraining" OnClick="btnTraining_Click" />
+                                                        <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-primary" ID="btnTraining" OnClick="btnTraining_Click" />
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                             </Columns>
@@ -279,9 +294,7 @@
                     </div>
                 </div>
             </div>
-            <br />
         </div>
-
         <%--  </ContentTemplate>
              </asp:UpdatePanel>--%>
     </div>
@@ -291,6 +304,11 @@
             $("#MyPopup .modal-title").html(title);
             $("#MyPopup .modal-body").html(body);
             $("#MyPopup").modal("show");
+        }
+        function ShowPopup2(title, body) {
+            $("#MyPopup2 .modal-title").html(title);
+            $("#MyPopup2 .modal-body").html(body);
+            $("#MyPopup2").modal("show");
         }
     </script>
 </asp:Content>

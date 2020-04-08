@@ -1,15 +1,6 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Admin.master" AutoEventWireup="true" CodeBehind="AdminHomePage.aspx.cs" Inherits="CTS_ResourcePortal.AdminHomePage" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
-    <link href="css.css" rel="stylesheet" />
-
-    <script src="Scripts/jquery-3.0.0.js"></script>
-    <script src="Scripts/popper.js"></script>
-    <script src="Scripts/bootstrap.js"></script>
-
     <div id="MyPopup" class="modal fade" role="dialog">
         <div class="modal-dialog modal-xl">
             <!-- Modal content-->
@@ -273,13 +264,4 @@
         <%--  </ContentTemplate>
              </asp:UpdatePanel>--%>
     </div>
-
-    <br />
-    <script type="text/javascript">
-        function ShowPopup(title, body) {
-            $("#MyPopup .modal-title").html(title);
-            $("#MyPopup .modal-body").html(body);
-            $("#MyPopup").modal("show");
-        }
-    </script>
 </asp:Content>

@@ -83,5 +83,9 @@
             </footer>
         </div>
     </form>
+    
+    <!--JS stuff bellow:-->
+    <asp:ContentPlaceHolder ID="js" runat="server">
+    </asp:ContentPlaceHolder>
 </body>
 </html>

@@ -183,17 +183,7 @@
     </div>
 
     <div class="container">
-        <div id="banner" class="text-center alert alert-warning alert-dismissible landingBanner" role="alert">
-            <strong>Welcome!</strong> You are at the Called to Serve's Resource Portal.
-            <br />
-            This will be your goto site for all the job related information you can find in the Nicetown-Tioga area!
-            <br />
-            You can find active job openings, upcoming events, and current training opportunites down below.
-            <button type="button" id="btnBanner" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="text-center alert alert-primary alert-dismissible landingBanner" role="alert">
+        <div id="banner" class="text-center alert alert-primary alert-dismissible landingBanner" role="alert">
             <strong>Welcome!</strong> You are at the Called to Serve's Resource Portal.
             <br />
             This will be your goto site for all the job related information you can find in the Nicetown-Tioga area!

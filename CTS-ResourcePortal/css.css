@@ -251,3 +251,7 @@ input[type=radio]{
 .btn-group:hover, .btn-group label:hover{
     cursor:pointer;
 }
+
+#banner{
+    top:0;
+}

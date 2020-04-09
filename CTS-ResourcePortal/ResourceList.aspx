@@ -1,12 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Citizen.master" AutoEventWireup="true" CodeBehind="ResourceList.aspx.cs" Inherits="CTS_ResourcePortal.ResourceList" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
-    <link href="css.css" rel="stylesheet" />
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
     <div id="MyPopup" class="modal fade" role="dialog">
         <div class="modal-dialog modal-xl">
             <button type="button" class="btn btn-danger btnDismiss" data-dismiss="modal">
@@ -183,7 +177,7 @@
     </div>
 
     <div class="container">
-        <div id="banner" class="text-center alert alert-primary alert-dismissible landingBanner" role="alert">
+        <div id="banner" class="text-center alert alert-primary alert-dismissible fade show" role="alert">
             <strong>Welcome!</strong> You are at the Called to Serve's Resource Portal.
             <br />
             This will be your goto site for all the job related information you can find in the Nicetown-Tioga area!
@@ -220,7 +214,7 @@
                             <div class="card-body">
                                 <div class="row d-flex justify-content-center">
                                     <div class="table-responsive-lg  ">
-                                        <asp:GridView ID="gvJob" runat="server" AutoGenerateColumns="False" class="table table-stripe table-light" DataKeyNames="ResourceID" OnRowDataBound="gv_RowDataBound">
+                                        <asp:GridView ID="gvJob" runat="server" AutoGenerateColumns="False" class="table table-light" DataKeyNames="ResourceID" OnRowDataBound="gv_RowDataBound">
                                             <Columns>
                                                 <%-- <asp:BoundField DataField="ResourceID" HeaderText="ID" Visible="false" />--%>
                                                 <asp:BoundField DataField="ResourceTitle" HeaderText="Title" HeaderStyle-CssClass="rrth" ItemStyle-CssClass="rrtd" />
@@ -251,7 +245,7 @@
                             <div class="card-body">
                                 <div class="row d-flex justify-content-center">
                                     <div class="table-responsive-lg  ">
-                                        <asp:GridView ID="gvEvent" runat="server" AutoGenerateColumns="False" class="table table-striped table-light" DataKeyNames="ResourceID">
+                                        <asp:GridView ID="gvEvent" runat="server" AutoGenerateColumns="False" class="table table-light" DataKeyNames="ResourceID">
                                             <Columns>
                                                 <%--<asp:BoundField DataField="ResourceID" HeaderText="ID" Visible="false" />--%>
                                                 <asp:BoundField DataField="ResourceTitle" HeaderText="Title" />
@@ -282,7 +276,7 @@
                             <div class="card-body">
                                 <div class="row d-flex justify-content-center">
                                     <div class="table-responsive-lg  ">
-                                        <asp:GridView ID="gvTraining" runat="server" AutoGenerateColumns="False" class="table table-striped table-light" DataKeyNames="ResourceID">
+                                        <asp:GridView ID="gvTraining" runat="server" AutoGenerateColumns="False" class="table table-light" DataKeyNames="ResourceID">
                                             <Columns>
                                                 <%--<asp:BoundField DataField="ResourceID" HeaderText="ID" Visible="false" />--%>
                                                 <asp:BoundField DataField="ResourceTitle" HeaderText="Title" />
@@ -308,33 +302,4 @@
         <%--  </ContentTemplate>
              </asp:UpdatePanel>--%>
     </div>
-
-    <script type="text/javascript">
-        function ShowPopup(title, body) {
-            $("#MyPopup .modal-title").html(title);
-            $("#MyPopup .modal-body").html(body);
-            $("#MyPopup").modal("show");
-        }
-        function ShowPopup2(title, body) {
-            $("#MyPopup2 .modal-title").html(title);
-            $("#MyPopup2 .modal-body").html(body);
-            $("#MyPopup2").modal("show");
-        }
-        $(document).ready(function () {
-            document.getElementById("btnBanner").onclick = function () {
-                var days = 14;
-                var exp = new Date();
-                exp.setTime(exp.getTime() + (days * 24 * 60 * 60 * 1000));
-                exp = exp.toUTCString();
-
-                document.cookie = "ck=bannerDismissed; " + "expires=" + exp;
-            }
-            var ck = document.cookie.replace(/(?:(?:^|.*;\s*)ck\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-            if (ck == "bannerDismissed") {
-                $("#banner").alert('close');
-
-            }
-        });
-
-    </script>
 </asp:Content>

@@ -1,13 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Guest.Master" AutoEventWireup="true" CodeBehind="Signup.aspx.cs" Inherits="CTS_ResourcePortal.Signup" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
-    <link href="css.css" rel="stylesheet" />
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
 
     <div id="MyPopup" class="modal fade" role="dialog">
@@ -152,11 +144,4 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript">
-        function ShowPopup(title, body) {
-            $("#MyPopup .modal-title").html(title);
-            $("#MyPopup .modal-body").html(body);
-            $("#MyPopup").modal("show");
-        }
-    </script>
 </asp:Content>

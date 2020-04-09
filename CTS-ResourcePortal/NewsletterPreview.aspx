@@ -1,19 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin.master" AutoEventWireup="true" CodeBehind="NewsletterPreview.aspx.cs" Inherits="CTS_ResourcePortal.NewsletterPreview" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
-    <link href="css.css" rel="stylesheet" />
-    <script src="Scripts/jquery-3.0.0.js"></script>
-    <script src="Scripts/popper.js"></script>
-    <script src="Scripts/bootstrap.js"></script>
-
-    <script type="text/javascript">
-        function sendModal() {
-            $("#sendPrompt").modal("show");
-        }
-        function sendNotif() {
-            $("#sent").modal("show");
-        }
-    </script>
     <div class="modal fade" id="sendPrompt" role="dialog">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content container">

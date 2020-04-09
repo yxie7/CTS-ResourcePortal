@@ -1,7 +1,13 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="Guest.master.cs" Inherits="CTS_ResourcePortal.Guest" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-        <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+    <!--Bootstrap CSS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!--All the CSS-->
+    <link href="master.css" rel="stylesheet" />
+    <link href="css.css" rel="stylesheet" />
+    <!--Page specific CSS?-->    
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="navli" runat="server">
     <li class="nav-item">
@@ -15,4 +21,14 @@
     <div class="content">
         <asp:ContentPlaceHolder ID="Content" runat="server"></asp:ContentPlaceHolder>
     </div>
+</asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="js" runat="server">
+    <!--Bootstrap JS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!--All the JS-->
+    <script src="rp.js"></script>
+    <!--Page specific JS?-->
+    <asp:ContentPlaceHolder ID="js" runat="server"></asp:ContentPlaceHolder>
 </asp:Content>

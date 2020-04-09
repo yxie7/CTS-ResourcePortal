@@ -5,14 +5,15 @@
 <html>
 <head runat="server">
     <title>Called To Serve</title>
+    <!--FontAwesome for some icons-->
     <script src="https://kit.fontawesome.com/f03b07e8ab.js" crossorigin="anonymous"></script>
-    <%--<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">--%>
-    <link href="content/bootstrap.css" rel="stylesheet" />
-    <link href="master.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
+    <!--JS stuff bellow:-->
+    <asp:ContentPlaceHolder ID="js" runat="server">
+    </asp:ContentPlaceHolder>
     <form id="form1" runat="server">
         <div class="overlay"></div>
         <div id="page-container">

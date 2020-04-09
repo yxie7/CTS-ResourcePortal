@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CTS_ResourcePortal {
-    
-    
-    public partial class Master {
-        
+namespace CTS_ResourcePortal
+{
+
+
+    public partial class Master
+    {
+
         /// <summary>
         /// head control.
         /// </summary>
@@ -20,7 +22,16 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
-        
+
+        /// <summary>
+        /// js control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder js;
+
         /// <summary>
         /// form1 control.
         /// </summary>
@@ -29,7 +40,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
+
         /// <summary>
         /// navli control.
         /// </summary>
@@ -38,7 +49,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder navli;
-        
+
         /// <summary>
         /// Content control.
         /// </summary>

@@ -1,48 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin.master" AutoEventWireup="true" CodeBehind="NewsletterCreate.aspx.cs" Inherits="CTS_ResourcePortal.NewsletterCreate" %>
 
+<asp:Content ID="Content0" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
 
-    <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
-    <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" />
-    <link href="css.css" rel="stylesheet" />
-
-    <script src="Scripts/jquery-3.0.0.js"></script>
-    <script src="Scripts/popper.js"></script>
-    <script src="Scripts/bootstrap.js"></script>
-
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-    <script type="text/javascript">
-        $(function () {
-            var resourceList = $('[id*=datatable]').DataTable({
-            });
-            var selections =
-                $('#<%= Selections.ClientID %>').DataTable({
-                    "bFilter": false,
-                    "bLengthChange": false,
-                    stateSave: true
-                });
-        });
-
-        function toasted(body) {
-            $("#TheModal .modal-body").html(body);
-            $("#TheModal").modal("show");
-        }
-        function bindDataTable() {
-            $('[id*=datatable]').DataTable({
-            });
-            $('#<%= Selections.ClientID %>').DataTable({
-                "bFilter": false,
-                "bLengthChange": false,
-                stateSave: true
-            });
-        }
-
-        function reloadTables() {
-            resourceList.ajax.draw();
-            selections.ajax.draw();
-        }
-    </script>
     <!---->
     <%--<asp:ScriptManager ID="ScriptManager1" runat="server" />
     <asp:UpdatePanel runat="server" ID="UpdatePanel" UpdateMode="Conditional" ChildrenAsTriggers="true">
@@ -61,12 +22,12 @@
     </div>
     <div class="container">
         <div class="section">
-        <div class="row">
-            <div class="col"></div>
-            <h2 class="col-md-auto">Create a Newsletter</h2>
-            <div class="col"></div>
-        </div>
-        <br />
+            <div class="row">
+                <div class="col"></div>
+                <h2 class="col-md-auto">Create a Newsletter</h2>
+                <div class="col"></div>
+            </div>
+            <br />
             <div class="row d-flex justify-content-center">
                 <div class="accordion col-10">
                     <asp:Label ID="lblResourceSelect" runat="server" Text="Select Resources Type: "></asp:Label>
@@ -102,7 +63,7 @@
                                     <asp:TextBox runat="server" ID="txtComment" CssClass="form-control" TextMode="multiline" Rows="3" placeholder="(Optional) Enter comments, tips, or other information here..."></asp:TextBox>
                                 </td>
                                 <td class="rtd">
-                                    <asp:Button ID="btnAdd" CssClass="btn btn-primary" Text="Add" runat="server" OnClientClick="" UseSubmitBehavior="false" />
+                                    <asp:Button ID="btnAdd" CssClass="btn btn-success" Text="Add" runat="server" OnClientClick="" UseSubmitBehavior="false" />
                                 </td>
                             </tr>
                         </ItemTemplate>
@@ -145,4 +106,8 @@
     <%--</ContentTemplate>
     </asp:UpdatePanel>--%>
     <!---->
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="js" runat="server">
+    <script type="text/javascript">
+    </script>
 </asp:Content>

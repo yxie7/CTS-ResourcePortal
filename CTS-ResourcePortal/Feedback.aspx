@@ -1,14 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Citizen.master" AutoEventWireup="true" CodeBehind="Feedback.aspx.cs" Inherits="CTS_ResourcePortal.MobileFeedback" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
-    <link href="css.css" rel="stylesheet" />
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-
-
     <div id="MyPopup" class="modal fade" role="dialog">
         <div class="modal-dialog modal-xl">
             <!-- Modal content-->
@@ -107,16 +99,6 @@
             </div>
             <div class="col"></div>
         </div>
-
     </div>
-
-         <script type="text/javascript">
-         function ShowPopup(title, body) {
-             $("#MyPopup .modal-title").html(title);
-             $("#MyPopup .modal-body").html(body);
-             $("#MyPopup").modal("show");
-         }
-    </script>
-
 </asp:Content>
 

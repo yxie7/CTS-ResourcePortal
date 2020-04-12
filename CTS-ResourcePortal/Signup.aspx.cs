@@ -20,7 +20,7 @@ namespace CTS_ResourcePortal
     {
         DBConnect objDB = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
         
-        ArrayList UserRegistrationError = new ArrayList();
+        //ArrayList UserRegistrationError = new ArrayList();
         SqlCommand cmd = new SqlCommand();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -48,154 +48,137 @@ namespace CTS_ResourcePortal
 
             String plainTextPassword = txtPassword.Text;  
 
-            byte[] salt;
-            new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
-            var pbkdf2 = new Rfc2898DeriveBytes(plainTextPassword, salt, 10000);
-            byte[] hash = pbkdf2.GetBytes(20);
-            byte[] hashBytes = new byte[36];
-            Array.Copy(salt, 0, hashBytes, 0, 16);
-            Array.Copy(hash, 0, hashBytes, 16, 20);
-            string savedPasswordHash = Convert.ToBase64String(hashBytes);
-
-            if (UserRegistrationError.Count == 0)
-            {
                 //Check if email already exist
                 String UserEmail = txtEmail.Text;
                 if (CheckIfEmailExist(UserEmail) == true)
                 {
-                    lblThanks.Text = "That email is already being used on our system. Please choose another.";
+                    lblStatusSignUp.Text = "That email is already being used on our system. Please choose another.";
+                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+
+                }
+                if (txtPassword.Text != txtCPassword.Text)
+                {
+                    lblStatusSignUp.Text = "Passwords do not match.";
                     ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
 
                 }
                 else
                 {
-                    //Register 
 
-                    Citizens newCitizen = new Citizens
-                    {
+                    byte[] salt;
+                    new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
+                    var pbkdf2 = new Rfc2898DeriveBytes(plainTextPassword, salt, 10000);
+                    byte[] hash = pbkdf2.GetBytes(20);
+                    byte[] hashBytes = new byte[36];
+                    Array.Copy(salt, 0, hashBytes, 0, 16);
+                    Array.Copy(hash, 0, hashBytes, 16, 20);
+                    string savedPasswordHash = Convert.ToBase64String(hashBytes);
 
-                        FirstName = firstName,
-                        LastName = lastName,
-                        Email = email,
-                        Password = savedPasswordHash,
-                        Address = address,
-                        City = city,
-                        State = state,
-                        Zip = zip,
-                        Cellphone = cellphone,
-                        Subscribe = subscribe
-                    };
-
-
-                    var ResponseReceived = newCitizen.AddNewCitizen();
-                    if (ResponseReceived == true)
-                    {
-                        //User Registered 
-                        //Save UserEmail in Session Called UserEmail
-                        Session.Add("userEmail", txtEmail.Text.ToString());
-                        lblThanks.Text = "Thank you for signing up!";
-                        ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
-                    }
-                    else
-                    {
-                        
-                        lblThanks.Text = "There was an error, please try again";
-                        ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
-
-                    }
-
-                }
-            }
-            else
-            {
-                for (int i = 0; i < UserRegistrationError.Count; i++)
-                {
-                    Response.Write(UserRegistrationError[i] + "<br/>");
-                }
-            }
-
-            try
-
-            {
-
-                // Use the FileUpload control to get the uploaded data
-
-                if (FileUpload1.HasFile)
+                try
 
                 {
 
-                    resumeSize = FileUpload1.PostedFile.ContentLength;
+                    // Use the FileUpload control to get the uploaded data
 
-                    byte[] resumeData = new byte[resumeSize];
-
-
-
-                    FileUpload1.PostedFile.InputStream.Read(resumeData, 0, resumeSize);
-
-                    resumeName = FileUpload1.PostedFile.FileName;
-
-                    resumeType = FileUpload1.PostedFile.ContentType;
-
-                    resumeTitle = resumeName.Split('.')[0];
-
-                    fileExtension = resumeName.Substring(resumeName.LastIndexOf(".")).ToLower();
-
-
-                    if (fileExtension == ".docx" || fileExtension == ".pdf" || fileExtension == ".doc")
+                    if (FileUpload1.HasFile)
 
                     {
-                        //this stored procedure will eventually become part of the citizen creation proceudre
-                        //with an if statement on whether the citizen uploaded a resume file or not
-                        
 
-                        strSQL = "StoreResume";
+                        resumeSize = FileUpload1.PostedFile.ContentLength;
+                        byte[] resumeData = new byte[resumeSize];
 
-                        cmd.CommandText = strSQL;
+                        FileUpload1.PostedFile.InputStream.Read(resumeData, 0, resumeSize);
+                        resumeName = FileUpload1.PostedFile.FileName;
+                        resumeType = FileUpload1.PostedFile.ContentType;
+                        resumeTitle = resumeName.Split('.')[0];
+                        string accepted = "FALSE";
 
-                        cmd.CommandType = CommandType.StoredProcedure;
+                        fileExtension = resumeName.Substring(resumeName.LastIndexOf(".")).ToLower();
 
-                        cmd.Parameters.AddWithValue("@ResumeTitle", resumeName);
+                        if (fileExtension == ".docx" || fileExtension == ".pdf" || fileExtension == ".doc")
 
-                        cmd.Parameters.AddWithValue("@ResumeType", resumeType);
-
-                        cmd.Parameters.AddWithValue("@ResumeData", resumeData);
-
-                        cmd.Parameters.AddWithValue("@Email", email);
-
-                        result = objDB.DoUpdateUsingCmdObj(cmd);
-
-                        if (result == 1)
                         {
-                            lblStatus.Text = "Resume was successully uploaded.";
-                            
+                            //this stored procedure will eventually become part of the citizen creation proceudre
+                            //with an if statement on whether the citizen uploaded a resume file or not
+
+
+                            strSQL = "StoreResume";
+                            cmd.CommandText = strSQL;
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.AddWithValue("@ResumeTitle", resumeName);
+                            cmd.Parameters.AddWithValue("@ResumeType", resumeType);
+                            cmd.Parameters.AddWithValue("@ResumeData", resumeData);
+                            cmd.Parameters.AddWithValue("@Email", email);
+                            cmd.Parameters.AddWithValue("@Accepted", accepted);
+                            result = objDB.DoUpdateUsingCmdObj(cmd);
+
+                            if (result != 1)
+                            {
+                                lblStatusSignUp.Text = "Hmm something went wrong, please try again";
+                                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+
+                            }
+                            else
+                            {
+                                Citizens newCitizen = new Citizens
+                                {
+
+                                    FirstName = firstName,
+                                    LastName = lastName,
+                                    Email = email,
+                                    Password = savedPasswordHash,
+                                    Address = address,
+                                    City = city,
+                                    State = state,
+                                    Zip = zip,
+                                    Cellphone = cellphone,
+                                    Subscribe = subscribe
+                                };
+
+
+                                var ResponseReceived = newCitizen.AddNewCitizen();
+                                if (ResponseReceived == true)
+                                {
+                                    //User Registered 
+                                    //Save UserEmail in Session Called UserEmail
+                                    Session.Add("userEmail", txtEmail.Text.ToString());
+                                    lblStatusSignUp.Text = "Thank you for signing up!";
+                                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+                                }
+                                else
+                                {
+
+                                    lblStatusSignUp.Text = "There was an error, please try again";
+                                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+
+                                }
+                            }
+ 
                         }
                         else
+
                         {
-                            lblStatus.Text = "Hmm something went wrong, please try again";
+
+                            lblStatusSignUp.Text = "Only docx, pdf, and doc file formats supported.";
+                            ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+
                         }
-                        
-
-                    }
-
-                    else
-
-                    {
-
-                        lblStatus.Text = "Only docx, pdf, and doc file formats supported.";
 
                     }
 
                 }
 
-            }
+                catch (Exception ex)
 
-            catch (Exception ex)
+                {
 
-            {
+                    lblStatusSignUp.Text = "Error ocurred: [" + ex.Message + "] cmd=" + result;
+                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
 
-                lblStatus.Text = "Error ocurred: [" + ex.Message + "] cmd=" + result;
 
-            }
+                }
+
+             }
       
         }
         public Boolean CheckIfEmailExist(String Email)
@@ -219,31 +202,5 @@ namespace CTS_ResourcePortal
                 return true;
             }
         }
-
-        /*void ValidateUserRegistration()
-        {
-            if (txtFirstName.Text == "")
-            {
-                UserRegistrationError.Add("Enter First Name");
-
-            }
-            if (txtLastName.Text == "")
-            {
-                UserRegistrationError.Add("Enter Last Name");
-            }
-            if (txtEmail.Text == "")
-            {
-                UserRegistrationError.Add("Enter Email");
-            }
-            if (txtPassword.Text == "" && txtCPassword.Text == "")
-            {
-                UserRegistrationError.Add("Enter Password");
-            }
-            if (txtPassword.Text != txtCPassword.Text)
-            {
-                UserRegistrationError.Add("Passwords Do not Match");
-            }
-
-        }*/
     }
 }

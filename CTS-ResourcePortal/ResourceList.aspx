@@ -1,13 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Citizen.master" AutoEventWireup="true" CodeBehind="ResourceList.aspx.cs" Inherits="CTS_ResourcePortal.ResourceList" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
-    <link href="css.css" rel="stylesheet" />
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-    <div id="MyPopup" class="modal" role="dialog">
+    <div id="MyPopup" class="modal fade" role="dialog">
         <div class="modal-dialog modal-xl">
             <button type="button" class="btn btn-danger btnDismiss" data-dismiss="modal">
                 <span aria-hidden="true"><i class="fas fa-times fa-2x"></i></span>
@@ -145,7 +139,7 @@
                     <div class="row  justify-content-center align-items-center text-center">
                         <div class="col"></div>
                         <div class="col-md-4">
-                            <asp:Button runat="server" CssClass="btn btn-large btn-info" Text="Apply Here" ID="btnLink" OnClick="btnLink_Click" />
+                            <asp:Button runat="server" CssClass="btn btn-large btn-primary" Text="Apply Here" ID="btnLink" OnClick="btnLink_Click" />
                         </div>
                         <div class="col"></div>
                     </div>
@@ -153,7 +147,7 @@
                     <div class="row  justify-content-center align-items-center text-center">
                         <div class="col"></div>
                         <div class="col-md-4">
-                            <asp:Button runat="server" CssClass="btn btn-large btn-info" Text="Leave Feedback" ID="btnFeedback" OnClick="btnFeedback_Click" />
+                            <asp:Button runat="server" CssClass="btn btn-large btn-primary" Text="Leave Feedback" ID="btnFeedback" OnClick="btnFeedback_Click" />
                         </div>
                         <div class="col"></div>
                     </div>
@@ -162,7 +156,7 @@
         </div>
     </div>
 
-    <div id="MyPopup2" class="modal" role="dialog">
+    <div id="MyPopup2" class="modal fade" role="dialog">
         <div class="modal-dialog modal-xl">
             <!-- Modal content-->
             <div class="modal-content container">
@@ -182,11 +176,18 @@
         </div>
     </div>
 
-    
     <div class="container">
-
-        <div class="section">
+        <div id="banner" class="text-center alert alert-primary alert-dismissible fade show" role="alert">
+            <strong>Welcome!</strong> You are at the Called to Serve's Resource Portal.
             <br />
+            This will be your goto site for all the job related information you can find in the Nicetown-Tioga area!
+            <br />
+            You can find active job openings, upcoming events, and current training opportunites down below.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="section">
             <div class="row">
                 <div class="col"></div>
                 <h2 class="col-md-auto">Resource List</h2>
@@ -213,7 +214,7 @@
                             <div class="card-body">
                                 <div class="row d-flex justify-content-center">
                                     <div class="table-responsive-lg  ">
-                                        <asp:GridView ID="gvJob" runat="server" AutoGenerateColumns="False" class="table table-stripe table-light" DataKeyNames="ResourceID" OnRowDataBound="gv_RowDataBound">
+                                        <asp:GridView ID="gvJob" runat="server" AutoGenerateColumns="False" class="table table-light" DataKeyNames="ResourceID" OnRowDataBound="gv_RowDataBound">
                                             <Columns>
                                                 <%-- <asp:BoundField DataField="ResourceID" HeaderText="ID" Visible="false" />--%>
                                                 <asp:BoundField DataField="ResourceTitle" HeaderText="Title" HeaderStyle-CssClass="rrth" ItemStyle-CssClass="rrtd" />
@@ -223,7 +224,7 @@
                                                 <asp:BoundField DataField="expDate" HeaderText="Date Expired" HeaderStyle-CssClass="rrth" ItemStyle-CssClass="rrtd" />
                                                 <asp:TemplateField HeaderText="Details" HeaderStyle-CssClass="rrth" ItemStyle-CssClass="rrtd">
                                                     <ItemTemplate>
-                                                        <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-dark" ID="btnJob" CommandName="Select" OnClick="btnJob_Click" />
+                                                        <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-primary" ID="btnJob" CommandName="Select" OnClick="btnJob_Click" />
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                             </Columns>
@@ -244,7 +245,7 @@
                             <div class="card-body">
                                 <div class="row d-flex justify-content-center">
                                     <div class="table-responsive-lg  ">
-                                        <asp:GridView ID="gvEvent" runat="server" AutoGenerateColumns="False" class="table table-striped table-light" DataKeyNames="ResourceID">
+                                        <asp:GridView ID="gvEvent" runat="server" AutoGenerateColumns="False" class="table table-light" DataKeyNames="ResourceID">
                                             <Columns>
                                                 <%--<asp:BoundField DataField="ResourceID" HeaderText="ID" Visible="false" />--%>
                                                 <asp:BoundField DataField="ResourceTitle" HeaderText="Title" />
@@ -254,7 +255,7 @@
                                                 <asp:BoundField DataField="expDate" HeaderText="Date Expired" />
                                                 <asp:TemplateField HeaderText="Details">
                                                     <ItemTemplate>
-                                                        <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-dark" ID="btnEvent" OnClick="btnEvent_Click" />
+                                                        <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-primary" ID="btnEvent" OnClick="btnEvent_Click" />
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                             </Columns>
@@ -275,7 +276,7 @@
                             <div class="card-body">
                                 <div class="row d-flex justify-content-center">
                                     <div class="table-responsive-lg  ">
-                                        <asp:GridView ID="gvTraining" runat="server" AutoGenerateColumns="False" class="table table-striped table-light" DataKeyNames="ResourceID">
+                                        <asp:GridView ID="gvTraining" runat="server" AutoGenerateColumns="False" class="table table-light" DataKeyNames="ResourceID">
                                             <Columns>
                                                 <%--<asp:BoundField DataField="ResourceID" HeaderText="ID" Visible="false" />--%>
                                                 <asp:BoundField DataField="ResourceTitle" HeaderText="Title" />
@@ -285,7 +286,7 @@
                                                 <asp:BoundField DataField="expDate" HeaderText="Date Expired" />
                                                 <asp:TemplateField HeaderText="Details">
                                                     <ItemTemplate>
-                                                        <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-dark" ID="btnTraining" OnClick="btnTraining_Click" />
+                                                        <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-primary" ID="btnTraining" OnClick="btnTraining_Click" />
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                             </Columns>
@@ -297,23 +298,8 @@
                     </div>
                 </div>
             </div>
-            <br />
         </div>
-
         <%--  </ContentTemplate>
              </asp:UpdatePanel>--%>
     </div>
-
-    <script type="text/javascript">
-        function ShowPopup(title, body) {
-            $("#MyPopup .modal-title").html(title);
-            $("#MyPopup .modal-body").html(body);
-            $("#MyPopup").modal("show");
-        }
-             function ShowPopup2(title, body) {
-            $("#MyPopup2 .modal-title").html(title);
-            $("#MyPopup2 .modal-body").html(body);
-            $("#MyPopup2").modal("show");
-        }
-    </script>
 </asp:Content>

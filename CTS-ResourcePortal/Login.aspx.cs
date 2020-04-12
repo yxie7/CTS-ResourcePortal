@@ -36,9 +36,7 @@ namespace CTS_ResourcePortal
             objCommand.Parameters.Clear();
             email = txtEmail.Text;
             password = txtPassword.Text;
-            if (ValidateUserRegistration() == true)
-            {
-                if (CheckIfAdminEmailExist(email) == true)
+            if (CheckIfAdminEmailExist(email) == true)
                 {
                     if (GrabAdminPassword(email) == true)
                     {
@@ -52,35 +50,31 @@ namespace CTS_ResourcePortal
                         var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 10000);
                         byte[] hash = pbkdf2.GetBytes(20);
 
-                        for (int i = 0; i < 20; i++)
+                        if (comparePasswords(hashBytes, hash) == false)
                         {
-                            if (hashBytes[i + 16] != hash[i])
-                            {
-                                lblError.Text = "Incorrect Password";
-                                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
-
-                            }
+                            lblError.Text = "Current Password is incorrect";
+                            ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
                         }
+                        else
+                        {
+                        SqlCommand cmd = new SqlCommand("GetAdminName", objDB.GetConnection());
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        SqlParameter inputParameterName = new SqlParameter("@Adminemail", txtEmail.Text);
+                        inputParameterName.Direction = ParameterDirection.Input;
+                        inputParameterName.SqlDbType = SqlDbType.VarChar;
+                        cmd.Parameters.Add(inputParameterName);
+                        DataSet EmailDataSet = objDB.GetDataSetUsingCmdObj(cmd);
+                        string fullname = EmailDataSet.Tables[0].Rows[0].ItemArray[0] + " " + EmailDataSet.Tables[0].Rows[0].ItemArray[1];
 
-                       
-                            SqlCommand cmd = new SqlCommand("GetAdminName", objDB.GetConnection());
-                            cmd.CommandType = CommandType.StoredProcedure;
-                            SqlParameter inputParameterName = new SqlParameter("@Adminemail", txtEmail.Text);
-                            inputParameterName.Direction = ParameterDirection.Input;
-                            inputParameterName.SqlDbType = SqlDbType.VarChar;
-                            cmd.Parameters.Add(inputParameterName);
-                            DataSet EmailDataSet = objDB.GetDataSetUsingCmdObj(cmd);
-                            string fullname = EmailDataSet.Tables[0].Rows[0].ItemArray[0] + " " + EmailDataSet.Tables[0].Rows[0].ItemArray[1];
-
-                            Session.Add("userEmail", txtEmail.Text);
-                            Session.Add("userName", fullname);
-                            Response.Redirect("AdminHomePage.aspx");
-                        
-                           
+                        Session.Add("userEmail", txtEmail.Text);
+                        Session.Add("userName", fullname);
+                        Response.Redirect("AdminHomePage.aspx");
+                    }
+                                                  
                     }
                     else
                     {
-                        lblError.Text = "Incorrect Password";
+                        lblError.Text = "There was an error. Plase try again.";
                         ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
                     }
                 }//if the person logging in is a citizen
@@ -89,69 +83,74 @@ namespace CTS_ResourcePortal
                     
                     if (CheckIfCitizenEmailExist(email) == true)
                     {
-                        if (IfCitizenIsAccepted(email) == true)
+                        //check password
+
+                        if (GrabCitizenPassword(email) == true)
                         {
-                            string accepted = (string)objDB.GetField("Accepted", 0);
-                            if (accepted == "FALSE")
-                            {
-                                lblError.Text = "This account has not been approved by the administrator";
-                                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
-                                
-                            }                        
-                            
-                            if (accepted == "TRUE")
-                            {
+                            string savedPasswordHash = (string)objDB.GetField("Password", 0);
+                            byte[] hashBytes = Convert.FromBase64String(savedPasswordHash);
+                            byte[] salt = new byte[16];
+                            Array.Copy(hashBytes, 0, salt, 0, 16);
 
-                                if (GrabCitizenPassword(email) == true)
+                            var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 10000);
+                            byte[] hash = pbkdf2.GetBytes(20);
+
+
+                        if (comparePasswords(hashBytes, hash) == false)
+                        {
+                            lblError.Text = "Current Password is incorrect";
+                            ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+                        }
+                        else
+                        {
+                            if (IfCitizenIsAccepted(email) == true)
+                            {
+                                string accepted = (string)objDB.GetField("Accepted", 0);
+
+                                if (accepted == "FALSE")
                                 {
-                                    string savedPasswordHash = (string)objDB.GetField("Password", 0);
-                                    byte[] hashBytes = Convert.FromBase64String(savedPasswordHash);
-                                    byte[] salt = new byte[16];
-                                    Array.Copy(hashBytes, 0, salt, 0, 16);
-
-                                    var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 10000);
-                                    byte[] hash = pbkdf2.GetBytes(20);
-                                    
-
-                                    for (int i = 0; i < 20; i++)
-                                    {
-                                        if (hashBytes[i + 16] != hash[i])
-                                        {
-                                            lblError.Text = "Incorrect Password";
-                                            ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
-                                        }
-                                    }
-                                   
-                                        SqlCommand cmd = new SqlCommand("GetCitizenName", objDB.GetConnection());
-                                        cmd.CommandType = CommandType.StoredProcedure;
-                                        SqlParameter inputParameterName = new SqlParameter("@Email", txtEmail.Text);
-                                        inputParameterName.Direction = ParameterDirection.Input;
-                                        inputParameterName.SqlDbType = SqlDbType.VarChar;
-                                        cmd.Parameters.Add(inputParameterName);
-                                        DataSet EmailDataSet = objDB.GetDataSetUsingCmdObj(cmd);
-                                        string fullname = EmailDataSet.Tables[0].Rows[0].ItemArray[0] + " " + EmailDataSet.Tables[0].Rows[0].ItemArray[1];
-
-                                        Session.Add("userEmail", txtEmail.Text);
-                                        Session.Add("userName", fullname);
-                                        Response.Redirect("ResourceList.aspx");
-
+                                    lblError.Text = "This account has not been approved by the administrator";
+                                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
 
                                 }
-                                else
+
+                                if (accepted == "TRUE")
                                 {
-                                    lblError.Text = "Incorrect Password";
-                                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+
+                                    SqlCommand cmd = new SqlCommand("GetCitizenName", objDB.GetConnection());
+                                    cmd.CommandType = CommandType.StoredProcedure;
+                                    SqlParameter inputParameterName = new SqlParameter("@Email", txtEmail.Text);
+                                    inputParameterName.Direction = ParameterDirection.Input;
+                                    inputParameterName.SqlDbType = SqlDbType.VarChar;
+                                    cmd.Parameters.Add(inputParameterName);
+                                    DataSet EmailDataSet = objDB.GetDataSetUsingCmdObj(cmd);
+                                    string fullname = EmailDataSet.Tables[0].Rows[0].ItemArray[0] + " " + EmailDataSet.Tables[0].Rows[0].ItemArray[1];
+
+                                    Session.Add("userEmail", txtEmail.Text);
+                                    Session.Add("userName", fullname);
+                                    Response.Redirect("ResourceList.aspx");
+
+
                                 }
                             }
                         }
 
-
+                    }
+                    else
+                    {
+                        lblError.Text = "There was an error. Please log in again.";
+                        ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
                     }
 
+
+                 }
+                else
+                {
+                    lblError.Text = "Login credentials inccorect. Make sure your email is correct";
+                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
                 }
 
-
-            }//end of login validation
+                }
 
         }//end of btnSubmit
 
@@ -259,28 +258,6 @@ namespace CTS_ResourcePortal
             }
         }
 
-        //validation
-        public Boolean ValidateUserRegistration()
-        {
-            if (txtEmail.Text == "")
-            {
-                lblError.Text = "Enter Email";
-                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
-                return false;
-
-            }
-            if (txtPassword.Text == "")
-            {
-                lblError.Text = "Enter Password";
-                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-
         protected void btnSignUpLogin_Click(object sender, EventArgs e)
         {
             Response.Redirect("Signup.aspx");
@@ -289,6 +266,23 @@ namespace CTS_ResourcePortal
         protected void btnForgotPassword_Click(object sender, EventArgs e)
         {
             Response.Redirect("ForgotPassword.aspx");
+        }
+
+        public Boolean comparePasswords(byte[] hashBytes, byte[] hash)
+        {
+            Boolean isCorrect = true;
+            for (int i = 0; i < 20; i++)
+            {
+                if (hashBytes[i + 16] != hash[i])
+                {
+                    isCorrect = false;
+                }
+                else
+                {
+                    isCorrect = true;
+                }
+            }
+            return isCorrect;
         }
 
     }

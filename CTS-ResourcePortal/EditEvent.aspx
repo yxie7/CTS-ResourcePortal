@@ -1,17 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin.master" AutoEventWireup="true" CodeBehind="EditEvent.aspx.cs" Inherits="CTS_ResourcePortal.EditEvent" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</asp:Content>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
-    <link href="AddNew.css" rel="stylesheet" />
-    <link href="css.css" rel="stylesheet" />
-
-    <div id="MyPopup" class="modal" role="dialog">
+    <div id="MyPopup" class="modal fade" role="dialog">
         <div class="modal-dialog modal-xl">
             <!-- Modal content-->
             <div class="modal-content container">
@@ -31,7 +21,7 @@
         </div>
     </div>
 
-    <div id="MyPopup2" class="modal" role="dialog">
+    <div id="MyPopup2" class="modal fade" role="dialog">
         <div class="modal-dialog modal-xl">
             <!-- Modal content-->
             <div class="modal-content container">
@@ -60,10 +50,15 @@
         <br />
         <div id="" class="section">
             <br />
-
-            <p><span class="requiredRed"><span class="requiredRed">*</span></span>Required</p>
+            <div class="row" id="rowInst">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10">
+                    <asp:Label ID="lblInstructions" runat="server">This page is for editing an already existing Event. All fields are filled with the current information, but any of them can be changed. To ensure a successful submission, all required fields must be correctly filled out. A required field is marked with a “<span class="requiredRed">*</span>”.<br />Once satisfied with the information that has been entered, click “Edit Event” to complete editing an Event.</asp:Label><br />
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
             <br />
-
+            <br />
             <div class="row" id="titleRow">
                 <div class="col-sm-6">
 
@@ -185,32 +180,10 @@
                 </div>
             </div>
             <br />
-            <br />
 
-            <div class="row" id="btn">
-                <div class="col-sm-4"></div>
-                <div class="col-sm-4">
-                    <asp:Button ID="btnSubmit" runat="server" Text="Submit" Width="200px" OnClick="btnSubmit_click"  CssClass="btn btn-dark"/>
-                </div>
-                <div class="col-sm-4"></div>
+            <div class="row justify-content-center align-items-center">
+                    <asp:Button ID="btnSubmit" runat="server" Text="Submit" Width="200px" OnClick="btnSubmit_click"  CssClass="btn btn-primary"/>
             </div>
         </div>
     </div>
-
-    <script type="text/javascript">
-        function ShowPopup(title, body) {
-            $("#MyPopup .modal-title").html(title);
-            $("#MyPopup .modal-body").html(body);
-            $("#MyPopup").modal("show");
-        }
-    </script>
-
-    <script type="text/javascript">
-        function ShowPopup2(title, body) {
-            $("#MyPopup2 .modal-title").html(title);
-            $("#MyPopup2 .modal-body").html(body);
-            $("#MyPopup2").modal("show");
-        }
-    </script>
-
 </asp:Content>

@@ -13,13 +13,13 @@ namespace CTS_ResourcePortal {
     public partial class Signup {
         
         /// <summary>
-        /// lblThanks control.
+        /// lblStatusSignUp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblThanks;
+        protected global::System.Web.UI.WebControls.Label lblStatusSignUp;
         
         /// <summary>
         /// ScriptManager1 control.

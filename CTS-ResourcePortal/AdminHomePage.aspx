@@ -1,16 +1,7 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Admin.master" AutoEventWireup="true" CodeBehind="AdminHomePage.aspx.cs" Inherits="CTS_ResourcePortal.AdminHomePage" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
-    <link href="css.css" rel="stylesheet" />
-
-    <script src="Scripts/jquery-3.0.0.js"></script>
-    <script src="Scripts/popper.js"></script>
-    <script src="Scripts/bootstrap.js"></script>
-
-    <div id="MyPopup" class="modal" role="dialog">
+    <div id="MyPopup" class="modal fade" role="dialog">
         <div class="modal-dialog modal-xl">
             <!-- Modal content-->
             <div class="modal-content container">
@@ -145,7 +136,7 @@
                     <div class="row  justify-content-center align-items-center text-center">
                         <div class="col"></div>
                         <div class="col-md-4">
-                            <asp:Button runat="server" CssClass="btn btn-large btn-info" Text="Leave Feedback" ID="btnFeedback" OnClick="btnFeedback_Click" />
+                            <asp:Button runat="server" CssClass="btn btn-large btn-primary" Text="Leave Feedback" ID="btnFeedback" OnClick="btnFeedback_Click" />
                         </div>
                         <div class="col"></div>
                     </div>
@@ -155,18 +146,18 @@
     </div>
 
     <div class="container">
-<%--         <asp:UpdatePanel runat="server">
+        <%--         <asp:UpdatePanel runat="server">
                <ContentTemplate>--%>
-        <div class="row">
-            <div class="col"></div>
-            <h2 class="col-md-auto">Resource List</h2>
-            <div class="col"></div>
-        </div>
-        <br />
         <div class="section">
+            <div class="row">
+                <div class="col"></div>
+                <h2 class="col-md-auto">Dashboard</h2>
+                <div class="col"></div>
+            </div>
+            <br />
             <div class="row d-flex justify-content-center">
                 <div class="col-10">
-                        <asp:TextBox runat="server" ID="txtTitleSearch" AutoPostBack="true" CssClass="form-control search" placeholder="Search Titles Here..." OnTextChanged="txtTitleSearch_TextChanged"></asp:TextBox>
+                    <asp:TextBox runat="server" ID="txtTitleSearch" AutoPostBack="true" CssClass="form-control search" placeholder="Search Titles Here..." OnTextChanged="txtTitleSearch_TextChanged"></asp:TextBox>
                 </div>
             </div>
             <br />
@@ -184,17 +175,17 @@
                             <div class="card-body">
                                 <div class="row d-flex justify-content-center">
                                     <div class="table-responsive-lg  ">
-                                        <asp:GridView ID="gvJob" runat="server" AutoGenerateColumns="False" class="table table-striped table-light"  DataKeyNames="ResourceID" OnRowDataBound="gv_RowDataBound">
+                                        <asp:GridView ID="gvJob" runat="server" AutoGenerateColumns="False" class="table table-striped table-light" DataKeyNames="ResourceID" OnRowDataBound="gv_RowDataBound">
                                             <Columns>
-                                               <%-- <asp:BoundField DataField="ResourceID" HeaderText="ID" Visible="false" />--%>
-                                                <asp:BoundField DataField="ResourceTitle" HeaderText="Title" HeaderStyle-CssClass="rrth" ItemStyle-CssClass="rrtd"/>
-                                                <asp:BoundField DataField="email" HeaderText="Contact" HeaderStyle-CssClass="rth" ItemStyle-CssClass="rtd"/>
-                                                <asp:BoundField DataField="AddressLine2" HeaderText="Location" HeaderStyle-CssClass="rrth" ItemStyle-CssClass="rrtd"/>
-                                                <asp:BoundField DataField="datePosted" HeaderText="Date Posted" HeaderStyle-CssClass="rrth" ItemStyle-CssClass="rrtd"/>
-                                                <asp:BoundField DataField="expDate" HeaderText="Date Expired" HeaderStyle-CssClass="rrth" ItemStyle-CssClass="rrtd"/>
+                                                <%-- <asp:BoundField DataField="ResourceID" HeaderText="ID" Visible="false" />--%>
+                                                <asp:BoundField DataField="ResourceTitle" HeaderText="Title" HeaderStyle-CssClass="rrth" ItemStyle-CssClass="rrtd" />
+                                                <asp:BoundField DataField="email" HeaderText="Contact" HeaderStyle-CssClass="rth" ItemStyle-CssClass="rtd" />
+                                                <asp:BoundField DataField="AddressLine2" HeaderText="Location" HeaderStyle-CssClass="rrth" ItemStyle-CssClass="rrtd" />
+                                                <asp:BoundField DataField="datePosted" HeaderText="Date Posted" HeaderStyle-CssClass="rrth" ItemStyle-CssClass="rrtd" />
+                                                <asp:BoundField DataField="expDate" HeaderText="Date Expired" HeaderStyle-CssClass="rrth" ItemStyle-CssClass="rrtd" />
                                                 <asp:TemplateField HeaderText="Details" HeaderStyle-CssClass="rrth" ItemStyle-CssClass="rrtd">
                                                     <ItemTemplate>
-                                                        <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-dark" ID="btnJob" CommandName="Select" OnClick="btnJob_Click" />
+                                                        <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-primary" ID="btnJob" CommandName="Select" OnClick="btnJob_Click" />
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                             </Columns>
@@ -225,7 +216,7 @@
                                                 <asp:BoundField DataField="expDate" HeaderText="Date Expired" />
                                                 <asp:TemplateField HeaderText="Details">
                                                     <ItemTemplate>
-                                                        <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-dark" ID="btnEvent" OnClick="btnEvent_Click" />
+                                                        <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-primary" ID="btnEvent" OnClick="btnEvent_Click" />
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                             </Columns>
@@ -256,7 +247,7 @@
                                                 <asp:BoundField DataField="expDate" HeaderText="Date Expired" />
                                                 <asp:TemplateField HeaderText="Details">
                                                     <ItemTemplate>
-                                                        <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-dark" ID="btnTraining" OnClick="btnTraining_Click" />
+                                                        <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-primary" ID="btnTraining" OnClick="btnTraining_Click" />
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                             </Columns>
@@ -270,16 +261,7 @@
             </div>
         </div>
         <br />
-                 <%--  </ContentTemplate>
+        <%--  </ContentTemplate>
              </asp:UpdatePanel>--%>
     </div>
-
-    <br />
-    <script type="text/javascript">
-        function ShowPopup(title, body) {
-            $("#MyPopup .modal-title").html(title);
-            $("#MyPopup .modal-body").html(body);
-            $("#MyPopup").modal("show");
-        }
-    </script>
 </asp:Content>

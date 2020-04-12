@@ -1,48 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin.master" AutoEventWireup="true" CodeBehind="NewsletterCreate.aspx.cs" Inherits="CTS_ResourcePortal.NewsletterCreate" %>
 
+<asp:Content ID="Content0" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
 
-    <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
-    <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" />
-    <link href="css.css" rel="stylesheet" />
-
-    <script src="Scripts/jquery-3.0.0.js"></script>
-    <script src="Scripts/popper.js"></script>
-    <script src="Scripts/bootstrap.js"></script>
-
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-    <script type="text/javascript">
-        $(function () {
-            var resourceList = $('[id*=datatable]').DataTable({
-            });
-            var selections =
-                $('#<%= Selections.ClientID %>').DataTable({
-                    "bFilter": false,
-                    "bLengthChange": false,
-                    stateSave: true
-                });
-        });
-
-        function toasted(body) {
-            $("#TheModal .modal-body").html(body);
-            $("#TheModal").modal("show");
-        }
-        function bindDataTable() {
-            $('[id*=datatable]').DataTable({
-            });
-            $('#<%= Selections.ClientID %>').DataTable({
-                "bFilter": false,
-                "bLengthChange": false,
-                stateSave: true
-            });
-        }
-
-        function reloadTables() {
-            resourceList.ajax.draw();
-            selections.ajax.draw();
-        }
-    </script>
     <!---->
     <%--<asp:ScriptManager ID="ScriptManager1" runat="server" />
     <asp:UpdatePanel runat="server" ID="UpdatePanel" UpdateMode="Conditional" ChildrenAsTriggers="true">
@@ -60,26 +21,23 @@
         </div>
     </div>
     <div class="container">
-        <div class="row">
-            <div class="col"></div>
-            <h2 class="col-md-auto">Create a Newsletter</h2>
-            <div class="col"></div>
-        </div>
-        <br />
         <div class="section">
+            <div class="row">
+                <div class="col"></div>
+                <h2 class="col-md-auto">Create a Newsletter</h2>
+                <div class="col"></div>
+            </div>
             <br />
             <div class="row d-flex justify-content-center">
                 <div class="accordion col-10">
                     <asp:Label ID="lblResourceSelect" runat="server" Text="Select Resources Type: "></asp:Label>
-
                     <br />
-
                     <div class="row">
                         <div class="col"></div>
-                        <asp:Button Text="ALL" ID="btnAll" runat="server" class="col-2 btn btn-dark m-2" OnClick="btnAll_Click" />
-                        <asp:Button Text="Jobs" ID="btnJob" runat="server" class="col-2 btn btn-dark m-2" OnClick="btnJob_Click" />
-                        <asp:Button Text="Events" ID="btnEvent" runat="server" class="col-2 btn btn-dark m-2" OnClick="btnEvent_Click" />
-                        <asp:Button Text="Training" ID="btnTraining" runat="server" class="col-2 btn btn-dark m-2" OnClick="btnTraining_Click" />
+                        <asp:Button Text="ALL" ID="btnAll" runat="server" class="col-2 btn btn-primary m-2" OnClick="btnAll_Click" />
+                        <asp:Button Text="Jobs" ID="btnJob" runat="server" class="col-2 btn btn-primary m-2" OnClick="btnJob_Click" />
+                        <asp:Button Text="Events" ID="btnEvent" runat="server" class="col-2 btn btn-primary m-2" OnClick="btnEvent_Click" />
+                        <asp:Button Text="Training" ID="btnTraining" runat="server" class="col-2 btn btn-primary m-2" OnClick="btnTraining_Click" />
                         <div class="col"></div>
                     </div>
                     <br />
@@ -115,11 +73,9 @@
                     </asp:Repeater>
                 </div>
             </div>
-            <br />
         </div>
         <br />
         <div class="section">
-            <br />
             <div class="row d-flex justify-content-center">
                 <div class="tableSelection col-10">
                     <label>Current Newsletter Items:</label><br />
@@ -137,18 +93,21 @@
                     </asp:GridView>
                 </div>
             </div>
-            <br />
+            <hr />
             <div class="row d-flex justify-content-end">
                 <div>
-                    <asp:Button runat="server" class="btn btn-dark" Text="Preview Newsletter" ID="btnPreview" OnClick="btnPreview_Click"></asp:Button>
+                    <asp:Button runat="server" class="btn btn-primary" Text="Preview Newsletter" ID="btnPreview" OnClick="btnPreview_Click"></asp:Button>
                 </div>
                 <div class="col-1"></div>
             </div>
-            <br />
         </div>
     </div>
     <!---->
     <%--</ContentTemplate>
     </asp:UpdatePanel>--%>
     <!---->
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="js" runat="server">
+    <script type="text/javascript">
+    </script>
 </asp:Content>

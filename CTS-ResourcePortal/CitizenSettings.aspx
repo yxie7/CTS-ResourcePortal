@@ -40,7 +40,7 @@
         });
     </script>
 
-    <div id="MyPopup" class="modal" role="dialog">
+    <div id="MyPopup" class="modal fade" role="dialog">
         <div class="modal-dialog modal-xl">
             <!-- Modal content-->
             <div class="modal-content container">
@@ -190,8 +190,8 @@
                     <!-- -->
                     <asp:Repeater ID="rptResumes" runat="server" Visible="false">
                         <HeaderTemplate>
-                            <table id="datatable" class="table table-striped table-bordered" border="0" cellpadding="0"
-                                cellspacing="0">
+                            <table id="datatable" class="table table-striped table-bordered" 
+                                >
                                 <thead>
                                     <tr>
                                         <th>Resume Name

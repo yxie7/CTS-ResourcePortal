@@ -28,6 +28,11 @@ namespace CTS_ResourcePortal
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+
+            }
+
             if (string.IsNullOrEmpty(Session["userEmail"] as string))
             {
                 Response.Redirect("Login.aspx");
@@ -100,48 +105,58 @@ namespace CTS_ResourcePortal
                     resumeType = ResumeUploadSettings.PostedFile.ContentType;
                     resumeTitle = resumeName.Split('.')[0];
                     fileExtension = resumeName.Substring(resumeName.LastIndexOf(".")).ToLower();
+                    string accepted = "TRUE";
                     //fileExtension = fileExtension.ToLower();
-
-
-
-                    if (fileExtension == ".docx" || fileExtension == ".pdf" || fileExtension == ".doc")
-
+                    
+                    if(GrabResumeName(resumeName) == true)
                     {
+                        lblStatus.Visible = true;
+                        lblStatus.Text = "Name of resume already exist, please change the name of your file";
+                        ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+                        objCommand.Parameters.Clear();
+                    }
+                    else
+                    {
+                        objCommand.Parameters.Clear();
+                        if (fileExtension == ".docx" || fileExtension == ".pdf" || fileExtension == ".doc")
 
-                        strSQL = "StoreResume";
-                        objCommand.CommandText = strSQL;
-                        objCommand.CommandType = CommandType.StoredProcedure;
-                        objCommand.Parameters.AddWithValue("@ResumeTitle", resumeName);
-                        objCommand.Parameters.AddWithValue("@ResumeType", resumeType);
-                        objCommand.Parameters.AddWithValue("@ResumeData", resumeData);
-
-                        objCommand.Parameters.AddWithValue("@Email", email);
-
-                        result = objDB.DoUpdateUsingCmdObj(objCommand);
-
-                        if (result == 1)
                         {
-                            lblStatus.Visible = true;
-                            lblStatus.Text = "Resume was successully uploaded.";
-                            ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+
+                            strSQL = "StoreResume";
+                            objCommand.CommandText = strSQL;
+                            objCommand.CommandType = CommandType.StoredProcedure;
+                            objCommand.Parameters.AddWithValue("@ResumeTitle", resumeName);
+                            objCommand.Parameters.AddWithValue("@ResumeType", resumeType);
+                            objCommand.Parameters.AddWithValue("@ResumeData", resumeData);
+                            objCommand.Parameters.AddWithValue("@Email", email);
+                            objCommand.Parameters.AddWithValue("@Accepted", accepted);
+
+                            result = objDB.DoUpdateUsingCmdObj(objCommand);
+
+                            if (result == 1)
+                            {
+                                lblStatus.Visible = true;
+                                lblStatus.Text = "Resume was successully uploaded.";
+                                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+
+                            }
+                            else
+                            {
+                                lblStatus.Visible = true;
+                                lblStatus.Text = "Hmm something went wrong, please try again";
+                                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+                            }
 
                         }
                         else
+
                         {
                             lblStatus.Visible = true;
-                            lblStatus.Text = "Hmm something went wrong, please try again";
+                            lblStatus.Text = "Only docx, pdf, and doc file formats supported.";
                             ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+
                         }
-
-                    }
-                    else
-
-                    {
-                        lblStatus.Visible = true;
-                        lblStatus.Text = "Only docx, pdf, and doc file formats supported.";
-                        ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
-
-                    }
+                    }                    
 
                 }
 
@@ -231,6 +246,7 @@ namespace CTS_ResourcePortal
             
             string citiId = lblCitizenID.Text.ToString();
             int CitizenID = int.Parse(citiId);
+            email = Session["userEmail"].ToString();
 
             if (txtConfirmDeactivate.Text == "yes")
             {
@@ -243,23 +259,37 @@ namespace CTS_ResourcePortal
 
                 if (ResponseReceived == 1)
                 {
+                    objCommand.Parameters.Clear();
 
-                    lblStatus.Text = "You have deactivated your account. Returning you to login page.";
-                    lblStatus.Visible = true;
-                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+                    objCommand.CommandType = CommandType.StoredProcedure;
+                    objCommand.CommandText = "DeleteResumes";
+                    objCommand.Parameters.AddWithValue("@email", email);
+                    int resultResume = objDB.DoUpdateUsingCmdObj(objCommand);
+                    objCommand.Parameters.Clear();
+                    if (resultResume > 0)
+                    {
+                        lblStatus.Text = "You have deactivated your account. Returning you to login page.";
+                        lblStatus.Visible = true;
+                        ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
 
-                    System.Threading.Thread.Sleep(2300);
+                        System.Threading.Thread.Sleep(2300);
 
 
-                    Session["userName"] = null;
-                    Session["userEmail"] = null;
-                    Response.Redirect("Login.aspx");
-
-                 
+                        Session["userName"] = null;
+                        Session["userEmail"] = null;
+                        Response.Redirect("Login.aspx");
+                    }
+                    else
+                    {
+                        lblStatus.Text = "Failed";
+                        lblStatus.Visible = true;
+                        ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+                    }
+     
                 }
                 else
 
-                    lblStatus.Text = "Failed";
+                lblStatus.Text = "Failed";
                 lblStatus.Visible = true;
                 ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
 
@@ -331,6 +361,26 @@ namespace CTS_ResourcePortal
             }
         }
 
+        public Boolean GrabResumeName(string resumeTitle)
+        {
+
+            objCommand = new SqlCommand("CompareResumeTitle", objDB.GetConnection());
+            objCommand.CommandType = CommandType.StoredProcedure;
+            SqlParameter inputParameterName = new SqlParameter("@resumeTitle", resumeTitle);
+            inputParameterName.Direction = ParameterDirection.Input;
+            inputParameterName.SqlDbType = SqlDbType.VarChar;
+            objCommand.Parameters.Add(inputParameterName);
+            DataSet resumeSet = objDB.GetDataSetUsingCmdObj(objCommand);
+            if (resumeSet.Tables[0].Rows.Count == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
 
         protected void lnkView_Click(object sender, EventArgs e)
         {
@@ -376,38 +426,45 @@ namespace CTS_ResourcePortal
 
         protected void lnkDelete_Click(object sender, EventArgs e)
         {
+            objCommand.Parameters.Clear();
             RepeaterItem item = (sender as LinkButton).NamingContainer as RepeaterItem;
             string resumeTitle = (item.FindControl("lblName") as Label).Text;
             objCommand.CommandType = CommandType.StoredProcedure;
             objCommand.CommandText = "DeleteResume";
             objCommand.Parameters.AddWithValue("@ResumeTitle", resumeTitle);
             int result = objDB.DoUpdateUsingCmdObj(objCommand);
+            if(result == 1)
+            {
+                lblStatus.Text = "Delete Successful";
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+                
+            }
+            else
+            {
+                lblStatus.Text = "Something went wrong, please try again";
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+            }
+
             objCommand.Parameters.Clear();
+
+            if (createResumeTable() == true)
+            {
+                rptResumes.Visible = true;
+            }
+            
         }
 
         protected void ResumeTable_Click(object sender, EventArgs e)
         {
-            objCommand.Parameters.Clear();
-            //RepeaterItem item = (sender as Label).NamingContainer as RepeaterItem;
-            string email = Session["userEmail"].ToString();
-
-            objCommand.CommandType = CommandType.StoredProcedure;
-            objCommand.CommandText = "GetResumeName";
-            objCommand.Parameters.AddWithValue("@Email", email);
-            DataSet dataSet = objDB.GetDataSetUsingCmdObj(objCommand);
-            rptResumes.DataSource = dataSet;
-            rptResumes.DataBind();
-            if (dataSet.Tables[0].Rows[0].IsNull("ResumeTitle"))
+            if (createResumeTable() == false)
             {
-                //do nothing                        
-
+                lblStatus.Text = "You do not have any resumes uploaded, please upload a resume";
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
             }
             else
             {
                 rptResumes.Visible = true;
             }
-
-            objCommand.Parameters.Clear();
         }
 
         public Boolean comparePasswords(byte[] hashBytes, byte[] hash)
@@ -426,5 +483,39 @@ namespace CTS_ResourcePortal
             }
             return isCorrect;
         }
+
+        public Boolean createResumeTable()
+        {
+            bool tableCreated = false;
+            objCommand.Parameters.Clear();
+            //RepeaterItem item = (sender as Label).NamingContainer as RepeaterItem;
+            string email = Session["userEmail"].ToString();
+
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "GetResumeName";
+            objCommand.Parameters.AddWithValue("@Email", email);
+            DataSet dataSet = objDB.GetDataSetUsingCmdObj(objCommand);
+            rptResumes.DataSource = dataSet;
+            rptResumes.DataBind();
+
+            try
+            {
+                if (dataSet.Tables[0].Rows[0].IsNull("ResumeTitle"))
+                {
+                    objCommand.Parameters.Clear();
+                    return tableCreated;
+                }
+                else
+                {
+                    objCommand.Parameters.Clear();
+                    return tableCreated = true;
+                }
+            }
+            catch
+            {
+                return tableCreated;
+            }
+            
+        }
     }
-    }
+ }

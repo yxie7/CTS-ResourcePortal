@@ -1,15 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Citizen.master" AutoEventWireup="true" CodeBehind="Feedback.aspx.cs" Inherits="CTS_ResourcePortal.MobileFeedback" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
-    <link href="css.css" rel="stylesheet" />
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-
-
-    <div id="MyPopup" class="modal" role="dialog">
+    <div id="MyPopup" class="modal fade" role="dialog">
         <div class="modal-dialog modal-xl">
             <!-- Modal content-->
             <div class="modal-content container">
@@ -86,7 +78,7 @@
 
         <div class="row justify-content-center align-items-center  text-center">
             <div class="col-md-4">
-                <a class="btn btn-large btn-info" href="ResourceList.aspx">Back To Resources</a>
+                <a class="btn btn-large btn-primary" href="ResourceList.aspx">Back To Resources</a>
             </div>
         </div>
         <br />
@@ -94,7 +86,7 @@
             <div class="col"></div>
             <div class="col-md-4">
 
-                <asp:Button runat="server" CssClass="btn btn-large btn-info" Text="Submit Feedback" ID="btnSubmit" OnClick="btnSubmit_Click" />
+                <asp:Button runat="server" CssClass="btn btn-large btn-primary" Text="Submit Feedback" ID="btnSubmit" OnClick="btnSubmit_Click" />
                
             </div>
             <div class="col"></div>
@@ -107,16 +99,6 @@
             </div>
             <div class="col"></div>
         </div>
-
     </div>
-
-         <script type="text/javascript">
-         function ShowPopup(title, body) {
-             $("#MyPopup .modal-title").html(title);
-             $("#MyPopup .modal-body").html(body);
-             $("#MyPopup").modal("show");
-         }
-    </script>
-
 </asp:Content>
 

@@ -22,6 +22,7 @@ namespace CTS_ResourcePortal
                 List<NewsletterItem> selectionList = Session["NewsletterSelections"] as List<NewsletterItem>;
                 if (selectionList.Count > 0)
                 {
+                    h2Date.InnerText = DateTime.Now.ToString("MM/dd/yyyy") + " Newsletter";
                     DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
                     DataTable dt = new DataTable();
                     foreach (NewsletterItem ni in selectionList)

@@ -1,16 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Guest.Master" AutoEventWireup="true" CodeBehind="Signup.aspx.cs" Inherits="CTS_ResourcePortal.Signup" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
-    <link href="css.css" rel="stylesheet" />
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
 
-    <div id="MyPopup" class="modal" role="dialog">
+    <div id="MyPopup" class="modal fade" role="dialog">
         <div class="modal-dialog modal-xl">
             <!-- Modal content-->
             <div class="modal-content container">
@@ -20,7 +12,7 @@
                     <div class="row  justify-content-center align-items-center text-center">
                         <div class="col"></div>
                         <div class="col-md-4">
-                            <asp:Label runat="server" Text="Thank you for signing up!" ID="lblThanks" Font-Bold="True"></asp:Label>
+                            <asp:Label runat="server" ID="lblStatusSignUp" Font-Bold="True"></asp:Label>
                         </div>
                         <div class="col"></div>
                     </div>
@@ -106,9 +98,9 @@
                                 <div class="col-sm-auto">
                                     <label>Would you like to receive Newsletters?</label>
                                     <br />
-                                    <asp:RadioButtonList ID="rdoSubscribe" runat="server" RepeatLayout="Flow" class="btn-group btn-group-toggle" data-toggle="buttons">                                    
-                                    <asp:ListItem class="btn btn-outline-success" Value="Yes">Yes</asp:ListItem>
-                                    <asp:ListItem class="btn btn-outline-danger" Value="No">No</asp:ListItem>
+                                    <asp:RadioButtonList ID="rdoSubscribe" runat="server" RepeatLayout="Flow" class="btn-group btn-group-toggle" data-toggle="buttons">
+                                        <asp:ListItem class="btn btn-outline-success" Value="Yes">Yes</asp:ListItem>
+                                        <asp:ListItem class="btn btn-outline-danger" Value="No">No</asp:ListItem>
                                     </asp:RadioButtonList>
                                 </div>
                                 <div class="col">
@@ -132,7 +124,7 @@
                                 <div class="col">
                                 </div>
                                 <div class="col-md-auto">
-                                    <asp:Button runat="server" ID="finishSignUp" class="btn btn-success" Text="Submit" OnClick="finishSignUp_Click"></asp:Button>
+                                    <asp:Button runat="server" ID="finishSignUp" class="btn btn-primary" Text="Submit" OnClick="finishSignUp_Click"></asp:Button>
                                 </div>
                                 <div class="col">
                                 </div>
@@ -152,11 +144,4 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript">
-        function ShowPopup(title, body) {
-            $("#MyPopup .modal-title").html(title);
-            $("#MyPopup .modal-body").html(body);
-            $("#MyPopup").modal("show");
-        }
-    </script>
 </asp:Content>

@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CTS_ResourcePortal {
-    
-    
-    public partial class ResourceList {
-        
+namespace CTS_ResourcePortal
+{
+
+
+    public partial class ResourceList
+    {
+
         /// <summary>
         /// myHeader control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl myHeader;
-        
+
         /// <summary>
         /// lblHostedBy control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblHostedBy;
-        
+
         /// <summary>
         /// lblCompaniesName control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblCompaniesName;
-        
+
         /// <summary>
         /// lblCompanyName control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblCompanyName;
-        
+
         /// <summary>
         /// lblResponsibilities control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblResponsibilities;
-        
+
         /// <summary>
         /// lblHours control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblHours;
-        
+
         /// <summary>
         /// lblLength control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblLength;
-        
+
         /// <summary>
         /// lblLocation control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblLocation;
-        
+
         /// <summary>
         /// lblContact control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblContact;
-        
+
         /// <summary>
         /// lblDtPosted control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblDtPosted;
-        
+
         /// <summary>
         /// lblStartDt control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblStartDt;
-        
+
         /// <summary>
         /// lblPosted control.
         /// </summary>
@@ -119,7 +121,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblPosted;
-        
+
         /// <summary>
         /// lblExpiration control.
         /// </summary>
@@ -128,7 +130,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblExpiration;
-        
+
         /// <summary>
         /// lblExpired control.
         /// </summary>
@@ -137,7 +139,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblExpired;
-        
+
         /// <summary>
         /// StartEndTime control.
         /// </summary>
@@ -146,7 +148,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl StartEndTime;
-        
+
         /// <summary>
         /// lblStartEndTime control.
         /// </summary>
@@ -155,7 +157,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblStartEndTime;
-        
+
         /// <summary>
         /// lblStartEnd control.
         /// </summary>
@@ -164,7 +166,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblStartEnd;
-        
+
         /// <summary>
         /// lblOtherReqs control.
         /// </summary>
@@ -173,7 +175,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblOtherReqs;
-        
+
         /// <summary>
         /// lblAttire control.
         /// </summary>
@@ -182,7 +184,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblAttire;
-        
+
         /// <summary>
         /// lblOtherRequirements control.
         /// </summary>
@@ -191,7 +193,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblOtherRequirements;
-        
+
         /// <summary>
         /// lblAttire1 control.
         /// </summary>
@@ -200,7 +202,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblAttire1;
-        
+
         /// <summary>
         /// btnLink control.
         /// </summary>
@@ -209,7 +211,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnLink;
-        
+
         /// <summary>
         /// btnFeedback control.
         /// </summary>
@@ -218,7 +220,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnFeedback;
-        
+
         /// <summary>
         /// lblConfirm control.
         /// </summary>
@@ -227,7 +229,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblConfirm;
-        
+
         /// <summary>
         /// txtTitleSearch control.
         /// </summary>
@@ -236,7 +238,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTitleSearch;
-        
+
         /// <summary>
         /// gvJob control.
         /// </summary>
@@ -245,7 +247,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvJob;
-        
+
         /// <summary>
         /// gvEvent control.
         /// </summary>
@@ -254,7 +256,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvEvent;
-        
+
         /// <summary>
         /// gvTraining control.
         /// </summary>

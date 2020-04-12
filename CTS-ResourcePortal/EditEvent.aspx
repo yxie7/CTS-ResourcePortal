@@ -1,17 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin.master" AutoEventWireup="true" CodeBehind="EditEvent.aspx.cs" Inherits="CTS_ResourcePortal.EditEvent" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</asp:Content>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
-    <link href="AddNew.css" rel="stylesheet" />
-    <link href="css.css" rel="stylesheet" />
-
-    <div id="MyPopup" class="modal" role="dialog">
+    <div id="MyPopup" class="modal fade" role="dialog">
         <div class="modal-dialog modal-xl">
             <!-- Modal content-->
             <div class="modal-content container">
@@ -31,7 +21,7 @@
         </div>
     </div>
 
-    <div id="MyPopup2" class="modal" role="dialog">
+    <div id="MyPopup2" class="modal fade" role="dialog">
         <div class="modal-dialog modal-xl">
             <!-- Modal content-->
             <div class="modal-content container">
@@ -192,25 +182,8 @@
             <br />
 
             <div class="row justify-content-center align-items-center">
-                    <asp:Button ID="btnSubmit" runat="server" Text="Submit" Width="200px" OnClick="btnSubmit_click"  CssClass="btn btn-dark"/>
+                    <asp:Button ID="btnSubmit" runat="server" Text="Submit" Width="200px" OnClick="btnSubmit_click"  CssClass="btn btn-primary"/>
             </div>
         </div>
     </div>
-
-    <script type="text/javascript">
-        function ShowPopup(title, body) {
-            $("#MyPopup .modal-title").html(title);
-            $("#MyPopup .modal-body").html(body);
-            $("#MyPopup").modal("show");
-        }
-    </script>
-
-    <script type="text/javascript">
-        function ShowPopup2(title, body) {
-            $("#MyPopup2 .modal-title").html(title);
-            $("#MyPopup2 .modal-body").html(body);
-            $("#MyPopup2").modal("show");
-        }
-    </script>
-
 </asp:Content>

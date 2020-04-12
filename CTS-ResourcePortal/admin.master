@@ -1,7 +1,17 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="CTS_ResourcePortal.admin" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="dashboard.css" rel="stylesheet" />
+    <!--Admin Dashboard CSS-->
+    <link href="dashboard.css" rel="stylesheet" />    
+    <!--Bootstrap CSS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!--Datatable CSS-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" />
+    <!--All the CSS-->
+    <link href="master.css" rel="stylesheet" />
+    <link href="css.css" rel="stylesheet" />
+    <!--Page specific CSS?-->    
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
     <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
 </asp:Content>
 
@@ -20,7 +30,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">
     <div>
 
-        <button type="button" id="sidebarCollapse" class="btn btn-info btn-lg">
+        <button type="button" id="sidebarCollapse" class="btn btn-primary btn-lg">
             <i class="fas fa-align-left"></i>
             <span>Menu</span>
         </button>
@@ -47,23 +57,19 @@
         <asp:ContentPlaceHolder ID="Content" runat="server"></asp:ContentPlaceHolder>
     </div>
 
-    <script type="text/javascript">
+</asp:Content>
 
-        $(window).scroll(function () {
-            $("#sidebarCollapse").css("top", Math.max(0, 250 - $(this).scrollTop()));
-        });
-        $(document).ready(function () {
-            $('#dismiss, .overlay').on('click', function () {
-                $('#sidebar').removeClass('active');
-                $('.overlay').removeClass('active');
-            });
-
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').addClass('active');
-                $('.overlay').addClass('active');
-                $('.collapse.in').toggleClass('in');
-                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-            });
-        });
-    </script>
+<asp:Content ID="Content4" ContentPlaceHolderID="js" runat="server">
+    
+    <!--Bootstrap JS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>    
+    <!--DataTable JS-->
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <!--All the JS-->
+    <script src="rp.js"></script>
+    <!--Page specific JS?-->
+    <asp:ContentPlaceHolder ID="js" runat="server"></asp:ContentPlaceHolder>
 </asp:Content>

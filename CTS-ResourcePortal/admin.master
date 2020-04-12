@@ -11,7 +11,6 @@
     <link href="master.css" rel="stylesheet" />
     <link href="css.css" rel="stylesheet" />
     <!--Page specific CSS?-->    
-    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
     <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
 </asp:Content>
 
@@ -46,9 +45,10 @@
                     <li><a href="AddNewTraining.aspx">Add New Training Opportunity</a></li>
                     <li><a href="ManageR.aspx">Manage Resources</a></li>
                     <li><a href="ViewFeedback.aspx">View Feedback</a></li>
-                    <li><a href="NewsletterCreate.aspx">Create Newsletter</a></li>
-                    <li><a href="AdminEmailPage.aspx">Edit Email</a></li>
+                    <li><a href="ManageAdmins.aspx">Manage Administrator Accounts</a></li>
                     <li><a href="AdminUserPage.aspx">Citizen Accounts</a></li>
+                    <li><a href="AdminEmailPage.aspx">Edit Email</a></li>
+                    <li><a href="NewsletterCreate.aspx">Create Newsletter</a></li>
                 </ul>
             </nav>
         </div>

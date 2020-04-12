@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 using Utilities;
 
@@ -72,7 +73,7 @@ namespace CTS_ResourcePortal
             else
             {
                 //ScriptManager.RegisterStartupScript(this, GetType(), "Script", "toasted();", true);
-                ClientScript.RegisterStartupScript(GetType(), "Toast", "toasted(\"No selections were made...<br> You can't continue!\");", true);
+                ScriptManager.RegisterStartupScript(this,GetType(), "Toast", "toasted(\"No selections were made...<br> You can't continue!\");", true);
             }
         }
 

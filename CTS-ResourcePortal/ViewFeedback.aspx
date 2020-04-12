@@ -16,7 +16,7 @@
                 <div class="modal-footer">
                     <%--<button type="button" class="btn btn-danger" data-dismiss="modal">
                         Close</button>--%>
-                    <asp:Button ID="btnReplySubmit" runat="server" Text="Submit" OnClick="btnReplySubmit_Click" />
+                    <asp:Button ID="btnReplySubmit" runat="server" Text="Submit" OnClick="btnReplySubmit_Click" CssClass="btn btn-primary" />
                 </div>
             </div>
         </div>

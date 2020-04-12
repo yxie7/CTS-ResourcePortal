@@ -89,7 +89,9 @@ input[type="checkbox"] {
 .requiredRed {
     color: red;
 }
-
+lblModalTXT{
+    color:red;
+}
 textarea {
     resize: none;
 }

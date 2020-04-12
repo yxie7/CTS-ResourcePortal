@@ -53,6 +53,13 @@ $(function () {
                 stateSave: true
             });
     }
+
+    if (document.getElementById('#<%= gvAdmins.ClientID %>')) {
+        var admins =
+            $('#<%= gvAdmins.ClientID %>').DataTable({
+                "autoWidth": false
+            });
+    }
     /* Does something?
     if (document.getElementById('datatable')) {
         $('[id*=datatable]').DataTable({
@@ -134,10 +141,18 @@ function toasted(body) {
     $("#TheModal").modal("show");
 };
 
+function infom() {
+    $("#info").modal("show");
+}
+
 function sendModal() {
     $("#sendPrompt").modal("show");
 };
 
 function sendNotif() {
     $("#sent").modal("show");
+};
+
+function newAdmin() {
+    $("#newAdmin").modal("show");
 };

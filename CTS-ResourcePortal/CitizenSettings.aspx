@@ -1,45 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Citizen.master" AutoEventWireup="true" CodeBehind="CitizenSettings.aspx.cs" Inherits="CTS_ResourcePortal.CitizenSettings" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
-
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-    <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('[id*=datatable]').DataTable({
-
-            });
-        });
-    </script>
-
-    <script type="text/javascript">
-        $(function () {
-            $("#datatable [id*=chkHeader]").click(function () {
-                if ($(this).is(":checked")) {
-                    $("#datatable [id*=chkRow]").attr("checked", "checked");
-                } else {
-                    $("#datatable [id*=chkRow]").removeAttr("checked");
-                }
-            });
-            $("#datatable [id*=chkRow]").click(function () {
-                if ($("#datatable [id*=chkRow]").length == $("#datatable [id*=chkRow]:checked").length) {
-                    $("#datatable [id*=chkHeader]").attr("checked", "checked");
-                } else {
-                    $("#datatable [id*=chkHeader]").removeAttr("checked");
-                }
-            });
-        });
-    </script>
-
     <div id="MyPopup" class="modal fade" role="dialog">
         <div class="modal-dialog modal-xl">
             <!-- Modal content-->
@@ -59,8 +20,6 @@
             </div>
         </div>
     </div>
-
-    <link href="css.css" rel="stylesheet" />
 
     <div class="container">
         <div class="section">
@@ -94,7 +53,7 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <asp:RadioButtonList ID="rdoSubscribe" runat="server" RepeatLayout="Flow" class="btn-group btn-group-toggle" data-toggle="buttons">                                    
-                                    <asp:ListItem class="btn btn-outline-success" Value="Yes">Yes</asp:ListItem>
+                                    <asp:ListItem class="btn btn-outline-success" Value="Yes" Selected="True">Yes</asp:ListItem>
                                     <asp:ListItem class="btn btn-outline-danger" Value="No">No</asp:ListItem>
                                 </asp:RadioButtonList>
                             </div>
@@ -245,12 +204,4 @@
             </div>
         </div>
     </div>
-
-    <script type="text/javascript">
-        function ShowPopup(title, body) {
-            $("#MyPopup .modal-title").html(title);
-            $("#MyPopup .modal-body").html(body);
-            $("#MyPopup").modal("show");
-        }
-    </script>
 </asp:Content>

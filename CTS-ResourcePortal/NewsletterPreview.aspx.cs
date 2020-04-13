@@ -151,6 +151,7 @@ namespace CTS_ResourcePortal
                 smtp.Send(mm);
             }
         }
+
         protected void rptNL_ItemDataBound(object sender, System.Web.UI.WebControls.RepeaterItemEventArgs e)
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
@@ -163,14 +164,12 @@ namespace CTS_ResourcePortal
 
         protected void btnNoSend_Click(object sender, EventArgs e)
         {
-
         }
 
         protected void btnYesSend_Click(object sender, EventArgs e)
         {
             sendNL();
             ScriptManager.RegisterStartupScript(this, GetType(), "Script", "sendNotif();", true);
-
         }
     }
 }

@@ -167,7 +167,7 @@ namespace CTS_ResourcePortal
             //Response.Redirect("NewsletterCreate.aspx?filter=3");
         }
 
-        // triggers from button click of each row, adds row details to list and list to session
+        // triggers from botton click of each row, adds row details to list and list to session
         protected void rpt_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
             int rowIndex = e.Item.ItemIndex;

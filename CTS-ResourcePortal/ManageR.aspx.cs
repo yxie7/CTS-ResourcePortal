@@ -109,6 +109,10 @@ namespace CTS_ResourcePortal
 
         }
 
+
+        
+        //Used to Bind the Datatable to the Database based on the type of Resource Type Selected in the dropdown list
+
         public void Bind(int resourcenum)
         {
             cmd.Parameters.Clear();
@@ -127,6 +131,11 @@ namespace CTS_ResourcePortal
             rptManageR.DataBind();
 
         }
+
+
+        //Used to Bind the Datatable to the Database showing all the resources together
+
+
         public void BindAll()
         {
             cmd.Parameters.Clear();
@@ -144,6 +153,9 @@ namespace CTS_ResourcePortal
         {
             BindAll();
         }
+
+
+        // Used to set the type of resource selected from the dropdownlist and sending that type to the bind method
 
         protected void btnViewR_Click(object sender, EventArgs e)
         {
@@ -168,6 +180,10 @@ namespace CTS_ResourcePortal
                 BindAll();
             }
         }
+
+
+        //Used to check the Datatable for any checkboxes that are checked and setting the status of the Resource in that row to Active/Inactive accordingly
+
 
         protected void btnActivate_Click(object sender, EventArgs e)
         {
@@ -199,6 +215,11 @@ namespace CTS_ResourcePortal
             BindAll();
         }
 
+
+
+        //Used to check the Datatable for any checkboxes that are checked and setting the status of the Resource in that row to Active/Inactive accordingly
+
+
         protected void btnInactivate_Click(object sender, EventArgs e)
         {
             foreach (RepeaterItem item in rptManageR.Items)
@@ -226,6 +247,7 @@ namespace CTS_ResourcePortal
             ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup1();", true);
             BindAll();
         }
+
 
         protected void btnEdit_Click(object sender, EventArgs e)
         {

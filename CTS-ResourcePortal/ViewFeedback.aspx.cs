@@ -50,6 +50,10 @@ namespace CTS_ResourcePortal
             }
         }
 
+
+        //Used to Bind the Datatable to the Database based on the type of Resource Type Selected in the dropdown list that are active
+
+
         public void Bind(int resourcenum)
         {
             cmd.Parameters.Clear();
@@ -68,6 +72,10 @@ namespace CTS_ResourcePortal
             rptViewR.DataBind();
 
         }
+
+
+        //Used to Bind the Datatable to the Database showing all the resources together that are active
+
         public void BindAll()
         {
             cmd.Parameters.Clear();
@@ -89,6 +97,8 @@ namespace CTS_ResourcePortal
             ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
             BindAll();
         }
+
+        //Used to set the type of resource selected from the dropdownlist and sending that type to the bind method
 
         protected void btnViewR_Click(object sender, EventArgs e)
         {
@@ -118,6 +128,12 @@ namespace CTS_ResourcePortal
         {
             BindAll();
         }
+
+
+        
+        //Used to search the Datatable for any checkboxes that are checked and based on that row, it sets the feedback status to “Inactive” thereby removing it from the table, and displaying a modal indicating that feedback has been removed
+
+
 
         protected void btnSelect_Click(object sender, EventArgs e)
         {
@@ -179,34 +195,12 @@ namespace CTS_ResourcePortal
 
         protected void btnReply_Click(object sender, EventArgs e)
         {
-            //foreach(RepeaterItem item in rptViewR.Items)
-            //{
-            //    CheckBox checkBox = (CheckBox)item.FindControl("chkRow");
-            //    if (checkBox.Checked)
-            //    {
-            //        Label label = (Label)item.FindControl("lblFeedbackText");
-
-            //        string feedbacktext = label.Text;
-            //        cmd.Parameters.Clear();
-            //        cmd.CommandType = CommandType.StoredProcedure;
-            //        cmd.CommandText = "GetFeedbackByText";
-            //        SqlParameter text = new SqlParameter("@FeedbackText", feedbacktext);
-            //        text.Direction = ParameterDirection.Input;
-            //        text.SqlDbType = SqlDbType.VarChar;
-
-            //        cmd.Parameters.Add(text);
-            //        DataSet dataSet = db.GetDataSetUsingCmdObj(cmd);
-            //        FeedbackID = Convert.ToInt32(dataSet.Tables[0].Rows[0].ItemArray[0]);
-            //        CitizenID = Convert.ToInt32(dataSet.Tables[0].Rows[0].ItemArray[1]);
-            //        if (dataSet.Tables[0].Rows.Count > 0)
-            //        {
-            //            string title = "Reply to Feedback";
-            //            string body = "This message will send an email to the citizen who left this feedback";
-            //            ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
-            //        }
-            //    }
-            //}
+            
         }
+
+        
+        //This method builds the email body from the reply modal and uses the CitizenID gathered earlier to retrieve the Citizen’s email address from the database.Using this email address, we use SMTP server to send an email using the email body from before
+
 
         protected void btnReplySubmit_Click(object sender, EventArgs e)
         {
@@ -238,6 +232,10 @@ namespace CTS_ResourcePortal
                 smtp.Send(mm);
             }
         }
+
+        
+        //Used to locate the FeedbackID and the CitizenID in the database by Feedback text and simultaneously open a modal for replying to Citizen Feedback
+
 
         protected void rptViewR_ItemCommand(object source, RepeaterCommandEventArgs e)
         {

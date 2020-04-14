@@ -13,14 +13,28 @@ namespace CTS_ResourcePortal
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["userName"] == null)
+            if(Session["adminEmail"] == null)
             {
-                lblAdminName.Text = "Admin Name";
+                //lblAdminName.Text = "Admin Name";
+                Response.Write("You are not an Admin of this System!");
+                
+                System.Threading.Thread.Sleep(5000);
+                Response.Redirect("Login.aspx");
+
             }
             else
             {
                 lblAdminName.Text = (string)Session["userName"];
             }
+        }
+
+
+        protected void Signout_click(object sender, EventArgs e)
+        {
+            Session["adminEmail"] = null;
+            Session["userName"] = null;
+            Session["userEmail"] = null;
+            Response.Redirect("Login.aspx");
         }
     }
 }

@@ -13,7 +13,7 @@ namespace CTS_ResourcePortal
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["userName"] == null)
+            if (Session["userEmail"] == null)
             {
                 lblCitizenName.Visible = false;
                 //lblCitizenName.Text = "Admin Name";
@@ -35,6 +35,8 @@ namespace CTS_ResourcePortal
         protected void lnkSignOut_Click(object sender, EventArgs e)
         {
             Session["userName"] = null;
+            Session["userEmail"] = null;
+            Session["adminEmail"] = null;
             lblCitizenName.Visible = false;
             //lblCitizenName.Text = "Admin Name";
             lnkAccountSettings.Visible = false;

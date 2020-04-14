@@ -66,7 +66,7 @@ namespace CTS_ResourcePortal
                         DataSet EmailDataSet = objDB.GetDataSetUsingCmdObj(cmd);
                         string fullname = EmailDataSet.Tables[0].Rows[0].ItemArray[0] + " " + EmailDataSet.Tables[0].Rows[0].ItemArray[1];
 
-                        Session.Add("userEmail", txtEmail.Text);
+                        Session.Add("adminEmail", txtEmail.Text);
                         Session.Add("userName", fullname);
                         Response.Redirect("AdminHomePage.aspx");
                     }

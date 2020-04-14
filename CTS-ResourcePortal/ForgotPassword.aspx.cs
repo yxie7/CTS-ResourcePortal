@@ -26,8 +26,7 @@ namespace CTS_ResourcePortal
             //NEEDS LINK TO NEW PASSWORD, THIS WILL NOT TAKE YOU TO THE NEW PASSWORD WEBPAGE YET
             string email = txtEmail.Text;
             string subject = "Password Reset";
-            string text = "To reset your password, go to this link:" + "\r\n" +
-                "(Insert Link Here)";
+            string text = "To reset your password, go to this <a href='http://ctsresourceportal-dev.us-east-2.elasticbeanstalk.com/NewPassword.aspx'>link</a>";
             try
             {
                 using (MailMessage mm = new MailMessage())

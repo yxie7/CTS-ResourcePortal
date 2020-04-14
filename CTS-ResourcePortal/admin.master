@@ -23,7 +23,8 @@
         <p>::</p>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="ResourceList.aspx">Sign Out</a>
+       
+        <a id="lnkSingout" runat="server"  class="nav-link" href="#" onserverclick="Signout_click">Sign Out</a>
     </li>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Content" runat="server">

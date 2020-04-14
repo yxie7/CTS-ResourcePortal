@@ -25,7 +25,7 @@ namespace CTS_ResourcePortal
         {
             if (!IsPostBack)
             {
-                bind();
+                bindCurrent();
                 bindPending();
                 resumeTable();
                 
@@ -43,7 +43,7 @@ namespace CTS_ResourcePortal
 
         }
 
-        private void bind()
+        private void bindCurrent()
         {
 
             cmd.CommandType = CommandType.StoredProcedure;
@@ -288,7 +288,7 @@ namespace CTS_ResourcePortal
             }
 
             bindPending();
-            bind();
+            bindCurrent();
             resumeTable();
 
         }
@@ -431,7 +431,7 @@ namespace CTS_ResourcePortal
             }
 
             bindPending();
-            bind();
+            bindCurrent();
             resumeTable();
         }
 

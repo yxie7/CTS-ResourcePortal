@@ -268,6 +268,7 @@ namespace CTS_ResourcePortal
             Response.Redirect("ForgotPassword.aspx");
         }
 
+        //compares the password entered at login with the password in the database
         public Boolean comparePasswords(byte[] hashBytes, byte[] hash)
         {
             Boolean isCorrect = true;

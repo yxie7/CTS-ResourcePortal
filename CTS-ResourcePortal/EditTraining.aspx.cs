@@ -44,11 +44,11 @@ namespace CTS_ResourcePortal
                 string phoneNo = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[11]);
                 string email = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[12]);
                 DateTime startDate = Convert.ToDateTime(ds.Tables[0].Rows[0].ItemArray[13]);
-                //string expDate = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[14]);
+                DateTime endDate = Convert.ToDateTime(ds.Tables[0].Rows[0].ItemArray[14]);
                 //string startTime = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[15]);
                 //string endTime = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[16]);
                 //string applyReg = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[17]);
-                DateTime expDate = Convert.ToDateTime(ds.Tables[0].Rows[0].ItemArray[18]);
+                //DateTime expDate = Convert.ToDateTime(ds.Tables[0].Rows[0].ItemArray[18]);
                 string link = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[19]);
                 string addLine1 = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[20]);
                 string addLine2 = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[21]);
@@ -64,7 +64,7 @@ namespace CTS_ResourcePortal
                 ddlState.SelectedValue = state;
                 txtZip.Text = zip;
                 dateStart.Value = startDate.ToString("yyyy-MM-dd");
-                dateRegDeadline.Value = expDate.ToString("yyyy-MM-dd");
+                dateRegDeadline.Value = endDate.ToString("yyyy-MM-dd");
                 txtHours.Text = weekhrs;
                 txtLength.Text = length;
                 txtFn.Text = firstName;
@@ -127,7 +127,7 @@ namespace CTS_ResourcePortal
                 bigCommand.Parameters.AddWithValue("@state", state);
                 bigCommand.Parameters.AddWithValue("@zip", zip);
                 bigCommand.Parameters.AddWithValue("@startDate", startDate);
-                bigCommand.Parameters.AddWithValue("@expDate", expDate);
+                bigCommand.Parameters.AddWithValue("@endDate", expDate);
                 bigCommand.Parameters.AddWithValue("@weeklyHrs", hours);
                 bigCommand.Parameters.AddWithValue("@trainLength", length);
                 bigCommand.Parameters.AddWithValue("@firstName", fn);

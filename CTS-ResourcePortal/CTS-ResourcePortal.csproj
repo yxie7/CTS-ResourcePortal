@@ -73,6 +73,8 @@
     <Content Include="css.css" />
     <Content Include="dashboard.css" />
     <Content Include="Global.asax" />
+    <Content Include="Images\CTS_Logo.png" />
+    <Content Include="Images\Temple_Logo.png" />
     <Content Include="Login.aspx" />
     <Content Include="ManageAdmins.aspx" />
     <Content Include="master.css" />

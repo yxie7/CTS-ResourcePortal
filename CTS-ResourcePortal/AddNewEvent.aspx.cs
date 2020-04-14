@@ -73,7 +73,7 @@ namespace CTS_ResourcePortal
                 bigCommand.Parameters.AddWithValue("@state", eventt.state);
                 bigCommand.Parameters.AddWithValue("@zip", eventt.zipCode);
                 bigCommand.Parameters.AddWithValue("@eventDate", eventt.eventDate);
-                bigCommand.Parameters.AddWithValue("@regDate", eventt.expDate);
+                bigCommand.Parameters.AddWithValue("@endDate", eventt.expDate);
                 bigCommand.Parameters.AddWithValue("@startTime", eventt.startTime);
                 bigCommand.Parameters.AddWithValue("@endTime", eventt.endTime);
                 bigCommand.Parameters.AddWithValue("@firstName", eventt.contactFN);
@@ -110,90 +110,5 @@ namespace CTS_ResourcePortal
             }
 
         }
-
-        /* public bool IsValid()
-         {
-             if (txtTitle.Text == string.Empty)
-             {
-                 lblTitleError.Visible = true;
-                 return false;
-             }
-
-             if (txtHost.Text == string.Empty)
-             {
-                 lblHostError.Visible = true;
-                 return false;
-             }
-
-             else if (txtAddLine1.Text == string.Empty)
-             {
-                 lblAdd1Error.Visible = true;
-                 return false;
-             }
-
-             if (txtCity.Text == string.Empty)
-             {
-                 lblCityError.Visible = true;
-                 return false;
-             }
-
-             if (txtZip.Text == string.Empty)
-             {
-                 lblZipError.Visible = true;
-                 return false;
-             }
-
-             if (txtStartTime.Text == string.Empty)
-             {
-                 lblStartError.Visible = true;
-                 return false;
-             }
-
-             if (txtEndTime.Text == string.Empty)
-             {
-                 lblEndError.Visible = true;
-                 return false;
-             }
-
-             if (txtFn.Text == string.Empty)
-             {
-                 lblFNError.Visible = true;
-                 return false;
-             }
-
-             if (txtLn.Text == string.Empty)
-             {
-                 lblLNError.Visible = true;
-                 return false;
-             }
-
-             if (txtContEmail.Text == string.Empty)
-             {
-                 lblEmailError.Visible = true;
-                 return false;
-             }
-
-             if (txtContPhone.Text == string.Empty)
-             {
-                 lblPhoneError.Visible = true;
-                 return false;
-             }
-
-             if (txtLink.Text == string.Empty)
-             {
-                 lblLinkError.Visible = true;
-                 return false;
-             }
-
-             if (txtDesc.Text == string.Empty)
-             {
-                 lblDescError.Visible = true;
-                 return false;
-             }
-             else
-             {
-                 return true;
-             }
-         }*/
     }
 }

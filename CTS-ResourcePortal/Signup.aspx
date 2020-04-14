@@ -99,7 +99,7 @@
                                     <label>Would you like to receive Newsletters?</label>
                                     <br />
                                     <asp:RadioButtonList ID="rdoSubscribe" runat="server" RepeatLayout="Flow" class="btn-group btn-group-toggle" data-toggle="buttons">
-                                        <asp:ListItem class="btn btn-outline-success" Value="Yes">Yes</asp:ListItem>
+                                        <asp:ListItem class="btn btn-outline-success" Value="Yes" Selected="True" >Yes</asp:ListItem>
                                         <asp:ListItem class="btn btn-outline-danger" Value="No">No</asp:ListItem>
                                     </asp:RadioButtonList>
                                 </div>

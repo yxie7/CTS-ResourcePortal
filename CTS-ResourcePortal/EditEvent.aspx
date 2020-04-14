@@ -163,7 +163,7 @@
 
             <div class="row" id="linkdiv">
                 <div class="col-sm-6">
-                    <asp:Label ID="lblAtire" runat="server">Atire: </asp:Label><br />
+                    <asp:Label ID="lblAtire" runat="server">Attire: </asp:Label><br />
                     <asp:TextBox ID="txtAtire"  class="form-control" runat="server"></asp:TextBox>
                 </div>
                 <div class="col-sm-6">

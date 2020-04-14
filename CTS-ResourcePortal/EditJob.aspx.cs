@@ -45,11 +45,11 @@ namespace CTS_ResourcePortal
                 string phoneNo = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[11]);
                 string email = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[12]);
                 DateTime postedDate = Convert.ToDateTime(ds.Tables[0].Rows[0].ItemArray[13]);
-                //string expDate = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[14]);
+                DateTime endDate = Convert.ToDateTime(ds.Tables[0].Rows[0].ItemArray[14]);
                 string startTime = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[15]);
                 string endTime = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[16]);
                 //string applyReg = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[17]);
-                DateTime regDate = Convert.ToDateTime(ds.Tables[0].Rows[0].ItemArray[18]);
+                //DateTime regDate = Convert.ToDateTime(ds.Tables[0].Rows[0].ItemArray[18]);
                 string link = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[19]);
                 string addLine1 = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[20]);
                 string addLine2 = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[21]);
@@ -65,7 +65,7 @@ namespace CTS_ResourcePortal
                 ddlState.SelectedValue = state;
                 txtZip.Text = zip;
                 datePosted.Value = postedDate.ToString("yyyy-MM-dd");
-                dateRegDeadline.Value = regDate.ToString("yyyy-MM-dd");
+                dateRegDeadline.Value = endDate.ToString("yyyy-MM-dd");
                 txtHours.Text = weekhrs;
                 txtFn.Text = firstName;
                 txtLn.Text = lastName;
@@ -125,7 +125,7 @@ namespace CTS_ResourcePortal
                 bigCommand.Parameters.AddWithValue("@state", state);
                 bigCommand.Parameters.AddWithValue("@zip", zip);
                 bigCommand.Parameters.AddWithValue("@datePosted", postedDate);
-                bigCommand.Parameters.AddWithValue("@regDate", regDate);
+                bigCommand.Parameters.AddWithValue("@endDate", regDate);
                 bigCommand.Parameters.AddWithValue("@weeklyHrs", hours);
                 bigCommand.Parameters.AddWithValue("@firstName", fn);
                 bigCommand.Parameters.AddWithValue("@lastName", ln);

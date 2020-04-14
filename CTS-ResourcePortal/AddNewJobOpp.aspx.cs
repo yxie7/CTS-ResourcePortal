@@ -67,7 +67,7 @@ namespace CTS_ResourcePortal
                 bigCommand.Parameters.AddWithValue("@state", job.state);
                 bigCommand.Parameters.AddWithValue("@zip", job.zipCode);
                 bigCommand.Parameters.AddWithValue("@startDate", job.datePosted);
-                bigCommand.Parameters.AddWithValue("@expDate", job.expDate);
+                bigCommand.Parameters.AddWithValue("@endDate", job.expDate);
                 bigCommand.Parameters.AddWithValue("@weeklyHrs", job.weeklyHours);
                 bigCommand.Parameters.AddWithValue("@firstName", job.contactFN);
                 bigCommand.Parameters.AddWithValue("@lastName", job.contactLN);

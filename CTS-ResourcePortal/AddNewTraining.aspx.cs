@@ -71,7 +71,7 @@ namespace CTS_ResourcePortal
                 bigCommand.Parameters.AddWithValue("@state", training.state);
                 bigCommand.Parameters.AddWithValue("@zip", training.zipCode);
                 bigCommand.Parameters.AddWithValue("@startDate", training.startDate);
-                bigCommand.Parameters.AddWithValue("@expDate", training.expDate);
+                bigCommand.Parameters.AddWithValue("@endDate", training.expDate);
                 bigCommand.Parameters.AddWithValue("@weeklyHrs", training.weeklyHours);
                 bigCommand.Parameters.AddWithValue("@trainLength", training.trainingLength);
                 bigCommand.Parameters.AddWithValue("@firstName", training.contactFN);

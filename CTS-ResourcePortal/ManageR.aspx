@@ -173,7 +173,7 @@
                         </div>
                         <div class="col-md-1"></div>
                         <div class="col-md-2">
-                            <asp:Button ID="btnEdit" Text="Edit Resource" runat="server" OnClick="btnEdit_Click" />
+                            <asp:Button ID="btnEdit" Text="Edit Resource" runat="server" OnClick="btnEdit_Click" CssClass="btn btn-primary btn-md" />
                         </div>
                     </div>
 

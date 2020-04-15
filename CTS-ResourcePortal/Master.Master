@@ -4,6 +4,7 @@
 
 <html>
 <head runat="server">
+    <link rel="icon" href="Images/CTS_Logo.png"/>
     <title>Called To Serve</title>
     <!--FontAwesome for some icons-->
     <script src="https://kit.fontawesome.com/f03b07e8ab.js" crossorigin="anonymous"></script>

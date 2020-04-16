@@ -46,8 +46,8 @@
                             <table id="datatable" class="table  table-hover">
                                 <thead>
                                     <tr>
-                                        <th class="col-2 rth">Resource Title</th>
-                                        <th class="col-5 rth">Comments</th>
+                                        <th class="col-auto rth">Resource Title</th>
+                                        <th class="col-auto rth">Comments</th>
                                         <th class="col-1 rth">Add</th>
                                     </tr>
                                 </thead>

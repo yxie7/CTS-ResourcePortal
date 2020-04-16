@@ -145,7 +145,9 @@ namespace CTS_ResourcePortal
                                         //User Registered 
                                         //Save UserEmail in Session Called UserEmail
                                         Session.Add("userEmail", txtEmail.Text.ToString());
-                                        lblStatusSignUp.Text = "Thank you for signing up!";
+                                        lblStatusSignUp.Text = "Thank you for signing up! Your account needs to be approved " +
+                                            "by an administrator before you can log in. You will get an email if your account " +
+                                            "has been approved or denied";
                                         ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
                                     }
                                     else
@@ -201,7 +203,9 @@ namespace CTS_ResourcePortal
                                 //User Registered 
                                 //Save UserEmail in Session Called UserEmail
                                 Session.Add("userEmail", txtEmail.Text.ToString());
-                                lblStatusSignUp.Text = "Thank you for signing up!";
+                                lblStatusSignUp.Text = "Thank you for signing up! Your account needs to be approved " +
+                                            "by an administrator before you can log in. You will get an email if your account " +
+                                            "has been approved or denied";
                                 ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
                             }
                             else

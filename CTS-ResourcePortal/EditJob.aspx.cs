@@ -57,23 +57,23 @@ namespace CTS_ResourcePortal
                 string zip = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[23]);
                 string state = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[24]);
 
-                txtTitle.Text = title;
-                txtCompany.Text = company;
-                txtAddLine1.Text = addLine1;
-                txtAddLine2.Text = addLine2;
-                txtCity.Text = city;
+                txtTitle.Value = title;
+                txtCompany.Value = company;
+                txtAddLine1.Value = addLine1;
+                txtAddLine2.Value = addLine2;
+                txtCity.Value = city;
                 ddlState.SelectedValue = state;
-                txtZip.Text = zip;
+                txtZip.Value = zip;
                 datePosted.Value = postedDate.ToString("yyyy-MM-dd");
                 dateRegDeadline.Value = endDate.ToString("yyyy-MM-dd");
-                txtHours.Text = weekhrs;
-                txtFn.Text = firstName;
-                txtLn.Text = lastName;
-                txtContPhone.Text = phoneNo;
-                txtContEmail.Text = email;
-                txtLink.Text = link;
-                txtPrimResp.Text = primResp;
-                txtSkills.Text = skills;
+                txtHours.Value = weekhrs;
+                txtFn.Value = firstName;
+                txtLn.Value = lastName;
+                txtContPhone.Value = phoneNo;
+                txtContEmail.Value = email;
+                txtLink.Value = link;
+                txtPrimResp.Value = primResp;
+                txtSkills.Value = skills;
 
                 bigCommand.Parameters.Clear();
             }
@@ -82,7 +82,7 @@ namespace CTS_ResourcePortal
         protected void btnCreate_Click(object sender, EventArgs e)
         {
 
-            if (txtTitle.Text == string.Empty || txtCompany.Text == string.Empty || txtAddLine1.Text == string.Empty || txtCity.Text == string.Empty ||
+           /* if (txtTitle.Text == string.Empty || txtCompany.Text == string.Empty || txtAddLine1.Text == string.Empty || txtCity.Text == string.Empty ||
                txtZip.Text == string.Empty || txtHours.Text == string.Empty || txtFn.Text == string.Empty || txtLn.Text == string.Empty
                || txtContEmail.Text == string.Empty || txtContPhone.Text == string.Empty || txtLink.Text == string.Empty ||
                 txtPrimResp.Text == string.Empty || txtSkills.Text == string.Empty)
@@ -90,25 +90,25 @@ namespace CTS_ResourcePortal
                 ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup2();", true);
             }
             else
-            {
+            { */
                 string resourceIDS = (string)Session["ResourceIDS"];
 
-                string title = txtTitle.Text;
+                string title = txtTitle.Value;
                 //int typeID = 1;
-                string company = txtCompany.Text;
-                string addressLine1 = txtAddLine1.Text;
-                string addressLine2 = txtAddLine2.Text;
-                string city = txtCity.Text;
+                string company = txtCompany.Value;
+                string addressLine1 = txtAddLine1.Value;
+                string addressLine2 = txtAddLine2.Value;
+                string city = txtCity.Value;
                 string state = ddlState.Text;
-                string zip = txtZip.Text;
-                string hours = txtHours.Text;
-                string fn = txtFn.Text;
-                string ln = txtLn.Text;
-                string phone = txtContPhone.Text;
-                string email = txtContEmail.Text;
-                string link = txtLink.Text;
-                string resp = txtPrimResp.Text;
-                string skills = txtSkills.Text;
+                string zip = txtZip.Value;
+                string hours = txtHours.Value;
+                string fn = txtFn.Value;
+                string ln = txtLn.Value;
+                string phone = txtContPhone.Value;
+                string email = txtContEmail.Value;
+                string link = txtLink.Value;
+                string resp = txtPrimResp.Value;
+                string skills = txtSkills.Value;
                 DateTime postedDate = Convert.ToDateTime(datePosted.Value);
                 DateTime regDate = Convert.ToDateTime(dateRegDeadline.Value);
 
@@ -145,7 +145,7 @@ namespace CTS_ResourcePortal
                 "setTimeout(function() { window.location.replace('ManageR.aspx') }, 3000);", true);
 
                 //Response.Redirect("ManageR.aspx");
-            }
+            //}
         }
     }
 }

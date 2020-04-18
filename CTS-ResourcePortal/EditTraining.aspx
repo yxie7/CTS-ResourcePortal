@@ -62,32 +62,30 @@
             <div class="row" id="titleRow">
                 <div class="col-sm-6">
                     <asp:Label ID="lblTitle" runat="server"><span class="requiredRed">*</span>Training Title: </asp:Label><br />
-                    <asp:TextBox ID="txtTitle" class="form-control" runat="server"></asp:TextBox>
+                    <input type="text" ID="txtTitle" class="form-control" runat="server" required>
                 </div>
                 <div class="col-sm-6">
                     <asp:Label ID="lblHost" runat="server"><span class="requiredRed">*</span>Hosted By: </asp:Label><br />
-                    <asp:TextBox ID="txtHost" class="form-control" runat="server"></asp:TextBox>
+                    <input type="text" ID="txtHost" class="form-control" runat="server" required> 
                 </div>
             </div>
             <br />
-            <asp:Label ID="lblLoc" runat="server">Location</asp:Label>
-
             <div class="row" id="addy1Row">
                 <div class="col-sm-6">
 
                     <asp:Label ID="lblAddLine1" runat="server"><span class="requiredRed">*</span>Address Line 1: </asp:Label><br />
-                    <asp:TextBox ID="txtAddLine1" class="form-control" runat="server"></asp:TextBox>
+                    <input type="text" ID="txtAddLine1" class="form-control" runat="server" required>
                 </div>
                 <div class="col-sm-6">
                     <asp:Label ID="lblAddLine2" runat="server">Address Line 2: </asp:Label><br />
-                    <asp:TextBox ID="txtAddLine2" class="form-control" runat="server"></asp:TextBox>
+                    <input type="text" ID="txtAddLine2" class="form-control" runat="server">
                 </div>
             </div>
 
             <div class="row" id="addy2Row">
                 <div class="col-sm-4">
                     <asp:Label ID="lblCity" runat="server"><span class="requiredRed">*</span>City: </asp:Label><br />
-                    <asp:TextBox ID="txtCity" class="form-control" runat="server"></asp:TextBox>
+                    <input type="text" ID="txtCity" class="form-control" runat="server" required>
                 </div>
                 <div class="col-sm-4">
                     <asp:Label ID="lblState" runat="server"><span class="requiredRed">*</span>State: </asp:Label><br />
@@ -100,7 +98,7 @@
                 </div>
                 <div class="col-sm-4">
                     <asp:Label ID="lblZip" runat="server"><span class="requiredRed">*</span>Zip: </asp:Label><br />
-                    <asp:TextBox ID="txtZip" class="form-control" runat="server"></asp:TextBox>
+                    <input type="text" ID="txtZip" class="form-control" pattern="[0-9]{5}" title="#####" runat="server" required>
                 </div>
             </div>
             <br />
@@ -122,11 +120,11 @@
             <div class="row" id="hrs">
                 <div class="col-sm-6">
                     <asp:Label ID="lblHours" runat="server"><span class="requiredRed">*</span>Weekly Hours: </asp:Label><br />
-                    <asp:TextBox ID="txtHours" class="form-control" runat="server"></asp:TextBox>
+                    <input type="text" ID="txtHours" class="form-control" runat="server" required>
                 </div>
                 <div class="col-sm-6">
                     <asp:Label ID="Label2" runat="server"><span class="requiredRed">*</span>Length of Training: </asp:Label><br />
-                    <asp:TextBox ID="txtLength" class="form-control" runat="server"></asp:TextBox>
+                    <input type="text" ID="txtLength" class="form-control" runat="server" required>
                 </div>
             </div>
 
@@ -135,30 +133,30 @@
             <div class="row" id="cont1">
                 <div class="col-sm-6">
                     <asp:Label ID="lblFn" runat="server"><span class="requiredRed">*</span>Primary Contact First Name: </asp:Label><br />
-                    <asp:TextBox ID="txtFn" class="form-control" runat="server"></asp:TextBox>
+                    <input type="text" ID="txtFn" class="form-control" runat="server" required>
                 </div>
                 <div class="col-sm-6">
                     <asp:Label ID="lblLn" runat="server"><span class="requiredRed">*</span>Primary Contact Last Name: </asp:Label><br />
-                    <asp:TextBox ID="txtLn" class="form-control" runat="server"></asp:TextBox>
+                    <input type="text" ID="txtLn" class="form-control" runat="server" required>
                 </div>
             </div>
 
             <div class="row" id="cont2">
                 <div class="col-sm-6">
                     <asp:Label ID="lblContEmail" runat="server"><span class="requiredRed">*</span>Primary Contact Email: </asp:Label><br />
-                    <asp:TextBox ID="txtContEmail" class="form-control" runat="server"></asp:TextBox>
+                    <input type="email" ID="txtContEmail" class="form-control" runat="server" required>
                 </div>
                 <div class="col-sm-6">
                     <asp:Label ID="lblContPhone" runat="server"><span class="requiredRed">*</span>Primary Contact Phone #: </asp:Label><br />
-                    <asp:TextBox ID="txtContPhone" class="form-control" runat="server"></asp:TextBox>
+                    <input type="tel" ID="txtContPhone" class="form-control" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" title="###-###-####" runat="server" required>
                 </div>
             </div>
             <br />
 
             <div class="row" id="linkdiv">
                 <div class="col-sm-6">
-                    <asp:Label ID="lblSignUp" runat="server"><span class="requiredRed">*</span>How to Sign Up:</asp:Label><br />
-                    <asp:TextBox ID="txtSignUp" class="form-control" runat="server"></asp:TextBox>
+                    <asp:Label ID="lblSignUp" runat="server">Link/Website:</asp:Label><br />
+                   <input type="text" ID="txtSignUp" class="form-control" runat="server">
                 </div>
             </div>
 
@@ -166,7 +164,7 @@
             <div class="row" id="descDiv">
                 <div class="col-sm-12">
                     <asp:Label ID="lblDesc" runat="server"><span class="requiredRed">*</span>Training Description: </asp:Label><br />
-                    <asp:TextBox ID="txtDesc" runat="server" TextMode="multiline" Rows="4" CssClass="col-md-8 form-control"></asp:TextBox>
+                    <textarea id="txtDesc" cols="50" rows="10" class="form-control" CssClass="col-md-8 form-control" required runat="server"></textarea>
                 </div>
             </div>
             <br />
@@ -174,13 +172,13 @@
             <div class="row" id="skillDiv">
                 <div class="col-sm-12">
                     <asp:Label ID="lblSkills" runat="server"><span class="requiredRed">*</span>Knowledge, Skills, & Other Requirements: </asp:Label><br />
-                    <asp:TextBox ID="txtSkills" runat="server" TextMode="multiline" Rows="4" CssClass="col-md-8 form-control"></asp:TextBox>
+                    <textarea id="txtSkills" cols="50" rows="10" class="form-control" CssClass="col-md-8 form-control" required runat="server"></textarea>
                 </div>
             </div>
             <br />
 
             <div class="row justify-content-center align-items-center">
-                <asp:Button ID="btnSubmit" runat="server" Text="Submit" Width="200px" OnClick="btnSubmit_click" class="btn btn-primary" />
+                <asp:Button ID="btnSubmit" runat="server" Text="Edit Training" Width="200px" OnClick="btnSubmit_click" class="btn btn-primary" />
             </div>
         </div>
     </div>

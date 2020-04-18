@@ -55,7 +55,7 @@ namespace CTS_ResourcePortal {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTitle;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtTitle;
         
         /// <summary>
         /// lblHost control.
@@ -73,16 +73,7 @@ namespace CTS_ResourcePortal {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtHost;
-        
-        /// <summary>
-        /// lblLocation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLocation;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtHost;
         
         /// <summary>
         /// lblAddLine1 control.
@@ -100,7 +91,7 @@ namespace CTS_ResourcePortal {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAddLine1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtAddLine1;
         
         /// <summary>
         /// lblAddLine2 control.
@@ -118,7 +109,7 @@ namespace CTS_ResourcePortal {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAddLine2;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtAddLine2;
         
         /// <summary>
         /// lblCity control.
@@ -136,7 +127,7 @@ namespace CTS_ResourcePortal {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCity;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtCity;
         
         /// <summary>
         /// lblState control.
@@ -172,7 +163,7 @@ namespace CTS_ResourcePortal {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtZip;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtZip;
         
         /// <summary>
         /// lblDate control.
@@ -226,7 +217,7 @@ namespace CTS_ResourcePortal {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtStartTime;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtStartTime;
         
         /// <summary>
         /// lblEnd control.
@@ -244,7 +235,7 @@ namespace CTS_ResourcePortal {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEndTime;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtEndTime;
         
         /// <summary>
         /// lblFn control.
@@ -262,7 +253,7 @@ namespace CTS_ResourcePortal {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFn;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtFn;
         
         /// <summary>
         /// lblLn control.
@@ -280,7 +271,7 @@ namespace CTS_ResourcePortal {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLn;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtLn;
         
         /// <summary>
         /// lblContEmail control.
@@ -298,7 +289,7 @@ namespace CTS_ResourcePortal {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtContEmail;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtContEmail;
         
         /// <summary>
         /// lblContPhone control.
@@ -316,7 +307,7 @@ namespace CTS_ResourcePortal {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtContPhone;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtContPhone;
         
         /// <summary>
         /// lblAtire control.
@@ -328,13 +319,13 @@ namespace CTS_ResourcePortal {
         protected global::System.Web.UI.WebControls.Label lblAtire;
         
         /// <summary>
-        /// txtAtire control.
+        /// txtAttire control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAtire;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtAttire;
         
         /// <summary>
         /// lblLink control.
@@ -352,7 +343,7 @@ namespace CTS_ResourcePortal {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLink;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtLink;
         
         /// <summary>
         /// lblDesc control.
@@ -364,13 +355,13 @@ namespace CTS_ResourcePortal {
         protected global::System.Web.UI.WebControls.Label lblDesc;
         
         /// <summary>
-        /// txtDesc control.
+        /// descripTEXT control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDesc;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea descripTEXT;
         
         /// <summary>
         /// btnCreate control.

@@ -27,7 +27,7 @@ namespace CTS_ResourcePortal
 
         protected void btnCreate_Click(object sender, EventArgs e)
         {
-            if (txtTitle.Text == string.Empty || txtHost.Text == string.Empty || txtAddLine1.Text == string.Empty || txtCity.Text == string.Empty ||
+           /* if (txtTitle.Text == string.Empty || txtHost.Text == string.Empty || txtAddLine1.Text == string.Empty || txtCity.Text == string.Empty ||
                 txtZip.Text == string.Empty || txtHours.Text == string.Empty || txtLength.Text == string.Empty || txtFn.Text == string.Empty ||
                 txtLn.Text == string.Empty || txtContEmail.Text == string.Empty || txtContPhone.Text == string.Empty || txtSignUp.Text == string.Empty
                 || txtDesc.Text == string.Empty || txtSkills.Text == string.Empty)
@@ -35,28 +35,28 @@ namespace CTS_ResourcePortal
                 ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup2();", true);
             }
             else
-            {
+            {*/
 
                 Training training = new Training();
                 training.resourceTypeID = 3;
-                training.resourceTitle = txtTitle.Text;
-                training.company = txtHost.Text;
-                training.addressLine1 = txtAddLine1.Text;
-                training.addressLine2 = txtAddLine2.Text;
-                training.city = txtCity.Text;
+                training.resourceTitle = txtTitle.Value;
+                training.company = txtHost.Value;
+                training.addressLine1 = txtAddLine1.Value;
+                training.addressLine2 = txtAddLine2.Value;
+                training.city = txtCity.Value;
                 training.state = ddlState.Text;
-                training.zipCode = txtZip.Text;
+                training.zipCode = txtZip.Value;
                 training.startDate = Convert.ToDateTime(dateStart.Value);
                 training.expDate = Convert.ToDateTime(dateRegDeadline.Value);
-                training.weeklyHours = txtHours.Text;
-                training.trainingLength = txtLength.Text;
-                training.contactFN = txtFn.Text;
-                training.contactLN = txtLn.Text;
-                training.phoneNumber = txtContPhone.Text;
-                training.email = txtContEmail.Text;
-                training.link = txtSignUp.Text;
-                training.description = txtDesc.Text;
-                training.otherReqs = txtSkills.Text;
+                training.weeklyHours = txtHours.Value;
+                training.trainingLength = txtLength.Value;
+                training.contactFN = txtFn.Value;
+                training.contactLN = txtLn.Value;
+                training.phoneNumber = txtContPhone.Value;
+                training.email = txtContEmail.Value;
+                training.link = txtSignUp.Value;
+                training.description = txtDesc.Value;
+                training.otherReqs = txtSkills.Value;
                 training.active = "Active";
 
 
@@ -86,31 +86,26 @@ namespace CTS_ResourcePortal
                 dBConnect.DoUpdateUsingCmdObj(bigCommand);
                 bigCommand.Parameters.Clear();
 
-                txtTitle.Text = string.Empty;
-                txtHost.Text = string.Empty;
-                txtAddLine1.Text = string.Empty;
-                txtAddLine2.Text = string.Empty;
-                txtCity.Text = string.Empty;
-                txtZip.Text = string.Empty;
-                txtHours.Text = string.Empty;
-                txtLength.Text = string.Empty;
-                txtFn.Text = string.Empty;
-                txtLn.Text = string.Empty;
-                txtContEmail.Text = string.Empty;
-                txtContPhone.Text = string.Empty;
-                txtDesc.Text = string.Empty;
-                txtSignUp.Text = string.Empty;
-                txtSkills.Text = string.Empty;
+                txtTitle.Value = string.Empty;
+                txtHost.Value = string.Empty;
+                txtAddLine1.Value = string.Empty;
+                txtAddLine2.Value = string.Empty;
+                txtCity.Value = string.Empty;
+                txtZip.Value = string.Empty;
+                txtHours.Value = string.Empty;
+                txtLength.Value = string.Empty;
+                txtFn.Value = string.Empty;
+                txtLn.Value = string.Empty;
+                txtContEmail.Value = string.Empty;
+                txtContPhone.Value = string.Empty;
+                txtDesc.Value = string.Empty;
+                txtSignUp.Value = string.Empty;
+                txtSkills.Value = string.Empty;
 
 
                 ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
-            }
+           // }
 
         }
-
-        /*public bool IsValid()
-        {
-
-        }*/
     }
 }

@@ -31,35 +31,35 @@ namespace CTS_ResourcePortal
 
         protected void btnCreate_Click(object sender, EventArgs e)
         {
-            if (txtTitle.Text == string.Empty || txtHost.Text == string.Empty || txtAddLine1.Text == string.Empty || txtCity.Text == string.Empty ||
-                txtZip.Text == string.Empty || txtStartTime.Text == string.Empty || txtEndTime.Text == string.Empty || txtFn.Text == string.Empty ||
-                txtLn.Text == string.Empty || txtContEmail.Text == string.Empty || txtContPhone.Text == string.Empty || txtLink.Text == string.Empty
-                || txtDesc.Text == string.Empty)
+          /*  if (txtTitle.Value == string.Empty || txtHost.Value == string.Empty || txtAddLine1.Value == string.Empty || txtCity.Value == string.Empty ||
+                txtZip.Value == string.Empty || txtStartTime.Value == string.Empty || txtEndTime.Value == string.Empty || txtFn.Value == string.Empty ||
+                txtLn.Value == string.Empty || txtContEmail.Value == string.Empty || txtContPhone.Value == string.Empty || txtLink.Value == string.Empty
+                || txtDesc.Value == string.Empty)
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup2();", true);
             }
             else
-            {
+            {*/
                 Events eventt = new Events();
                 eventt.resourceTypeID = 2;
-                eventt.resourceTitle = txtTitle.Text;
-                eventt.company = txtHost.Text;
-                eventt.addressLine1 = txtAddLine1.Text;
-                eventt.addressLine2 = txtAddLine2.Text;
-                eventt.city = txtCity.Text;
+                eventt.resourceTitle = txtTitle.Value;
+                eventt.company = txtHost.Value;
+                eventt.addressLine1 = txtAddLine1.Value;
+                eventt.addressLine2 = txtAddLine2.Value;
+                eventt.city = txtCity.Value;
                 eventt.state = ddlState.Text;
-                eventt.zipCode = txtZip.Text;
+                eventt.zipCode = txtZip.Value;
                 eventt.eventDate = Convert.ToDateTime(dateEventDate.Value);
                 eventt.expDate = Convert.ToDateTime(dateRegDeadline.Value);
-                eventt.startTime = Convert.ToDateTime(txtStartTime.Text);
-                eventt.endTime = Convert.ToDateTime(txtEndTime.Text);
-                eventt.contactFN = txtFn.Text;
-                eventt.contactLN = txtLn.Text;
-                eventt.phoneNumber = txtContPhone.Text;
-                eventt.email = txtContEmail.Text;
-                eventt.attire = txtAtire.Text;
-                eventt.link = txtLink.Text;
-                eventt.description = txtDesc.Text;
+                eventt.startTime = Convert.ToDateTime(txtStartTime.Value);
+                eventt.endTime = Convert.ToDateTime(txtEndTime.Value);
+                eventt.contactFN = txtFn.Value;
+                eventt.contactLN = txtLn.Value;
+                eventt.phoneNumber = txtContPhone.Value;
+                eventt.email = txtContEmail.Value;
+                eventt.attire = txtAttire.Value;
+                eventt.link = txtLink.Value;
+                eventt.description = descripTEXT.Value;
                 eventt.active = "Active";
 
                 bigCommand.CommandType = CommandType.StoredProcedure;
@@ -88,26 +88,26 @@ namespace CTS_ResourcePortal
                 dBConnect.DoUpdateUsingCmdObj(bigCommand);
                 bigCommand.Parameters.Clear();
 
-                txtTitle.Text = string.Empty;
-                txtHost.Text = string.Empty;
-                txtAddLine1.Text = string.Empty;
-                txtAddLine2.Text = string.Empty;
-                txtCity.Text = string.Empty;
-                txtZip.Text = string.Empty;
-                txtStartTime.Text = string.Empty;
-                txtEndTime.Text = string.Empty;
-                txtFn.Text = string.Empty;
-                txtLn.Text = string.Empty;
-                txtContEmail.Text = string.Empty;
-                txtContPhone.Text = string.Empty;
-                txtAtire.Text = string.Empty;
-                txtLink.Text = string.Empty;
-                txtDesc.Text = string.Empty;
+                txtTitle.Value = string.Empty;
+                txtHost.Value = string.Empty;
+                txtAddLine1.Value = string.Empty;
+                txtAddLine2.Value = string.Empty;
+                txtCity.Value = string.Empty;
+                txtZip.Value = string.Empty;
+                txtStartTime.Value = string.Empty;
+                txtEndTime.Value = string.Empty;
+                txtFn.Value = string.Empty;
+                txtLn.Value = string.Empty;
+                txtContEmail.Value = string.Empty;
+                txtContPhone.Value = string.Empty;
+                txtAttire.Value = string.Empty;
+                txtLink.Value = string.Empty;
+                descripTEXT.Value = string.Empty;
 
 
                 ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
 
-            }
+           // }
 
         }
     }

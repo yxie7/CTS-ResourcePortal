@@ -54,30 +54,30 @@ namespace CTS_ResourcePortal
                 string zip = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[23]);
                 string state = Convert.ToString(ds.Tables[0].Rows[0].ItemArray[24]);
 
-                txtTitle.Text = title;
-                txtHost.Text = company;
-                txtAddLine1.Text = addLine1;
-                txtAddLine2.Text = addLine2;
-                txtCity.Text = city;
+                txtTitle.Value = title;
+                txtHost.Value = company;
+                txtAddLine1.Value = addLine1;
+                txtAddLine2.Value = addLine2;
+                txtCity.Value = city;
                 ddlState.SelectedValue = state;
-                txtZip.Text = zip;
+                txtZip.Value = zip;
                 dateEventDate.Value = eventDate.ToString("yyyy-MM-dd");
                 dateRegDeadline.Value = endDate.ToString("yyyy-MM-dd");
-                txtStartTime.Text = startTime;
-                txtEndTime.Text = endTime;
-                txtFn.Text = firstName;
-                txtLn.Text = lastName;
-                txtContPhone.Text = phoneNo;
-                txtContEmail.Text = email;
-                txtLink.Text = link;
-                txtDesc.Text = primResp;
-                txtAtire.Text = attire;
+                txtStartTime.Value = startTime;
+                txtEndTime.Value = endTime;
+                txtFn.Value = firstName;
+                txtLn.Value = lastName;
+                txtContPhone.Value = phoneNo;
+                txtContEmail.Value = email;
+                txtLink.Value = link;
+                descripTEXT.Value = primResp;
+                txtAttire.Value = attire;
             }
         }
         protected void btnSubmit_click(object sender, EventArgs e)
         {
 
-            if (txtTitle.Text == string.Empty || txtHost.Text == string.Empty || txtAddLine1.Text == string.Empty || txtCity.Text == string.Empty ||
+            /* if (txtTitle.Text == string.Empty || txtHost.Text == string.Empty || txtAddLine1.Text == string.Empty || txtCity.Text == string.Empty ||
                txtZip.Text == string.Empty || txtStartTime.Text == string.Empty || txtEndTime.Text == string.Empty || txtFn.Text == string.Empty ||
                txtLn.Text == string.Empty || txtContEmail.Text == string.Empty || txtContPhone.Text == string.Empty || txtLink.Text == string.Empty
                || txtDesc.Text == string.Empty)
@@ -85,27 +85,27 @@ namespace CTS_ResourcePortal
                 ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup2();", true);
             }
             else
-            {
+            { */
                 string resourceIDS = (string)Session["ResourceIDS"];
 
 
-                string title = txtTitle.Text;
+                string title = txtTitle.Value;
                 //int typeID = 2;
-                string company = txtHost.Text;
-                string addressLine1 = txtAddLine1.Text;
-                string addressLine2 = txtAddLine2.Text;
-                string city = txtCity.Text;
+                string company = txtHost.Value;
+                string addressLine1 = txtAddLine1.Value;
+                string addressLine2 = txtAddLine2.Value;
+                string city = txtCity.Value;
                 string state = ddlState.Text;
-                string zip = txtZip.Text;
-                string start = txtStartTime.Text;
-                string end = txtEndTime.Text;
-                string fn = txtFn.Text;
-                string ln = txtLn.Text;
-                string phone = txtContPhone.Text;
-                string email = txtContEmail.Text;
-                string attire = txtAtire.Text;
-                string link = txtLink.Text;
-                string desc = txtDesc.Text;
+                string zip = txtZip.Value;
+                string start = txtStartTime.Value;
+                string end = txtEndTime.Value;
+                string fn = txtFn.Value;
+                string ln = txtLn.Value;
+                string phone = txtContPhone.Value;
+                string email = txtContEmail.Value;
+                string attire = txtAttire.Value;
+                string link = txtLink.Value;
+                string desc = descripTEXT.Value;
                 DateTime eventDate = Convert.ToDateTime(dateEventDate.Value);
                 DateTime regDate = Convert.ToDateTime(dateRegDeadline.Value);
 
@@ -144,7 +144,7 @@ namespace CTS_ResourcePortal
 
                 //Server.Transfer("ManageR.aspx");
                 //Response.Redirect("ManageR.aspx");
-            }
+            //}
         }
     }
 }

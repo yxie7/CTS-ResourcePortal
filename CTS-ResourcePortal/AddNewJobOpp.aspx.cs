@@ -26,7 +26,7 @@ namespace CTS_ResourcePortal
 
         protected void btnCreate_Click(object sender, EventArgs e)
         {
-            if (txtTitle.Text == string.Empty || txtCompany.Text == string.Empty || txtAddLine1.Text == string.Empty || txtCity.Text == string.Empty ||
+           /* if (txtTitle.Text == string.Empty || txtCompany.Text == string.Empty || txtAddLine1.Text == string.Empty || txtCity.Text == string.Empty ||
                 txtZip.Text == string.Empty || txtHours.Text == string.Empty || txtFn.Text == string.Empty || txtLn.Text == string.Empty
                 || txtContEmail.Text == string.Empty || txtContPhone.Text == string.Empty || txtLink.Text == string.Empty ||
                  txtPrimResp.Text == string.Empty || txtSkills.Text == string.Empty)
@@ -35,25 +35,26 @@ namespace CTS_ResourcePortal
             }
             else
             {
+                */
                 Job job = new Job();
                 job.resourceTypeID = 1;
-                job.resourceTitle = txtTitle.Text;
-                job.company = txtCompany.Text;
-                job.addressLine1 = txtAddLine1.Text;
-                job.addressLine2 = txtAddLine2.Text;
-                job.city = txtCity.Text;
+                job.resourceTitle = txtTitle.Value;
+                job.company = txtCompany.Value;
+                job.addressLine1 = txtAddLine1.Value;
+                job.addressLine2 = txtAddLine2.Value;
+                job.city = txtCity.Value;
                 job.state = ddlState.Text;
-                job.zipCode = txtZip.Text;
+                job.zipCode = txtZip.Value;
                 job.datePosted = Convert.ToDateTime(datePosted.Value);
                 job.expDate = Convert.ToDateTime(dateExp.Value);
-                job.weeklyHours = txtHours.Text;
-                job.contactFN = txtFn.Text;
-                job.contactLN = txtLn.Text;
-                job.phoneNumber = txtContPhone.Text;
-                job.email = txtContEmail.Text;
-                job.link = txtLink.Text;
-                job.responsibilities = txtPrimResp.Text;
-                job.otherReqs = txtSkills.Text;
+                job.weeklyHours = txtHours.Value;
+                job.contactFN = txtFn.Value;
+                job.contactLN = txtLn.Value;
+                job.phoneNumber = txtContPhone.Value;
+                job.email = txtContEmail.Value;
+                job.link = txtLink.Value;
+                job.responsibilities = txtPrimResp.Value;
+                job.otherReqs = txtSkills.Value;
                 job.active = "Active";
 
                 bigCommand.CommandType = CommandType.StoredProcedure;
@@ -82,23 +83,23 @@ namespace CTS_ResourcePortal
                 dBConnect.DoUpdateUsingCmdObj(bigCommand);
                 bigCommand.Parameters.Clear();
 
-                txtTitle.Text = string.Empty;
-                txtCompany.Text = string.Empty;
-                txtAddLine1.Text = string.Empty;
-                txtAddLine2.Text = string.Empty;
-                txtCity.Text = string.Empty;
-                txtZip.Text = string.Empty;
-                txtHours.Text = string.Empty;
-                txtFn.Text = string.Empty;
-                txtLn.Text = string.Empty;
-                txtContEmail.Text = string.Empty;
-                txtContPhone.Text = string.Empty;
-                txtPrimResp.Text = string.Empty;
-                txtLink.Text = string.Empty;
-                txtSkills.Text = string.Empty;
+                txtTitle.Value = string.Empty;
+                txtCompany.Value = string.Empty;
+                txtAddLine1.Value = string.Empty;
+                txtAddLine2.Value = string.Empty;
+                txtCity.Value = string.Empty;
+                txtZip.Value = string.Empty;
+                txtHours.Value = string.Empty;
+                txtFn.Value = string.Empty;
+                txtLn.Value = string.Empty;
+                txtContEmail.Value = string.Empty;
+                txtContPhone.Value = string.Empty;
+                txtPrimResp.Value = string.Empty;
+                txtLink.Value = string.Empty;
+                txtSkills.Value = string.Empty;
 
                 ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
-            }
+           // }
 
         }
     }

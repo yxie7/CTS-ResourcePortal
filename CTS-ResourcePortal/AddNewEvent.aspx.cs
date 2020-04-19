@@ -49,8 +49,8 @@ namespace CTS_ResourcePortal
                 eventt.city = txtCity.Value;
                 eventt.state = ddlState.Text;
                 eventt.zipCode = txtZip.Value;
-                eventt.eventDate = Convert.ToDateTime(dateEventDate.Value);
-                eventt.expDate = Convert.ToDateTime(dateRegDeadline.Value);
+                eventt.eventDate = dateEventDate.Value;
+                eventt.expDate = dateRegDeadline.Value;
                 eventt.startTime = Convert.ToDateTime(txtStartTime.Value);
                 eventt.endTime = Convert.ToDateTime(txtEndTime.Value);
                 eventt.contactFN = txtFn.Value;
@@ -72,8 +72,8 @@ namespace CTS_ResourcePortal
                 bigCommand.Parameters.AddWithValue("@city", eventt.city);
                 bigCommand.Parameters.AddWithValue("@state", eventt.state);
                 bigCommand.Parameters.AddWithValue("@zip", eventt.zipCode);
-                bigCommand.Parameters.AddWithValue("@eventDate", eventt.eventDate);
-                bigCommand.Parameters.AddWithValue("@endDate", eventt.expDate);
+                bigCommand.Parameters.AddWithValue("@eventDate", Convert.ToDateTime(eventt.eventDate));
+                bigCommand.Parameters.AddWithValue("@endDate", Convert.ToDateTime(eventt.expDate));
                 bigCommand.Parameters.AddWithValue("@startTime", eventt.startTime);
                 bigCommand.Parameters.AddWithValue("@endTime", eventt.endTime);
                 bigCommand.Parameters.AddWithValue("@firstName", eventt.contactFN);

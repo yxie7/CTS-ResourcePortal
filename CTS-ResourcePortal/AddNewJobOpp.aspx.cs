@@ -37,25 +37,25 @@ namespace CTS_ResourcePortal
             {
                 */
                 Job job = new Job();
-                job.resourceTypeID = 1;
+                /*job.resourceTypeID = 1;
                 job.resourceTitle = txtTitle.Value;
                 job.company = txtCompany.Value;
                 job.addressLine1 = txtAddLine1.Value;
                 job.addressLine2 = txtAddLine2.Value;
                 job.city = txtCity.Value;
                 job.state = ddlState.Text;
-                job.zipCode = txtZip.Value;
-                job.datePosted = Convert.ToDateTime(datePosted.Value);
-                job.expDate = Convert.ToDateTime(dateExp.Value);
-                job.weeklyHours = txtHours.Value;
-                job.contactFN = txtFn.Value;
-                job.contactLN = txtLn.Value;
-                job.phoneNumber = txtContPhone.Value;
-                job.email = txtContEmail.Value;
-                job.link = txtLink.Value;
-                job.responsibilities = txtPrimResp.Value;
-                job.otherReqs = txtSkills.Value;
-                job.active = "Active";
+                job.zipCode = txtZip.Text;
+                //job.datePosted = Convert.ToDateTime(datePosted.Value);
+                //job.expDate = Convert.ToDateTime(dateExp.Value);
+                job.weeklyHours = txtHours.Text;
+                job.contactFN = txtFn.Text;
+                job.contactLN = txtLn.Text;
+                job.phoneNumber = txtContPhone.Text;
+                job.email = txtContEmail.Text;
+                job.link = txtLink.Text;
+                job.responsibilities = txtPrimResp.Text;
+                job.otherReqs = txtSkills.Text;
+                job.active = "Active";*/
 
                 bigCommand.CommandType = CommandType.StoredProcedure;
                 bigCommand.CommandText = "AddNewJob";
@@ -67,8 +67,8 @@ namespace CTS_ResourcePortal
                 bigCommand.Parameters.AddWithValue("@city", job.city);
                 bigCommand.Parameters.AddWithValue("@state", job.state);
                 bigCommand.Parameters.AddWithValue("@zip", job.zipCode);
-                bigCommand.Parameters.AddWithValue("@startDate", job.datePosted);
-                bigCommand.Parameters.AddWithValue("@endDate", job.expDate);
+                bigCommand.Parameters.AddWithValue("@startDate", Convert.ToDateTime(job.datePosted));
+                bigCommand.Parameters.AddWithValue("@endDate", Convert.ToDateTime(job.expDate));
                 bigCommand.Parameters.AddWithValue("@weeklyHrs", job.weeklyHours);
                 bigCommand.Parameters.AddWithValue("@firstName", job.contactFN);
                 bigCommand.Parameters.AddWithValue("@lastName", job.contactLN);

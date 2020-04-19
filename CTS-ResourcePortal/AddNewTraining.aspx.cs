@@ -46,8 +46,10 @@ namespace CTS_ResourcePortal
                 training.city = txtCity.Value;
                 training.state = ddlState.Text;
                 training.zipCode = txtZip.Value;
-                training.startDate = Convert.ToDateTime(dateStart.Value);
-                training.expDate = Convert.ToDateTime(dateRegDeadline.Value);
+                training.startDate = dateStart.Value;
+                training.expDate = dateRegDeadline.Value;
+                //training.startDate = Convert.ToDateTime(dateStart.Value);
+                //training.expDate = Convert.ToDateTime(dateRegDeadline.Value);
                 training.weeklyHours = txtHours.Value;
                 training.trainingLength = txtLength.Value;
                 training.contactFN = txtFn.Value;
@@ -70,8 +72,8 @@ namespace CTS_ResourcePortal
                 bigCommand.Parameters.AddWithValue("@city", training.city);
                 bigCommand.Parameters.AddWithValue("@state", training.state);
                 bigCommand.Parameters.AddWithValue("@zip", training.zipCode);
-                bigCommand.Parameters.AddWithValue("@startDate", training.startDate);
-                bigCommand.Parameters.AddWithValue("@endDate", training.expDate);
+                bigCommand.Parameters.AddWithValue("@startDate", Convert.ToDateTime(training.startDate));
+                bigCommand.Parameters.AddWithValue("@endDate", Convert.ToDateTime(training.expDate));
                 bigCommand.Parameters.AddWithValue("@weeklyHrs", training.weeklyHours);
                 bigCommand.Parameters.AddWithValue("@trainLength", training.trainingLength);
                 bigCommand.Parameters.AddWithValue("@firstName", training.contactFN);

@@ -34,11 +34,11 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <label>First Name</label>
+                                    <label>First Name<span class="requiredRed">*</span></label>
                                     <asp:TextBox ID="txtFirstName" required="true" CssClass="form-control" runat="server"></asp:TextBox>
                                 </div>
                                 <div class="col-sm-6">
-                                    <label>Last Name</label>
+                                    <label>Last Name<span class="requiredRed">*</span></label>
                                     <asp:TextBox ID="txtLastName" required="true" CssClass="form-control" runat="server"></asp:TextBox>
                                 </div>
                             </div>
@@ -46,11 +46,11 @@
                             <div class="row">
 
                                 <div class="col-sm-6">
-                                    <label>Street Address</label>
+                                    <label>Street Address<span class="requiredRed">*</span></label>
                                     <asp:TextBox ID="txtAddress" required="true" CssClass="form-control" runat="server"></asp:TextBox>
                                 </div>
                                 <div class="col-sm-6">
-                                    <label>City</label>
+                                    <label>City<span class="requiredRed">*</span></label>
                                     <asp:TextBox ID="txtCity" required="true" CssClass="form-control" runat="server"></asp:TextBox>
                                 </div>
                             </div>
@@ -58,11 +58,11 @@
                             <div class="row">
 
                                 <div class="col-sm-6">
-                                    <label>State</label>
+                                    <label>State<span class="requiredRed">*</span></label>
                                     <asp:TextBox ID="txtState" required="true" CssClass="form-control" runat="server"></asp:TextBox>
                                 </div>
                                 <div class="col-sm-6">
-                                    <label>Zipcode</label>
+                                    <label>Zipcode<span class="requiredRed">*</span></label>
                                     <asp:TextBox ID="txtZip" required="true" CssClass="form-control" runat="server"></asp:TextBox>
                                 </div>
                             </div>
@@ -71,22 +71,22 @@
                             <div class="row">
 
                                 <div class="col-sm-6">
-                                    <label>Cell Phone:</label>
-                                    <asp:TextBox ID="txtCellPhone" required="true" CssClass="form-control" runat="server" placeholder="(123)456-7890"></asp:TextBox>
+                                    <label>Cell Phone<span class="requiredRed">*</span></label>
+                                    <asp:TextBox ID="txtCellPhone" required="true" CssClass="form-control" runat="server" placeholder="(###)###-####"></asp:TextBox>
                                 </div>
                                 <div class="col-sm-6">
-                                    <label>Email Address</label>
+                                    <label>Email Address<span class="requiredRed">*</span></label>
                                     <asp:TextBox ID="txtEmail" required="true" CssClass="form-control" runat="server" placeholder="email@example.com"></asp:TextBox>
                                 </div>
                             </div>
                             <br>
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <label>Password: </label>
+                                    <label>Password<span class="requiredRed">*</span></label>
                                     <asp:TextBox ID="txtPassword" required="true" type="password" CssClass="form-control" runat="server"></asp:TextBox>
                                 </div>
                                 <div class="col-sm-6">
-                                    <label>Confirm Password:</label>
+                                    <label>Confirm Password<span class="requiredRed">*</span></label>
                                     <asp:TextBox ID="txtCPassword" required="true" type="password" CssClass="form-control" runat="server"></asp:TextBox>
                                 </div>
                             </div>

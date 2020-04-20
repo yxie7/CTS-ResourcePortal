@@ -240,7 +240,7 @@ namespace CTS_ResourcePortal
                                 db.GetConnection().Close();
                             }
 
-                            using (MailMessage mm = new MailMessage())
+                            /*using (MailMessage mm = new MailMessage())
                             {
 
                                 mm.Bcc.Add(email);
@@ -256,7 +256,51 @@ namespace CTS_ResourcePortal
                                 smtp.Credentials = nc;
                                 smtp.Port = int.Parse(ConfigurationManager.AppSettings["Port"]);
                                 smtp.Send(mm);
-                            }
+                            }*/
+
+                            using (MailMessage mm = new MailMessage())
+                            {
+
+                               mm.Bcc.Add(email);
+                               mm.From = new MailAddress("ctsemailtest0@gmail.com", "Called To Serve CDC");
+                               mm.Subject = subject; //TODO subject date to either current date or take user input.
+                               mm.Body = text;
+                               mm.IsBodyHtml = true;
+
+                               using (var client = new System.Net.Mail.SmtpClient(ConfigurationManager.AppSettings["Host"], int.Parse(ConfigurationManager.AppSettings["Port"])))
+                               {
+                                    // Pass SMTP credentials
+                                    client.Credentials =
+                                        new NetworkCredential(ConfigurationManager.AppSettings["SMTPuser"], ConfigurationManager.AppSettings["SMTPpassword"]);
+
+                                    // Enable SSL encryption
+                                    client.EnableSsl = true;
+
+                                    // Try to send the message. Show status in console.
+                                    try
+                                    {
+                                        Console.WriteLine("Attempting to send email...");
+                                        client.Send(mm);
+                                        Console.WriteLine("Email sent!");
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        Console.WriteLine("The email was not sent.");
+                                        Console.WriteLine("Error message: " + ex.Message);
+                                    }
+                               }
+
+                                /*SmtpClient smtp = new SmtpClient();
+                                smtp.Host = ConfigurationManager.AppSettings["Host"];
+                                smtp.EnableSsl = Convert.ToBoolean(ConfigurationManager.AppSettings["EnableSSL"]);
+                                NetworkCredential nc = new NetworkCredential(ConfigurationManager.AppSettings["SMTPuser"], ConfigurationManager.AppSettings["SMTPpassword"]);
+                                smtp.UseDefaultCredentials = true;
+                                smtp.Credentials = nc;
+                                smtp.Port = int.Parse(ConfigurationManager.AppSettings["Port"]);
+                                smtp.Send(mm);*/
+                             }
+
+
 
                             title = "";
                             body = "Citizen(s) Accepted!";

@@ -13,8 +13,8 @@ namespace Utilities
         private string City;
         private string State;
         private string ZipCode;
-        private DateTime EventDate;
-        private DateTime ExpDate;
+        private string EventDate;
+        private string ExpDate;
         private DateTime StartTime;
         private DateTime EndTime;
         private string ContactFN;
@@ -80,13 +80,13 @@ namespace Utilities
             set { ZipCode = value; }
         }
 
-        public DateTime eventDate
+        public string eventDate
         {
             get { return EventDate; }
             set { EventDate = value; }
         }
 
-        public DateTime expDate
+        public string expDate
         {
             get { return ExpDate; }
             set { ExpDate = value; }

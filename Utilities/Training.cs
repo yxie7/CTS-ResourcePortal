@@ -13,8 +13,8 @@ namespace Utilities
         private string City;
         private string State;
         private string ZipCode;
-        private DateTime StartDate;
-        private DateTime ExpDate;
+        private string StartDate;
+        private string ExpDate;
         private string WeeklyHours;
         private string TrainingLength;
         private string ContactFN;
@@ -81,7 +81,7 @@ namespace Utilities
             set { ZipCode = value; }
         }
 
-        public DateTime startDate
+        public string startDate
         {
             get { return StartDate; }
             set { StartDate = value; }
@@ -93,7 +93,7 @@ namespace Utilities
             set { EndDate = value; }
         }*/
 
-        public DateTime expDate
+        public string expDate
         {
             get { return ExpDate; }
             set { ExpDate = value; }

@@ -37,16 +37,26 @@ namespace CTS_ResourcePortal
 
                         if (!(String.IsNullOrEmpty(db.GetField("StartDate", i).ToString())))
                         {
-                            var dateValue = db.GetField("StartDate", i);
+                            /*var dateValue = db.GetField("StartDate", i);
                             string date1 = Convert.ToDateTime(dateValue).ToString("MM-dd-yyyy");
-                            j.datePosted = Convert.ToDateTime(date1);
+                            //j.datePosted = Convert.ToDateTime(date1);*/
+
+                            var dateValueStart = db.GetField("StartDate", i);
+                            DateTime dateTimeStart = Convert.ToDateTime(dateValueStart).Date;
+                            string dateStart = dateTimeStart.ToString("MM-dd-yyyy");
+                            j.datePosted = dateStart;
                         }
 
                         if (!(String.IsNullOrEmpty(db.GetField("EndDate", i).ToString())))
                         {
-                            var dateValue2 = db.GetField("EndDate", i);
+                            /*var dateValue2 = db.GetField("EndDate", i);
                             string date2 = Convert.ToDateTime(dateValue2).ToString("MM-dd-yyyy");
-                            j.expDate = Convert.ToDateTime(date2);
+                            //j.expDate = Convert.ToDateTime(date2);*/
+
+                            var dateValueEnd = db.GetField("EndDate", i);
+                            DateTime dateTimeEnd = Convert.ToDateTime(dateValueEnd).Date;
+                            string dateEnd = dateTimeEnd.ToString("MM-dd-yyyy");
+                            j.expDate = dateEnd;
                         }
 
 
@@ -86,16 +96,27 @@ namespace CTS_ResourcePortal
 
                         if (!(String.IsNullOrEmpty(db.GetField("StartDate", i).ToString())))
                         {
-                            var dateValue = db.GetField("StartDate", i);
+                            /*var dateValue = db.GetField("StartDate", i);
                             string date1 = Convert.ToDateTime(dateValue).ToString("MM-dd-yyyy");
-                            E.eventDate = Convert.ToDateTime(date1);
+                            //E.eventDate = Convert.ToDateTime(date1);*/
+
+                            var dateValueStart = db.GetField("StartDate", i);
+                            DateTime dateTimeStart = Convert.ToDateTime(dateValueStart).Date;
+                            string dateStart = dateTimeStart.ToString("MM-dd-yyyy");
+                            E.eventDate = dateStart;
                         }
 
                         if (!(String.IsNullOrEmpty(db.GetField("EndDate", i).ToString())))
                         {
-                            var dateValue2 = db.GetField("EndDate", i);
+                            /*var dateValue2 = db.GetField("EndDate", i);
                             string date2 = Convert.ToDateTime(dateValue2).ToString("MM-dd-yyyy");
-                            E.expDate = Convert.ToDateTime(date2);
+                            //E.expDate = Convert.ToDateTime(date2);*/
+
+                            var dateValueEnd = db.GetField("EndDate", i);
+                            DateTime dateTimeEnd = Convert.ToDateTime(dateValueEnd).Date;
+                            string dateEnd = dateTimeEnd.ToString("MM-dd-yyyy");
+                            E.expDate = dateEnd;
+
                         }
 
 
@@ -133,16 +154,26 @@ namespace CTS_ResourcePortal
 
                         if (!(String.IsNullOrEmpty(db.GetField("StartDate", i).ToString())))
                         {
-                            var dateValue = db.GetField("StartDate", i);
+                            /*var dateValue = db.GetField("StartDate", i);
                             string date1 = Convert.ToDateTime(dateValue).ToString("MM-dd-yyyy");
-                            T.startDate = Convert.ToDateTime(date1);
+                            //T.startDate = Convert.ToDateTime(date1);*/
+
+                            var dateValueStart = db.GetField("StartDate", i);
+                            DateTime dateTimeStart = Convert.ToDateTime(dateValueStart).Date;
+                            string dateStart = dateTimeStart.ToString("MM-dd-yyyy");
+                            T.startDate = dateStart;
                         }
 
                         if (!(String.IsNullOrEmpty(db.GetField("EndDate", i).ToString())))
                         {
-                            var dateValue2 = db.GetField("EndDate", i);
+                            /*var dateValue2 = db.GetField("EndDate", i);
                             string date2 = Convert.ToDateTime(dateValue2).ToString("MM-dd-yyyy");
-                            T.expDate = Convert.ToDateTime(date2);
+                            //T.expDate = Convert.ToDateTime(date2);*/
+
+                            var dateValueEnd = db.GetField("EndDate", i);
+                            DateTime dateTimeEnd = Convert.ToDateTime(dateValueEnd).Date;
+                            string dateEnd = dateTimeEnd.ToString("MM-dd-yyyy");
+                            T.expDate = dateEnd;
                         }
 
 
@@ -250,7 +281,8 @@ namespace CTS_ResourcePortal
             lblCompanyName.Text = (string)db.GetField("Company", 0);
             lblResponsibilities.Text = (string)db.GetField("Description", 0);
 
-            lblLength.Text = (string)db.GetField("Length", 0);
+
+            //lblLength.Text = (string)db.GetField("Length", 0);
 
             string addressLine1 = (string)db.GetField("AddressLine", 0);
             string city = (string)db.GetField("LocationCity", 0);

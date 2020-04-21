@@ -92,7 +92,7 @@
                                     <%--<%# DataBinder.Eval(Container.DataItem, ("FeedbackText")) %>--%>
                                 </td>
                                 <td>                                   
-                                    <%# DataBinder.Eval(Container.DataItem, "Date", "{0:MM/dd/yyyy}") %>
+                                    <%# DataBinder.Eval(Container.DataItem, "Date", "{0:MM-dd-yyyy}") %>
                                 </td>
                                 <td>
 

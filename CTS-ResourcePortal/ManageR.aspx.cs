@@ -208,6 +208,18 @@ namespace CTS_ResourcePortal
                     db.DoUpdateUsingCmdObj(cmd);
                     cmd.Parameters.Clear();
 
+                    //Ignore this 
+
+                    //cmd.CommandType = CommandType.StoredProcedure;
+                    //cmd.CommandText = "UpdateResourceDate";
+                    //cmd.Parameters.AddWithValue("@Date", DateTime.Now.ToString("M/d/yyyy"));
+                    //cmd.Parameters.AddWithValue("@ResourceID", resource.resourceID);
+
+                    //db.DoUpdateUsingCmdObj(cmd);
+                    //cmd.Parameters.Clear();
+
+                    
+
                 }
             }
             ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);

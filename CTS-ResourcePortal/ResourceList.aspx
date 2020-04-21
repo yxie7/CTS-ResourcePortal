@@ -46,7 +46,8 @@
                                     </p>
 
                                 <p>
-                                    Length of Time:
+                                    <asp:Label runat="server" Text="Length of Time:" ID="lblLength1"></asp:Label>
+                                
                                     <asp:Label runat="server" Text="Length of Time" ID="lblLength"></asp:Label>
                                 </p>
                             </div>

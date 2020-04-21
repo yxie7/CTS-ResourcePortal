@@ -24,10 +24,6 @@
     </li>
     <li class="nav-item">
        
-        <a id="home" runat="server"  class="nav-link" href="AdminHomePage.aspx" onserverclick="Signout_click">Dashboard</a>
-    </li>
-    <li class="nav-item">
-       
         <a id="lnkSingout" runat="server"  class="nav-link" href="#" onserverclick="Signout_click">Sign Out</a>
     </li>
 </asp:Content>

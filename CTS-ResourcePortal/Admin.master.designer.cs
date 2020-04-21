@@ -33,15 +33,6 @@ namespace CTS_ResourcePortal
         protected global::System.Web.UI.WebControls.Label lblAdminName;
 
         /// <summary>
-        /// home control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor home;
-
-        /// <summary>
         /// lnkSingout control.
         /// </summary>
         /// <remarks>

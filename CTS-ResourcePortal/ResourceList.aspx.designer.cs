@@ -58,6 +58,15 @@ namespace CTS_ResourcePortal {
         protected global::System.Web.UI.WebControls.Label lblResponsibilities;
         
         /// <summary>
+        /// lblHours1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblHours1;
+        
+        /// <summary>
         /// lblHours control.
         /// </summary>
         /// <remarks>
@@ -103,15 +112,6 @@ namespace CTS_ResourcePortal {
         protected global::System.Web.UI.WebControls.Label lblContact;
         
         /// <summary>
-        /// lblDtPosted control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDtPosted;
-        
-        /// <summary>
         /// lblStartDt control.
         /// </summary>
         /// <remarks>
@@ -119,6 +119,15 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblStartDt;
+        
+        /// <summary>
+        /// lblEventDt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEventDt;
         
         /// <summary>
         /// lblPosted control.

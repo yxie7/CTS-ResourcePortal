@@ -41,7 +41,7 @@
                                 <asp:Label runat="server" Text="Primary Responsibilities" ID="lblResponsibilities"></asp:Label>
                                 &nbsp;
                                     <p>
-                                        Hours:
+                                        <asp:Label runat="server" Text="Hours:" ID="lblHours1"></asp:Label>
                                         <asp:Label runat="server" Text="Hours" ID="lblHours"></asp:Label>
                                     </p>
 
@@ -84,8 +84,9 @@
                     <div class="section">
                         <div class="row" id="title1">
                             <div class="col-md-3 ">
-                                <asp:Label runat="server" Text="Date Posted:" ID="lblDtPosted" Font-Bold="True"></asp:Label>
+                               <%-- <asp:Label runat="server" Text="Date Posted:" ID="lblDtPosted" Font-Bold="True"></asp:Label>--%>
                                 <asp:Label runat="server" Text="Start Date:" ID="lblStartDt" Font-Bold="True"></asp:Label>
+                                <asp:Label runat="server" Text="Event Date:" ID="lblEventDt" Font-Bold="True"></asp:Label>
                             </div>
                             <div class="col-1"></div>
 
@@ -98,12 +99,12 @@
                     <div class="section" id="divDtExp" runat="server">
                         <div class="row" id="title2">
                             <div class="col-md-3 ">
-                                <asp:Label runat="server" Text="Date Expired:" ID="lblExpiration" Font-Bold="True"></asp:Label>
+                                <asp:Label runat="server" Text="Registration Deadline:" ID="lblExpiration" Font-Bold="True"></asp:Label>
                             </div>
                             <div class="col-1"></div>
 
                             <div class="col-md-8">
-                                <asp:Label runat="server" Text="Date Expired" ID="lblExpired"></asp:Label>
+                                <asp:Label runat="server" Text="Registration Deadline" ID="lblExpired"></asp:Label>
                             </div>
                         </div>
                     </div>
@@ -222,7 +223,7 @@
                                                 <asp:BoundField DataField="email" HeaderText="Contact" HeaderStyle-CssClass="rrth" ItemStyle-CssClass="rrtd" />
                                                 <asp:BoundField DataField="AddressLine2" HeaderText="Location" HeaderStyle-CssClass="rrth" ItemStyle-CssClass="rrtd" />
                                                 <asp:BoundField DataField="datePosted" HeaderText="Date Posted" HeaderStyle-CssClass="rrth" ItemStyle-CssClass="rrtd" />
-                                                <asp:BoundField DataField="expDate" HeaderText="Date Expired" HeaderStyle-CssClass="rrth" ItemStyle-CssClass="rrtd" />
+                                                <asp:BoundField DataField="expDate" HeaderText="Registration Deadline" HeaderStyle-CssClass="rrth" ItemStyle-CssClass="rrtd" />
                                                 <asp:TemplateField HeaderText="Details" HeaderStyle-CssClass="rrth" ItemStyle-CssClass="rrtd">
                                                     <ItemTemplate>
                                                         <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-primary" ID="btnJob" CommandName="Select" OnClick="btnJob_Click" />
@@ -253,7 +254,7 @@
                                                 <asp:BoundField DataField="email" HeaderText="Contact" />
                                                 <asp:BoundField DataField="AddressLine2" HeaderText="Location" />
                                                 <asp:BoundField DataField="EventDate" HeaderText="Event Date" />
-                                                <asp:BoundField DataField="expDate" HeaderText="Date Expired" />
+                                                <asp:BoundField DataField="expDate" HeaderText="Registration Deadline" />
                                                 <asp:TemplateField HeaderText="Details">
                                                     <ItemTemplate>
                                                         <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-primary" ID="btnEvent" OnClick="btnEvent_Click" />
@@ -284,7 +285,7 @@
                                                 <asp:BoundField DataField="email" HeaderText="Contact" />
                                                 <asp:BoundField DataField="AddressLine2" HeaderText="Location" />
                                                 <asp:BoundField DataField="StartDate" HeaderText="Start Date" />
-                                                <asp:BoundField DataField="expDate" HeaderText="Date Expired" />
+                                                <asp:BoundField DataField="expDate" HeaderText="Registration Deadline" />
                                                 <asp:TemplateField HeaderText="Details">
                                                     <ItemTemplate>
                                                         <asp:Button runat="server" Text="Click for Details" CssClass="btn btn-primary" ID="btnTraining" OnClick="btnTraining_Click" />

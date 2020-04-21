@@ -46,35 +46,44 @@ namespace CTS_ResourcePortal
             string cellphone = txtCellPhone.Text;
             string subscribe = rdoSubscribe.SelectedValue.ToString(); 
 
-            String plainTextPassword = txtPassword.Text;  
-					
+            String plainTextPassword = txtPassword.Text;
 
-                //Check if email already exist
-                String UserEmail = txtEmail.Text;
-                if (CheckIfEmailExist(UserEmail) == true)
+
+            //Check if email already exist
+            String UserEmail = txtEmail.Text;
+            if (CheckIfEmailExist(UserEmail) == true)
+            {
+                lblStatusSignUp.Text = "That email is already being used on our system. Please choose another.";
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+
+            }
+            else if (txtZip.Text == "" || txtZip.Text.Length < 5 || txtZip.Text.Length > 5)
+            {
+                lblStatusSignUp.Text = "Valid Zip-Code Length is 5";
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+            }
+            else if (txtPassword.Text == "" || txtPassword.Text.Length < 6)
+            {
+                lblStatusSignUp.Text = "Password needs to be atleast 6 characters.";
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+            }
+            else if (txtPassword.Text != txtCPassword.Text)
+            {
+                lblStatusSignUp.Text = "Passwords do not match.";
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+
+            }
+            else
+            {
                 {
-                    lblStatusSignUp.Text = "That email is already being used on our system. Please choose another.";
-                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
 
-                }
-                else
-                {
-                    if (txtPassword.Text != txtCPassword.Text)
-                    {
-                        lblStatusSignUp.Text = "Passwords do not match.";
-                        ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+                    try
 
-                    }
-                    else
                     {
 
-                        try
+                        // Use the FileUpload control to get the uploaded data
 
-                        {
-
-                            // Use the FileUpload control to get the uploaded data
-
-                            if (FileUpload1.HasFile)
+                        if (FileUpload1.HasFile)
 
                             {
 

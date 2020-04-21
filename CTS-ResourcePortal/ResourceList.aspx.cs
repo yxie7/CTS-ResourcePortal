@@ -417,7 +417,7 @@ namespace CTS_ResourcePortal
             lblPosted.Text = Convert.ToDateTime(dateValue).ToString("MM-dd-yyyy");
 
 
-            var dateValue2 = db.GetField("RegistrationDeadline", 0);
+            var dateValue2 = db.GetField("EndDate", 0);
             lblExpired.Text = Convert.ToDateTime(dateValue2).ToString("MM-dd-yyyy");
 
             //lblAttire.Text = (string)db.GetField("Attire", 0);

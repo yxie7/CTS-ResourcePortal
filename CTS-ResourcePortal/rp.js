@@ -41,7 +41,14 @@ $(document).ready(function () {
 $(function () {
     if (document.getElementById("datatable")) {
         var resourceList = $('[id*=datatable]').DataTable({
-            "autoWidth": false
+            "scrollX": true,
+            "autoWidth": false,
+            stateSave: true
+        });
+        $(window).resize(function () {
+            $(".sorting").width("");    //This is the class it sets to each < th >
+            $(".table").width("100%");     //Class I set to the table for  this. An id won't work.
+            $(".dataTables_scrollHeadInner").width("100%"); // Class of div added by DataTables, contains the header table.
         });
     }
     if (document.getElementById('#<%= Selections.ClientID %>')) {
@@ -50,15 +57,30 @@ $(function () {
                 "bFilter": false,
                 "bLengthChange": false,
                 "autoWidth": false,
+                "scrollX": true,
                 stateSave: true
             });
+
+        $(window).resize(function () {
+            $(".sorting").width("");    //This is the class it sets to each < th >
+            $(".table").width("100%");     //Class I set to the table for  this. An id won't work.
+            $(".dataTables_scrollHeadInner").width("100%"); // Class of div added by DataTables, contains the header table.
+        });
     }
 
     if (document.getElementById('#<%= gvAdmins.ClientID %>')) {
         var admins =
             $('#<%= gvAdmins.ClientID %>').DataTable({
-                "autoWidth": false
+                "scrollX": true,
+                "autoWidth": false,
+                stateSave: true
             });
+
+        $(window).resize(function () {
+            $(".sorting").width("");    //This is the class it sets to each < th >
+            $(".table").width("100%");     //Class I set to the table for  this. An id won't work.
+            $(".dataTables_scrollHeadInner").width("100%"); // Class of div added by DataTables, contains the header table.
+        });
     }
     /* Does something?
     if (document.getElementById('datatable')) {
@@ -96,12 +118,14 @@ $(function () {
 
 function bindDataTable() {
     $('[id*=datatable]').DataTable({
+        "scrollX": true,
         "autoWidth": false
     });
     $('#<%= Selections.ClientID %>').DataTable({
         "bFilter": false,
         "bLengthChange": false,
         stateSave: true,
+        "scrollX": true,
         "autoWidth": false
     });
 };

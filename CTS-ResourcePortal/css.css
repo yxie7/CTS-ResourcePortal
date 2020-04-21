@@ -14,7 +14,7 @@
 }
 
 table {
-    overflow: scroll;
+    overflow: hidden;
 }
 
 .btn-link {
@@ -24,6 +24,10 @@ table {
     .btn-link:hover {
         color: black;
     }
+
+wd {
+    width: 80%;
+}
 
 .nls {
     border-bottom: 5px solid black;
@@ -86,12 +90,18 @@ input[type="checkbox"] {
     margin: 0 0px;
 }
 
+.lblLink {
+    color: black;
+}
+
 .requiredRed {
     color: red;
 }
-lblModalTXT{
-    color:red;
+
+lblModalTXT {
+    color: red;
 }
+
 textarea {
     resize: none;
 }
@@ -106,8 +116,17 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 1.5rem;
 }
 
-input[type=radio]{
-    margin-left:10px;
+input[type=radio] {
+    margin-left: 10px;
+}
+
+.commentBox {
+    width: 30%;
+}
+
+.resourceTitle {
+    margin: 0 !important;
+    padding-bottom: 5px !important;
 }
 
 @media screen and (max-width: 1000px) {
@@ -120,7 +139,7 @@ input[type=radio]{
         margin-top: 25px;
         display: block;
         position: relative;
-        text-align: right;
+        text-align: center;
         padding: 25px 10px 5px 10px;
     }
 
@@ -224,9 +243,9 @@ input[type=radio]{
 }
 
 .table-responsive-lg {
-    overflow-x: hidden;
+    overflow-x: no-display;
     overflow-y: auto;
-    max-height: 350px;
+    max-height: 550px;
 }
 
 @media screen and (min-width: 992px) {
@@ -246,14 +265,14 @@ input[type=radio]{
     opacity: 0.9 !important;
 }
 
-.dbdata{
+.dbdata {
     padding-left: 5px;
 }
 
-.btn-group:hover, .btn-group label:hover{
-    cursor:pointer;
+.btn-group:hover, .btn-group label:hover {
+    cursor: pointer;
 }
 
-#banner{
-    top:0;
+#banner {
+    top: 0;
 }

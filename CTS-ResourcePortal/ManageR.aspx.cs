@@ -110,7 +110,7 @@ namespace CTS_ResourcePortal
         }
 
 
-        
+
         //Used to Bind the Datatable to the Database based on the type of Resource Type Selected in the dropdown list
 
         public void Bind(int resourcenum)
@@ -251,67 +251,136 @@ namespace CTS_ResourcePortal
 
         protected void btnEdit_Click(object sender, EventArgs e)
         {
-            
-            int count = 0;
-            foreach (RepeaterItem item in rptManageR.Items)
-            {
-                CheckBox cb = (CheckBox)item.FindControl("chkRow");
-                if (cb.Checked)
-                {
-                    count++;
-                    Label labelTypeID = (Label)item.FindControl("lblResTypeID");
-                    resTypeIDE = labelTypeID.Text;
-                    Label labelID = (Label)item.FindControl("lblResID");
-                    resIDE = labelID.Text;
-                }
-            }
 
-            if (count == 0)
+            //int count = 0;
+            //foreach (RepeaterItem item in rptManageR.Items)
+            //{
+            //    CheckBox cb = (CheckBox)item.FindControl("chkRow");
+            //    if (cb.Checked)
+            //    {
+            //        count++;
+            //        Label labelTypeID = (Label)item.FindControl("lblResTypeID");
+            //        resTypeIDE = labelTypeID.Text;
+            //        Label labelID = (Label)item.FindControl("lblResID");
+            //        resIDE = labelID.Text;
+            //    }
+            //}
+
+            //if (count == 0)
+            //{
+            //    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup2();", true); // Keep 1 modal and change text
+            //}
+            //else if (count > 1)
+            //{
+            //    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup3();", true); // Keep 1 modal and change text
+            //}
+            //else
+            //{
+            //    int typeID = Convert.ToInt32(resTypeIDE);
+            //    string resID = Convert.ToString(resIDE);
+
+            //    Session["ResourceIDS"] = resID;
+
+            //    if (typeID == 1)
+            //    {
+            //        //Job
+            //        Job job = new Job();
+            //        job.resourceID = resID;
+            //        SqlCommand sqlGet = new SqlCommand("SELECT * FROM [Resources] WHERE ResourcesID = '" + resID + "'", db.GetConnection());
+            //        Response.Redirect("EditJob.aspx");
+            //        //Server.Transfer("EditJob.aspx");
+
+            //    }
+            //    else if (typeID == 2)
+            //    {
+            //        //Event
+            //        Events ev = new Events();
+            //        ev.resourceID = resID;
+            //        SqlCommand sqlGet = new SqlCommand("SELECT * FROM [Resources] WHERE ResourcesID = '" + resID + "'", db.GetConnection());
+            //        Response.Redirect("EditEvent.aspx");
+            //        //Server.Transfer("EditEvent.aspx");
+            //    }
+            //    else
+            //    {
+            //        //Training
+            //        Training train = new Training();
+            //        train.resourceID = resID;
+            //        SqlCommand sqlGet = new SqlCommand("SELECT * FROM [Resources] WHERE ResourcesID = '" + resID + "'", db.GetConnection());
+            //        Response.Redirect("EditTraining.aspx");
+            //        //Server.Transfer("EditTraining.aspx");
+            //    }
+            //}
+        }
+
+        protected void rptManageR_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            //int count = 0;
+            //foreach (RepeaterItem item in rptManageR.Items)
+            //{
+            //    CheckBox cb = (CheckBox)item.FindControl("chkRow");
+            //    if (cb.Checked)
+            //    {
+            //        count++;
+            //        Label labelTypeID = (Label)item.FindControl("lblResTypeID");
+            //        resTypeIDE = labelTypeID.Text;
+            //        Label labelID = (Label)item.FindControl("lblResID");
+            //        resIDE = labelID.Text;
+            //    }
+            //}
+
+            //if (count == 0)
+            //{
+            //    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup2();", true); // Keep 1 modal and change text
+            //}
+            //else if (count > 1)
+            //{
+            //    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup3();", true); // Keep 1 modal and change text
+            //}
+            //else
+            //{
+            int rowindex = e.Item.ItemIndex;
+
+            Label labelTypeID = rptManageR.Items[rowindex].FindControl("lblResTypeID") as Label;
+            resTypeIDE = labelTypeID.Text;
+            Label labelID = rptManageR.Items[rowindex].FindControl("lblResID") as Label;
+            resIDE = labelID.Text;
+
+            
+
+            int typeID = Convert.ToInt32(resTypeIDE);
+            string resID = Convert.ToString(resIDE);
+
+            Session["ResourceIDS"] = resID;
+
+            if (typeID == 1)
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup2();", true); // Keep 1 modal and change text
+                //Job
+                Job job = new Job();
+                job.resourceID = resID;
+                SqlCommand sqlGet = new SqlCommand("SELECT * FROM [Resources] WHERE ResourcesID = '" + resID + "'", db.GetConnection());
+                Response.Redirect("EditJob.aspx");
+                //Server.Transfer("EditJob.aspx");
+
             }
-            else if (count > 1)
+            else if (typeID == 2)
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup3();", true); // Keep 1 modal and change text
+                //Event
+                Events ev = new Events();
+                ev.resourceID = resID;
+                SqlCommand sqlGet = new SqlCommand("SELECT * FROM [Resources] WHERE ResourcesID = '" + resID + "'", db.GetConnection());
+                Response.Redirect("EditEvent.aspx");
+                //Server.Transfer("EditEvent.aspx");
             }
             else
             {
-                int typeID = Convert.ToInt32(resTypeIDE);
-                string resID = Convert.ToString(resIDE);
-
-                Session["ResourceIDS"] = resID;
-
-                if (typeID == 1)
-                {
-                    //Job
-                    Job job = new Job();
-                    job.resourceID = resID;
-                    SqlCommand sqlGet = new SqlCommand("SELECT * FROM [Resources] WHERE ResourcesID = '" + resID + "'", db.GetConnection());
-                    Response.Redirect("EditJob.aspx");
-                    //Server.Transfer("EditJob.aspx");
-
-                }
-                else if (typeID == 2)
-                {
-                    //Event
-                    Events ev = new Events();
-                    ev.resourceID = resID;
-                    SqlCommand sqlGet = new SqlCommand("SELECT * FROM [Resources] WHERE ResourcesID = '" + resID + "'", db.GetConnection());
-                    Response.Redirect("EditEvent.aspx");
-                    //Server.Transfer("EditEvent.aspx");
-                }
-                else
-                {
-                    //Training
-                    Training train = new Training();
-                    train.resourceID = resID;
-                    SqlCommand sqlGet = new SqlCommand("SELECT * FROM [Resources] WHERE ResourcesID = '" + resID + "'", db.GetConnection());
-                    Response.Redirect("EditTraining.aspx");
-                    //Server.Transfer("EditTraining.aspx");
-                }
+                //Training
+                Training train = new Training();
+                train.resourceID = resID;
+                SqlCommand sqlGet = new SqlCommand("SELECT * FROM [Resources] WHERE ResourcesID = '" + resID + "'", db.GetConnection());
+                Response.Redirect("EditTraining.aspx");
+                //Server.Transfer("EditTraining.aspx");
             }
+            //}
         }
-
-
     }
 }

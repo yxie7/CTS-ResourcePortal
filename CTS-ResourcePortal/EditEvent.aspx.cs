@@ -77,20 +77,10 @@ namespace CTS_ResourcePortal
         protected void btnSubmit_click(object sender, EventArgs e)
         {
 
-            /* if (txtTitle.Text == string.Empty || txtHost.Text == string.Empty || txtAddLine1.Text == string.Empty || txtCity.Text == string.Empty ||
-               txtZip.Text == string.Empty || txtStartTime.Text == string.Empty || txtEndTime.Text == string.Empty || txtFn.Text == string.Empty ||
-               txtLn.Text == string.Empty || txtContEmail.Text == string.Empty || txtContPhone.Text == string.Empty || txtLink.Text == string.Empty
-               || txtDesc.Text == string.Empty)
-            {
-                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup2();", true);
-            }
-            else
-            { */
                 string resourceIDS = (string)Session["ResourceIDS"];
 
 
                 string title = txtTitle.Value;
-                //int typeID = 2;
                 string company = txtHost.Value;
                 string addressLine1 = txtAddLine1.Value;
                 string addressLine2 = txtAddLine2.Value;
@@ -114,7 +104,6 @@ namespace CTS_ResourcePortal
                 bigCommand.CommandType = CommandType.StoredProcedure;
                 bigCommand.CommandText = "EditEvent";
                 bigCommand.Parameters.AddWithValue("@id", resourceIDS);
-                //bigCommand.Parameters.AddWithValue("@resourceID", eventt.resourceTypeID);
                 bigCommand.Parameters.AddWithValue("@title", title);
                 bigCommand.Parameters.AddWithValue("@company", company);
                 bigCommand.Parameters.AddWithValue("@addLine1", addressLine1);
@@ -142,9 +131,6 @@ namespace CTS_ResourcePortal
                 ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "redirectJS",
                 "setTimeout(function() { window.location.replace('ManageR.aspx') }, 3000);", true);
 
-                //Server.Transfer("ManageR.aspx");
-                //Response.Redirect("ManageR.aspx");
-            //}
         }
     }
 }

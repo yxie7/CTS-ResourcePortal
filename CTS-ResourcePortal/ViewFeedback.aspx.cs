@@ -11,9 +11,9 @@ using System.IO;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
+using System.Globalization;
 using Utilities;
-
-
+using System.Threading;
 
 namespace CTS_ResourcePortal
 {
@@ -34,8 +34,11 @@ namespace CTS_ResourcePortal
                 cmd.CommandText = "SelectAllFeedback";
 
                 DataSet dataSet = db.GetDataSetUsingCmdObj(cmd);
+               
+
                 rptViewR.DataSource = dataSet;
                 rptViewR.DataBind();
+                
                 cmd.Parameters.Clear();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "SelectResourceTypes";
@@ -67,7 +70,9 @@ namespace CTS_ResourcePortal
             cmd.Parameters.Add(id);
 
             DataSet dataSet = db.GetDataSetUsingCmdObj(cmd);
-
+            
+           
+                
             rptViewR.DataSource = dataSet;
             rptViewR.DataBind();
 
@@ -84,6 +89,8 @@ namespace CTS_ResourcePortal
             cmd.CommandText = "SelectAllFeedback";
 
             DataSet dataSet = db.GetDataSetUsingCmdObj(cmd);
+           
+           
 
             rptViewR.DataSource = dataSet;
             rptViewR.DataBind();
@@ -218,18 +225,42 @@ namespace CTS_ResourcePortal
             using (MailMessage mm = new MailMessage())
             {
                 mm.Bcc.Add(db.GetField("Email", 0).ToString());
-                mm.From = new MailAddress(ConfigurationManager.AppSettings["SMTPuser"]);
+                mm.From = new MailAddress("ctsemailtest0@gmail.com", "Called To Serve CDC");
                 mm.Subject = DateTime.Now.ToShortDateString() + " Feedback Reply";
                 mm.Body = txtReply.InnerText;
                 mm.IsBodyHtml = true;
-                SmtpClient smtp = new SmtpClient();
-                smtp.Host = ConfigurationManager.AppSettings["Host"];
-                smtp.EnableSsl = Convert.ToBoolean(ConfigurationManager.AppSettings["EnableSSL"]);
-                NetworkCredential nc = new NetworkCredential(ConfigurationManager.AppSettings["SMTPuser"], ConfigurationManager.AppSettings["SMTPpassword"]);
-                smtp.UseDefaultCredentials = false;
-                smtp.Credentials = nc;
-                smtp.Port = int.Parse(ConfigurationManager.AppSettings["Port"]);
-                smtp.Send(mm);
+
+                using (var client = new System.Net.Mail.SmtpClient(ConfigurationManager.AppSettings["Host"], int.Parse(ConfigurationManager.AppSettings["Port"])))
+                {
+                    // Pass SMTP credentials
+                    client.Credentials =
+                        new NetworkCredential(ConfigurationManager.AppSettings["SMTPuser"], ConfigurationManager.AppSettings["SMTPpassword"]);
+
+                    // Enable SSL encryption
+                    client.EnableSsl = true;
+
+                    // Try to send the message. Show status in console.
+                    try
+                    {
+                        Console.WriteLine("Attempting to send email...");
+                        client.Send(mm);
+                        Console.WriteLine("Email sent!");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("The email was not sent.");
+                        Console.WriteLine("Error message: " + ex.Message);
+                    }
+                }
+
+                //SmtpClient smtp = new SmtpClient();
+                //smtp.Host = ConfigurationManager.AppSettings["Host"];
+                //smtp.EnableSsl = Convert.ToBoolean(ConfigurationManager.AppSettings["EnableSSL"]);
+                //NetworkCredential nc = new NetworkCredential(ConfigurationManager.AppSettings["SMTPuser"], ConfigurationManager.AppSettings["SMTPpassword"]);
+                //smtp.UseDefaultCredentials = false;
+                //smtp.Credentials = nc;
+                //smtp.Port = int.Parse(ConfigurationManager.AppSettings["Port"]);
+                //smtp.Send(mm);
             }
         }
 

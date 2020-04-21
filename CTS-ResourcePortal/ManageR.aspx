@@ -104,18 +104,18 @@
 
                     <br />
                     <br />
-                    <asp:Repeater ID="rptManageR" runat="server">
+                    <asp:Repeater ID="rptManageR" runat="server" OnItemCommand="rptManageR_ItemCommand">
                         <HeaderTemplate>
                             <table id="datatable" class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th>
                                             <asp:CheckBox ID="chkHeader" runat="server" /></th>
-                                        <th>ID
+                                        <th style="display:none">ID
                                         </th>
                                         <th>Resource Title
                                         </th>
-                                        <th>Resource Type ID
+                                        <th style="display:none">Resource Type ID
                                         </th>
                                         <th>Current Status
                                         </th>
@@ -125,6 +125,7 @@
                                         </th>
                                         <th>Date Posted
                                         </th>
+                                        <th>Edit Resource</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -134,14 +135,14 @@
                             <tr>
                                 <td>
                                     <asp:CheckBox ID="chkRow" runat="server" /></td>
-                                <td>
-                                    <asp:Label runat="server" ID="lblResID" Text='<%# DataBinder.Eval(Container.DataItem, ("ResourcesID")) %>'> </asp:Label>
+                                <td style="display:none">
+                                    <asp:Label runat="server" ID="lblResID" Text='<%# DataBinder.Eval(Container.DataItem, ("ResourcesID")) %>' Visible="false" > </asp:Label>
                                 </td>
                                 <td>
                                     <%# DataBinder.Eval(Container.DataItem, ("ResourceName")) %>
                                 </td>
-                                <td>
-                                    <asp:Label runat="server" ID="lblResTypeID" Text='<%# DataBinder.Eval(Container.DataItem, ("ResourceTypeID")) %>'> </asp:Label>
+                                <td style="display:none">
+                                    <asp:Label runat="server" ID="lblResTypeID" Text='<%# DataBinder.Eval(Container.DataItem, ("ResourceTypeID")) %>' Visible="false"> </asp:Label>
                                 </td>
                                 <td>
                                     <%# DataBinder.Eval(Container.DataItem, ("Active")) %>
@@ -153,7 +154,11 @@
                                     <%# DataBinder.Eval(Container.DataItem, ("LocationCity")) %>
                                 </td>
                                 <td>
-                                    <%# DataBinder.Eval(Container.DataItem, ("StartDate")) %>
+                                    <%# DataBinder.Eval(Container.DataItem, "StartDate", "{0:MM/dd/yyyy}") %>
+                                   
+                                </td>
+                                <td>
+                                    <asp:Button ID="btnEdit" runat="server" Text="Edit" CssClass="btn btn-primary btn-md" />
                                 </td>
                             </tr>
                         </ItemTemplate>
@@ -172,9 +177,9 @@
                             <asp:Button ID="btnInactivate" Text="Inactivate Resource(s)" runat="server" OnClick="btnInactivate_Click" CssClass="btn btn-primary btn-md" />
                         </div>
                         <div class="col-md-1"></div>
-                        <div class="col-md-2">
+                        <%--<div class="col-md-2">
                             <asp:Button ID="btnEdit" Text="Edit Resource" runat="server" OnClick="btnEdit_Click" CssClass="btn btn-primary btn-md" />
-                        </div>
+                        </div>--%>
                     </div>
 
                     <%--<asp:GridView ID="gvManageR" runat="server" AutoGenerateColumns="False">

@@ -91,8 +91,8 @@
                                     <asp:Label ID="lblFeedbackText" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, ("FeedbackText")) %>'></asp:Label>
                                     <%--<%# DataBinder.Eval(Container.DataItem, ("FeedbackText")) %>--%>
                                 </td>
-                                <td>
-                                    <%# DataBinder.Eval(Container.DataItem, ("Date")) %>
+                                <td>                                   
+                                    <%# DataBinder.Eval(Container.DataItem, "Date", "{0:MM/dd/yyyy}") %>
                                 </td>
                                 <td>
 

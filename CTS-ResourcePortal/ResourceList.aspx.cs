@@ -368,6 +368,11 @@ namespace CTS_ResourcePortal
             btnLink.CommandName = "btnLinkCN";
             btnLink.CommandArgument = db.GetField("Link", 0).ToString();
 
+            if ((String.IsNullOrEmpty(db.GetField("Link", 0).ToString())))
+            {
+                btnLink.Visible = false;
+            }
+
             btnFeedback.CommandArgument = db.GetField("ResourcesId", 0).ToString();
 
             JobVisibilityControls();
@@ -434,7 +439,13 @@ namespace CTS_ResourcePortal
             btnLink.CommandName = "btnLinkCN";
             btnLink.CommandArgument = db.GetField("Link", 0).ToString();
 
-            btnFeedback.CommandArgument = db.GetField("ResourcesId", 0).ToString();
+            if ((String.IsNullOrEmpty(db.GetField("Link", 0).ToString())))
+            {
+                btnLink.Visible = false;
+            }
+
+
+           btnFeedback.CommandArgument = db.GetField("ResourcesId", 0).ToString();
 
             EventVisibilityControls();
 
@@ -504,6 +515,11 @@ namespace CTS_ResourcePortal
             btnLink.CommandName = "btnLinkCN";
             btnLink.CommandArgument = db.GetField("Link", 0).ToString();
 
+
+            if ((String.IsNullOrEmpty(db.GetField("Link", 0).ToString())))
+            {
+                btnLink.Visible = false;
+            }
 
             btnFeedback.CommandArgument = db.GetField("ResourcesId", 0).ToString();
 

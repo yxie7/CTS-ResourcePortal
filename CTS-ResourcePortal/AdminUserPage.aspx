@@ -73,7 +73,7 @@
             </div>
         </div>
         <br />
-        <!--------------------------------------Another table------------------------------------------------------>
+        <!--------------------------------------Already accepted citizens------------------------------------------------------>
         <div class="section">
             <h2 class="col-md-auto">All Citizens</h2>
             <div class="table-wrapper row justify-content-center">
@@ -163,7 +163,7 @@
                                     <asp:Label ID="lblResume" runat="server" Text=' <%# DataBinder.Eval(Container.DataItem, ("ResumeTitle")) %>'></asp:Label>
                                 </td>
                                 <td>
-                                    <asp:LinkButton ID="lnkType" runat="server" Text="View" OnClick="lnkView_Click"></asp:LinkButton>
+                                    <asp:LinkButton ID="lnkType" runat="server" class="btn btn-large btn-primary" Text="View" OnClick="lnkView_Click"></asp:LinkButton>
                                 </td>
                             </tr>
                         </ItemTemplate>

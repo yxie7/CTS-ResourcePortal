@@ -130,6 +130,15 @@ namespace CTS_ResourcePortal {
         protected global::System.Web.UI.WebControls.Label lblPosted;
         
         /// <summary>
+        /// divDtExp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDtExp;
+        
+        /// <summary>
         /// lblExpiration control.
         /// </summary>
         /// <remarks>
@@ -173,6 +182,15 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblStartEnd;
+        
+        /// <summary>
+        /// divAttire control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divAttire;
         
         /// <summary>
         /// lblOtherReqs control.

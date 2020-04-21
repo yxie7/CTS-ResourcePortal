@@ -435,6 +435,12 @@ namespace CTS_ResourcePortal
 
             lblAttire1.Text = (string)db.GetField("Attire", 0);
 
+            if ((String.IsNullOrEmpty(db.GetField("Attire", 0).ToString())))
+            {
+                divAttire.Visible = false;
+                lblAttire1.Visible = false;
+            }
+
 
             btnLink.CommandName = "btnLinkCN";
             btnLink.CommandArgument = db.GetField("Link", 0).ToString();
@@ -562,6 +568,9 @@ namespace CTS_ResourcePortal
             lblAttire1.Visible = true;
             lblLength.Visible = false;
             lblLength1.Visible = false;
+            divDtExp.Visible = false;
+
+
         }
         public void TrainingVisibilityControls()
         {

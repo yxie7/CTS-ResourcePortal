@@ -440,7 +440,11 @@ namespace CTS_ResourcePortal
                 divAttire.Visible = false;
                 lblAttire1.Visible = false;
             }
-
+            if (!(String.IsNullOrEmpty(db.GetField("Attire", 0).ToString())))
+            {
+                divAttire.Visible = false;
+                lblAttire1.Visible = false;
+            }
 
             btnLink.CommandName = "btnLinkCN";
             btnLink.CommandArgument = db.GetField("Link", 0).ToString();
@@ -538,57 +542,103 @@ namespace CTS_ResourcePortal
 
         public void JobVisibilityControls()
         {
+            lblStartDt.Visible = true;
+            lblEventDt.Visible = false;
+
             lblExpired.Visible = true;
             lblExpiration.Visible = true;
+
             lblCompaniesName.Visible = true;
+
             lblOtherReqs.Visible = true;
             lblOtherRequirements.Visible = true;
+
             lblHostedBy.Visible = false;
+
             lblStartEndTime.Visible = false;
             lblStartEnd.Visible = false;
+
             lblAttire.Visible = false;
             lblAttire1.Visible = false;
-            lblStartDt.Visible = false;
+           
+
             lblLength.Visible = false;
             lblLength1.Visible = false;
+
+            lblHours.Visible = true;
+            lblHours1.Visible = true;
+
+            divDtExp.Visible = true;
+
+            StartEndTime.Visible = false;
+
+            divAttire.Visible = true;   
         }
         public void EventVisibilityControls()
         {
             StartEndTime.Visible = true;
-            lblDtPosted.Visible = false;
-            lblExpired.Visible = false;
-            lblExpiration.Visible = false;
+
+            lblStartDt.Visible = false;
+
+            lblEventDt.Visible = true;
+
+            lblExpired.Visible = true;
+            lblExpiration.Visible = true;
+            divDtExp.Visible = true;
+
             lblCompaniesName.Visible = false;
+
             lblHostedBy.Visible = true;
+
             lblStartEndTime.Visible = true;
             lblStartEnd.Visible = true;
+
             lblOtherReqs.Visible = false;
             lblOtherRequirements.Visible = false;
+
             lblAttire.Visible = true;
             lblAttire1.Visible = true;
+
             lblLength.Visible = false;
             lblLength1.Visible = false;
-            divDtExp.Visible = false;
 
+            
 
+            lblHours.Visible = false;
+            lblHours1.Visible = false;
         }
         public void TrainingVisibilityControls()
         {
             StartEndTime.Visible = true;
 
-            lblDtPosted.Visible = false;
             lblStartDt.Visible = true;
+            lblEventDt.Visible = false;
+
             lblExpired.Visible = true;
             lblExpiration.Visible = true;
+
             lblCompaniesName.Visible = false;
+
             lblHostedBy.Visible = true;
+
             lblStartEndTime.Visible = true;
             lblStartEnd.Visible = true;
+
             lblOtherReqs.Visible = true;
             lblOtherRequirements.Visible = true;
+
             lblAttire.Visible = false;
             lblAttire1.Visible = false;
 
+            lblLength.Visible = true;
+            lblLength1.Visible = true;
+
+            lblHours.Visible = true;
+            lblHours1.Visible = true;
+
+            divDtExp.Visible = true;
+
+            divAttire.Visible = true;
         }
 
         protected void btnLink_Click(object sender, EventArgs e)

@@ -18,7 +18,7 @@ namespace CTS_ResourcePortal
                 //lblAdminName.Text = "Admin Name";
                 Response.Write("You are not an Admin of this System!");
                 
-                System.Threading.Thread.Sleep(5000);
+                //System.Threading.Thread.Sleep(5000);
                 Response.Redirect("Login.aspx");
 
             }

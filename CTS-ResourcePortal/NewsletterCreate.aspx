@@ -29,7 +29,7 @@
             </div>
             <br />
             <div class="row d-flex justify-content-center">
-                <div class="accordion col-10">
+                <div class="accordion col-12">
                     <asp:Label ID="lblResourceSelect" runat="server" Text="Select Resources Type: "></asp:Label>
                     <br />
                     <div class="row">
@@ -43,12 +43,16 @@
                     <br />
                     <asp:Repeater runat="server" ID="rpt" OnItemCommand="rpt_ItemCommand">
                         <HeaderTemplate>
-                            <table id="datatable" class="table  table-hover">
+                            <table id="datatable" class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th class="col-auto rth">Resource Title</th>
-                                        <th class="col-auto rth">Comments</th>
-                                        <th class="col-1 rth">Add</th>
+                                        <th class="rth">Resource Title</th>
+                                        <th class="rth" style="width:10%">Resource Type</th>
+                                        <th class="rth">Company Name</th>
+                                        <th class="rth">Start Date</th>
+                                        <th class="rth">EndDate</th>                                        
+                                        <th class="rth commentBox" style="width:10%">Comments</th>
+                                        <th class="rth" style="width:10%">Add</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -58,6 +62,18 @@
                                 <td data-header="Resource Title:" class="rtd">
                                     <asp:Label ID="lblName" Text='<%# Eval("ResourceName") %>' runat="server" />
                                     <asp:HiddenField runat="server" ID="hfID" Value='<%# Eval("ResourcesID") %>' />
+                                </td>
+                                <td data-header="Resource Type:" class="rtd">
+                                    <asp:Label runat="server" id="lblResourceType" Text='<%# Eval("ResourceTypeID").ToString() == "1"? "Job":(Eval("ResourceTypeID").ToString()) == "2"? "Event":"Training" %>' ></asp:Label>
+                                </td>
+                                <td data-header="Company" class="rtd">
+                                    <asp:Label ID="lblCompany" Text='<%# Eval("Company") %>' runat="server" />
+                                </td>
+                                <td  data-header="Start Date" class="rtd">
+                                    <asp:Label ID="lblStartDate" Text='<%# Eval("StartDate")==null ? String.Empty: DateTime.Parse(Eval("StartDate").ToString()).ToString("MM/dd/yyyy") %>' runat="server" />
+                                </td>
+                                <td data-header="End Date" class="rtd">
+                                    <asp:Label ID="lblEndDate" Text='<%# Eval("EndDate")==null ? String.Empty: DateTime.Parse(Eval("StartDate").ToString()).ToString("MM/dd/yyyy") %>' runat="server" />
                                 </td>
                                 <td data-header="Comment:" class="rtd">
                                     <asp:TextBox runat="server" ID="txtComment" CssClass="form-control" TextMode="multiline" Rows="3" placeholder="(Optional) Enter comments, tips, or other information here..."></asp:TextBox>
@@ -77,13 +93,13 @@
         <br />
         <div class="section">
             <div class="row d-flex justify-content-center">
-                <div class="tableSelection col-10">
+                <div class="tableSelection col-12">
                     <label>Current Newsletter Items:</label><br />
                     <asp:GridView ID="Selections" CssClass="table table-hover" runat="server" AutoGenerateColumns="false" DataKeyNames="ResourceID" GridLines="None">
                         <Columns>
-                            <asp:BoundField DataField="ResourceName" HeaderText="Resource Title" HeaderStyle-CssClass="col-2" />
-                            <asp:BoundField DataField="Comment" HeaderText="Comment" HeaderStyle-CssClass="col-5" />
-                            <asp:TemplateField HeaderStyle-CssClass="col-1" HeaderText="Remove">
+                            <asp:BoundField DataField="ResourceName" HeaderText="Resource Title" HeaderStyle-CssClass="" HeaderStyle-Width="40%" />
+                            <asp:BoundField DataField="Comment" HeaderText="Comment" HeaderStyle-CssClass="" HeaderStyle-Width="50%"/>
+                            <asp:TemplateField HeaderText="Remove" HeaderStyle-Width="10%">
                                 <ItemTemplate>
                                     <asp:Button Text="Remove" runat="server" ID="btnRemove" CssClass="btn btn-danger" OnClick="btnRemove_Click" UseSubmitBehavior="false" />
                                 </ItemTemplate>

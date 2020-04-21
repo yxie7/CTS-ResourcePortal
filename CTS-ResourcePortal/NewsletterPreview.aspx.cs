@@ -15,6 +15,8 @@ namespace CTS_ResourcePortal
 {
     public partial class NewsletterPreview : System.Web.UI.Page
     {
+        private DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
+        private DataTable dt = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["NewsletterSelections"] != null)
@@ -23,18 +25,12 @@ namespace CTS_ResourcePortal
                 if (selectionList.Count > 0)
                 {
                     h2Date.InnerText = DateTime.Now.ToString("MM/dd/yyyy") + " Newsletter";
-                    DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
-                    DataTable dt = new DataTable();
                     foreach (NewsletterItem ni in selectionList)
                     {
                         int id = ni.ResourceID;
                         string comment = ni.Comment;
                         SqlCommand cmd = new SqlCommand();
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.CommandText = "GetResourceType";
-                        //DataSet ds = db.GetDataSetUsingCmdObj(cmd);
-                        //int resourceTypeID = int.Parse(db.GetField("ResourceTypeID", 0).ToString());
-
                         cmd.CommandText = "SelectResourceByID";
                         cmd.Parameters.AddWithValue("@id", id);
                         DataTable dte = db.GetDataSetUsingCmdObj(cmd).Tables[0];
@@ -67,50 +63,6 @@ namespace CTS_ResourcePortal
                 Response.Redirect("NewsletterCreate.aspx");
             }
         }
-
-        //protected void Page_Load(object sender, EventArgs e)
-        //{
-        //    JavaScriptSerializer js = new JavaScriptSerializer();
-        //    if (Request.QueryString["nl"] != null)
-        //    {
-        //        Dictionary<string, string> selections = js.Deserialize<Dictionary<string, string>>(System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(Request.QueryString["nl"])));
-
-        //        //<string,string> selections = js.Deserialize<Dictionary<string,string>>(Server.UrlDecode(Request.QueryString["nl"]));
-
-        //        h2Date.InnerText = DateTime.Now.ToShortDateString() + " Newsletter";
-
-        //        DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
-        //        DataTable dt = new DataTable();
-        //        foreach (KeyValuePair<string, string> selection in selections)
-        //        {
-        //            string id = selection.Key;
-        //            string comment = selection.Value;
-
-        //            SqlCommand cmd = new SqlCommand();
-        //            cmd.CommandType = CommandType.StoredProcedure;
-        //            cmd.CommandText = "GetResourceType";
-        //            //DataSet ds = db.GetDataSetUsingCmdObj(cmd);
-        //            //int resourceTypeID = int.Parse(db.GetField("ResourceTypeID", 0).ToString());
-
-        //            cmd.CommandText = "SelectResourceByID";
-        //            cmd.Parameters.AddWithValue("@id", int.Parse(id));
-        //            DataTable dte = db.GetDataSetUsingCmdObj(cmd).Tables[0];
-        //            dte.Columns.Add("Comments", typeof(string));
-        //            dte.Rows[0]["Comments"] = comment;
-        //            dte.Merge(dt);
-        //            dt = dte.Copy();
-        //        }
-
-        //        rptSummary.DataSource = dt;
-        //        rptSummary.DataBind();
-        //        rptNL.DataSource = dt;
-        //        rptNL.DataBind();
-        //    }
-        //    else
-        //    {
-        //        Response.Redirect("NewsletterCreate.aspx");
-        //    }
-        //}
 
         protected void btnSend_Click(object sender, EventArgs e)
         {
@@ -186,6 +138,12 @@ namespace CTS_ResourcePortal
         {
             sendNL();
             ScriptManager.RegisterStartupScript(this, GetType(), "Script", "sendNotif();", true);
+
+        }
+
+        protected void btnReturn_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("NewsletterCreate.aspx");
         }
     }
 }

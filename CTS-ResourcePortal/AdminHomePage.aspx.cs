@@ -282,7 +282,7 @@ namespace CTS_ResourcePortal
             lblResponsibilities.Text = (string)db.GetField("Description", 0);
 
 
-            //lblLength.Text = (string)db.GetField("Length", 0);
+            lblLength.Text = (string)db.GetField("Length", 0);
 
             string addressLine1 = (string)db.GetField("AddressLine", 0);
             string city = (string)db.GetField("LocationCity", 0);

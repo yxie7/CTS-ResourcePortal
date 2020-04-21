@@ -27,15 +27,7 @@ namespace CTS_ResourcePortal
 
         protected void btnCreate_Click(object sender, EventArgs e)
         {
-           /* if (txtTitle.Text == string.Empty || txtHost.Text == string.Empty || txtAddLine1.Text == string.Empty || txtCity.Text == string.Empty ||
-                txtZip.Text == string.Empty || txtHours.Text == string.Empty || txtLength.Text == string.Empty || txtFn.Text == string.Empty ||
-                txtLn.Text == string.Empty || txtContEmail.Text == string.Empty || txtContPhone.Text == string.Empty || txtSignUp.Text == string.Empty
-                || txtDesc.Text == string.Empty || txtSkills.Text == string.Empty)
-            {
-                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup2();", true);
-            }
-            else
-            {*/
+
 
                 Training training = new Training();
                 training.resourceTypeID = 3;
@@ -48,8 +40,6 @@ namespace CTS_ResourcePortal
                 training.zipCode = txtZip.Value;
                 training.startDate = dateStart.Value;
                 training.expDate = dateRegDeadline.Value;
-                //training.startDate = Convert.ToDateTime(dateStart.Value);
-                //training.expDate = Convert.ToDateTime(dateRegDeadline.Value);
                 training.weeklyHours = txtHours.Value;
                 training.trainingLength = txtLength.Value;
                 training.contactFN = txtFn.Value;
@@ -106,8 +96,6 @@ namespace CTS_ResourcePortal
 
 
                 ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
-           // }
-
         }
     }
 }

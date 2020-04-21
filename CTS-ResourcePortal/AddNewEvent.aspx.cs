@@ -31,15 +31,7 @@ namespace CTS_ResourcePortal
 
         protected void btnCreate_Click(object sender, EventArgs e)
         {
-          /*  if (txtTitle.Value == string.Empty || txtHost.Value == string.Empty || txtAddLine1.Value == string.Empty || txtCity.Value == string.Empty ||
-                txtZip.Value == string.Empty || txtStartTime.Value == string.Empty || txtEndTime.Value == string.Empty || txtFn.Value == string.Empty ||
-                txtLn.Value == string.Empty || txtContEmail.Value == string.Empty || txtContPhone.Value == string.Empty || txtLink.Value == string.Empty
-                || txtDesc.Value == string.Empty)
-            {
-                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup2();", true);
-            }
-            else
-            {*/
+         
                 Events eventt = new Events();
                 eventt.resourceTypeID = 2;
                 eventt.resourceTitle = txtTitle.Value;
@@ -106,8 +98,6 @@ namespace CTS_ResourcePortal
 
 
                 ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
-
-           // }
 
         }
     }

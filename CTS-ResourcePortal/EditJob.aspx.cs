@@ -82,19 +82,9 @@ namespace CTS_ResourcePortal
         protected void btnCreate_Click(object sender, EventArgs e)
         {
 
-           /* if (txtTitle.Text == string.Empty || txtCompany.Text == string.Empty || txtAddLine1.Text == string.Empty || txtCity.Text == string.Empty ||
-               txtZip.Text == string.Empty || txtHours.Text == string.Empty || txtFn.Text == string.Empty || txtLn.Text == string.Empty
-               || txtContEmail.Text == string.Empty || txtContPhone.Text == string.Empty || txtLink.Text == string.Empty ||
-                txtPrimResp.Text == string.Empty || txtSkills.Text == string.Empty)
-            {
-                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup2();", true);
-            }
-            else
-            { */
                 string resourceIDS = (string)Session["ResourceIDS"];
 
                 string title = txtTitle.Value;
-                //int typeID = 1;
                 string company = txtCompany.Value;
                 string addressLine1 = txtAddLine1.Value;
                 string addressLine2 = txtAddLine2.Value;
@@ -116,7 +106,6 @@ namespace CTS_ResourcePortal
                 bigCommand.CommandType = CommandType.StoredProcedure;
                 bigCommand.CommandText = "EditJob";
                 bigCommand.Parameters.AddWithValue("@id", resourceIDS);
-                //bigCommand.Parameters.AddWithValue("@resourceTypeID", typeID);
                 bigCommand.Parameters.AddWithValue("@title", title);
                 bigCommand.Parameters.AddWithValue("@company", company);
                 bigCommand.Parameters.AddWithValue("@addLine1", addressLine1);
@@ -144,8 +133,6 @@ namespace CTS_ResourcePortal
                 ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "redirectJS",
                 "setTimeout(function() { window.location.replace('ManageR.aspx') }, 3000);", true);
 
-                //Response.Redirect("ManageR.aspx");
-            //}
         }
     }
 }

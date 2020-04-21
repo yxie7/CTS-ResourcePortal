@@ -40,7 +40,6 @@ namespace CTS_ResourcePortal
                 {
                     if (GrabAdminPassword(email) == true)
                     {
-                        //string encryptedPassword = (string)objDB.GetField("Password", 0);
 
                         string savedPasswordHash = (string)objDB.GetField("Password", 0);
                         byte[] hashBytes = Convert.FromBase64String(savedPasswordHash);

@@ -95,7 +95,7 @@
                         </div>
                     </div>
 
-                    <div class="section">
+                    <div class="section" id="divDtExp" runat="server">
                         <div class="row" id="title2">
                             <div class="col-md-3 ">
                                 <asp:Label runat="server" Text="Date Expired:" ID="lblExpiration" Font-Bold="True"></asp:Label>
@@ -121,7 +121,7 @@
                         </div>
                     </div>
 
-                    <div class="section">
+                    <div class="section" runat="server" id="divAttire">
                         <div class="row" id="">
                             <div class="col-md-3">
                                 <asp:Label runat="server" Text="Knowledge, Skills and Other Requirements." ID="lblOtherReqs" Font-Bold="True"></asp:Label>

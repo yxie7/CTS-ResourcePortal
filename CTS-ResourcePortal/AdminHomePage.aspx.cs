@@ -301,8 +301,86 @@ namespace CTS_ResourcePortal
             var dateValue2 = db.GetField("StartTime", 0);
             string starttime = dateValue2.ToString();
 
+            try
+            {
+                string[] startt = null;
+                char[] splitChar = { ':' };
+                startt = starttime.Split(splitChar);
+                int timee = Convert.ToInt32(startt[0]);
+                if (timee >= 12)
+                {
+                    starttime += "p.m.";
+                    starttime = starttime.Remove(5);
+                }
+                if (timee < 12)
+                {
+                    if (starttime[0] == '0')
+                    {
+                        starttime = starttime.Remove(0, 1);
+                        starttime = starttime.Remove(4);
+                        starttime += "a.m.";
+                    }
+                    else
+                    {
+                        starttime = starttime.Remove(5);
+                        starttime += "a.m.";
+                    }
+
+                }
+            }
+            catch
+            {
+                starttime = "N/A";
+            }
+            
+
             var dateValue3 = db.GetField("EndTime", 0);
             string endtime = dateValue3.ToString();
+
+            try
+            {
+                string[] starttEnd = null;
+                char[] splitCharEnd = { ':' };
+                starttEnd = endtime.Split(splitCharEnd);
+                int timeeEnd = Convert.ToInt32(starttEnd[0]);
+                if (timeeEnd >= 12)
+                {
+                    if (timeeEnd > 12)
+                    {
+                        timeeEnd = timeeEnd - 12;
+                        starttEnd[0] = timeeEnd.ToString();
+                        endtime = starttEnd[0] + ":" + starttEnd[1];
+                        endtime += "p.m.";
+                        //endtime = endtime.Remove(4);
+                    }
+                    if (timeeEnd == 12)
+                    {
+                        endtime += "p.m.";
+                        endtime = endtime.Remove(5);
+                    }
+
+                }
+                else if (timeeEnd < 12)
+                {
+                    if (endtime[0] == '0')
+                    {
+                        endtime = endtime.Remove(0, 1);
+                        endtime = endtime.Remove(4);
+                        endtime += "a.m.";
+                    }
+                    else
+                    {
+                        endtime = endtime.Remove(5);
+                        endtime += "a.m.";
+                    }
+
+                }
+            }
+            catch
+            {
+                endtime = "N/A";
+            }
+            
 
             lblStartEnd.Text = "From: " + starttime + " To: " + endtime;
 
@@ -366,8 +444,84 @@ namespace CTS_ResourcePortal
             var dateValue3 = db.GetField("StartTime", 0);
             string starttime = dateValue3.ToString();
 
+            try
+            {
+                string[] startt = null;
+                char[] splitChar = { ':' };
+                startt = starttime.Split(splitChar);
+                int timee = Convert.ToInt32(startt[0]);
+                if (timee >= 12)
+                {
+                    starttime += "p.m.";
+                    starttime = starttime.Remove(5);
+                }
+                if (timee < 12)
+                {
+                    if (starttime[0] == '0')
+                    {
+                        starttime = starttime.Remove(0, 1);
+                        starttime = starttime.Remove(4);
+                        starttime += "a.m.";
+                    }
+                    else
+                    {
+                        starttime = starttime.Remove(5);
+                        starttime += "a.m.";
+                    }
+
+                }
+            }
+            catch
+            {
+                starttime = "N/A";
+            }
+            
+
             var dateValue4 = db.GetField("EndTime", 0);
             string endtime = dateValue4.ToString();
+            try
+            {
+                string[] starttEnd = null;
+                char[] splitCharEnd = { ':' };
+                starttEnd = endtime.Split(splitCharEnd);
+                int timeeEnd = Convert.ToInt32(starttEnd[0]);
+                if (timeeEnd >= 12)
+                {
+                    if (timeeEnd > 12)
+                    {
+                        timeeEnd = timeeEnd - 12;
+                        starttEnd[0] = timeeEnd.ToString();
+                        endtime = starttEnd[0] + ":" + starttEnd[1];
+                        endtime += "p.m.";
+                    }
+                    if (timeeEnd == 12)
+                    {
+                        endtime += "p.m.";
+                        endtime = endtime.Remove(5);
+                    }
+
+                }
+                else if (timeeEnd < 12)
+                {
+                    if (endtime[0] == '0')
+                    {
+                        endtime = endtime.Remove(0, 1);
+                        endtime = endtime.Remove(4);
+                        endtime += "a.m.";
+                    }
+                    else
+                    {
+                        endtime = endtime.Remove(5);
+                        endtime += "a.m.";
+                    }
+
+                }
+            }
+            catch
+            {
+                endtime = "N/A";
+            }
+            
 
             lblStartEnd.Text = "From: " + starttime + " To: " + endtime;
 

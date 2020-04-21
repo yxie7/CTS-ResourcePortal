@@ -19,8 +19,6 @@ namespace CTS_ResourcePortal
     public partial class Signup : System.Web.UI.Page
     {
         DBConnect objDB = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
-        
-        //ArrayList UserRegistrationError = new ArrayList();
         SqlCommand cmd = new SqlCommand();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -44,10 +42,9 @@ namespace CTS_ResourcePortal
             string state = txtState.Text;
             string zip = txtZip.Text;
             string cellphone = txtCellPhone.Text;
-            string subscribe = rdoSubscribe.SelectedValue.ToString(); 
+            string subscribe = rdoSubscribe.SelectedValue.ToString();
 
             String plainTextPassword = txtPassword.Text;
-
 
             //Check if email already exist
             String UserEmail = txtEmail.Text;
@@ -55,35 +52,43 @@ namespace CTS_ResourcePortal
             {
                 lblStatusSignUp.Text = "That email is already being used on our system. Please choose another.";
                 ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
-
-            }
-            else if (txtZip.Text == "" || txtZip.Text.Length < 5 || txtZip.Text.Length > 5)
-            {
-                lblStatusSignUp.Text = "Valid Zip-Code Length is 5";
-                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
-            }
-            else if (txtPassword.Text == "" || txtPassword.Text.Length < 6)
-            {
-                lblStatusSignUp.Text = "Password needs to be atleast 6 characters.";
-                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
-            }
-            else if (txtPassword.Text != txtCPassword.Text)
-            {
-                lblStatusSignUp.Text = "Passwords do not match.";
-                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
-
             }
             else
             {
+                //check if passwords entered is correct
+                if (txtPassword.Text != txtCPassword.Text)
                 {
+                    lblStatusSignUp.Text = "Passwords do not match.";
+                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+                }
 
-                    try
+                else if (txtZip.Text == "" || txtZip.Text.Length < 5 || txtZip.Text.Length > 5)
+                {
+                    lblStatusSignUp.Text = "Valid Zip-Code Length is 5";
+                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+                }
+                else if (txtPassword.Text == "" || txtPassword.Text.Length < 6)
+                {
+                    lblStatusSignUp.Text = "Password needs to be atleast 6 characters.";
+                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+                }
+                else if (txtPassword.Text != txtCPassword.Text)
+                {
+                    lblStatusSignUp.Text = "Passwords do not match.";
+                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
 
+                }
+                else
+                {
                     {
 
-                        // Use the FileUpload control to get the uploaded data
+                        try
 
-                        if (FileUpload1.HasFile)
+                        {
+
+                            // Use the FileUpload control to get the uploaded data
+
+                            if (FileUpload1.HasFile)
 
                             {
 
@@ -123,50 +128,53 @@ namespace CTS_ResourcePortal
                                     }
                                     else
                                     {
-                                    byte[] salt;
-                                    new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
-                                    var pbkdf2 = new Rfc2898DeriveBytes(plainTextPassword, salt, 10000);
-                                    byte[] hash = pbkdf2.GetBytes(20);
-                                    byte[] hashBytes = new byte[36];
-                                    Array.Copy(salt, 0, hashBytes, 0, 16);
-                                    Array.Copy(hash, 0, hashBytes, 16, 20);
-                                    string savedPasswordHash = Convert.ToBase64String(hashBytes);
+                                        /*byte[] salt;
+                                        new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
+                                        var pbkdf2 = new Rfc2898DeriveBytes(plainTextPassword, salt, 10000);
+                                        byte[] hash = pbkdf2.GetBytes(20);
+                                        byte[] hashBytes = new byte[36];
+                                        Array.Copy(salt, 0, hashBytes, 0, 16);
+                                        Array.Copy(hash, 0, hashBytes, 16, 20);
+                                        string savedPasswordHash = Convert.ToBase64String(hashBytes);*/
 
-                                    Citizens newCitizen = new Citizens
-                                    {
+                                        PasswordHash hashedPassword = new PasswordHash();
+                                        string savedPasswordHash = hashedPassword.HashPassword(plainTextPassword);
 
-                                        FirstName = firstName,
-                                        LastName = lastName,
-                                        Email = email,
-                                        Password = savedPasswordHash,
-                                        Address = address,
-                                        City = city,
-                                        State = state,
-                                        Zip = zip,
-                                        Cellphone = cellphone,
-                                        Subscribe = subscribe
-                                    };
+                                        Citizens newCitizen = new Citizens
+                                        {
+
+                                            FirstName = firstName,
+                                            LastName = lastName,
+                                            Email = email,
+                                            Password = savedPasswordHash,
+                                            Address = address,
+                                            City = city,
+                                            State = state,
+                                            Zip = zip,
+                                            Cellphone = cellphone,
+                                            Subscribe = subscribe
+                                        };
 
 
-                                    var ResponseReceived = newCitizen.AddNewCitizen();
-                                    if (ResponseReceived == true)
-                                    {
-                                        //User Registered 
-                                        //Save UserEmail in Session Called UserEmail
-                                        Session.Add("userEmail", txtEmail.Text.ToString());
-                                        lblStatusSignUp.Text = "Thank you for signing up! Your account needs to be approved " +
-                                            "by an administrator before you can log in. You will get an email if your account " +
-                                            "has been approved or denied";
-                                        ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+                                        var ResponseReceived = newCitizen.AddNewCitizen();
+                                        if (ResponseReceived == true)
+                                        {
+                                            //User Registered 
+                                            //Save UserEmail in Session Called UserEmail
+                                            Session.Add("userEmail", txtEmail.Text.ToString());
+                                            lblStatusSignUp.Text = "Thank you for signing up! Your account needs to be approved " +
+                                                "by an administrator before you can log in. You will get an email if your account " +
+                                                "has been approved or denied";
+                                            ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+                                        }
+                                        else
+                                        {
+
+                                            lblStatusSignUp.Text = "There was an error, please try again";
+                                            ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+
+                                        }
                                     }
-                                    else
-                                    {
-
-                                        lblStatusSignUp.Text = "There was an error, please try again";
-                                        ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
-
-                                    }
-                                }
 
                                 }
                                 else
@@ -178,53 +186,47 @@ namespace CTS_ResourcePortal
 
                                 }
 
-                        }
-                        else
-                        {
-                            byte[] salt;
-                            new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
-                            var pbkdf2 = new Rfc2898DeriveBytes(plainTextPassword, salt, 10000);
-                            byte[] hash = pbkdf2.GetBytes(20);
-                            byte[] hashBytes = new byte[36];
-                            Array.Copy(salt, 0, hashBytes, 0, 16);
-                            Array.Copy(hash, 0, hashBytes, 16, 20);
-                            string savedPasswordHash = Convert.ToBase64String(hashBytes);
-
-                            Citizens newCitizen = new Citizens
-                            {
-
-                                FirstName = firstName,
-                                LastName = lastName,
-                                Email = email,
-                                Password = savedPasswordHash,
-                                Address = address,
-                                City = city,
-                                State = state,
-                                Zip = zip,
-                                Cellphone = cellphone,
-                                Subscribe = subscribe
-                            };
-
-
-                            var ResponseReceived = newCitizen.AddNewCitizen();
-                            if (ResponseReceived == true)
-                            {
-                                //User Registered 
-                                //Save UserEmail in Session Called UserEmail
-                                Session.Add("userEmail", txtEmail.Text.ToString());
-                                lblStatusSignUp.Text = "Thank you for signing up! Your account needs to be approved " +
-                                            "by an administrator before you can log in. You will get an email if your account " +
-                                            "has been approved or denied";
-                                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
                             }
                             else
                             {
+                                PasswordHash hashedPassword = new PasswordHash();
+                                string savedPasswordHash = hashedPassword.HashPassword(plainTextPassword);
 
-                                lblStatusSignUp.Text = "There was an error, please try again";
-                                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+                                Citizens newCitizen = new Citizens
+                                {
 
+                                    FirstName = firstName,
+                                    LastName = lastName,
+                                    Email = email,
+                                    Password = savedPasswordHash,
+                                    Address = address,
+                                    City = city,
+                                    State = state,
+                                    Zip = zip,
+                                    Cellphone = cellphone,
+                                    Subscribe = subscribe
+                                };
+
+
+                                var ResponseReceived = newCitizen.AddNewCitizen();
+                                if (ResponseReceived == true)
+                                {
+                                    //User Registered 
+                                    //Save UserEmail in Session Called UserEmail
+                                    Session.Add("userEmail", txtEmail.Text.ToString());
+                                    lblStatusSignUp.Text = "Thank you for signing up! Your account needs to be approved " +
+                                                "by an administrator before you can log in. You will get an email if your account " +
+                                                "has been approved or denied";
+                                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+                                }
+                                else
+                                {
+
+                                    lblStatusSignUp.Text = "There was an error, please try again";
+                                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+
+                                }
                             }
-                          }
 
                         }
 
@@ -240,9 +242,10 @@ namespace CTS_ResourcePortal
 
 
                     }
+                }
+
+
             }
-                
-      
         }
         public Boolean CheckIfEmailExist(String Email)
         {

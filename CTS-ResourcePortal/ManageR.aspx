@@ -123,7 +123,9 @@
                                         </th>
                                         <th>City
                                         </th>
-                                        <th>Date Posted
+                                        <th>Start Date
+                                        </th>
+                                        <th>End Date
                                         </th>
                                         <th>Edit Resource</th>
                                     </tr>
@@ -154,7 +156,11 @@
                                     <%# DataBinder.Eval(Container.DataItem, ("LocationCity")) %>
                                 </td>
                                 <td>
-                                    <%# DataBinder.Eval(Container.DataItem, "StartDate", "{0:MM/dd/yyyy}") %>
+                                    <%# DataBinder.Eval(Container.DataItem, "StartDate", "{0:MM-dd-yyyy}") %>
+                                   
+                                </td>
+                                <td>
+                                    <%# DataBinder.Eval(Container.DataItem, "EndDate", "{0:MM-dd-yyyy}") %>
                                    
                                 </td>
                                 <td>

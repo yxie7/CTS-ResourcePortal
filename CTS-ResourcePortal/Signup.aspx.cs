@@ -39,7 +39,7 @@ namespace CTS_ResourcePortal
             string email = txtEmail.Text;
             string address = txtAddress.Text;
             string city = txtCity.Text;
-            string state = txtState.Text;
+            string state = ddlState.Text;
             string zip = txtZip.Text;
             string cellphone = txtCellPhone.Text;
             string subscribe = rdoSubscribe.SelectedValue.ToString();

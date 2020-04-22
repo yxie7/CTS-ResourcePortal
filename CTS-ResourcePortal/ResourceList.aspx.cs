@@ -484,76 +484,85 @@ namespace CTS_ResourcePortal
             var dateValue = db.GetField("StartDate", 0);
             lblPosted.Text = Convert.ToDateTime(dateValue).ToString("MM-dd-yyyy");
 
+            var dateValue2 = db.GetField("EndDate", 0);
+            lblExpired.Text = Convert.ToDateTime(dateValue2).ToString("MM-dd-yyyy");
 
-            var dateValue2 = db.GetField("StartTime", 0);
-            string starttime = dateValue2.ToString();
-            string[] startt = null;
-            char[] splitChar = {':'};
-            startt = starttime.Split(splitChar);
-            int timee = Convert.ToInt32(startt[0]);
-            if (timee >= 12)
-            {                
-                starttime += "p.m.";
-                starttime = starttime.Remove(5);
-            }
-            if(timee < 12)
-            {
-                if (starttime[0] == '0')
-                {
-                    starttime = starttime.Remove(0, 1);
-                    starttime = starttime.Remove(4);
-                    starttime += "a.m.";
-                }
-                else
-                {
-                    starttime = starttime.Remove(5);
-                    starttime += "a.m.";
-                }
+            var timeValue2 = db.GetField("StartTime", 0);
+            string starttime2 = timeValue2.ToString();
+            string starttime = DateTime.Parse(starttime2).ToString("hh:mm tt");
+            
+
+
+            //string[] startt = null;
+            //char[] splitChar = {':'};
+            //startt = starttime.Split(splitChar);
+            //int timee = Convert.ToInt32(startt[0]);
+            //if (timee >= 12)
+            //{                
+            //    starttime += "p.m.";
+            //    starttime = starttime.Remove(5);
+            //}
+            //if(timee < 12)
+            //{
+            //    if (starttime[0] == '0')
+            //    {
+            //        starttime = starttime.Remove(0, 1);
+            //        starttime = starttime.Remove(4);
+            //        starttime += "a.m.";
+            //    }
+            //    else
+            //    {
+            //        starttime = starttime.Remove(5);
+            //        starttime += "a.m.";
+            //    }
                 
-            }
+            //}
             
 
             var dateValue3 = db.GetField("EndTime", 0);
-            string endtime = dateValue3.ToString();
 
-            string[] starttEnd = null;
-            char[] splitCharEnd = { ':' };
-            starttEnd = endtime.Split(splitCharEnd);
-            int timeeEnd = Convert.ToInt32(starttEnd[0]);
-            if (timeeEnd >= 12)
-            {
-                if (timeeEnd > 12)
-                {
-                    timeeEnd = timeeEnd - 12;
-                    starttEnd[0] = timeeEnd.ToString();
-                    endtime = starttEnd[0] + ":" + starttEnd[1];
-                    endtime += "p.m.";
-                    //endtime = endtime.Remove(4);
-                }
-                if(timeeEnd == 12)
-                {
-                    endtime += "p.m.";
-                    endtime = endtime.Remove(5);
-                }
+            string endtime2 = dateValue3.ToString();
+            string endtime = DateTime.Parse(endtime2).ToString("hh:mm tt");
+            //string endtime = dateValue3.ToString();
+
+            //string[] starttEnd = null;
+            //char[] splitCharEnd = { ':' };
+            //starttEnd = endtime.Split(splitCharEnd);
+            //int timeeEnd = Convert.ToInt32(starttEnd[0]);
+            //if (timeeEnd >= 12)
+            //{
+            //    if (timeeEnd > 12)
+            //    {
+            //        timeeEnd = timeeEnd - 12;
+            //        starttEnd[0] = timeeEnd.ToString();
+            //        endtime = starttEnd[0] + ":" + starttEnd[1];
+            //        endtime += "p.m.";
+            //        //endtime = endtime.Remove(4);
+            //    }
+            //    if(timeeEnd == 12)
+            //    {
+            //        endtime += "p.m.";
+            //        endtime = endtime.Remove(5);
+            //    }
                 
-            }
-            else if (timeeEnd < 12)
-            {
-                if (endtime[0] == '0')
-                {
-                    endtime = endtime.Remove(0, 1);
-                    endtime = endtime.Remove(4);
-                    endtime += "a.m.";
-                }
-                else
-                {
-                    endtime = endtime.Remove(5);
-                    endtime += "a.m.";
-                }
+            //}
+            //else if (timeeEnd < 12)
+            //{
+            //    if (endtime[0] == '0')
+            //    {
+            //        endtime = endtime.Remove(0, 1);
+            //        endtime = endtime.Remove(4);
+            //        endtime += "a.m.";
+            //    }
+            //    else
+            //    {
+            //        endtime = endtime.Remove(5);
+            //        endtime += "a.m.";
+            //    }
 
-            }
+            //}
 
-            lblStartEnd.Text = "From: " + starttime + " To: " + endtime;
+            lblStartEnd.Text = starttime + " / " + endtime;
 
             lblAttire1.Text = (string)db.GetField("Attire", 0);
 

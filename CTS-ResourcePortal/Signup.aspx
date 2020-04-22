@@ -40,7 +40,7 @@
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server"
                                         ErrorMessage="Please Input Only Letters" ControlToValidate="txtFirstName"
                                         SetFocusOnError="True"
-                                        ValidationExpression="^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$">
+                                        ValidationExpression="^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$" ForeColor="Red">
                                     </asp:RegularExpressionValidator>
                                 </div>
                                 <div class="col-sm-6">
@@ -50,7 +50,7 @@
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server"
                                         ErrorMessage="Please Input Only Letters" ControlToValidate="txtLastName"
                                         SetFocusOnError="True"
-                                        ValidationExpression="^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$">
+                                        ValidationExpression="^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$" ForeColor="Red">
                                     </asp:RegularExpressionValidator>
                                 </div>
                             </div>
@@ -67,7 +67,7 @@
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server"
                                         ErrorMessage="Please Input Only Letters" ControlToValidate="txtCity"
                                         SetFocusOnError="True"
-                                        ValidationExpression="^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$">
+                                        ValidationExpression="^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$" ForeColor="Red">
                                     </asp:RegularExpressionValidator>
                                 </div>
                             </div>
@@ -88,12 +88,12 @@
                                     <asp:TextBox ID="txtZip" required="true" CssClass="form-control" runat="server"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
                                         ControlToValidate="txtZip" ErrorMessage="Zip Code is Required"
-                                        SetFocusOnError="True"></asp:RequiredFieldValidator>
+                                        SetFocusOnError="True" ForeColor="Red"></asp:RequiredFieldValidator>
 
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server"
                                         ErrorMessage="Invalid Zip Code" ControlToValidate="txtZip"
                                         SetFocusOnError="True"
-                                        ValidationExpression="^[0-9]{5}([- /]?[0-9]{4})?$">
+                                        ValidationExpression="^[0-9]{5}([- /]?[0-9]{4})?$" ForeColor="Red">
                                     </asp:RegularExpressionValidator>
                                 </div>
                             </div>
@@ -106,12 +106,12 @@
                                     <asp:TextBox ID="txtCellPhone" required="true" CssClass="form-control" runat="server" placeholder="###-###-####"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
                                         ControlToValidate="txtCellPhone" ErrorMessage="Cell Phone is required"
-                                        SetFocusOnError="True"></asp:RequiredFieldValidator>
+                                        SetFocusOnError="True" ForeColor="Red"></asp:RequiredFieldValidator>
 
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server"
-                                        ErrorMessage="Invalid Cell Phone Format" ControlToValidate="txtCellPhone"
+                                        ErrorMessage="Please Enter A Valid Cell Phone Number" ControlToValidate="txtCellPhone"
                                         SetFocusOnError="True"
-                                        ValidationExpression="^[2-9]\d{2}-\d{3}-\d{4}$">
+                                        ValidationExpression="^[2-9]\d{2}-\d{3}-\d{4}$" ForeColor="Red">
                                     </asp:RegularExpressionValidator>
                                 </div>
                                 <div class="col-sm-6">
@@ -119,12 +119,12 @@
                                     <asp:TextBox ID="txtEmail" required="true" CssClass="form-control" runat="server" placeholder="email@example.com" TextMode="Email"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
                                         ControlToValidate="txtEmail" ErrorMessage="Email is required"
-                                        SetFocusOnError="True"></asp:RequiredFieldValidator>
+                                        SetFocusOnError="True" ForeColor="Red"></asp:RequiredFieldValidator>
 
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
                                         ErrorMessage="Invalid Email Format" ControlToValidate="txtEmail"
                                         SetFocusOnError="True"
-                                        ValidationExpression="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$">
+                                        ValidationExpression="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" ForeColor="Red">
                                     </asp:RegularExpressionValidator>
                                 </div>
                             </div>
@@ -147,10 +147,14 @@
                                 <div class="col-sm-auto">
                                     <label>Would you like to receive Newsletters?<span class="requiredRed">*</span></label>
                                     <br />
-                                    <asp:RadioButtonList ID="rdoSubscribe" runat="server" RepeatLayout="Flow" class="btn-group btn-group-toggle" data-toggle="buttons">
+                                    <asp:RadioButtonList ID="rdoSubscribe" runat="server" RepeatLayout="Flow" class="btn-group btn-group-toggle" data-toggle="buttons" >
                                         <asp:ListItem class="btn btn-outline-success" Value="Yes" Selected="True">Yes</asp:ListItem>
                                         <asp:ListItem class="btn btn-outline-danger" Value="No">No</asp:ListItem>
                                     </asp:RadioButtonList>
+                                    <br />
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
+                                        ControlToValidate="rdoSubscribe" ErrorMessage="Please indicate if you want Newsletters"
+                                        SetFocusOnError="True" ForeColor="Red"></asp:RequiredFieldValidator>
                                 </div>
                                 <div class="col">
                                 </div>

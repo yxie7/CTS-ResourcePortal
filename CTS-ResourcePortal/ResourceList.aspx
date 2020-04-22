@@ -112,12 +112,12 @@
                     <div class="section" id="StartEndTime" runat="server" visible="false">
                         <div class="row">
                             <div class="col-md-3 ">
-                                <asp:Label runat="server" Text="From - To:" ID="lblStartEndTime" Font-Bold="True"></asp:Label>
+                                <asp:Label runat="server" Text="From / To:" ID="lblStartEndTime" Font-Bold="True"></asp:Label>
                             </div>
                             <div class="col-1"></div>
 
                             <div class="col-md-8">
-                                <asp:Label runat="server" Text="From - To:" ID="lblStartEnd"></asp:Label>
+                                <asp:Label runat="server" Text="From / To:" ID="lblStartEnd"></asp:Label>
                             </div>
                         </div>
                     </div>

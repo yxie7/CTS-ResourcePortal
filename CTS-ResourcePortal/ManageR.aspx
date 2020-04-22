@@ -88,7 +88,7 @@
                 <div class="accordion col-10" id="resources">
                     <br />
                     <div class="row" id="rowInst">
-                        <asp:Label ID="lblInst" runat="server">The Manage Resources page is for Activating/Inactivating or Editing resources. In order to Activate/Inactivate a resource, click the checkboxes on left side of the table and click the respective button for the action needed. The current status of resource can be seen in the “Current Status” column. Multiple resources can be Activated/Inactivated at a time. To Edit a resource, click the checkbox next to only one resource and then Click “Edit Resource”. </asp:Label>
+                        <asp:Label ID="lblInst" runat="server">The Manage Resources page is for Activating/Inactivating or Editing resources. In order to Activate/Inactivate a resource, click the checkboxes on left side of the table and click the respective button for the action needed. The current status of resource can be seen in the “Current Status” column. Multiple resources can be Activated/Inactivated at a time. To Edit a resource, click the "Edit" button in the row of the Resource you would like to edit. </asp:Label>
                     </div>
 
                     <br />

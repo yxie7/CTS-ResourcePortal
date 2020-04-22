@@ -4,7 +4,7 @@
 
 <html>
 <head runat="server">
-    <link rel="icon" href="Images/CTS_Logo.png"/>
+    <link rel="icon" href="Images/CTS_Logo.png" />
     <title>Called To Serve</title>
     <!--FontAwesome for some icons-->
     <script src="https://kit.fontawesome.com/f03b07e8ab.js" crossorigin="anonymous"></script>
@@ -28,6 +28,9 @@
                     </button>
                     <div class="collapse navbar-collapse " id="nbitems">
                         <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a id="adminHome" runat="server" class="nav-link" href="AdminHomePage.aspx">Admininistrator Dashboard</a>
+                            </li>
                             <asp:ContentPlaceHolder ID="navli" runat="server">
                             </asp:ContentPlaceHolder>
                         </ul>
@@ -39,8 +42,7 @@
             <footer class="row justify-content-center">
                 <div class="col-md-4">
                     <div class="footer-item">
-                        <a href="AdminHomePage.aspx">
-                            <img src="Images/CTS_Logo.png" /></a>&nbsp
+                        <img src="Images/CTS_Logo.png" />
                         <span>Called To Serve Resource Portal</span>
                     </div>
                     <div class="footer-item">
@@ -59,8 +61,7 @@
                 <div class="col-md-1"></div>
                 <div class="col-md-4">
                     <div class="footer-item">
-                        <a href="CitizenSettings.aspx">
-                            <img src="Images/CTS_Logo.png" /></a>
+                            <img src="Images/CTS_Logo.png" />
                         <span>Company Info</span>
                     </div>
                     <div class="footer-item">

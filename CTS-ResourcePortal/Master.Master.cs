@@ -9,6 +9,10 @@ namespace CTS_ResourcePortal
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["adminEmail"] == null)
+            {
+                adminHome.Visible = false;
+            }
 
         }
         

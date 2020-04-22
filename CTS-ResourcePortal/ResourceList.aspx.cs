@@ -809,7 +809,7 @@ namespace CTS_ResourcePortal
         }
         public void TrainingVisibilityControls()
         {
-            StartEndTime.Visible = true;
+            StartEndTime.Visible = false;
 
             lblStartDt.Visible = true;
             lblEventDt.Visible = false;

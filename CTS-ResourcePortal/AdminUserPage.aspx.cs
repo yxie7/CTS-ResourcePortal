@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using Utilities;
 
@@ -17,9 +13,9 @@ namespace CTS_ResourcePortal
     public partial class AdminUserPage : System.Web.UI.Page
     {
         //ArrayList arrProducts = new ArrayList();
-        DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
-        SqlCommand cmd = new SqlCommand();
- 
+        private DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
+
+        private SqlCommand cmd = new SqlCommand();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -28,9 +24,7 @@ namespace CTS_ResourcePortal
                 bindCurrent();
                 bindPending();
                 resumeTable();
-                
             }
-
         }
 
         protected void resumeTable()
@@ -40,30 +34,24 @@ namespace CTS_ResourcePortal
             DataSet dataSet = db.GetDataSetUsingCmdObj(cmd);
             rptResumes.DataSource = dataSet;
             rptResumes.DataBind();
-
         }
 
         private void bindCurrent()
         {
-
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "GetAllCitizens";
             DataSet dataSet = db.GetDataSetUsingCmdObj(cmd);
             rptManageR.DataSource = dataSet;
             rptManageR.DataBind();
-
         }
 
         private void bindPending()
         {
-
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "GetNewCitizens";
             DataSet dataSet = db.GetDataSetUsingCmdObj(cmd);
             rptNewCitizen.DataSource = dataSet;
             rptNewCitizen.DataBind();
-            
-
         }
 
         protected void Accept1_Click(object sender, EventArgs e)
@@ -93,7 +81,6 @@ namespace CTS_ResourcePortal
 
             using (SqlCommand cmd = new SqlCommand())
             {
-
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "GetResumeFile";
                 cmd.Parameters.AddWithValue("@Email", email);
@@ -119,7 +106,6 @@ namespace CTS_ResourcePortal
             Response.BinaryWrite(bytes);
             Response.Flush();
             Response.End();
-
         }
 
         //confirmation of acceptance
@@ -129,7 +115,6 @@ namespace CTS_ResourcePortal
             string title = "";
             string body = "";
 
-
             foreach (RepeaterItem item in rptNewCitizen.Items)
             {
                 CheckBox chkRow = item.FindControl("chkRow") as CheckBox;
@@ -137,7 +122,6 @@ namespace CTS_ResourcePortal
                 if (chkRow.Checked)
                 {
                     count++;
-
                 }
             }
 
@@ -152,7 +136,6 @@ namespace CTS_ResourcePortal
                 yesAccept.Text = "Yes";
                 body = "Do you want to accept this account?";
                 ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
-
             }
 
             if (count >= 2)
@@ -166,12 +149,10 @@ namespace CTS_ResourcePortal
                 yesAccept.Text = "Yes";
                 body = "Do you want to accept these accounts?";
                 ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
-
             }
 
             if (count == 0)
             {
-                
                 title = "";
                 yes.Visible = false;
                 yesAccept.Visible = false;
@@ -181,10 +162,7 @@ namespace CTS_ResourcePortal
                 body = "Please select a account";
                 ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
             }
-
-
         }
-
 
         //if you click yes to accept account
         protected void yesAccept_Click(object sender, EventArgs e)
@@ -206,7 +184,6 @@ namespace CTS_ResourcePortal
                 CheckBox chkRow = item.FindControl("chkRow") as CheckBox;
                 string email = (item.FindControl("lblEmail") as Label).Text;
 
-
                 if (chkRow.Checked)
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -221,7 +198,7 @@ namespace CTS_ResourcePortal
                         cmd.Parameters.AddWithValue("@email", email);
                         int resultResume = db.DoUpdateUsingCmdObj(cmd);
                         cmd.Parameters.Clear();
-                        if(result == 1)
+                        if (result == 1)
                         {
                             using (SqlCommand cmd = new SqlCommand())
                             {
@@ -242,7 +219,6 @@ namespace CTS_ResourcePortal
 
                             /*using (MailMessage mm = new MailMessage())
                             {
-
                                 mm.Bcc.Add(email);
                                 mm.From = new MailAddress(ConfigurationManager.AppSettings["SMTPuser"]);
                                 mm.Subject = subject; //TODO subject date to either current date or take user input.
@@ -260,15 +236,14 @@ namespace CTS_ResourcePortal
 
                             using (MailMessage mm = new MailMessage())
                             {
+                                mm.Bcc.Add(email);
+                                mm.From = new MailAddress("ctsemailtest0@gmail.com", "Called To Serve CDC");
+                                mm.Subject = subject; //TODO subject date to either current date or take user input.
+                                mm.Body = text;
+                                mm.IsBodyHtml = true;
 
-                               mm.Bcc.Add(email);
-                               mm.From = new MailAddress("ctsemailtest0@gmail.com", "Called To Serve CDC");
-                               mm.Subject = subject; //TODO subject date to either current date or take user input.
-                               mm.Body = text;
-                               mm.IsBodyHtml = true;
-
-                               using (var client = new System.Net.Mail.SmtpClient(ConfigurationManager.AppSettings["Host"], int.Parse(ConfigurationManager.AppSettings["Port"])))
-                               {
+                                using (var client = new System.Net.Mail.SmtpClient(ConfigurationManager.AppSettings["Host"], int.Parse(ConfigurationManager.AppSettings["Port"])))
+                                {
                                     // Pass SMTP credentials
                                     client.Credentials =
                                         new NetworkCredential(ConfigurationManager.AppSettings["SMTPuser"], ConfigurationManager.AppSettings["SMTPpassword"]);
@@ -288,7 +263,7 @@ namespace CTS_ResourcePortal
                                         Console.WriteLine("The email was not sent.");
                                         Console.WriteLine("Error message: " + ex.Message);
                                     }
-                               }
+                                }
 
                                 /*SmtpClient smtp = new SmtpClient();
                                 smtp.Host = ConfigurationManager.AppSettings["Host"];
@@ -298,14 +273,11 @@ namespace CTS_ResourcePortal
                                 smtp.Credentials = nc;
                                 smtp.Port = int.Parse(ConfigurationManager.AppSettings["Port"]);
                                 smtp.Send(mm);*/
-                             }
-
-
+                            }
 
                             title = "";
                             body = "Citizen(s) Accepted!";
                             ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
-
                         }
                         else
                         {
@@ -326,15 +298,12 @@ namespace CTS_ResourcePortal
                         body = "Something went wrong, please try again";
                         ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
                     }
-
-                        
                 }
             }
 
             bindPending();
             bindCurrent();
             resumeTable();
-
         }
 
         //confirmation of rejection
@@ -343,7 +312,6 @@ namespace CTS_ResourcePortal
             int count = 0;
             string title = "";
             string body = "";
-            
 
             foreach (RepeaterItem item in rptNewCitizen.Items)
             {
@@ -357,7 +325,6 @@ namespace CTS_ResourcePortal
 
             if (count == 0)
             {
-
                 title = "";
                 close.Visible = true;
                 close.Text = "Close";
@@ -392,7 +359,6 @@ namespace CTS_ResourcePortal
                 no.Text = "No";
                 ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
             }
-
         }
 
         //reject account
@@ -424,7 +390,6 @@ namespace CTS_ResourcePortal
                     cmd.Parameters.Clear();
                     if (result == 1)
                     {
-
                         using (SqlCommand cmd = new SqlCommand())
                         {
                             cmd.CommandType = CommandType.StoredProcedure;
@@ -444,20 +409,34 @@ namespace CTS_ResourcePortal
 
                         using (MailMessage mm = new MailMessage())
                         {
-
                             mm.Bcc.Add(email);
-                            mm.From = new MailAddress(ConfigurationManager.AppSettings["SMTPuser"]);
+                            mm.From = new MailAddress("ctsemailtest0@gmail.com", "Called To Serve CDC");
                             mm.Subject = subject; //TODO subject date to either current date or take user input.
                             mm.Body = text;
                             mm.IsBodyHtml = true;
-                            SmtpClient smtp = new SmtpClient();
-                            smtp.Host = ConfigurationManager.AppSettings["Host"];
-                            smtp.EnableSsl = Convert.ToBoolean(ConfigurationManager.AppSettings["EnableSSL"]);
-                            NetworkCredential nc = new NetworkCredential(ConfigurationManager.AppSettings["SMTPuser"], ConfigurationManager.AppSettings["SMTPpassword"]);
-                            smtp.UseDefaultCredentials = true;
-                            smtp.Credentials = nc;
-                            smtp.Port = int.Parse(ConfigurationManager.AppSettings["Port"]);
-                            smtp.Send(mm);
+
+                            using (var client = new System.Net.Mail.SmtpClient(ConfigurationManager.AppSettings["Host"], int.Parse(ConfigurationManager.AppSettings["Port"])))
+                            {
+                                // Pass SMTP credentials
+                                client.Credentials =
+                                    new NetworkCredential(ConfigurationManager.AppSettings["SMTPuser"], ConfigurationManager.AppSettings["SMTPpassword"]);
+
+                                // Enable SSL encryption
+                                client.EnableSsl = true;
+
+                                // Try to send the message. Show status in console.
+                                try
+                                {
+                                    Console.WriteLine("Attempting to send email...");
+                                    client.Send(mm);
+                                    Console.WriteLine("Email sent!");
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine("The email was not sent.");
+                                    Console.WriteLine("Error message: " + ex.Message);
+                                }
+                            }
                         }
 
                         title = "";
@@ -469,7 +448,6 @@ namespace CTS_ResourcePortal
                         title = "";
                         body = "Something went wrong";
                         ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
-
                     }
                 }
             }
@@ -479,12 +457,9 @@ namespace CTS_ResourcePortal
             resumeTable();
         }
 
-
         protected void no_Click(object sender, EventArgs e)
         {
             //do nothing
         }
     }
-
-
 }

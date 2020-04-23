@@ -29,7 +29,7 @@
                     <div class="collapse navbar-collapse " id="nbitems">
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
-                                <a id="adminHome" runat="server" class="nav-link" href="AdminHomePage.aspx">Admininistrator Dashboard</a>
+                                <a id="adminHome" runat="server" class="nav-link" href="AdminHomePage.aspx">Administrator Dashboard</a>
                             </li>
                             <asp:ContentPlaceHolder ID="navli" runat="server">
                             </asp:ContentPlaceHolder>

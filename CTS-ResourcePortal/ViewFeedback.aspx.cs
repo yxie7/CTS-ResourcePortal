@@ -263,6 +263,12 @@ namespace CTS_ResourcePortal
                     //smtp.Credentials = nc;
                     //smtp.Port = int.Parse(ConfigurationManager.AppSettings["Port"]);
                     //smtp.Send(mm);
+
+                    string title = "";
+                    string body = "Feedback Sent!";
+                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup2('" + title + "', '" + body + "');", true);
+                    BindAll();
+
                 }
 
 

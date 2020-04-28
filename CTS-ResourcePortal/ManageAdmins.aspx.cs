@@ -33,6 +33,7 @@ namespace CTS_ResourcePortal
             admins.DataSource = dt;
             admins.DataBind();
         }
+
         protected void bindInactive()
         {
             SqlCommand cmd = new SqlCommand();
@@ -130,6 +131,11 @@ namespace CTS_ResourcePortal
                     ClientScript.RegisterStartupScript(this.GetType(), "infom", "infom();", true);
                 }
             }
+            else
+            {
+                lblModalTXT.Text = "Please fill out all the textboxes.";
+                ClientScript.RegisterStartupScript(this.GetType(), "infom", "infom();", true);
+            }
         }
 
         public Boolean CheckIfEmailExist(String Email)
@@ -169,6 +175,48 @@ namespace CTS_ResourcePortal
                 bindActive();
                 bindInactive();
                 lblModalTXT.Text = "Admin has been activated.";
+                ClientScript.RegisterStartupScript(this.GetType(), "infom", "infom();", true);
+            }
+        }
+
+        protected void btnChangePW_Click(object sender, EventArgs e)
+        {
+            if (true) //validpw
+            {
+                string user = Session["adminEmail"].ToString();
+
+                byte[] salt;
+                new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
+                var pbkdf2 = new Rfc2898DeriveBytes(txtCNewPassword.Text, salt, 10000);
+                byte[] hash = pbkdf2.GetBytes(20);
+                byte[] hashBytes = new byte[36];
+                Array.Copy(salt, 0, hashBytes, 0, 16);
+                Array.Copy(hash, 0, hashBytes, 16, 20);
+                string savedPasswordHash = Convert.ToBase64String(hashBytes);
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.CommandText = "UpdateAdminPassword";
+                cmd.Parameters.Add(new SqlParameter("@email", user));
+                cmd.Parameters.Add(new SqlParameter("@password", savedPasswordHash));
+                int o = db.DoUpdateUsingCmdObj(cmd);
+                if (o > 0)
+                {
+                    lblModalTXT.Text = "Password successfully changed.";
+                    ClientScript.RegisterStartupScript(this.GetType(), "infom", "infom();", true);
+                }
+                else
+                {
+
+                    lblModalTXT.Text = "Password change was unsuccessful. Please try again.";
+                    ClientScript.RegisterStartupScript(this.GetType(), "infom", "infom();", true);
+                }
+
+            }
+            else
+            {
+                lblModalTXT.Text = "Not a valid PW";
                 ClientScript.RegisterStartupScript(this.GetType(), "infom", "infom();", true);
             }
         }

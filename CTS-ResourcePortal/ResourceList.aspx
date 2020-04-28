@@ -182,7 +182,7 @@
         <div id="banner" class="text-center alert alert-primary alert-dismissible fade show" role="alert">
             <strong>Welcome!</strong> You are at the Called to Serve's Resource Portal.
             <br />
-            This will be your goto site for all the job related information you can find in the Nicetown-Tioga area!
+            This will be your go-to site for all the job related information you can find in the Nicetown-Tioga area!
             <br />
             You can find active job openings, upcoming events, and current training opportunities.
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">

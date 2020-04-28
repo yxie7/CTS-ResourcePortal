@@ -211,56 +211,74 @@ namespace CTS_ResourcePortal
 
         protected void btnReplySubmit_Click(object sender, EventArgs e)
         {
-            DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "GetCitizenByID";
-            SqlParameter id = new SqlParameter("@CitizenID", CitizenID);
-            id.Direction = ParameterDirection.Input;
-            id.SqlDbType = SqlDbType.Int;
-            cmd.Parameters.Add(id);
-            DataSet dataSet = db.GetDataSetUsingCmdObj(cmd);
-        
-
-            using (MailMessage mm = new MailMessage())
+            try
             {
-                mm.Bcc.Add(db.GetField("Email", 0).ToString());
-                mm.From = new MailAddress("ctsemailtest0@gmail.com", "Called To Serve CDC");
-                mm.Subject = DateTime.Now.ToShortDateString() + " Feedback Reply";
-                mm.Body = txtReply.InnerText;
-                mm.IsBodyHtml = true;
+                DBConnect db = new DBConnect(ConfigurationManager.ConnectionStrings["CTSConnectionString"].ConnectionString);
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "GetCitizenByID";
+                SqlParameter id = new SqlParameter("@CitizenID", CitizenID);
+                id.Direction = ParameterDirection.Input;
+                id.SqlDbType = SqlDbType.Int;
+                cmd.Parameters.Add(id);
+                DataSet dataSet = db.GetDataSetUsingCmdObj(cmd);
 
-                using (var client = new System.Net.Mail.SmtpClient(ConfigurationManager.AppSettings["Host"], int.Parse(ConfigurationManager.AppSettings["Port"])))
+
+                using (MailMessage mm = new MailMessage())
                 {
-                    // Pass SMTP credentials
-                    client.Credentials =
-                        new NetworkCredential(ConfigurationManager.AppSettings["SMTPuser"], ConfigurationManager.AppSettings["SMTPpassword"]);
+                    mm.Bcc.Add(db.GetField("Email", 0).ToString());
+                    mm.From = new MailAddress("ctsemailtest0@gmail.com", "Called To Serve CDC");
+                    mm.Subject = DateTime.Now.ToShortDateString() + " Feedback Reply";
+                    mm.Body = txtReply.InnerText;
+                    mm.IsBodyHtml = true;
 
-                    // Enable SSL encryption
-                    client.EnableSsl = true;
+                    using (var client = new System.Net.Mail.SmtpClient(ConfigurationManager.AppSettings["Host"], int.Parse(ConfigurationManager.AppSettings["Port"])))
+                    {
+                        // Pass SMTP credentials
+                        client.Credentials =
+                            new NetworkCredential(ConfigurationManager.AppSettings["SMTPuser"], ConfigurationManager.AppSettings["SMTPpassword"]);
 
-                    // Try to send the message. Show status in console.
-                    try
-                    {
-                        Console.WriteLine("Attempting to send email...");
-                        client.Send(mm);
-                        Console.WriteLine("Email sent!");
+                        // Enable SSL encryption
+                        client.EnableSsl = true;
+
+                        // Try to send the message. Show status in console.
+                        try
+                        {
+                            Console.WriteLine("Attempting to send email...");
+                            client.Send(mm);
+                            Console.WriteLine("Email sent!");
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("The email was not sent.");
+                            Console.WriteLine("Error message: " + ex.Message);
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine("The email was not sent.");
-                        Console.WriteLine("Error message: " + ex.Message);
-                    }
+
+                    //SmtpClient smtp = new SmtpClient();
+                    //smtp.Host = ConfigurationManager.AppSettings["Host"];
+                    //smtp.EnableSsl = Convert.ToBoolean(ConfigurationManager.AppSettings["EnableSSL"]);
+                    //NetworkCredential nc = new NetworkCredential(ConfigurationManager.AppSettings["SMTPuser"], ConfigurationManager.AppSettings["SMTPpassword"]);
+                    //smtp.UseDefaultCredentials = false;
+                    //smtp.Credentials = nc;
+                    //smtp.Port = int.Parse(ConfigurationManager.AppSettings["Port"]);
+                    //smtp.Send(mm);
+
+                    string title = "";
+                    string body = "Feedback Sent!";
+                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup2('" + title + "', '" + body + "');", true);
+                    BindAll();
+
                 }
 
-                //SmtpClient smtp = new SmtpClient();
-                //smtp.Host = ConfigurationManager.AppSettings["Host"];
-                //smtp.EnableSsl = Convert.ToBoolean(ConfigurationManager.AppSettings["EnableSSL"]);
-                //NetworkCredential nc = new NetworkCredential(ConfigurationManager.AppSettings["SMTPuser"], ConfigurationManager.AppSettings["SMTPpassword"]);
-                //smtp.UseDefaultCredentials = false;
-                //smtp.Credentials = nc;
-                //smtp.Port = int.Parse(ConfigurationManager.AppSettings["Port"]);
-                //smtp.Send(mm);
+
+            }
+            catch(Exception E)
+            {
+                string title = "";
+                string body = "This Email does not exist!";
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup2('" + title + "', '" + body + "');", true);
+                BindAll();
             }
         }
 

@@ -184,7 +184,7 @@
             <br />
             This will be your goto site for all the job related information you can find in the Nicetown-Tioga area!
             <br />
-            You can find active job opportunities, upcoming events, and current training opportunities.
+            You can find active job openings, upcoming events, and current training opportunities.
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>

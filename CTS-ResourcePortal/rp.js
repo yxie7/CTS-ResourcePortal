@@ -1,6 +1,6 @@
 ﻿//Sidebar menu button
 $(window).scroll(function () {
-    $("#sidebarCollapse").css("top", Math.max(0, 250 - $(this).scrollTop()));
+    $("#sidebarCollapse").css("top", Math.max(15, 250 - $(this).scrollTop()));
 });
 
 $(document).ready(function () {
@@ -43,7 +43,10 @@ $(function () {
         var resourceList = $('[id*=datatable]').DataTable({
             "scrollX": true,
             "autoWidth": false,
-            stateSave: true
+            stateSave: true,
+            "fnCreatedRow": function (nRow, aData, iDataIndex) {
+                $(nRow).children("td").css("white-space", "nowrap");
+            }
         });
         $(window).resize(function () {
             $(".sorting").width("");    //This is the class it sets to each < th >
@@ -58,7 +61,10 @@ $(function () {
                 "bLengthChange": false,
                 "autoWidth": false,
                 "scrollX": true,
-                stateSave: true
+                stateSave: true,
+                "fnCreatedRow": function (nRow, aData, iDataIndex) {
+                    $(nRow).children("td").css("white-space", "nowrap");
+                }
             });
 
         $(window).resize(function () {
@@ -73,7 +79,10 @@ $(function () {
             $('#<%= gvAdmins.ClientID %>').DataTable({
                 "scrollX": true,
                 "autoWidth": false,
-                stateSave: true
+                stateSave: true,
+                "fnCreatedRow": function (nRow, aData, iDataIndex) {
+                    $(nRow).children("td").css("white-space", "nowrap");
+                }
             });
 
         $(window).resize(function () {
@@ -115,20 +124,6 @@ $(function () {
         }
     });
 });
-
-function bindDataTable() {
-    $('[id*=datatable]').DataTable({
-        "scrollX": true,
-        "autoWidth": false
-    });
-    $('#<%= Selections.ClientID %>').DataTable({
-        "bFilter": false,
-        "bLengthChange": false,
-        stateSave: true,
-        "scrollX": true,
-        "autoWidth": false
-    });
-};
 
 function reloadTables() {
     resourceList.ajax.draw();

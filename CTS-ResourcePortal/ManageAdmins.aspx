@@ -67,7 +67,7 @@
                                 ErrorMessage="Your passwords do not match up!"
                                 Display="Dynamic" />
                             <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server"
-                                ErrorMessage="Password must be 6 characters long and only contain letters and numbers." 
+                                ErrorMessage="Password must be 6 characters long and only contain letters and numbers."
                                 ControlToValidate="txtPassword"
                                 SetFocusOnError="True"
                                 ValidationExpression="^[a-zA-Z0-9]{6,}$"
@@ -87,55 +87,54 @@
         <div class="section">
             <h2>Manage Administrators</h2>
             <br />
-            <div>
-                <div>
-                    Current Admins:
-                </div>
-                <div class="row justify-content-center">
-
-                    <asp:Repeater runat="server" ID="admins" OnItemCommand="admins_ItemCommand">
-                        <HeaderTemplate>
-                            <table id="datatable" class="table  table-hover">
-                                <thead>
-                                    <tr>
-                                        <th class="col-3 rth">First Name</th>
-                                        <th class="col-3 rth">Last Name</th>
-                                        <th class="col-3 rth">Email</th>
-                                        <th class="col-3 rth">Phone Number</th>
-                                        <th class="col-3 rth">Activate</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                        </HeaderTemplate>
-                        <ItemTemplate>
-                            <tr>
-                                <td class="rtd">
-                                    <asp:Label ID="lblFirstName" Text='<%# Eval("FirstName") %>' runat="server" />
-                                    <asp:HiddenField runat="server" ID="adminID" Value='<%# Eval("AdministratorID") %>' />
-                                </td>
-                                <td class="rtd">
-                                    <asp:Label ID="lblLastName" Text='<%# Eval("LastName") %>' runat="server" />
-                                </td>
-                                <td class="rtd">
-                                    <asp:Label ID="lblEmail" Text='<%# Eval("Email") %>' runat="server" />
-                                </td>
-                                <td class="rtd">
-                                    <asp:Label ID="lblPhoneNumber" Text='<%# Eval("PhoneNumber") %>' runat="server" />
-                                </td>
-                                <td class="rtd">
-                                    <asp:Button ID="btnInactivate" CssClass="btn btn-danger" Text="Inactivate" runat="server" UseSubmitBehavior="false" />
-                                </td>
-                            </tr>
-                        </ItemTemplate>
-                        <FooterTemplate>
-                            </tbody></table>
-                        </FooterTemplate>
-                    </asp:Repeater>
-                </div>
-                <hr />
-                <br />
-                <div class="justify-content-center row">
-                    <asp:Button Text="Create a New Administrator" runat="server" ID="btnCreateNewAdmin" OnClick="btnCreateNewAdmin_Click" CssClass="btn btn-lg btn-primary" UseSubmitBehavior="false" />
+            <div class="row justify-content-center">
+                <div class="col-10">
+                    <label>Current Admins:</label><br />
+                    <div class="row justify-content-center">
+                        <asp:Repeater runat="server" ID="admins" OnItemCommand="admins_ItemCommand">
+                            <HeaderTemplate>
+                                <table id="datatable" class="table  table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th class="col-3 rth">First Name</th>
+                                            <th class="col-3 rth">Last Name</th>
+                                            <th class="col-3 rth">Email</th>
+                                            <th class="col-3 rth">Phone Number</th>
+                                            <th class="col-3 rth">Activate</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                            </HeaderTemplate>
+                            <ItemTemplate>
+                                <tr>
+                                    <td class="rtd">
+                                        <asp:Label ID="lblFirstName" Text='<%# Eval("FirstName") %>' runat="server" />
+                                        <asp:HiddenField runat="server" ID="adminID" Value='<%# Eval("AdministratorID") %>' />
+                                    </td>
+                                    <td class="rtd">
+                                        <asp:Label ID="lblLastName" Text='<%# Eval("LastName") %>' runat="server" />
+                                    </td>
+                                    <td class="rtd">
+                                        <asp:Label ID="lblEmail" Text='<%# Eval("Email") %>' runat="server" />
+                                    </td>
+                                    <td class="rtd">
+                                        <asp:Label ID="lblPhoneNumber" Text='<%# Eval("PhoneNumber") %>' runat="server" />
+                                    </td>
+                                    <td class="rtd">
+                                        <asp:Button ID="btnInactivate" CssClass="btn btn-danger" Text="Inactivate" runat="server" UseSubmitBehavior="false" />
+                                    </td>
+                                </tr>
+                            </ItemTemplate>
+                            <FooterTemplate>
+                                </tbody></table>
+                            </FooterTemplate>
+                        </asp:Repeater>
+                    </div>
+                    <hr />
+                    <br />
+                    <div class="justify-content-center row">
+                        <asp:Button Text="Create a New Administrator" runat="server" ID="btnCreateNewAdmin" OnClick="btnCreateNewAdmin_Click" CssClass="btn btn-lg btn-primary" UseSubmitBehavior="false" />
+                    </div>
                 </div>
             </div>
         </div>
@@ -189,7 +188,7 @@
             <h2>Change My Password</h2>
             <br />
             <div class="row justify-content-center ">
-                <div class="row col-12">
+                <div class="row col-10">
                     <div class="col">
                         <label>Password: </label>
                         <asp:TextBox ID="txtNewPassword" required="true" type="password" CssClass="form-control" runat="server"></asp:TextBox>
@@ -210,13 +209,42 @@
                             ErrorMessage="Password must be 6 characters long and only contain letters and numbers." ControlToValidate="txtNewPassword"
                             SetFocusOnError="True"
                             ValidationExpression="^[a-zA-Z0-9]{6,}$"
-                            ForeColor="Red">
+                            ForeColor="Red"
+                            Display="Dynamic">
                         </asp:RegularExpressionValidator>
                     </div>
                 </div>
             </div>
+            <br />
             <div class="row justify-content-center">
                 <asp:Button ID="btnChangePW" CssClass="btn btn-primary" Text="Change Password" runat="server" UseSubmitBehavior="false" OnClick="btnChangePW_Click" />
+            </div>
+        </div>
+        <br />
+        <div class="section">
+            <h2>Update My Phone Number</h2>
+            <br />
+            <div class="row justify-content-center">
+                <div class="col-md-auto align-middle">
+                    <label>Cell Phone:</label>
+                </div>
+                <div class="col-md-2 ">
+                    <asp:TextBox ID="txtChangePhone" required="true" CssClass="form-control " runat="server" placeholder="###-###-####"></asp:TextBox>
+                </div>
+                <div class="col-md-auto">
+                    <asp:Button Text="Update" ID="btnUpdatePhone" OnClick="btnUpdatePhone_Click" runat="server" CssClass="btn btn-primary" UseSubmitBehavior="false" />
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
+                    ControlToValidate="txtChangePhone" ErrorMessage="Cannot leave phone number blank."
+                    SetFocusOnError="True" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server"
+                    ErrorMessage="Please Enter A Valid Cell Phone Number. Format the number like: ###-###-####" ControlToValidate="txtChangePhone"
+                    SetFocusOnError="True"
+                    ValidationExpression="^[2-9]\d{2}-\d{3}-\d{4}$" ForeColor="Red"
+                    Display="Dynamic">
+                </asp:RegularExpressionValidator>
             </div>
         </div>
     </div>

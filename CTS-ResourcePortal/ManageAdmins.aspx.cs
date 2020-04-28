@@ -220,5 +220,28 @@ namespace CTS_ResourcePortal
                 ClientScript.RegisterStartupScript(this.GetType(), "infom", "infom();", true);
             }
         }
+
+        protected void btnUpdatePhone_Click(object sender, EventArgs e)
+        {
+            string user = Session["adminEmail"].ToString();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "UpdateAdminPhone";
+
+            cmd.Parameters.Add(new SqlParameter("@email", user));
+            cmd.Parameters.Add(new SqlParameter("@phone", txtChangePhone.Text));
+            int o = db.DoUpdateUsingCmdObj(cmd);
+            if (o > 0)
+            {
+                lblModalTXT.Text = "Phone number successfully updated.";
+                ClientScript.RegisterStartupScript(this.GetType(), "infom", "infom();", true);
+            }
+            else
+            {
+                lblModalTXT.Text = "Phone number was NOT updated. Please try again.";
+                ClientScript.RegisterStartupScript(this.GetType(), "infom", "infom();", true);
+            }
+        }
     }
 }

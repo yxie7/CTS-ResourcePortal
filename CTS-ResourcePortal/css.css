@@ -121,7 +121,7 @@ input[type=radio] {
 }
 
 .commentBox {
-    width: 30%;
+    /*width: 30%;*/
 }
 
 .resourceTitle {
@@ -130,7 +130,7 @@ input[type=radio] {
 }
 
 @media screen and (max-width: 1000px) {
-    .rth {
+    /*.rth {
         display: none;
         width: 100%;
     }
@@ -157,7 +157,7 @@ input[type=radio] {
             top: 0px;
             left: 0px;
             content: attr(data-header);
-        }
+        }*/
 
     #jobResourceCollapse th, #eventResourceCollapse th, #trainingResourceCollapse th {
         display: none;

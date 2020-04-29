@@ -85,13 +85,22 @@ namespace CTS_ResourcePortal {
         protected global::System.Web.UI.WebControls.CompareValidator comparePasswords;
         
         /// <summary>
-        /// RegularExpressionValidator2 control.
+        /// RGX_txtPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator2;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RGX_txtPassword;
+        
+        /// <summary>
+        /// RGX_txtPhoneNumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RGX_txtPhoneNumber;
         
         /// <summary>
         /// btnCancel control.
@@ -202,21 +211,12 @@ namespace CTS_ResourcePortal {
         protected global::System.Web.UI.WebControls.Button btnUpdatePhone;
         
         /// <summary>
-        /// RequiredFieldValidator3 control.
+        /// RGX_txtChangePhone control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
-        
-        /// <summary>
-        /// RegularExpressionValidator3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator3;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RGX_txtChangePhone;
     }
 }

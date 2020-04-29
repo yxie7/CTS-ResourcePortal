@@ -41,7 +41,7 @@
                         <div class="row col-12">
                             <div class="col">
                                 <label>Phone Number:</label>
-                                <asp:TextBox ID="txtPhoneNumber" required="true" CssClass="form-control" runat="server" placeholder="(123)456-7890"></asp:TextBox>
+                                <asp:TextBox ID="txtPhoneNumber" required="true" CssClass="form-control" runat="server" placeholder="###-###-####"></asp:TextBox>
                             </div>
                             <div class="col">
                                 <label>Email Address</label>
@@ -58,22 +58,30 @@
                         <div class="col">
                             <label>Confirm Password:</label>
                             <asp:TextBox ID="txtCPassword" required="true" type="password" CssClass="form-control" runat="server"></asp:TextBox>
-                            <asp:CompareValidator ID="comparePasswords"
-                                runat="server"
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <asp:CompareValidator ID="comparePasswords" runat="server"
                                 SetFocusOnError="True"
                                 ControlToCompare="txtPassword"
                                 ControlToValidate="txtCPassword"
                                 ForeColor="Red"
                                 ErrorMessage="Your passwords do not match up!"
                                 Display="Dynamic" />
-                            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server"
+                            <asp:RegularExpressionValidator ID="RGX_txtPassword" runat="server"
                                 ErrorMessage="Password must be 6 characters long and only contain letters and numbers."
                                 ControlToValidate="txtPassword"
                                 SetFocusOnError="True"
-                                ValidationExpression="^[a-zA-Z0-9]{6,}$"
-                                ForeColor="Red">
+                                ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$"
+                                ForeColor="Red"
+                                Display="Dynamic">
                             </asp:RegularExpressionValidator>
-                        </div>
+                            <asp:RegularExpressionValidator ID="RGX_txtPhoneNumber" runat="server"
+                                ErrorMessage="Please Enter A Valid Phone Number. Format the number like: ###-###-####" ControlToValidate="txtPhoneNumber"
+                                SetFocusOnError="True"
+                                ValidationExpression="^[2-9]\d{2}-\d{3}-\d{4}$" ForeColor="Red"
+                                Display="Dynamic">
+                            </asp:RegularExpressionValidator>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -100,7 +108,7 @@
                                             <th class="col-3 rth">Last Name</th>
                                             <th class="col-3 rth">Email</th>
                                             <th class="col-3 rth">Phone Number</th>
-                                            <th class="col-3 rth">Activate</th>
+                                            <th class="col-3 rth">Inctivate</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -152,7 +160,7 @@
                                     <th class="col-3 rth">Last Name</th>
                                     <th class="col-3 rth">Email</th>
                                     <th class="col-3 rth">Phone Number</th>
-                                    <th class="col-3 rth">Inactivate</th>
+                                    <th class="col-3 rth">Activate</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -226,7 +234,7 @@
             <br />
             <div class="row justify-content-center">
                 <div class="col-md-auto align-middle">
-                    <label>Cell Phone:</label>
+                    <label>New Phone Number:</label>
                 </div>
                 <div class="col-md-2 ">
                     <asp:TextBox ID="txtChangePhone" required="true" CssClass="form-control " runat="server" placeholder="###-###-####"></asp:TextBox>
@@ -236,11 +244,8 @@
                 </div>
             </div>
             <div class="row justify-content-center">
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
-                    ControlToValidate="txtChangePhone" ErrorMessage="Cannot leave phone number blank."
-                    SetFocusOnError="True" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
-                <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server"
-                    ErrorMessage="Please Enter A Valid Cell Phone Number. Format the number like: ###-###-####" ControlToValidate="txtChangePhone"
+                <asp:RegularExpressionValidator ID="RGX_txtChangePhone" runat="server"
+                    ErrorMessage="Please Enter A Valid Phone Number. Format the number like: ###-###-####" ControlToValidate="txtChangePhone"
                     SetFocusOnError="True"
                     ValidationExpression="^[2-9]\d{2}-\d{3}-\d{4}$" ForeColor="Red"
                     Display="Dynamic">

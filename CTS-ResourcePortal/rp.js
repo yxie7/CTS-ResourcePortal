@@ -18,10 +18,10 @@ $(document).ready(function () {
     });
     //End sidebar js
 
-    //Banner cookie generator
+    //Banner cookie generator, hides the welcome banner if this cookie exists
     if (document.getElementById("btnBanner")) {
         document.getElementById("btnBanner").onclick = function () {
-            var days = 14;
+            var days = 1;
             var exp = new Date();
             exp.setTime(exp.getTime() + (days * 24 * 60 * 60 * 1000));
             exp = exp.toUTCString();

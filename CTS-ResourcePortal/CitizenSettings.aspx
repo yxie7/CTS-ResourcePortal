@@ -104,6 +104,25 @@
                     <div class="col-1"></div>
                 </div>
                 <br />
+                <div class="row justify-content-center">
+                    <asp:CompareValidator ID="comparePasswords" runat="server"
+                        SetFocusOnError="True"
+                        ControlToCompare="txtNewPassword"
+                        ControlToValidate="txtConfirmPassword"
+                        ForeColor="Red"
+                        ErrorMessage="Your passwords do not match up!"
+                        Display="Dynamic" />
+                </div>
+                <div class="row justify-content-center">
+                    <asp:RegularExpressionValidator ID="RGX_txtPassword" runat="server"
+                        ErrorMessage="Password must be at least 6 alphanumeric characters with at least 1 number, 1 upper case, and 1 lower casee letter."
+                        ControlToValidate="txtNewPassword"
+                        SetFocusOnError="True"
+                        ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$"
+                        ForeColor="Red"
+                        Display="Dynamic">
+                    </asp:RegularExpressionValidator>
+                </div>
                 <div class="row ">
                     <div class="col"></div>
                     <div class="col-6 d-flex justify-content-center">

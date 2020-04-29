@@ -62,26 +62,26 @@
                     </div>
                     <div class="row justify-content-center">
                         <asp:CompareValidator ID="comparePasswords" runat="server"
-                                SetFocusOnError="True"
-                                ControlToCompare="txtPassword"
-                                ControlToValidate="txtCPassword"
-                                ForeColor="Red"
-                                ErrorMessage="Your passwords do not match up!"
-                                Display="Dynamic" />
-                            <asp:RegularExpressionValidator ID="RGX_txtPassword" runat="server"
-                                ErrorMessage="Password must be 6 characters long and only contain letters and numbers."
-                                ControlToValidate="txtPassword"
-                                SetFocusOnError="True"
-                                ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$"
-                                ForeColor="Red"
-                                Display="Dynamic">
-                            </asp:RegularExpressionValidator>
-                            <asp:RegularExpressionValidator ID="RGX_txtPhoneNumber" runat="server"
-                                ErrorMessage="Please Enter A Valid Phone Number. Format the number like: ###-###-####" ControlToValidate="txtPhoneNumber"
-                                SetFocusOnError="True"
-                                ValidationExpression="^[2-9]\d{2}-\d{3}-\d{4}$" ForeColor="Red"
-                                Display="Dynamic">
-                            </asp:RegularExpressionValidator>
+                            SetFocusOnError="True"
+                            ControlToCompare="txtPassword"
+                            ControlToValidate="txtCPassword"
+                            ForeColor="Red"
+                            ErrorMessage="Your passwords do not match up!"
+                            Display="Dynamic" />
+                        <asp:RegularExpressionValidator ID="RGX_txtPassword" runat="server"
+                            ErrorMessage="Password must be at least 6 alphanumeric characters with at least 1 number, 1 upper case, and 1 lower casee letter."
+                            ControlToValidate="txtPassword"
+                            SetFocusOnError="True"
+                            ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$"
+                            ForeColor="Red"
+                            Display="Dynamic">
+                        </asp:RegularExpressionValidator>
+                        <asp:RegularExpressionValidator ID="RGX_txtPhoneNumber" runat="server"
+                            ErrorMessage="Please Enter A Valid Phone Number. Format the number like: ###-###-####" ControlToValidate="txtPhoneNumber"
+                            SetFocusOnError="True"
+                            ValidationExpression="^[2-9]\d{2}-\d{3}-\d{4}$" ForeColor="Red"
+                            Display="Dynamic">
+                        </asp:RegularExpressionValidator>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -214,9 +214,9 @@
                             Display="Dynamic" />
 
                         <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
-                            ErrorMessage="Password must be 6 characters long and only contain letters and numbers." ControlToValidate="txtNewPassword"
+                            ErrorMessage="Password must be at least 6 alphanumeric characters with at least 1 number, 1 upper case, and 1 lower casee letter." ControlToValidate="txtNewPassword"
                             SetFocusOnError="True"
-                            ValidationExpression="^[a-zA-Z0-9]{6,}$"
+                            ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$"
                             ForeColor="Red"
                             Display="Dynamic">
                         </asp:RegularExpressionValidator>

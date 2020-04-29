@@ -54,25 +54,22 @@ $(function () {
             $(".dataTables_scrollHeadInner").width("100%"); // Class of div added by DataTables, contains the header table.
         });
     }
-    if (document.getElementById('#<%= Selections.ClientID %>')) {
-        var selections =
-            $('#<%= Selections.ClientID %>').DataTable({
-                "bFilter": false,
-                "bLengthChange": false,
-                "autoWidth": false,
-                "scrollX": true,
-                stateSave: true,
-                "fnCreatedRow": function (nRow, aData, iDataIndex) {
-                    $(nRow).children("td").css("white-space", "nowrap");
-                }
-            });
+    //if (document.getElementById('#<%= Selections.ClientID %>')) {
+    //    var selections =
+    //        $('#<%= Selections.ClientID %>').DataTable({
+    //            "bFilter": false,
+    //            "bLengthChange": false,
+    //            "autoWidth": false,
+    //            "scrollX": true,
+    //            stateSave: true
+    //        });
 
-        $(window).resize(function () {
-            $(".sorting").width("");    //This is the class it sets to each < th >
-            $(".table").width("100%");     //Class I set to the table for  this. An id won't work.
-            $(".dataTables_scrollHeadInner").width("100%"); // Class of div added by DataTables, contains the header table.
-        });
-    }
+    //    $(window).resize(function () {
+    //        $(".sorting").width("");    //This is the class it sets to each < th >
+    //        $(".table").width("100%");     //Class I set to the table for  this. An id won't work.
+    //        $(".dataTables_scrollHeadInner").width("100%"); // Class of div added by DataTables, contains the header table.
+    //    });
+    //}
 
     if (document.getElementById('#<%= gvAdmins.ClientID %>')) {
         var admins =
@@ -158,6 +155,10 @@ function ShowPopup3(title, body) {
 function toasted(body) {
     $("#TheModal .modal-body").html(body);
     $("#TheModal").modal("show");
+};
+
+function commentModal() {
+    $("#commentModal").modal("show");
 };
 
 function infom() {

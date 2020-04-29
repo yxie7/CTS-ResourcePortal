@@ -20,23 +20,6 @@ namespace CTS_ResourcePortal
             //Selections table
             if (!IsPostBack)
             {
-                //if (Request.QueryString["filter"] == "1")
-                //{
-                //    generateJobs();
-                //}
-                //else if (Request.QueryString["filter"] == "2")
-                //{
-                //    generateEvents();
-                //}
-                //else if (Request.QueryString["filter"] == "3")
-                //{
-                //    generateTraining();
-                //}
-                //else
-                //{
-                //    //generateTables();
-                //    generateAll();
-                //}
                 generateAll();
                 refreshTables();
             }
@@ -57,6 +40,9 @@ namespace CTS_ResourcePortal
                 Selections.HeaderRow.TableSection = TableRowSection.TableHeader;
                 Selections.FooterRow.TableSection = TableRowSection.TableFooter;
             }
+
+            Selections.Columns[1].ItemStyle.Width = 50;
+            Selections.Columns[1].ItemStyle.Wrap = true;
         }
 
         protected void btnPreview_Click(object sender, EventArgs e)
@@ -73,7 +59,7 @@ namespace CTS_ResourcePortal
             else
             {
                 //ScriptManager.RegisterStartupScript(this, GetType(), "Script", "toasted();", true);
-                ScriptManager.RegisterStartupScript(this,GetType(), "Toast", "toasted(\"No selections were made...<br> You can't continue!\");", true);
+                ScriptManager.RegisterStartupScript(this, GetType(), "Toast", "toasted(\"No selections were made...<br> You can't continue!\");", true);
             }
         }
 
@@ -146,25 +132,21 @@ namespace CTS_ResourcePortal
         protected void btnAll_Click(object sender, EventArgs e)
         {
             generateAll();
-            //Response.Redirect("NewsletterCreate.aspx");
         }
 
         protected void btnJob_Click(object sender, EventArgs e)
         {
             generateJobs();
-            //Response.Redirect("NewsletterCreate.aspx?filter=1");
         }
 
         protected void btnEvent_Click(object sender, EventArgs e)
         {
             generateEvents();
-            //Response.Redirect("NewsletterCreate.aspx?filter=2");
         }
 
         protected void btnTraining_Click(object sender, EventArgs e)
         {
             generateTraining();
-            //Response.Redirect("NewsletterCreate.aspx?filter=3");
         }
 
         // triggers from botton click of each row, adds row details to list and list to session
@@ -177,32 +159,25 @@ namespace CTS_ResourcePortal
             TextBox txt = rpt.Items[rowIndex].FindControl("txtComment") as TextBox;
 
             int selectionID = int.Parse(hf.Value);
-            string selectionName = lbl.Text;
-            string selectionComment = txt.Text;
 
             List<NewsletterItem> selectionList = new List<NewsletterItem>();
             if (Session["NewsletterSelections"] != null)
             {
                 selectionList = Session["NewsletterSelections"] as List<NewsletterItem>;
             }
-
+            //check if resource already added
             if (selectionList.Any(s => s.ResourceID == selectionID))
             { //resource already added
                 ClientScript.RegisterStartupScript(GetType(), "Modal", "toasted(\"Resources cannot be added twice!<br>Delete the existing one in the table below before continuing...\");", true);
             }
-            else
-            { //resource not added yet
-                selectionList.Add(new NewsletterItem(selectionID, selectionName, selectionComment));
-                Session["NewsletterSelections"] = selectionList;
-                refreshTables();
-                //ClientScript.RegisterStartupScript(GetType(), "Reload", "reloadTables();", true);
-                ClientScript.RegisterStartupScript(GetType(), "Modal", "toasted(\"Resource has been added\");", true);
+            else //modal to add the resource pop ups with optional comment box
+            {
+                hiddenID.Value = hf.Value;
+                hiddenName.Value = lbl.Text;
 
-                // Response.Redirect(Request.RawUrl);
+                nliName.InnerHtml = lbl.Text;
+                ClientScript.RegisterStartupScript(GetType(), "comment", "commentModal();", true);
             }
-
-            //UpdatePanel.Update();
-            //ScriptManager.RegisterStartupScript(this, GetType(), "bindDataTable", "bindDataTable();", true);
         }
 
         protected void btnRemove_Click(object sender, EventArgs e)
@@ -223,9 +198,39 @@ namespace CTS_ResourcePortal
                     break;
                 }
             }
-                refreshTables();
+            refreshTables();
             ClientScript.RegisterStartupScript(GetType(), "Modal", "toasted(\"Resource has been removed\");", true);
             //Response.Redirect(Request.RawUrl);
+        }
+
+        protected void btnAddItem_Click(object sender, EventArgs e)
+        {
+            int selectionID = int.Parse(hiddenID.Value);
+            string selectionName = hiddenName.Value;
+            selectionName = nliName.InnerText;
+            string selectionComment = txtComment.Text;
+
+            List<NewsletterItem> selectionList = new List<NewsletterItem>();
+            if (Session["NewsletterSelections"] != null)
+            {
+                selectionList = Session["NewsletterSelections"] as List<NewsletterItem>;
+            }
+            //check if resource already added
+            if (selectionList.Any(s => s.ResourceID == selectionID))
+            { //resource already added
+                ClientScript.RegisterStartupScript(GetType(), "Modal", "toasted(\"Resources cannot be added twice!<br>Delete the existing one in the table below before continuing...\");", true);
+            }
+            else
+            { //resource NOT added
+                selectionList.Add(new NewsletterItem(selectionID, selectionName, selectionComment));
+                Session["NewsletterSelections"] = selectionList;
+                refreshTables();
+                ClientScript.RegisterStartupScript(GetType(), "Modal", "toasted(\"Resource has been added\");", true);
+
+                hiddenID.Value = "";
+                hiddenName.Value = "";
+                txtComment.Text = "";
+            }
         }
     }
 }

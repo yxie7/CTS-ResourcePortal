@@ -160,6 +160,10 @@ function toasted(body) {
     $("#TheModal").modal("show");
 };
 
+function commentModal() {
+    $("#commentModal").modal("show");
+};
+
 function infom() {
     $("#info").modal("show");
 }

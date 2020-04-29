@@ -15,7 +15,27 @@
     <div class="modal fade" id="TheModal" role="dialog">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content container">
-                <div class="modal-body align-content-center  text-center">
+                <div class="modal-body align-content-center text-center">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="commentModal" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content container">
+                <div class="modal-body align-content-center text-center">
+                    <h2 runat="server" id="nliName"></h2>
+
+                    <asp:HiddenField runat="server" ID="hiddenID" />
+                    <asp:HiddenField runat="server" ID="hiddenName" />
+
+                    <asp:Label Text="" runat="server" Visible="false" ID="lblID" />
+                    <asp:Label Text="" runat="server" Visible="false" ID="lblName" />
+                    <asp:TextBox runat="server" ID="txtComment" CssClass="form-control" TextMode="multiline" Rows="3" Columns="50" placeholder="(Optional) Enter comments, tips, or other information here..."></asp:TextBox>
+                </div>
+                <div class="modal-footer">
+                    <asp:Button ID="btnCancel" Text="Cancel" runat="server" data-dismiss="modal" CssClass="btn btn-danger" UseSubmitBehavior="false" />
+                    <asp:Button Text="Add" CssClass="btn btn-success" runat="server" UseSubmitBehavior="false" ID="btnAddItem" OnClick="btnAddItem_Click" />
                 </div>
             </div>
         </div>
@@ -47,12 +67,12 @@
                                 <thead>
                                     <tr>
                                         <th class="rth">Resource Title</th>
-                                        <th class="rth" style="width:10%">Resource Type</th>
+                                        <th class="rth" style="width: 10%">Resource Type</th>
                                         <th class="rth">Company Name</th>
                                         <th class="rth">Start Date</th>
-                                        <th class="rth">EndDate</th>                                        
-                                        <th class="rth commentBox" style="width:10%">Comments</th>
-                                        <th class="rth" style="width:10%">Add</th>
+                                        <th class="rth">EndDate</th>
+                                        <%--<th class="rth commentBox" style="width:10%">Comments</th>--%>
+                                        <th class="rth" style="width: 10%">Add</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -64,20 +84,20 @@
                                     <asp:HiddenField runat="server" ID="hfID" Value='<%# Eval("ResourcesID") %>' />
                                 </td>
                                 <td data-header="Resource Type:" class="rtd">
-                                    <asp:Label runat="server" id="lblResourceType" Text='<%# Eval("ResourceTypeID").ToString() == "1"? "Job":(Eval("ResourceTypeID").ToString()) == "2"? "Event":"Training" %>' ></asp:Label>
+                                    <asp:Label runat="server" ID="lblResourceType" Text='<%# Eval("ResourceTypeID").ToString() == "1"? "Job":(Eval("ResourceTypeID").ToString()) == "2"? "Event":"Training" %>'></asp:Label>
                                 </td>
                                 <td data-header="Company" class="rtd">
                                     <asp:Label ID="lblCompany" Text='<%# Eval("Company") %>' runat="server" />
                                 </td>
-                                <td  data-header="Start Date" class="rtd">
+                                <td data-header="Start Date" class="rtd">
                                     <asp:Label ID="lblStartDate" Text='<%# Eval("StartDate")==null ? String.Empty: DateTime.Parse(Eval("StartDate").ToString()).ToString("MM/dd/yyyy") %>' runat="server" />
                                 </td>
                                 <td data-header="End Date" class="rtd">
                                     <asp:Label ID="lblEndDate" Text='<%# Eval("EndDate")==null ? String.Empty: DateTime.Parse(Eval("StartDate").ToString()).ToString("MM/dd/yyyy") %>' runat="server" />
                                 </td>
-                                <td data-header="Comment:" class="rtd">
+                                <%--<td data-header="Comment:" class="rtd">
                                     <asp:TextBox runat="server" ID="txtComment" CssClass="form-control" TextMode="multiline" Rows="3" placeholder="(Optional) Enter comments, tips, or other information here..."></asp:TextBox>
-                                </td>
+                                </td>--%>
                                 <td class="rtd">
                                     <asp:Button ID="btnAdd" CssClass="btn btn-success" Text="Add" runat="server" OnClientClick="" UseSubmitBehavior="false" />
                                 </td>
@@ -98,7 +118,7 @@
                     <asp:GridView ID="Selections" CssClass="table table-hover" runat="server" AutoGenerateColumns="false" DataKeyNames="ResourceID" GridLines="None">
                         <Columns>
                             <asp:BoundField DataField="ResourceName" HeaderText="Resource Title" HeaderStyle-CssClass="" HeaderStyle-Width="40%" />
-                            <asp:BoundField DataField="Comment" HeaderText="Comment" HeaderStyle-CssClass="" HeaderStyle-Width="50%"/>
+                            <asp:BoundField DataField="Comment" HeaderText="Comment" HeaderStyle-CssClass="" HeaderStyle-Width="50%" />
                             <asp:TemplateField HeaderText="Remove" HeaderStyle-Width="10%">
                                 <ItemTemplate>
                                     <asp:Button Text="Remove" runat="server" ID="btnRemove" CssClass="btn btn-danger" OnClick="btnRemove_Click" UseSubmitBehavior="false" />
@@ -125,5 +145,5 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="js" runat="server">
     <script type="text/javascript">
-    </script>
+</script>
 </asp:Content>

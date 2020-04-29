@@ -40,6 +40,9 @@ namespace CTS_ResourcePortal
                 Selections.HeaderRow.TableSection = TableRowSection.TableHeader;
                 Selections.FooterRow.TableSection = TableRowSection.TableFooter;
             }
+
+            Selections.Columns[1].ItemStyle.Width = 50;
+            Selections.Columns[1].ItemStyle.Wrap = true;
         }
 
         protected void btnPreview_Click(object sender, EventArgs e)
@@ -154,7 +157,7 @@ namespace CTS_ResourcePortal
             HiddenField hf = rpt.Items[rowIndex].FindControl("hfID") as HiddenField;
             Label lbl = rpt.Items[rowIndex].FindControl("lblName") as Label;
             TextBox txt = rpt.Items[rowIndex].FindControl("txtComment") as TextBox;
-            
+
             int selectionID = int.Parse(hf.Value);
 
             List<NewsletterItem> selectionList = new List<NewsletterItem>();
@@ -212,15 +215,22 @@ namespace CTS_ResourcePortal
             {
                 selectionList = Session["NewsletterSelections"] as List<NewsletterItem>;
             }
+            //check if resource already added
+            if (selectionList.Any(s => s.ResourceID == selectionID))
+            { //resource already added
+                ClientScript.RegisterStartupScript(GetType(), "Modal", "toasted(\"Resources cannot be added twice!<br>Delete the existing one in the table below before continuing...\");", true);
+            }
+            else
+            { //resource NOT added
+                selectionList.Add(new NewsletterItem(selectionID, selectionName, selectionComment));
+                Session["NewsletterSelections"] = selectionList;
+                refreshTables();
+                ClientScript.RegisterStartupScript(GetType(), "Modal", "toasted(\"Resource has been added\");", true);
 
-            selectionList.Add(new NewsletterItem(selectionID, selectionName, selectionComment));
-            Session["NewsletterSelections"] = selectionList;
-            refreshTables();
-            ClientScript.RegisterStartupScript(GetType(), "Modal", "toasted(\"Resource has been added\");", true);
-
-            hiddenID.Value = "";
-            hiddenName.Value = "";
-            txtComment.Text = "";
+                hiddenID.Value = "";
+                hiddenName.Value = "";
+                txtComment.Text = "";
+            }
         }
     }
 }

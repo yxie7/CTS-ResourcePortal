@@ -117,8 +117,8 @@
                     <label>Current Newsletter Items:</label><br />
                     <asp:GridView ID="Selections" CssClass="table table-hover" runat="server" AutoGenerateColumns="false" DataKeyNames="ResourceID" GridLines="None">
                         <Columns>
-                            <asp:BoundField DataField="ResourceName" HeaderText="Resource Title" HeaderStyle-CssClass="" HeaderStyle-Width="40%" />
-                            <asp:BoundField DataField="Comment" HeaderText="Comment" HeaderStyle-CssClass="" HeaderStyle-Width="50%" />
+                            <asp:BoundField DataField="ResourceName" HeaderText="Resource Title" ItemStyle-CssClass="maxWidthGrid" HeaderStyle-Width="40%" ItemStyle-wrap="true" />
+                            <asp:BoundField DataField="Comment" HeaderText="Comment" ItemStyle-CssClass="maxWidthGrid" HeaderStyle-Width="50%" ItemStyle-wrap="true"/>
                             <asp:TemplateField HeaderText="Remove" HeaderStyle-Width="10%">
                                 <ItemTemplate>
                                     <asp:Button Text="Remove" runat="server" ID="btnRemove" CssClass="btn btn-danger" OnClick="btnRemove_Click" UseSubmitBehavior="false" />

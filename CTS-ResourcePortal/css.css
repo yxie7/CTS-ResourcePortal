@@ -33,6 +33,11 @@ wd {
     border-bottom: 5px solid black;
 }
 
+.maxWidthGrid {
+    max-width: 300px;
+    word-wrap: break-word
+}
+
 #newsletterPreview, .newsletterPreview {
     margin: 0;
     padding: 0 25px;

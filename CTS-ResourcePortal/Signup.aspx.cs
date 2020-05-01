@@ -67,11 +67,11 @@ namespace CTS_ResourcePortal
                     lblStatusSignUp.Text = "Valid Zip-Code Length is 5";
                     ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
                 }
-                else if (txtPassword.Text == "" || txtPassword.Text.Length < 6)
-                {
-                    lblStatusSignUp.Text = "Password needs to be atleast 6 characters.";
-                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
-                }
+                //else if (txtPassword.Text == "" || txtPassword.Text.Length < 6)
+                //{
+                //    lblStatusSignUp.Text = "Password needs to be atleast 6 characters.";
+                //    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup();", true);
+                //}
                 else if (txtPassword.Text != txtCPassword.Text)
                 {
                     lblStatusSignUp.Text = "Passwords do not match.";

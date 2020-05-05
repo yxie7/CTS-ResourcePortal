@@ -90,7 +90,7 @@ namespace CTS_ResourcePortal
                     mm.Bcc.Add(db.GetField("Email", i).ToString());
                 }
 
-                mm.From = new MailAddress("ctsemailtest0@gmail.com", "Called To Serve CDC");
+                mm.From = new MailAddress(ConfigurationManager.AppSettings["SMTPEmailAddress"], ConfigurationManager.AppSettings["SMTPEmailDisplayName"]);
                 mm.Subject = DateTime.Now.ToShortDateString() + " Newsletter"; //TODO subject date to either current date or take user input.
                 mm.Body = hnl;
                 mm.IsBodyHtml = true;

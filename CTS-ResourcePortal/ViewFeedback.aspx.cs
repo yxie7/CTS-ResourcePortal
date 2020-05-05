@@ -227,7 +227,7 @@ namespace CTS_ResourcePortal
                 using (MailMessage mm = new MailMessage())
                 {
                     mm.Bcc.Add(db.GetField("Email", 0).ToString());
-                    mm.From = new MailAddress("ctsemailtest0@gmail.com", "Called To Serve CDC");
+                    mm.From = new MailAddress(ConfigurationManager.AppSettings["SMTPEmailAddress"], ConfigurationManager.AppSettings["SMTPEmailDisplayName"]);
                     mm.Subject = DateTime.Now.ToShortDateString() + " Feedback Reply";
                     mm.Body = txtReply.InnerText;
                     mm.IsBodyHtml = true;

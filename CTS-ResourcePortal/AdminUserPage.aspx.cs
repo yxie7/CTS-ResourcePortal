@@ -237,7 +237,7 @@ namespace CTS_ResourcePortal
                             using (MailMessage mm = new MailMessage())
                             {
                                 mm.Bcc.Add(email);
-                                mm.From = new MailAddress("ctsemailtest0@gmail.com", "Called To Serve CDC");
+                                mm.From = new MailAddress(ConfigurationManager.AppSettings["SMTPEmailAddress"], ConfigurationManager.AppSettings["SMTPEmailDisplayName"]);
                                 mm.Subject = subject; //TODO subject date to either current date or take user input.
                                 mm.Body = text;
                                 mm.IsBodyHtml = true;
@@ -410,7 +410,7 @@ namespace CTS_ResourcePortal
                         using (MailMessage mm = new MailMessage())
                         {
                             mm.Bcc.Add(email);
-                            mm.From = new MailAddress("ctsemailtest0@gmail.com", "Called To Serve CDC");
+                            mm.From = new MailAddress(ConfigurationManager.AppSettings["SMTPEmailAddress"], ConfigurationManager.AppSettings["SMTPEmailDisplayName"]);
                             mm.Subject = subject; //TODO subject date to either current date or take user input.
                             mm.Body = text;
                             mm.IsBodyHtml = true;

@@ -211,6 +211,24 @@ namespace CTS_ResourcePortal {
         protected global::System.Web.UI.WebControls.TextBox txtCPassword;
         
         /// <summary>
+        /// comparePasswords control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator comparePasswords;
+        
+        /// <summary>
+        /// RGX_txtPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RGX_txtPassword;
+        
+        /// <summary>
         /// rdoSubscribe control.
         /// </summary>
         /// <remarks>

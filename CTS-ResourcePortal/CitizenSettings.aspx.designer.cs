@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CTS_ResourcePortal {
-    
-    
-    public partial class CitizenSettings {
-        
+namespace CTS_ResourcePortal
+{
+
+
+    public partial class CitizenSettings
+    {
+
         /// <summary>
         /// lblStatus control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblStatus;
-        
+
         /// <summary>
         /// lnkBtnUpdateSubscriber control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkBtnUpdateSubscriber;
-        
+
         /// <summary>
         /// lnkBtnUpdatePassword control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkBtnUpdatePassword;
-        
+
         /// <summary>
         /// lnkBtnUploadResume control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkBtnUploadResume;
-        
+
         /// <summary>
         /// lnkBtnDeleteAccount control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkBtnDeleteAccount;
-        
+
         /// <summary>
         /// UpdateSubscriber control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl UpdateSubscriber;
-        
+
         /// <summary>
         /// rdoSubscribe control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList rdoSubscribe;
-        
+
         /// <summary>
         /// lblCitizenID control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblCitizenID;
-        
+
         /// <summary>
         /// btnUpdateSubscribe control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnUpdateSubscribe;
-        
+
         /// <summary>
         /// UpdatePassword control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl UpdatePassword;
-        
+
         /// <summary>
         /// txtCurrentPassword control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCurrentPassword;
-        
+
         /// <summary>
         /// txtNewPassword control.
         /// </summary>
@@ -119,7 +121,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNewPassword;
-        
+
         /// <summary>
         /// txtConfirmPassword control.
         /// </summary>
@@ -128,16 +130,16 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtConfirmPassword;
-        
+
         /// <summary>
-        /// comparePasswords control.
+        /// passwordCompare control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CompareValidator comparePasswords;
-        
+        protected global::System.Web.UI.WebControls.CompareValidator passwordCompare;
+
         /// <summary>
         /// RGX_txtPassword control.
         /// </summary>
@@ -146,7 +148,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RGX_txtPassword;
-        
+
         /// <summary>
         /// btnUpdatePassword control.
         /// </summary>
@@ -155,7 +157,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnUpdatePassword;
-        
+
         /// <summary>
         /// UploadResume control.
         /// </summary>
@@ -164,7 +166,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl UploadResume;
-        
+
         /// <summary>
         /// lblResume control.
         /// </summary>
@@ -173,7 +175,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblResume;
-        
+
         /// <summary>
         /// ResumeUploadSettings control.
         /// </summary>
@@ -182,7 +184,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload ResumeUploadSettings;
-        
+
         /// <summary>
         /// ResumeUpload control.
         /// </summary>
@@ -191,7 +193,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ResumeUpload;
-        
+
         /// <summary>
         /// ResumeTable control.
         /// </summary>
@@ -200,7 +202,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ResumeTable;
-        
+
         /// <summary>
         /// rptResumes control.
         /// </summary>
@@ -209,7 +211,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptResumes;
-        
+
         /// <summary>
         /// deleteAccount control.
         /// </summary>
@@ -218,7 +220,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl deleteAccount;
-        
+
         /// <summary>
         /// txtConfirmDeactivate control.
         /// </summary>
@@ -227,7 +229,7 @@ namespace CTS_ResourcePortal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtConfirmDeactivate;
-        
+
         /// <summary>
         /// btnDeactivate control.
         /// </summary>

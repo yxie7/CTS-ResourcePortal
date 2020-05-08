@@ -52,7 +52,7 @@
                     <div class="col-lg-3 d-flex justify-content-center">
                         <div class="row">
                             <div class="col-sm-6">
-                                <asp:RadioButtonList ID="rdoSubscribe" runat="server" RepeatLayout="Flow" class="btn-group btn-group-toggle" data-toggle="buttons">                                    
+                                <asp:RadioButtonList ID="rdoSubscribe" runat="server" RepeatLayout="Flow" class="btn-group btn-group-toggle" data-toggle="buttons">
                                     <asp:ListItem class="btn btn-outline-success" Value="Yes" Selected="True">Yes</asp:ListItem>
                                     <asp:ListItem class="btn btn-outline-danger" Value="No">No</asp:ListItem>
                                 </asp:RadioButtonList>
@@ -67,7 +67,6 @@
                     <div class="col"></div>
                     <asp:Button runat="server" ID="btnUpdateSubscribe" CssClass="btn btn-primary" Text="Submit" OnClick="btnUpdateSubscribe_Click"></asp:Button>
                     <div class="col"></div>
-
                 </div>
             </div>
 
@@ -105,7 +104,7 @@
                 </div>
                 <br />
                 <div class="row justify-content-center">
-                    <asp:CompareValidator ID="comparePasswords" runat="server"
+                    <asp:CompareValidator ID="passwordCompare" runat="server"
                         SetFocusOnError="True"
                         ControlToCompare="txtNewPassword"
                         ControlToValidate="txtConfirmPassword"
@@ -115,7 +114,7 @@
                 </div>
                 <div class="row justify-content-center">
                     <asp:RegularExpressionValidator ID="RGX_txtPassword" runat="server"
-                        ErrorMessage="Password must be at least 6 alphanumeric characters with at least 1 number, 1 upper case, and 1 lower casee letter."
+                        ErrorMessage="Password must be at least 6 alphanumeric characters with at least 1 number, 1 upper case, and 1 lower case letter."
                         ControlToValidate="txtNewPassword"
                         SetFocusOnError="True"
                         ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$"
@@ -144,7 +143,7 @@
                 <div class="row ">
                     <div class="col"></div>
                     <div class="col-6 d-flex justify-content-center">
-                        <asp:FileUpload ID="ResumeUploadSettings" runat="server"/>
+                        <asp:FileUpload ID="ResumeUploadSettings" runat="server" />
                     </div>
                     <div class="col"></div>
                 </div>
@@ -159,7 +158,6 @@
                         <asp:Button runat="server" Text="View Resumes" ID="ResumeTable" class="btn btn-outline-primary" OnClick="ResumeTable_Click" />
                     </div>
                     <div class="col"></div>
-
                 </div>
             </div>
             <div class="row ">
@@ -168,8 +166,7 @@
                     <!-- -->
                     <asp:Repeater ID="rptResumes" runat="server" Visible="false">
                         <HeaderTemplate>
-                            <table id="datatable" class="table table-striped table-bordered" 
-                                >
+                            <table id="datatable" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
                                         <th>Resume Name

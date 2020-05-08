@@ -150,7 +150,7 @@
                             </div>
                             <div class="row justify-content-center">
                                 <asp:RegularExpressionValidator ID="RGX_txtPassword" runat="server"
-                                    ErrorMessage="Password must be at least 6 alphanumeric characters with at least 1 number, 1 upper case, and 1 lower casee letter."
+                                    ErrorMessage="Password must be at least 6 alphanumeric characters with at least 1 number, 1 upper case, and 1 lower case letter."
                                     ControlToValidate="txtPassword"
                                     SetFocusOnError="True"
                                     ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$"
